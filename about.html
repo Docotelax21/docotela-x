@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | Docotela X</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Cinematic fade -->
+  <div class="fade-overlay"></div>
+
+  <!-- Navigation -->
+  <header>
+    <nav class="top-nav">
+      <div class="center-links">
+        <a href="index.html">Home</a>
+        <a href="about.html" class="active">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="menu-button" onclick="toggleMenu()">☰</div>
+    </nav>
+
+    <div id="dropdownMenu" class="dropdown-menu">
+      <a href="index.html">Home</a>
+      <a href="collections.html">Collections</a>
+      <a href="members.html">Members Only</a>
+      <a href="art-gallery.html">Art Gallery</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section class="about-section">
+    <div class="about-container">
+      <h1>About Docotela X</h1>
+      <p>
+        Docotela X was born from a journey — a pursuit of freedom through art, design, and expression.  
+        Each collection reflects a state of being, a story of transformation, and the essence of individuality.  
+      </p>
+      <p>
+        Inspired by the idea that <strong>freedom is the highest form of luxury</strong>, every Docotela X piece is crafted to represent authenticity and emotional truth.  
+        From hand-detailed garments to artistic collaborations, the brand speaks to those who find beauty in depth, purpose, and silence.
+      </p>
+      <p>
+        Founded in Johannesburg, South Africa, Docotela X continues to evolve as a symbol of timeless creativity —  
+        reminding us that art is not made to be understood, but to be felt.
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Docotela X | The Feeling of Freedom</p>
+    <p>Instagram: <a href="https://instagram.com/docotelax" target="_blank">@docotelax</a></p>
+  </footer>
+
+  <script>
+    // Fade animation
+    window.addEventListener("load", () => {
+      document.querySelector(".fade-overlay").classList.add("fade-out");
+    });
+
+    // Menu toggle
+    function toggleMenu() {
+      document.getElementById("dropdownMenu").classList.toggle("show");
+    }
+  </script>
+
+</body>
+</html>
