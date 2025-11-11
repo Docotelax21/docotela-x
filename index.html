@@ -62,14 +62,22 @@
       document.querySelector(".fade-overlay").classList.add("fade-out");
     });
   </script>
-<!-- Cinematic Fade Intro -->
+-<!-- Cinematic Fade Intro -->
 <div class="fade-overlay" id="fadeOverlay">
   <div class="intro">
-    <div class="logo-glow">DX</div>
-    <div class="tagline-glow">Docotela X</div>
+    <div class="intro-logo">
+      <img src="docotelax-logo.png" alt="Docotela X Cinematic Logo">
+    </div>
   </div>
 </div>
 
+<script>
+  // Smooth fade-out with cinematic timing
+  window.addEventListener('load', () => {
+    const overlay = document.getElementById('fadeOverlay');
+    setTimeout(() => overlay.classList.add('fade-out'), 2500);
+  });
+</script>
 <script>
   // Smooth fade-out with cinematic timing
   window.addEventListener('load', () => {
