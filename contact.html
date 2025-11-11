@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Docotela X</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Cinematic Fade Overlay -->
+  <div class="fade-overlay"></div>
+
+  <!-- Navigation -->
+  <header>
+    <nav class="top-nav">
+      <div class="center-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="active">Contact</a>
+      </div>
+      <div class="menu-button" onclick="toggleMenu()">☰</div>
+    </nav>
+
+    <div id="dropdownMenu" class="dropdown-menu">
+      <a href="index.html">Home</a>
+      <a href="collections.html">Collections</a>
+      <a href="members.html">Members Only</a>
+      <a href="art-gallery.html">Art Gallery</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </header>
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <div class="contact-container">
+      <h1>Contact Docotela X</h1>
+      <p>
+        We'd love to connect with you — whether it’s for collaborations, inquiries, or sharing your story through art.
+      </p>
+      <div class="contact-info">
+        <p><strong>Email:</strong> <a href="mailto:contact@docotelax.com">contact@docotelax.com</a></p>
+        <p><strong>Instagram:</strong> <a href="https://instagram.com/docotelax" target="_blank">@docotelax</a></p>
+        <p><strong>Location:</strong> Johannesburg, South Africa</p>
+      </div>
+
+      <!-- Contact Form -->
+      <form class="contact-form" action="#" method="post">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Docotela X | The Feeling of Freedom</p>
+    <p>Instagram: <a href="https://instagram.com/docotelax" target="_blank">@docotelax</a></p>
+  </footer>
+
+  <script>
+    // Fade animation
+    window.addEventListener("load", () => {
+      document.querySelector(".fade-overlay").classList.add("fade-out");
+    });
+
+    // Menu toggle
+    function toggleMenu() {
+      document.getElementById("dropdownMenu").classList.toggle("show");
+    }
+  </script>
+
+</body>
+</html>
