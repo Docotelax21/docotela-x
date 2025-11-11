@@ -1,1 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Docotela X | The Feeling of Freedom</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
+  <!-- Fade overlay for cinematic intro -->
+  <div class="fade-overlay"></div>
+
+  <!-- Navigation Bar -->
+  <header>
+    <nav class="top-nav">
+      <div class="center-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="menu-button" onclick="toggleMenu()">☰</div>
+    </nav>
+
+    <!-- Hidden dropdown menu -->
+    <div id="dropdownMenu" class="dropdown-menu">
+      <a href="index.html">Home</a>
+      <a href="collections.html">Collections</a>
+      <a href="members.html">Members Only</a>
+      <a href="art-gallery.html">Art Gallery</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </header>
+
+  <!-- Main Hero Section -->
+  <section class="hero">
+    <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=1600&q=80" alt="Docotela X Background" class="background-image">
+    
+    <div class="content">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Black_circle.svg" alt="Docotela X Logo" class="logo">
+      <h1 class="tagline">The Feeling of Freedom</h1>
+      <a href="collections.html" class="enter-button">Enter the Gallery</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Docotela X | Johannesburg, South Africa</p>
+    <p>Instagram: <a href="https://instagram.com/docotelax" target="_blank">@docotelax</a></p>
+  </footer>
+
+  <script>
+    // Menu toggle
+    function toggleMenu() {
+      const menu = document.getElementById("dropdownMenu");
+      menu.classList.toggle("show");
+    }
+
+    // Cinematic fade
+    window.addEventListener("load", () => {
+      document.querySelector(".fade-overlay").classList.add("fade-out");
+    });
+  </script>
+
+</body>
+</html>
