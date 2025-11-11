@@ -58,11 +58,7 @@
     }
 
     // Cinematic fade
-    window.addEventListener("load", () => {
-      document.querySelector(".fade-overlay").classList.add("fade-out");
-    });
-  </script>
--<!-- Cinematic Fade Intro -->
+    <!-- Cinematic Fade Intro -->
 <div class="fade-overlay" id="fadeOverlay">
   <div class="intro">
     <div class="intro-logo">
@@ -75,13 +71,6 @@
   // Smooth fade-out with cinematic timing
   window.addEventListener('load', () => {
     const overlay = document.getElementById('fadeOverlay');
-    setTimeout(() => overlay.classList.add('fade-out'), 2500);
-  });
-</script>
-<script>
-  // Smooth fade-out with cinematic timing
-  window.addEventListener('load', () => {
-    const overlay = document.getElementById('fadeOverlay');
-    setTimeout(() => overlay.classList.add('fade-out'), 2000); // holds for 2s before fade
+    setTimeout(() => overlay.classList.add('fade-out'), 2500); // 2.5s cinematic hold
   });
 </script>
