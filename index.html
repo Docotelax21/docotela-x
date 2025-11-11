@@ -62,6 +62,20 @@
       document.querySelector(".fade-overlay").classList.add("fade-out");
     });
   </script>
+<!-- Cinematic Fade Intro -->
+<div class="fade-overlay" id="fadeOverlay">
+  <div class="intro">
+    <div class="logo-small">DX</div>
+    <div class="tagline-small">Docotela X</div>
+  </div>
+</div>
 
+<script>
+  // Simple fade-out animation
+  window.addEventListener('load', () => {
+    const overlay = document.getElementById('fadeOverlay');
+    setTimeout(() => overlay.classList.add('fade-out'), 900); // fades after 0.9s
+  });
+</script>
 </body>
 </html>
