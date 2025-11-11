@@ -65,17 +65,15 @@
 <!-- Cinematic Fade Intro -->
 <div class="fade-overlay" id="fadeOverlay">
   <div class="intro">
-    <div class="logo-small">DX</div>
-    <div class="tagline-small">Docotela X</div>
+    <div class="logo-glow">DX</div>
+    <div class="tagline-glow">Docotela X</div>
   </div>
 </div>
 
 <script>
-  // Simple fade-out animation
+  // Smooth fade-out with cinematic timing
   window.addEventListener('load', () => {
     const overlay = document.getElementById('fadeOverlay');
-    setTimeout(() => overlay.classList.add('fade-out'), 900); // fades after 0.9s
+    setTimeout(() => overlay.classList.add('fade-out'), 2000); // holds for 2s before fade
   });
 </script>
-</body>
-</html>
