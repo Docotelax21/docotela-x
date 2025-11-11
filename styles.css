@@ -641,3 +641,15 @@ a:focus, button:focus, input:focus, textarea:focus {
   0% { opacity: 0; transform: scale(0.95); }
   100% { opacity: 1; transform: scale(1); }
 }
+/* --- Cinematic Intro (with Logo) --- */
+.intro-logo img {
+  width: 160px;
+  max-width: 70%;
+  filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.5));
+  animation: logoAppear 2s ease-in-out;
+}
+
+@keyframes logoAppear {
+  0% { opacity: 0; transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1); }
+}
