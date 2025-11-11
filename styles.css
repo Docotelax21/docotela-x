@@ -255,3 +255,84 @@ footer a:hover {
   background: gold;
   color: black;
 }
+/* Collections Page */
+.collections-section {
+  min-height: 100vh;
+  padding: 120px 40px 60px;
+  background-color: #000;
+  text-align: center;
+}
+
+.collections-header {
+  max-width: 800px;
+  margin: 0 auto 60px;
+}
+
+.collections-header h1 {
+  font-size: 2.3rem;
+  color: gold;
+  margin-bottom: 15px;
+}
+
+.collections-header p {
+  color: #ddd;
+  line-height: 1.6;
+}
+
+.collections-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  justify-content: center;
+}
+
+.collection-card {
+  background: #111;
+  border: 1px solid #222;
+  padding: 20px;
+  border-radius: 6px;
+  transition: all 0.4s ease;
+}
+
+.collection-card:hover {
+  transform: scale(1.03);
+  border-color: gold;
+}
+
+.collection-card img {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  filter: brightness(70%);
+  transition: all 0.3s ease;
+}
+
+.collection-card img:hover {
+  filter: brightness(100%);
+}
+
+.collection-card h2 {
+  color: white;
+  margin-bottom: 10px;
+}
+
+.collection-card p {
+  color: #aaa;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.view-button {
+  text-decoration: none;
+  border: 1px solid gold;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.view-button:hover {
+  background: gold;
+  color: black;
+}
