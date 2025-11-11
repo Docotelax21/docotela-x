@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Members Only | Docotela X</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Cinematic Fade Overlay -->
+  <div class="fade-overlay"></div>
+
+  <!-- Navigation -->
+  <header>
+    <nav class="top-nav">
+      <div class="center-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="menu-button" onclick="toggleMenu()">☰</div>
+    </nav>
+
+    <div id="dropdownMenu" class="dropdown-menu">
+      <a href="index.html">Home</a>
+      <a href="collections.html">Collections</a>
+      <a href="members.html" class="active">Members Only</a>
+      <a href="art-gallery.html">Art Gallery</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </header>
+
+  <!-- Members Section -->
+  <section class="members-section" id="locked-content">
+    <div class="members-container">
+      <h1>Members Only</h1>
+      <p>Enter your access code to step into the private world of Docotela X.</p>
+
+      <input type="password" id="passwordInput" placeholder="Enter Access Code">
+      <button onclick="checkPassword()">Enter</button>
+
+      <p id="error-message" class="error-message"></p>
+    </div>
+  </section>
+
+  <!-- Hidden Exclusive Content -->
+  <section class="exclusive-section hidden" id="exclusive-content">
+    <div class="exclusive-container">
+      <h2>Welcome to the Inner Circle</h2>
+      <p>
+        You’ve entered the world reserved for those who understand the essence of freedom, depth, and rarity.  
+        This section gives you access to previews, unreleased pieces, and artistic collaborations before they reach the public eye.
+      </p>
+      <a href="art-gallery.html" class="view-button">View Private Gallery</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Docotela X | The Feeling of Freedom</p>
+    <p>Instagram: <a href="https://instagram.com/docotelax" target="_blank">@docotelax</a></p>
+  </footer>
+
+  <script>
+    // Fade animation
+    window.addEventListener("load", () => {
+      document.querySelector(".fade-overlay").classList.add("fade-out");
+    });
+
+    // Menu toggle
+    function toggleMenu() {
+      document.getElementById("dropdownMenu").classList.toggle("show");
+    }
+
+    // Password check
+    function checkPassword() {
+      const input = document.getElementById("passwordInput").value;
+      const error = document.getElementById("error-message");
+      const locked = document.getElementById("locked-content");
+      const exclusive = document.getElementById("exclusive-content");
+
+      if (input === "memberson1y") {
+        locked.classList.add("hidden");
+        exclusive.classList.remove("hidden");
+      } else {
+        error.textContent = "Access denied. Please try again.";
+        setTimeout(() => { error.textContent = ""; }, 2000);
+      }
+    }
+  </script>
+
+</body>
+</html>
