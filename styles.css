@@ -179,3 +179,79 @@ footer a:hover {
     font-size: 1.5rem;
   }
 }
+/* Contact Page */
+.contact-section {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 120px 20px 60px;
+  background-color: #000;
+  text-align: center;
+}
+
+.contact-container {
+  max-width: 600px;
+}
+
+.contact-container h1 {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  color: gold;
+}
+
+.contact-container p {
+  color: #ddd;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.contact-info p {
+  margin: 5px 0;
+}
+
+.contact-info a {
+  color: white;
+  text-decoration: none;
+}
+
+.contact-info a:hover {
+  color: gold;
+}
+
+/* Form Styling */
+.contact-form {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  background: #111;
+  border: 1px solid #333;
+  color: white;
+  padding: 12px;
+  border-radius: 4px;
+  font-family: inherit;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #777;
+}
+
+.contact-form button {
+  background: transparent;
+  border: 1px solid gold;
+  color: white;
+  padding: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.contact-form button:hover {
+  background: gold;
+  color: black;
+}
