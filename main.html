@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Docotela X | limited collections. Handcrafted art.</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Docotela X | The Feeling of Freedom</title>
   <style>
-    /* Base layout */
+    /* Reset and layout */
     * {
       margin: 0;
       padding: 0;
@@ -14,173 +13,128 @@
     }
 
     body {
-      height: 100vh;
-      width: 100%;
-      background-color: #000;
-      overflow: hidden;
+      background: radial-gradient(circle at center, #0a0a0a 0%, #000 100%);
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
+      justify-content: center;
       align-items: center;
-      justify-content: center;
-      color: white;
-      font-family: "Playfair Display", serif;
-      position: relative;
-    }
-
-    /* Cinematic glow background */
-    body::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at center, rgba(255, 215, 0, 0.1) 0%, rgba(0, 0, 0, 1) 70%);
-      animation: pulse 6s ease-in-out infinite alternate;
-      z-index: 0;
-    }
-
-    @keyframes pulse {
-      0% { opacity: 0.6; transform: scale(1); }
-      100% { opacity: 1; transform: scale(1.1); }
-    }
-
-    /* NAVIGATION */
-    .navbar {
-      position: absolute;
-      top: 25px;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      z-index: 2;
       opacity: 0;
-      animation: fadeIn 3s ease forwards 4.5s;
+      transition: opacity 1.5s ease-in-out;
     }
 
-    .navbar a {
+    body.loaded {
+      opacity: 1;
+    }
+
+    /* Top navigation */
+    nav {
+      position: absolute;
+      top: 30px;
+      width: 100%;
+      text-align: center;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 20px;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: gold;
+    }
+
+    /* Title styling */
+    h1 {
+      font-size: 3rem;
+      font-weight: 600;
+      color: #ffd700;
+      text-shadow: 0 0 15px #ffd700, 0 0 30px #d4af37;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: #ffd700;
+      text-shadow: 0 0 10px #ffd700;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #ccc;
+      margin-bottom: 30px;
+      letter-spacing: 1px;
+    }
+
+    /* Button */
+    .enter-btn {
+      border: 1px solid gold;
+      padding: 12px 28px;
       color: white;
       text-decoration: none;
       font-size: 1rem;
       letter-spacing: 1px;
-      transition: color 0.3s ease;
-    }
-
-    .navbar a:hover {
-      color: #f5d67b;
-    }
-
-    /* LOGO */
-    .logo {
-      font-size: 5rem;
-      font-weight: 600;
-      letter-spacing: 4px;
-      color: #f5d67b;
-      text-shadow: 0 0 15px #f5d67b, 0 0 40px #f5d67b;
-      z-index: 2;
-      animation: glowMove 5s ease-in-out infinite alternate;
-    }
-
-    @keyframes glowMove {
-      0% {
-        text-shadow: 0 0 15px #f5d67b, 0 0 40px #f5d67b;
-        transform: translateY(0) scale(1);
-      }
-      100% {
-        text-shadow: 0 0 25px #ffd700, 0 0 80px #ffd700;
-        transform: translateY(-10px) scale(1.02);
-      }
-    }
-
-    /* TAGLINE */
-    .tagline {
-      margin-top: 20px;
-      font-size: 1.3rem;
-      letter-spacing: 2px;
-      color: #ffffffd0;
-      z-index: 2;
-      opacity: 0;
-      animation: fadeIn 3s ease forwards 2s;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ENTER BUTTON */
-    .enter-btn {
-      margin-top: 40px;
-      padding: 14px 34px;
-      border: 1.5px solid #f5d67b;
-      background: transparent;
-      color: #f5d67b;
-      font-size: 1rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: all 0.4s ease;
-      z-index: 2;
-      opacity: 0;
-      animation: fadeIn 3s ease forwards 3.5s;
+      transition: all 0.3s ease;
     }
 
     .enter-btn:hover {
-      background-color: #f5d67b;
+      background: gold;
       color: black;
-      box-shadow: 0 0 25px #f5d67b;
-      transform: scale(1.05);
+      box-shadow: 0 0 20px gold;
     }
 
-    /* FOOTER */
+    /* Footer */
     footer {
       position: absolute;
-      bottom: 20px;
+      bottom: 30px;
       font-size: 0.9rem;
-      color: #888;
-      z-index: 2;
+      color: #aaa;
       letter-spacing: 1px;
     }
 
-    footer span {
-      color: #f5d67b;
+    /* Subtle shimmer animation */
+    @keyframes shimmer {
+      0% { text-shadow: 0 0 15px #ffd700, 0 0 30px #d4af37; }
+      50% { text-shadow: 0 0 25px #fff799, 0 0 40px #ffd700; }
+      100% { text-shadow: 0 0 15px #ffd700, 0 0 30px #d4af37; }
     }
 
-    /* Smooth fade when clicking "Enter the Gallery" */
-    .fade-out {
-      animation: fadeOut 1s ease forwards;
+    h1, h2 {
+      animation: shimmer 3s ease-in-out infinite;
     }
-
-    @keyframes fadeOut {
-      to { opacity: 0; transform: scale(1.05); }
-    }
-
   </style>
 </head>
-
 <body>
-  <!-- NAVIGATION -->
-  <div class="navbar">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
+  <nav>
+    <a href="main.html">Home</a> .
+    <a href="about.html">About</a> .
     <a href="contact.html">Contact</a>
+  </nav>
+
+  <div class="content">
+    <h1>Docotela</h1>
+    <h2>X</h2>
+    <p>The Feeling of Freedom</p>
+    <a href="gallery.html" class="enter-btn">ENTER THE GALLERY</a>
   </div>
 
-  <!-- CENTER CONTENT -->
-  <h1 class="logo">Docotela X</h1>
-  <p class="tagline">The Feeling of Freedom</p>
-  <button class="enter-btn" onclick="fadeAndGo()">Enter the Gallery</button>
-
-  <!-- FOOTER -->
-  <footer>© <span>2025</span> Docotela X — All Rights Reserved</footer>
+  <footer>
+    © 2025 Docotela X — All Rights Reserved
+  </footer>
 
   <script>
-    function fadeAndGo() {
-      document.body.classList.add("fade-out");
-      setTimeout(() => {
-        window.location.href = "collections.html";
-      }, 1000);
-    }
+    window.addEventListener('load', () => {
+      document.body.classList.add('loaded');
+    });
   </script>
 </body>
 </html>
