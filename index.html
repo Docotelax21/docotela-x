@@ -6,50 +6,52 @@
   <title>Docotela X | The Feeling of Freedom</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* Fade overlay (cinematic intro) */
+    /* Cinematic Fullscreen Intro */
     .fade-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      height: 100%;
-      background-color: black;
+      height: 100vh;
+      background: black;
       display: flex;
       justify-content: center;
       align-items: center;
       z-index: 9999;
-      transition: opacity 2s ease;
+      opacity: 1;
+      transition: opacity 2.5s ease;
     }
     .fade-overlay.fade-out {
       opacity: 0;
       pointer-events: none;
     }
 
-    /* Logo intro styling */
     .intro-logo img {
-      width: 220px;
-      animation: glow 2s ease-in-out infinite alternate;
+      width: 320px;
+      max-width: 80%;
+      filter: drop-shadow(0 0 25px gold);
+      animation: glowPulse 3s ease-in-out infinite alternate;
     }
-    @keyframes glow {
-      from { filter: drop-shadow(0 0 5px gold); }
-      to { filter: drop-shadow(0 0 25px gold); }
+    @keyframes glowPulse {
+      from { filter: drop-shadow(0 0 10px gold); transform: scale(1); }
+      to { filter: drop-shadow(0 0 40px gold); transform: scale(1.05); }
     }
 
-    /* Page fade-in */
+    /* Background + main style */
     body {
       margin: 0;
       background-color: #0a0a0a;
       color: white;
       font-family: 'Helvetica Neue', sans-serif;
       overflow-x: hidden;
-      animation: bodyFade 2.5s ease;
+      animation: fadeInBody 3s ease;
     }
-    @keyframes bodyFade {
+    @keyframes fadeInBody {
       from { opacity: 0; }
       to { opacity: 1; }
     }
 
-    /* Center top nav */
+    /* Center nav */
     .top-nav {
       position: fixed;
       top: 20px;
@@ -66,11 +68,9 @@
       letter-spacing: 1px;
       transition: color 0.3s ease;
     }
-    .top-nav a:hover {
-      color: gold;
-    }
+    .top-nav a:hover { color: gold; }
 
-    /* Hamburger menu */
+    /* Hamburger */
     .hamburger {
       position: fixed;
       top: 20px;
@@ -90,7 +90,7 @@
       transition: all 0.3s ease;
     }
 
-    /* Dropdown menu */
+    /* Dropdown */
     .menu {
       display: none;
       flex-direction: column;
@@ -109,11 +109,9 @@
       margin: 10px 0;
       transition: color 0.3s;
     }
-    .menu a:hover {
-      color: gold;
-    }
+    .menu a:hover { color: gold; }
 
-    /* Centered homepage content */
+    /* Center content */
     .center-content {
       position: absolute;
       top: 50%;
@@ -156,17 +154,14 @@
     }
 
     @media (max-width: 768px) {
-      .top-nav {
-        display: none;
-      }
-      .menu {
-        width: 180px;
-      }
+      .top-nav { display: none; }
+      .menu { width: 180px; }
     }
   </style>
 </head>
 <body>
-  <!-- Cinematic Logo Intro -->
+
+  <!-- Fullscreen Cinematic Intro -->
   <div class="fade-overlay" id="fadeOverlay">
     <div class="intro-logo">
       <img src="docotelax-logo.png" alt="Docotela X Cinematic Logo">
@@ -193,7 +188,7 @@
     <a href="contact.html">Contact</a>
   </div>
 
-  <!-- Homepage Main -->
+  <!-- Homepage -->
   <div class="center-content">
     <img src="docotelax-logo.png" alt="Docotela X Logo">
     <h1>The Feeling of Freedom</h1>
@@ -210,16 +205,16 @@
       const overlay = document.getElementById("fadeOverlay");
       setTimeout(() => {
         overlay.classList.add("fade-out");
-      }, 2800);
+      }, 3200); // holds for 3.2 seconds before fade
     });
 
-    // Hamburger menu toggle
+    // Hamburger toggle
     const hamburger = document.getElementById("hamburger");
     const menu = document.getElementById("menu");
-
     hamburger.addEventListener("click", () => {
       menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
     });
   </script>
+
 </body>
 </html>
