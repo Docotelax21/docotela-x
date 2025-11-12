@@ -1,0 +1,140 @@
+/* Background */
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at center, #0a0a0a, #000);
+  overflow: hidden;
+  font-family: "Cinzel", serif;
+  color: white;
+}
+
+/* Cinematic glowing background */
+.background::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: radial-gradient(circle, rgba(255,215,0,0.05) 0%, transparent 70%);
+  animation: pulse 5s infinite;
+  z-index: 0;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.7; }
+}
+
+/* Access container */
+.access-container {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  transition: opacity 1s ease;
+}
+
+.title {
+  font-size: 2.5rem;
+  letter-spacing: 4px;
+  color: gold;
+  margin-bottom: 0;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #aaa;
+}
+
+input {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: 1px solid gold;
+  background: transparent;
+  color: white;
+  outline: none;
+  margin-bottom: 15px;
+}
+
+button {
+  display: block;
+  margin: 0 auto;
+  padding: 10px 25px;
+  background: gold;
+  border: none;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+button:hover {
+  background: #ffdf00;
+  transform: scale(1.05);
+}
+
+#message {
+  margin-top: 15px;
+  font-size: 1rem;
+}
+.denied {
+  color: red;
+  text-shadow: 0 0 10px red;
+  animation: flicker 1s infinite alternate;
+}
+@keyframes flicker {
+  0% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+#applyLink {
+  display: none;
+  color: #999;
+  font-size: 0.9rem;
+  margin-top: 8px;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+#applyLink:hover {
+  color: gold;
+}
+
+/* Gate Animation */
+.gates {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.gate {
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(212,175,55,0.9), rgba(0,0,0,0.9));
+  transition: transform 3s ease;
+}
+.gate.right {
+  background: linear-gradient(to left, rgba(212,175,55,0.9), rgba(0,0,0,0.9));
+}
+
+.gates.open .left {
+  transform: translateX(-100%);
+}
+.gates.open .right {
+  transform: translateX(100%);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+  }
+  input, button {
+    width: 80%;
+  }
+}
