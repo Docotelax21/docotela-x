@@ -1,252 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About - Docotela X</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | Docotela X</title>
+  <link rel="stylesheet" href="styles.css">
   <style>
-    /* Base Styling */
     body {
       margin: 0;
       padding: 0;
       background-color: #000;
-      color: #fff;
-      font-family: "Poppins", sans-serif;
-      overflow: hidden;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 1.5s ease, transform 1.5s ease;
-    }
-
-    body.fade-in {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Navigation */
-    .top-nav {
-      text-align: center;
-      padding: 20px 0;
-      font-size: 1.1rem;
-      letter-spacing: 2px;
+      color: white;
+      font-family: 'Cormorant Garamond', serif;
+      overflow-x: hidden;
       position: relative;
-      z-index: 10;
+      min-height: 100vh;
     }
 
-    .top-nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 20px;
-      transition: color 0.3s;
-    }
-
-    .top-nav a:hover {
-      color: gold;
-    }
-
-    .menu-btn {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      cursor: pointer;
-      z-index: 20;
-      font-size: 1.6rem;
-      color: white;
-    }
-
-    .menu {
-      display: none;
-      position: absolute;
-      top: 60px;
-      right: 20px;
-      background: rgba(0, 0, 0, 0.95);
-      padding: 20px;
-      border: 1px solid gold;
-      text-align: right;
-      z-index: 19;
-    }
-
-    .menu a {
-      display: block;
-      margin: 10px 0;
-      color: white;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
-    .menu a:hover {
-      color: gold;
-    }
-
-    /* About Section */
-    .about-section {
-      position: relative;
-      z-index: 5;
-      max-width: 900px;
-      margin: 120px auto 80px auto;
-      text-align: center;
-      padding: 0 25px;
-      line-height: 1.9;
-    }
-
-    .about-section h1 {
-      font-size: 2.8rem;
-      letter-spacing: 3px;
-      color: gold;
-      margin-bottom: 20px;
-    }
-
-    .about-section p {
-      font-size: 1.05rem;
-      color: #e0e0e0;
-      margin-bottom: 25px;
-    }
-
-    .about-section .quote {
-      font-style: italic;
-      color: #c0c0c0;
-      margin-top: 40px;
-      font-size: 1rem;
-    }
-
-    /* Floating X Background */
+    /* Floating X cinematic background */
     .floating-x {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
+      position: absolute;
+      font-size: 10vw;
+      color: rgba(255, 255, 255, 0.03);
+      font-weight: bold;
+      animation: floatX 20s infinite ease-in-out;
       z-index: 0;
       pointer-events: none;
     }
 
-    .x {
-      position: absolute;
-      color: rgba(255, 215, 0, 0.08);
-      font-size: 4rem;
-      animation: floatMotion 20s ease-in-out infinite;
-      user-select: none;
-      text-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+    .floating-x:nth-child(1) {
+      top: 15%;
+      left: 10%;
+      animation-delay: 0s;
     }
 
-    @keyframes floatMotion {
-      0% {
-        transform: translate3d(0, 0, 0) rotate(0deg);
-        opacity: 0.2;
-      }
-      25% {
-        transform: translate3d(30px, -40px, 0) rotate(30deg);
-        opacity: 0.4;
-      }
-      50% {
-        transform: translate3d(-20px, -80px, 0) rotate(60deg);
-        opacity: 0.6;
-      }
-      75% {
-        transform: translate3d(40px, -20px, 0) rotate(90deg);
-        opacity: 0.3;
-      }
-      100% {
-        transform: translate3d(0, 0, 0) rotate(120deg);
-        opacity: 0.2;
-      }
+    .floating-x:nth-child(2) {
+      top: 50%;
+      left: 70%;
+      animation-delay: 4s;
     }
 
+    .floating-x:nth-child(3) {
+      top: 75%;
+      left: 30%;
+      animation-delay: 8s;
+    }
+
+    @keyframes floatX {
+      0% { transform: translate(0, 0) rotate(0deg); opacity: 0.2; }
+      25% { transform: translate(30px, -40px) rotate(15deg); opacity: 0.3; }
+      50% { transform: translate(-20px, 20px) rotate(-10deg); opacity: 0.15; }
+      75% { transform: translate(40px, 30px) rotate(20deg); opacity: 0.25; }
+      100% { transform: translate(0, 0) rotate(0deg); opacity: 0.2; }
+    }
+
+    /* About content */
+    .about-container {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 8vh 10vw;
+      animation: fadeUp 2s ease forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-size: 3em;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+      color: white;
+    }
+
+    p {
+      font-size: 1.2em;
+      line-height: 1.8em;
+      color: rgba(255, 255, 255, 0.8);
+      max-width: 800px;
+    }
+
+    /* Navbar */
+    nav {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding: 20px 0;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(10px);
+      z-index: 10;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 20px;
+      font-size: 1.2em;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: gold;
+    }
+
+    /* Responsive */
     @media (max-width: 768px) {
-      .about-section h1 {
-        font-size: 2rem;
+      h1 {
+        font-size: 2.2em;
       }
-      .about-section p {
-        font-size: 0.95rem;
+      p {
+        font-size: 1em;
       }
-      .x {
-        font-size: 2.5rem;
+      .floating-x {
+        font-size: 18vw;
       }
     }
   </style>
 </head>
-
 <body>
-  <!-- Navigation -->
-  <div class="top-nav">
-    <a href="index.html">Home</a>
-    <a href="about.html" style="color: gold;">About</a>
-    <a href="contact.html">Contact</a>
-    <div class="menu-btn" onclick="toggleMenu()">☰</div>
-    <div class="menu" id="menu">
-      <a href="index.html">Home</a>
-      <a href="collections.html">Collections</a>
-      <a href="members.html">Members Only</a>
-      <a href="gallery.html">Art Gallery</a>
-      <a href="about.html" style="color: gold;">About</a>
-      <a href="contact.html">Contact</a>
-    </div>
-  </div>
 
-  <!-- Floating X Background -->
-  <div class="floating-x" id="floatingX"></div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="collections.html">Collections</a>
+    <a href="about.html" style="color:gold;">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <!-- Cinematic floating X background -->
+  <div class="floating-x">X</div>
+  <div class="floating-x">X</div>
+  <div class="floating-x">X</div>
 
   <!-- About Section -->
-  <section class="about-section">
-    <h1>DOCOTELA X</h1>
+  <div class="about-container">
+    <h1>About Docotela X</h1>
     <p>
-      Docotela X was born from a whisper — a quiet rebellion against the ordinary.  
-      Every piece we create carries the pulse of freedom, the touch of imperfection,
-      and the story of an artist unafraid to feel deeply.
+      Docotela X is more than a brand — it’s a reflection of freedom, art, and human emotion.  
+      Born from silence, shaped by persistence, and guided by the pursuit of meaning,  
+      every collection tells a story — not of perfection, but of liberation.
     </p>
     <p>
-      “The Feeling of Freedom” is not just our first collection — it’s our philosophy.
-      It is the art of breathing in a world that tries to hold its breath.  
-      Each garment, each texture, and every curve of fabric is hand-shaped
-      by visionaries who believe that art should not just be worn, but *felt*.
+      Each piece exists as a testament to those who move beyond doubt — who dare to express  
+      their inner chaos as beauty, and their solitude as art.  
+      Docotela X isn’t designed to be worn, it’s designed to be <em>felt</em>.
     </p>
     <p>
-      Docotela X exists between worlds — where luxury meets raw creation,
-      where limited means timeless, and where individuality is sacred.
-      Every collection is intentionally scarce; every detail, a conversation.
-      We do not follow trends. We create emotion.
+      The “X” represents the unknown — the place where art and freedom meet,  
+      where identity is not confined but explored, and where creation breathes beyond boundaries.
     </p>
-    <p>
-      From Johannesburg to the world, our mission is simple yet profound:
-      to inspire people to live with intention, to choose meaning over mass,
-      and to walk through life in garments that carry soul.
-    </p>
+  </div>
 
-    <p class="quote">“Freedom is not found in the absence of limits — but in the courage to redefine them.”</p>
-  </section>
-
-  <script>
-    // Fade in
-    window.addEventListener("load", () => {
-      document.body.classList.add("fade-in");
-      generateFloatingX();
-    });
-
-    // Toggle mobile menu
-    function toggleMenu() {
-      const menu = document.getElementById("menu");
-      menu.style.display = menu.style.display === "block" ? "none" : "block";
-    }
-
-    // Generate floating Xs
-    function generateFloatingX() {
-      const container = document.getElementById("floatingX");
-      const numX = 12; // number of Xs
-
-      for (let i = 0; i < numX; i++) {
-        const x = document.createElement("div");
-        x.classList.add("x");
-        x.textContent = "X";
-        x.style.left = Math.random() * 100 + "vw";
-        x.style.top = Math.random() * 100 + "vh";
-        x.style.animationDuration = 15 + Math.random() * 20 + "s";
-        x.style.animationDelay = Math.random() * 10 + "s";
-        x.style.opacity = 0.1 + Math.random() * 0.5;
-        container.appendChild(x);
-      }
-    }
-  </script>
 </body>
 </html>
