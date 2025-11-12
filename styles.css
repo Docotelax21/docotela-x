@@ -653,3 +653,27 @@ a:focus, button:focus, input:focus, textarea:focus {
   0% { opacity: 0; transform: scale(0.95); }
   100% { opacity: 1; transform: scale(1); }
 }
+/* ===== Fade Up Animation for Collection Names ===== */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Apply to all collection names */
+.collection-item {
+    opacity: 0;
+    animation: fadeUp 1.5s ease forwards;
+}
+
+.collection-item:nth-child(1) { animation-delay: 0.3s; }
+.collection-item:nth-child(2) { animation-delay: 0.6s; }
+.collection-item:nth-child(3) { animation-delay: 0.9s; }
+.collection-item:nth-child(4) { animation-delay: 1.2s; }
+.collection-item:nth-child(5) { animation-delay: 1.5s; }
+.collection-item:nth-child(6) { animation-delay: 1.8s; }
