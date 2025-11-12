@@ -3,92 +3,73 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About | Docotela X</title>
+  <title>About - Docotela X</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
+    /* Fade-in animation */
     body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1.5s ease, transform 1.5s ease;
       background-color: #000;
       color: #fff;
+      font-family: "Poppins", sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    body.fade-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Center navigation */
+    .top-nav {
       text-align: center;
-      overflow-x: hidden;
+      padding: 20px 0;
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      position: relative;
     }
 
-    /* Fade-up animation */
-    @keyframes fadeUp {
-      0% {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Navbar */
-    .navbar {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      padding: 15px 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: rgba(0, 0, 0, 0.6);
-      z-index: 1000;
-    }
-
-    .navbar-center a {
+    .top-nav a {
       color: white;
       text-decoration: none;
       margin: 0 20px;
-      font-size: 18px;
       transition: color 0.3s;
     }
 
-    .navbar-center a:hover {
+    .top-nav a:hover {
       color: gold;
     }
 
-    /* Hamburger */
-    .hamburger {
+    /* Hamburger menu */
+    .menu-btn {
       position: absolute;
-      right: 25px;
-      top: 18px;
+      top: 20px;
+      right: 20px;
       cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-
-    .hamburger div {
-      width: 25px;
-      height: 3px;
-      background: white;
-      transition: all 0.3s ease;
+      z-index: 1000;
+      font-size: 1.6rem;
+      color: white;
     }
 
     .menu {
-      position: fixed;
-      top: 0;
-      right: -100%;
-      width: 70%;
-      height: 100vh;
+      display: none;
+      position: absolute;
+      top: 60px;
+      right: 20px;
       background: rgba(0, 0, 0, 0.95);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      transition: 0.4s ease;
+      padding: 20px;
+      border: 1px solid gold;
+      text-align: right;
     }
 
     .menu a {
+      display: block;
+      margin: 10px 0;
       color: white;
       text-decoration: none;
-      font-size: 22px;
-      margin: 15px 0;
       transition: color 0.3s;
     }
 
@@ -96,118 +77,99 @@
       color: gold;
     }
 
-    .menu.active {
-      right: 0;
-    }
-
     /* About section */
-    .about-container {
-      max-width: 800px;
-      margin: 150px auto 100px;
-      padding: 0 20px;
+    .about-section {
+      max-width: 900px;
+      margin: 120px auto 80px auto;
+      text-align: center;
+      padding: 0 25px;
+      line-height: 1.9;
     }
 
-    .about-container h1 {
+    .about-section h1 {
+      font-size: 2.8rem;
+      letter-spacing: 3px;
       color: gold;
-      font-size: 40px;
-      letter-spacing: 2px;
-      margin-bottom: 40px;
-      text-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
-      opacity: 0;
-      animation: fadeUp 1s ease forwards;
+      margin-bottom: 20px;
     }
 
-    .about-container p {
-      color: #ddd;
-      font-size: 18px;
-      line-height: 1.7;
-      opacity: 0;
-      transform: translateY(40px);
-      animation: fadeUp 1.2s ease forwards;
+    .about-section p {
+      font-size: 1.05rem;
+      color: #e0e0e0;
+      margin-bottom: 25px;
     }
 
-    .about-container p:nth-of-type(1) {
-      animation-delay: 0.8s;
-    }
-
-    .about-container p:nth-of-type(2) {
-      animation-delay: 1.6s;
-    }
-
-    footer {
-      color: #999;
-      font-size: 14px;
-      padding: 40px 0;
-      opacity: 0;
-      animation: fadeUp 1s ease forwards;
-      animation-delay: 2.4s;
+    .about-section .quote {
+      font-style: italic;
+      color: #c0c0c0;
+      margin-top: 40px;
+      font-size: 1rem;
     }
 
     @media (max-width: 768px) {
-      .navbar-center a {
-        font-size: 16px;
-        margin: 0 10px;
+      .about-section h1 {
+        font-size: 2rem;
       }
-      .about-container h1 {
-        font-size: 32px;
-      }
-      .about-container p {
-        font-size: 16px;
+      .about-section p {
+        font-size: 0.95rem;
       }
     }
   </style>
 </head>
-<body>
 
-  <!-- Navbar -->
-  <div class="navbar">
-    <div class="navbar-center">
-      <a href="main.html">Home</a>
-      <a href="about.html">About</a>
+<body>
+  <div class="top-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html" style="color: gold;">About</a>
+    <a href="contact.html">Contact</a>
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+    <div class="menu" id="menu">
+      <a href="index.html">Home</a>
+      <a href="collections.html">Collections</a>
+      <a href="members.html">Members Only</a>
+      <a href="gallery.html">Art Gallery</a>
+      <a href="about.html" style="color: gold;">About</a>
       <a href="contact.html">Contact</a>
     </div>
-    <div class="hamburger" onclick="toggleMenu()">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
   </div>
 
-  <!-- Menu -->
-  <div class="menu" id="menu">
-    <a href="main.html">Home</a>
-    <a href="collections.html">Collections</a>
-    <a href="members.html">Members Only</a>
-    <a href="gallery.html">Art Gallery</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </div>
-
-  <!-- About Content -->
-  <div class="about-container">
-    <h1>Docotela X: The Art of Freedom</h1>
+  <section class="about-section">
+    <h1>DOCOTELA X</h1>
     <p>
-      Docotela X is more than a brand — it’s a movement born from the pursuit of freedom.
-      Every piece we create tells a story of independence, emotion, and self-expression.
-      Our collections are handcrafted by young artists, ensuring each creation is unique and deeply personal.
+      Docotela X was born from a whisper — a quiet rebellion against the ordinary.
+      Every piece we create carries the pulse of freedom, the touch of imperfection,
+      and the story of an artist unafraid to feel deeply.  
     </p>
     <p>
-      The philosophy behind Docotela X is simple: <em>freedom is art</em>.
-      From “The Feeling of Freedom” to “Lost in the Art of Chasing Freedom,”
-      each collection is limited, exclusive, and timeless — designed for those who value authenticity and creativity.
+      “The Feeling of Freedom” is not just our first collection — it’s our philosophy.
+      It is the art of breathing in a world that tries to hold its breath.  
+      Each garment, each texture, and every curve of fabric is hand-shaped
+      by visionaries who believe that art should not just be worn, but *felt*.
     </p>
-  </div>
+    <p>
+      Docotela X exists between worlds — where luxury meets raw creation,
+      where limited means timeless, and where individuality is sacred.
+      Every collection is intentionally scarce; every detail, a conversation.
+      We do not follow trends. We create emotion.
+    </p>
+    <p>
+      From Johannesburg to the world, our mission is simple yet profound:
+      to inspire people to live with intention, to choose meaning over mass,
+      and to walk through life in garments that carry soul.
+    </p>
 
-  <!-- Footer -->
-  <footer>
-    © 2025 Docotela X — All Rights Reserved
-  </footer>
+    <p class="quote">“Freedom is not found in the absence of limits — but in the courage to redefine them.”</p>
+  </section>
 
   <script>
     function toggleMenu() {
-      document.getElementById('menu').classList.toggle('active');
+      const menu = document.getElementById("menu");
+      menu.style.display = menu.style.display === "block" ? "none" : "block";
     }
-  </script>
 
+    window.addEventListener("load", () => {
+      document.body.classList.add("fade-in");
+    });
+  </script>
 </body>
 </html>
