@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Docotela X | The Feeling of Freedom</title>
   <style>
-    /* Reset and layout */
+    /* Reset */
     * {
       margin: 0;
       padding: 0;
@@ -17,20 +17,35 @@
       color: white;
       font-family: 'Poppins', sans-serif;
       text-align: center;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      height: 100vh;
+      overflow: hidden;
       opacity: 0;
-      transition: opacity 1.5s ease-in-out;
+      transition: opacity 2s ease-in-out;
     }
 
     body.loaded {
       opacity: 1;
     }
 
-    /* Top navigation */
+    /* Subtle particle shimmer */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      background: radial-gradient(circle, rgba(255,215,0,0.08) 0%, transparent 70%);
+      animation: shimmer 5s ease-in-out infinite alternate;
+      z-index: 0;
+    }
+
+    @keyframes shimmer {
+      0% { opacity: 0.3; transform: scale(1); }
+      100% { opacity: 0.7; transform: scale(1.05); }
+    }
+
+    /* Navigation */
     nav {
       position: absolute;
       top: 30px;
@@ -38,6 +53,7 @@
       text-align: center;
       font-size: 1.1rem;
       letter-spacing: 1px;
+      z-index: 2;
     }
 
     nav a {
@@ -51,69 +67,78 @@
       color: gold;
     }
 
-    /* Title styling */
+    /* Main content */
+    .content {
+      position: relative;
+      top: 48%;
+      transform: translateY(-50%);
+      z-index: 2;
+    }
+
     h1 {
-      font-size: 3rem;
+      font-size: 3.8rem;
       font-weight: 600;
       color: #ffd700;
-      text-shadow: 0 0 15px #ffd700, 0 0 30px #d4af37;
-      letter-spacing: 2px;
-      margin-bottom: 10px;
+      text-shadow: 0 0 20px #ffd700, 0 0 45px #d4af37;
+      letter-spacing: 3px;
+      margin-bottom: 0.3em;
+      animation: glowPulse 4s ease-in-out infinite;
     }
 
     h2 {
-      font-size: 2rem;
+      font-size: 2.5rem;
       color: #ffd700;
-      text-shadow: 0 0 10px #ffd700;
-      margin-bottom: 15px;
+      text-shadow: 0 0 12px #ffd700, 0 0 25px #d4af37;
+      margin-bottom: 0.6em;
+      letter-spacing: 3px;
+      animation: glowPulse 4s ease-in-out infinite;
     }
 
     p {
       font-size: 1.2rem;
       color: #ccc;
-      margin-bottom: 30px;
-      letter-spacing: 1px;
+      margin-bottom: 2.2em;
+      letter-spacing: 1.5px;
+    }
+
+    @keyframes glowPulse {
+      0% { text-shadow: 0 0 15px #ffd700, 0 0 30px #d4af37; }
+      50% { text-shadow: 0 0 35px #fff799, 0 0 50px #ffd700; }
+      100% { text-shadow: 0 0 15px #ffd700, 0 0 30px #d4af37; }
     }
 
     /* Button */
     .enter-btn {
       border: 1px solid gold;
-      padding: 12px 28px;
+      padding: 14px 34px;
       color: white;
       text-decoration: none;
       font-size: 1rem;
       letter-spacing: 1px;
-      transition: all 0.3s ease;
+      transition: all 0.4s ease;
     }
 
     .enter-btn:hover {
       background: gold;
       color: black;
-      box-shadow: 0 0 20px gold;
+      box-shadow: 0 0 30px gold;
     }
 
     /* Footer */
     footer {
       position: absolute;
       bottom: 30px;
+      width: 100%;
       font-size: 0.9rem;
       color: #aaa;
       letter-spacing: 1px;
-    }
-
-    /* Subtle shimmer animation */
-    @keyframes shimmer {
-      0% { text-shadow: 0 0 15px #ffd700, 0 0 30px #d4af37; }
-      50% { text-shadow: 0 0 25px #fff799, 0 0 40px #ffd700; }
-      100% { text-shadow: 0 0 15px #ffd700, 0 0 30px #d4af37; }
-    }
-
-    h1, h2 {
-      animation: shimmer 3s ease-in-out infinite;
+      z-index: 2;
     }
   </style>
 </head>
 <body>
+  <div class="particles"></div>
+
   <nav>
     <a href="main.html">Home</a> .
     <a href="about.html">About</a> .
