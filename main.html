@@ -1,156 +1,237 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Docotela X | The Feeling of Freedom</title>
   <style>
-    * {
+    body {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      background: radial-gradient(circle at center, #0a0a0a 0%, #000 100%);
+      background: radial-gradient(circle at center, #111 0%, #000 100%);
       color: white;
       font-family: 'Poppins', sans-serif;
-      text-align: center;
-      height: 100vh;
       overflow: hidden;
       opacity: 0;
-      transition: opacity 2s ease-in-out;
+      transform: translateY(30px);
+      animation: fadeUp 2s ease forwards;
     }
 
-    body.loaded {
-      opacity: 1;
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    /* Subtle golden glow background */
-    .particles {
+    /* Navbar */
+    .navbar {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      height: 100%;
-      pointer-events: none;
-      background: radial-gradient(circle, rgba(255,215,0,0.08) 0%, transparent 70%);
-      animation: shimmer 5s ease-in-out infinite alternate;
-      z-index: 0;
+      padding: 20px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
     }
 
-    @keyframes shimmer {
-      0% { opacity: 0.3; transform: scale(1); }
-      100% { opacity: 0.7; transform: scale(1.05); }
+    .navbar-center {
+      display: flex;
+      gap: 40px;
     }
 
-    /* Navigation */
-    nav {
-      position: absolute;
-      top: 30px;
-      width: 100%;
-      text-align: center;
-      font-size: 1.1rem;
-      letter-spacing: 1px;
-      z-index: 2;
-    }
-
-    nav a {
+    .navbar-center a {
       color: white;
-      margin: 0 20px;
       text-decoration: none;
-      transition: color 0.3s ease;
+      font-size: 18px;
+      font-weight: 400;
+      transition: color 0.3s;
     }
 
-    nav a:hover {
+    .navbar-center a:hover {
       color: gold;
     }
 
-    /* Main content */
-    .content {
-      position: relative;
-      top: 48%;
-      transform: translateY(-50%);
-      z-index: 2;
+    /* Hamburger menu */
+    .hamburger {
+      position: absolute;
+      top: 25px;
+      right: 25px;
+      width: 25px;
+      height: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+      z-index: 1100;
     }
 
-    h1 {
-      font-size: 4rem;
-      font-weight: 600;
-      color: #ffd700;
-      text-transform: uppercase;
-      text-shadow: 0 0 25px #ffd700, 0 0 55px #d4af37;
-      letter-spacing: 6px;
-      margin-bottom: 0.6em;
-      animation: glowPulse 4s ease-in-out infinite;
-      white-space: nowrap; /* prevents DOCOTELA and X from breaking to a new line */
+    .hamburger div {
+      width: 100%;
+      height: 3px;
+      background: white;
+      transition: all 0.3s ease;
     }
 
-    p {
-      font-size: 1.2rem;
-      color: #ccc;
-      margin-bottom: 2em;
-      letter-spacing: 1.5px;
-    }
-
-    @keyframes glowPulse {
-      0% { text-shadow: 0 0 20px #ffd700, 0 0 40px #d4af37; }
-      50% { text-shadow: 0 0 40px #fff799, 0 0 65px #ffd700; }
-      100% { text-shadow: 0 0 20px #ffd700, 0 0 40px #d4af37; }
-    }
-
-    /* Button */
-    .enter-btn {
+    /* Dropdown Menu */
+    .menu {
+      display: none;
+      position: absolute;
+      top: 70px;
+      right: 20px;
+      background: rgba(0, 0, 0, 0.95);
       border: 1px solid gold;
-      padding: 14px 36px;
+      border-radius: 6px;
+      padding: 20px;
+      flex-direction: column;
+      gap: 15px;
+      text-align: right;
+      z-index: 999;
+    }
+
+    .menu.active {
+      display: flex;
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .menu a {
       color: white;
       text-decoration: none;
-      font-size: 1rem;
+      font-size: 16px;
+      transition: color 0.3s;
+    }
+
+    .menu a:hover {
+      color: gold;
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      font-weight: 700;
+      color: gold;
+      letter-spacing: 4px;
+      text-shadow: 0 0 25px gold;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      font-weight: 300;
+      margin-bottom: 30px;
+      color: white;
+    }
+
+    .enter-btn {
+      border: 1px solid gold;
+      padding: 12px 25px;
+      text-transform: uppercase;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
       letter-spacing: 1px;
-      transition: all 0.4s ease;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
     }
 
     .enter-btn:hover {
-      background: gold;
+      background-color: gold;
       color: black;
-      box-shadow: 0 0 30px gold;
+      box-shadow: 0 0 20px gold;
     }
 
     /* Footer */
     footer {
-      position: absolute;
-      bottom: 30px;
+      text-align: center;
+      padding: 20px;
+      font-size: 13px;
+      color: #999;
+      position: fixed;
+      bottom: 0;
       width: 100%;
-      font-size: 0.9rem;
-      color: #aaa;
-      letter-spacing: 1px;
-      z-index: 2;
+      background: transparent;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .navbar-center {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    @media (min-width: 769px) {
+      .hamburger {
+        display: none;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="particles"></div>
 
-  <nav>
-    <a href="main.html">Home</a> .
-    <a href="about.html">About</a> .
-    <a href="contact.html">Contact</a>
+  <nav class="navbar">
+    <div class="navbar-center">
+      <a href="main.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="hamburger" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <div class="menu" id="menu">
+      <a href="main.html">Home</a>
+      <a href="collections.html">Collections</a>
+      <a href="members.html">Members Only</a>
+      <a href="gallery.html">Art Gallery</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
   </nav>
 
-  <div class="content">
+  <section class="hero">
     <h1>DOCOTELA X</h1>
     <p>The Feeling of Freedom</p>
-    <a href="gallery.html" class="enter-btn">ENTER THE GALLERY</a>
-  </div>
+    <a href="collections.html" class="enter-btn">ENTER THE GALLERY</a>
+  </section>
 
   <footer>
     © 2025 Docotela X — All Rights Reserved
   </footer>
 
   <script>
-    window.addEventListener('load', () => {
-      document.body.classList.add('loaded');
-    });
+    function toggleMenu() {
+      document.getElementById("menu").classList.toggle("active");
+    }
   </script>
+
 </body>
 </html>
