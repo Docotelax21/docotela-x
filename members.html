@@ -1,198 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Members Only | Docotela X</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      background: radial-gradient(circle at center, #000000 60%, #0a0a0a 100%);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      font-family: "Cinzel", serif;
-      position: relative;
-    }
-
-    /* Animated golden glow behind everything */
-    .golden-glow {
-      position: absolute;
-      width: 120%;
-      height: 120%;
-      background: radial-gradient(circle, rgba(255, 215, 0, 0.1), transparent 70%);
-      animation: pulse 6s ease-in-out infinite;
-      z-index: 0;
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: 0.6; }
-      50% { transform: scale(1.1); opacity: 1; }
-    }
-
-    /* Subtle golden gates made with pseudo-bars */
-    .gates {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      z-index: 1;
-    }
-
-    .gate-bar {
-      position: absolute;
-      width: 2px;
-      height: 100%;
-      background: linear-gradient(to bottom, rgba(255, 215, 0, 0.7), rgba(255, 215, 0, 0));
-      animation: float 12s linear infinite;
-    }
-
-    @keyframes float {
-      0% { transform: translateY(0); opacity: 0.3; }
-      50% { transform: translateY(-10px); opacity: 0.6; }
-      100% { transform: translateY(0); opacity: 0.3; }
-    }
-
-    /* Position multiple gate bars randomly */
-    .gate-bar:nth-child(1) { left: 20%; animation-delay: 0s; }
-    .gate-bar:nth-child(2) { left: 40%; animation-delay: 2s; }
-    .gate-bar:nth-child(3) { left: 60%; animation-delay: 4s; }
-    .gate-bar:nth-child(4) { left: 80%; animation-delay: 6s; }
-
-    .content {
-      z-index: 2;
-      text-align: center;
-      animation: fadeUp 1.5s ease-in-out forwards;
-    }
-
-    @keyframes fadeUp {
-      0% { opacity: 0; transform: translateY(30px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-
-    h1 {
-      font-size: 2.8em;
-      letter-spacing: 3px;
-      color: gold;
-      text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
-      margin-bottom: 20px;
-    }
-
-    p {
-      font-size: 1.2em;
-      margin-bottom: 30px;
-    }
-
-    input[type="password"] {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 215, 0, 0.6);
-      padding: 10px 20px;
-      border-radius: 4px;
-      color: white;
-      font-size: 1em;
-      outline: none;
-      width: 220px;
-      text-align: center;
-      transition: all 0.3s ease;
-    }
-
-    input[type="password"]:focus {
-      border-color: gold;
-      box-shadow: 0 0 10px gold;
-    }
-
-    button {
-      background: gold;
-      border: none;
-      padding: 10px 30px;
-      font-size: 1em;
-      border-radius: 4px;
-      color: black;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s ease;
-    }
-
-    button:hover {
-      background: #fff3b0;
-      transform: scale(1.05);
-    }
-
-    .error {
-      color: red;
-      margin-top: 15px;
-      opacity: 0;
-      transition: opacity 0.5s ease;
-    }
-
-    .error.show {
-      opacity: 1;
-    }
-
-    /* Apply for membership link */
-    .apply-link {
-      color: #ccc;
-      margin-top: 25px;
-      display: inline-block;
-      text-decoration: none;
-      font-size: 0.9em;
-      transition: 0.3s ease;
-    }
-
-    .apply-link:hover {
-      color: gold;
-    }
-
-    @media (max-width: 600px) {
-      h1 { font-size: 2em; }
-      p { font-size: 1em; }
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOCOTELA X MEMBERS ONLY - Docotela X</title>
+  <link rel="stylesheet" href="membersonly.css">
 </head>
 <body>
-  <div class="golden-glow"></div>
-  <div class="gates">
-    <div class="gate-bar"></div>
-    <div class="gate-bar"></div>
-    <div class="gate-bar"></div>
-    <div class="gate-bar"></div>
-  </div>
 
-  <div class="content">
-    <h1>Members Only</h1>
-    <p>Enter the code to unlock the unseen world of Docotela X.</p>
+  <!-- Cinematic overlay -->
+  <div class="background"></div>
 
-    <input type="password" id="password" placeholder="Enter Access Code">
-    <br><br>
+  <!-- Password Container -->
+  <div class="access-container">
+    <h1 class="title">DOCOTELA X</h1>
+    <p class="subtitle">ENTER VAULT</p>
+
+    <input type="password" id="passwordInput" placeholder="Enter Access Code">
     <button onclick="checkPassword()">Access</button>
 
-    <p class="error" id="error">Access Denied</p>
-    <a href="apply.html" class="apply-link">Apply for Membership</a>
+    <div id="message"></div>
+    <a href="apply.html" id="applyLink">Apply for Membership</a>
+  </div>
+
+  <!-- Golden Gate Animation -->
+  <div class="gates">
+    <div class="gate left"></div>
+    <div class="gate right"></div>
   </div>
 
   <script>
     function checkPassword() {
-      const input = document.getElementById("password").value;
-      const error = document.getElementById("error");
+      const input = document.getElementById("passwordInput").value;
+      const message = document.getElementById("message");
+      const applyLink = document.getElementById("applyLink");
+      const gates = document.querySelector(".gates");
 
       if (input === "memberson1y") {
-        document.body.style.transition = "opacity 1.5s ease";
-        document.body.style.opacity = "0";
+        message.textContent = "";
+        applyLink.style.display = "none";
+        document.querySelector(".access-container").style.opacity = "0";
+
+        // Trigger gate opening
+        gates.classList.add("open");
         setTimeout(() => {
-          window.location.href = "exclusive.html";
-        }, 1500);
+          window.location.href = "exclusive.html"; // Hidden page
+        }, 4000);
       } else {
-        error.classList.add("show");
-        error.innerText = "Access Denied";
-        document.querySelector("h1").style.color = "red";
-        setTimeout(() => {
-          document.querySelector("h1").style.color = "gold";
-        }, 1000);
+        message.textContent = "Access Denied";
+        message.classList.add("denied");
+        applyLink.style.display = "block";
       }
     }
   </script>
