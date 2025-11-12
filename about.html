@@ -17,74 +17,49 @@
       min-height: 100vh;
     }
 
-    /* Floating X cinematic background */
+    /* Floating cinematic Xs */
     .floating-x {
       position: absolute;
-      font-size: 10vw;
-      color: rgba(255, 255, 255, 0.03);
+      color: rgba(255, 255, 255, 0.04);
       font-weight: bold;
-      animation: floatX 20s infinite ease-in-out;
+      font-size: 10vw;
       z-index: 0;
       pointer-events: none;
+      transition: transform 2s ease-out;
     }
 
-    .floating-x:nth-child(1) {
-      top: 15%;
-      left: 10%;
-      animation-delay: 0s;
+    .x1 { top: 10%; left: 15%; animation: float1 28s infinite ease-in-out; }
+    .x2 { top: 50%; left: 75%; font-size: 12vw; animation: float2 35s infinite ease-in-out; }
+    .x3 { top: 70%; left: 30%; font-size: 8vw; animation: float3 40s infinite ease-in-out; }
+    .x4 { top: 25%; left: 55%; font-size: 6vw; animation: float4 25s infinite ease-in-out; }
+    .x5 { top: 85%; left: 80%; font-size: 9vw; animation: float5 50s infinite ease-in-out; }
+
+    @keyframes float1 {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0.15; }
+      25% { transform: translate(40px, -50px) rotate(15deg); opacity: 0.25; }
+      50% { transform: translate(-20px, 30px) rotate(-10deg); opacity: 0.18; }
+      75% { transform: translate(50px, 40px) rotate(25deg); opacity: 0.28; }
     }
 
-    .floating-x:nth-child(2) {
-      top: 50%;
-      left: 70%;
-      animation-delay: 4s;
+    @keyframes float2 {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0.1; }
+      50% { transform: translate(-50px, 60px) rotate(30deg); opacity: 0.25; }
     }
 
-    .floating-x:nth-child(3) {
-      top: 75%;
-      left: 30%;
-      animation-delay: 8s;
+    @keyframes float3 {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0.18; }
+      25% { transform: translate(25px, -35px) rotate(20deg); opacity: 0.3; }
+      75% { transform: translate(-25px, 25px) rotate(-15deg); opacity: 0.2; }
     }
 
-    @keyframes floatX {
-      0% { transform: translate(0, 0) rotate(0deg); opacity: 0.2; }
-      25% { transform: translate(30px, -40px) rotate(15deg); opacity: 0.3; }
-      50% { transform: translate(-20px, 20px) rotate(-10deg); opacity: 0.15; }
-      75% { transform: translate(40px, 30px) rotate(20deg); opacity: 0.25; }
-      100% { transform: translate(0, 0) rotate(0deg); opacity: 0.2; }
+    @keyframes float4 {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0.15; }
+      50% { transform: translate(30px, -20px) rotate(45deg); opacity: 0.25; }
     }
 
-    /* About content */
-    .about-container {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 8vh 10vw;
-      animation: fadeUp 2s ease forwards;
-      opacity: 0;
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    h1 {
-      font-size: 3em;
-      letter-spacing: 2px;
-      margin-bottom: 1rem;
-      color: white;
-    }
-
-    p {
-      font-size: 1.2em;
-      line-height: 1.8em;
-      color: rgba(255, 255, 255, 0.8);
-      max-width: 800px;
+    @keyframes float5 {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0.12; }
+      50% { transform: translate(-60px, 40px) rotate(30deg); opacity: 0.25; }
     }
 
     /* Navbar */
@@ -112,17 +87,44 @@
       color: gold;
     }
 
+    /* About content */
+    .about-container {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 12vh 10vw;
+      animation: fadeUp 2s ease forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-size: 3em;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+      color: white;
+    }
+
+    p {
+      font-size: 1.2em;
+      line-height: 1.8em;
+      color: rgba(255, 255, 255, 0.8);
+      max-width: 850px;
+    }
+
     /* Responsive */
     @media (max-width: 768px) {
-      h1 {
-        font-size: 2.2em;
-      }
-      p {
-        font-size: 1em;
-      }
-      .floating-x {
-        font-size: 18vw;
-      }
+      h1 { font-size: 2.2em; }
+      p { font-size: 1em; }
+      .floating-x { font-size: 16vw; }
     }
   </style>
 </head>
@@ -135,29 +137,45 @@
     <a href="contact.html">Contact</a>
   </nav>
 
-  <!-- Cinematic floating X background -->
-  <div class="floating-x">X</div>
-  <div class="floating-x">X</div>
-  <div class="floating-x">X</div>
+  <!-- Floating cinematic Xs -->
+  <div class="floating-x x1">X</div>
+  <div class="floating-x x2">X</div>
+  <div class="floating-x x3">X</div>
+  <div class="floating-x x4">X</div>
+  <div class="floating-x x5">X</div>
 
-  <!-- About Section -->
+  <!-- About content -->
   <div class="about-container">
     <h1>About Docotela X</h1>
     <p>
-      Docotela X is more than a brand — it’s a reflection of freedom, art, and human emotion.  
-      Born from silence, shaped by persistence, and guided by the pursuit of meaning,  
-      every collection tells a story — not of perfection, but of liberation.
+      Docotela X is more than a brand — it’s a living expression of freedom,  
+      stitched through vision and truth. It is not built for trends, but for those  
+      who dare to see life as art — who feel, who break, who rebuild.
     </p>
     <p>
-      Each piece exists as a testament to those who move beyond doubt — who dare to express  
-      their inner chaos as beauty, and their solitude as art.  
-      Docotela X isn’t designed to be worn, it’s designed to be <em>felt</em>.
+      Every collection is a pulse — handmade, imperfect, human.  
+      Each piece carries a fragment of the artist’s soul, a whisper of rebellion,  
+      and a quiet defiance of what is expected. We create to liberate, not to impress.
     </p>
     <p>
-      The “X” represents the unknown — the place where art and freedom meet,  
-      where identity is not confined but explored, and where creation breathes beyond boundaries.
+      The “X” is the unknown. The intersection between what is felt and what is seen.  
+      A mark of those who chase depth over noise, and truth over perfection.  
+      Welcome to Docotela X — where art breathes, and freedom wears form.
     </p>
   </div>
+
+  <script>
+    const floatingXs = document.querySelectorAll('.floating-x');
+    document.addEventListener('mousemove', (e) => {
+      const { innerWidth, innerHeight } = window;
+      const moveX = (e.clientX - innerWidth / 2) / innerWidth * 50;
+      const moveY = (e.clientY - innerHeight / 2) / innerHeight * 50;
+      floatingXs.forEach((x, i) => {
+        const speed = (i + 1) * 0.8;
+        x.style.transform = `translate(${moveX * speed}px, ${moveY * speed}px)`;
+      });
+    });
+  </script>
 
 </body>
 </html>
