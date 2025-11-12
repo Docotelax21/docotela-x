@@ -6,7 +6,6 @@
   <title>Docotela X | The Feeling of Freedom</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* --- Fullscreen Black Background --- */
     html, body {
       margin: 0;
       padding: 0;
@@ -17,7 +16,7 @@
       color: gold;
     }
 
-    /* --- Centered Cinematic Text --- */
+    /* --- Centered Cinematic Logo --- */
     .center-text {
       position: absolute;
       top: 50%;
@@ -28,6 +27,8 @@
       letter-spacing: 8px;
       animation: glowPulse 3s ease-in-out infinite alternate, slightMove 6s ease-in-out infinite alternate;
       text-shadow: 0 0 30px gold, 0 0 60px gold, 0 0 120px rgba(255, 215, 0, 0.8);
+      opacity: 0;
+      animation: fadeIn 2s ease forwards, glowPulse 3s ease-in-out infinite alternate, slightMove 6s ease-in-out infinite alternate;
     }
 
     @keyframes glowPulse {
@@ -40,24 +41,20 @@
       to { transform: translate(-50%, -50%) scale(1.05); }
     }
 
-    /* --- Fade in / Fade out transition --- */
-    .fade-in {
-      animation: fadeIn 2.5s ease forwards;
-    }
-    .fade-out {
-      animation: fadeOut 2s ease forwards;
-    }
-
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; visibility: hidden; } }
 
-    /* --- After Intro --- */
+    /* --- Main Page After Intro --- */
     .main-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white;
       opacity: 0;
       visibility: hidden;
       animation: showMain 2s ease 4.5s forwards;
-      text-align: center;
-      color: white;
     }
 
     @keyframes showMain {
@@ -65,8 +62,9 @@
     }
 
     .main-content h1 {
-      font-family: 'Helvetica Neue', sans-serif;
-      font-weight: 300;
+      font-family: 'Cinzel', serif;
+      font-weight: 400;
+      font-size: 2em;
       color: white;
       letter-spacing: 3px;
       margin-bottom: 20px;
@@ -97,7 +95,7 @@
       letter-spacing: 1px;
     }
 
-    /* Navigation */
+    /* --- Navigation --- */
     .top-nav {
       position: fixed;
       top: 20px;
@@ -162,8 +160,8 @@
 </head>
 <body>
 
-  <!-- Fullscreen Centered Glowing Name -->
-  <div class="center-text fade-in" id="intro">
+  <!-- Cinematic Intro -->
+  <div class="center-text" id="intro">
     Docotela X
   </div>
 
