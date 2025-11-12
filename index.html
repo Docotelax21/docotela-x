@@ -1,46 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>DOCOTELA X — Intro</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Docotela X | Intro</title>
   <link rel="stylesheet" href="intro.css">
-</head>
-<body>
-  <div class="intro-container" id="intro">
-    <h1 class="brand-name"<!-- === DOCOTELA X Navbar === -->
-<header class="navbar">
-  <div class="nav-center">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </div>
-
-  <div class="hamburger" onclick="toggleMenu()">☰</div>
-
-  <div class="menu" id="menu">
-    <a href="index.html">Home</a>
-    <a href="collections.html">Collections</a>
-    <a href="membersonly.html">Members Only</a>
-    <a href="artgallery.html">Art Gallery</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </div>
-</header>>DOCOTELA X</h1>
-    <p class="tagline">Limited Collections. Handcrafted Art.</p>
-    <div class="particles" aria-hidden="true"></div>
-  </div>
-
   <script>
-    // After 4s, fade out and go to main homepage
+    // Redirect to main.html after 4 seconds
     setTimeout(() => {
-      document.body.classList.add('fade-out');
-      setTimeout(() => { window.location.href = "main.html"; }, 1500);
+      window.location.href = "main.html";
     }, 4000);
   </script>
-<script>
-  function toggleMenu() {
-    document.getElementById('menu').classList.toggle('active');
-  }
-</script></body>
+</head>
+<body>
+  <div class="intro-container">
+    <h1 class="intro-title">&gt; DOCOTELA X</h1>
+  </div>
+</body>
 </html>
