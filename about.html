@@ -1,71 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About | Docotela X</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+      overflow-x: hidden;
+      animation: fadeUp 1.2s ease-out;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 15px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1000;
+    }
+
+    .navbar-center a {
+      color: white;
+      text-decoration: none;
+      margin: 0 20px;
+      font-size: 18px;
+      transition: color 0.3s;
+    }
+
+    .navbar-center a:hover {
+      color: gold;
+    }
+
+    /* Hamburger menu */
+    .hamburger {
+      position: absolute;
+      right: 25px;
+      top: 18px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background: white;
+      transition: all 0.3s ease;
+    }
+
+    .menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 70%;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.95);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: 0.4s ease;
+    }
+
+    .menu a {
+      color: white;
+      text-decoration: none;
+      font-size: 22px;
+      margin: 15px 0;
+      transition: color 0.3s;
+    }
+
+    .menu a:hover {
+      color: gold;
+    }
+
+    .menu.active {
+      right: 0;
+    }
+
+    /* About content */
+    .about-container {
+      max-width: 800px;
+      margin: 150px auto 100px;
+      padding: 0 20px;
+    }
+
+    .about-container h1 {
+      color: gold;
+      font-size: 40px;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+      text-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+    }
+
+    .about-container p {
+      color: #ddd;
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    /* Footer */
+    footer {
+      color: #999;
+      font-size: 14px;
+      padding: 40px 0;
+    }
+
+    @media (max-width: 768px) {
+      .navbar-center a {
+        font-size: 16px;
+        margin: 0 10px;
+      }
+      .about-container h1 {
+        font-size: 32px;
+      }
+      .about-container p {
+        font-size: 16px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Cinematic fade -->
-  <div class="fade-overlay"></div>
-
-  <!-- Navigation -->
-  <header>
-    <nav class="top-nav">
-      <div class="center-links">
-        <a href="index.html">Home</a>
-        <a href="about.html" class="active">About</a>
-        <a href="contact.html">Contact</a>
-      </div>
-      <div class="menu-button" onclick="toggleMenu()">☰</div>
-    </nav>
-
-    <div id="dropdownMenu" class="dropdown-menu">
-      <a href="index.html">Home</a>
-      <a href="collections.html">Collections</a>
-      <a href="members.html">Members Only</a>
-      <a href="art-gallery.html">Art Gallery</a>
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="navbar-center">
+      <a href="main.html">Home</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </div>
-  </header>
+    <div class="hamburger" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+
+  <!-- Hamburger menu -->
+  <div class="menu" id="menu">
+    <a href="main.html">Home</a>
+    <a href="collections.html">Collections</a>
+    <a href="members.html">Members Only</a>
+    <a href="gallery.html">Art Gallery</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
 
   <!-- About Section -->
-  <section class="about-section">
-    <div class="about-container">
-      <h1>About Docotela X</h1>
-      <p>
-        Docotela X was born from a journey — a pursuit of freedom through art, design, and expression.  
-        Each collection reflects a state of being, a story of transformation, and the essence of individuality.  
-      </p>
-      <p>
-        Inspired by the idea that <strong>freedom is the highest form of luxury</strong>, every Docotela X piece is crafted to represent authenticity and emotional truth.  
-        From hand-detailed garments to artistic collaborations, the brand speaks to those who find beauty in depth, purpose, and silence.
-      </p>
-      <p>
-        Founded in Johannesburg, South Africa, Docotela X continues to evolve as a symbol of timeless creativity —  
-        reminding us that art is not made to be understood, but to be felt.
-      </p>
-    </div>
-  </section>
+  <div class="about-container">
+    <h1>Docotela X: The Art of Freedom</h1>
+    <p>
+      Docotela X is more than a brand — it’s a movement born from the pursuit of freedom.
+      Every piece we create tells a story of independence, emotion, and self-expression.
+      Our collections are handcrafted by young artists, ensuring each creation is unique and deeply personal.
+    </p>
+    <p>
+      The philosophy behind Docotela X is simple: <em>freedom is art</em>.
+      From “The Feeling of Freedom” to “Lost in the Art of Chasing Freedom,”
+      each collection is limited, exclusive, and timeless — designed for those who value authenticity and creativity.
+    </p>
+  </div>
 
   <!-- Footer -->
   <footer>
-    <p>© 2025 Docotela X | The Feeling of Freedom</p>
-    <p>Instagram: <a href="https://instagram.com/docotelax" target="_blank">@docotelax</a></p>
+    © 2025 Docotela X — All Rights Reserved
   </footer>
 
   <script>
-    // Fade animation
-    window.addEventListener("load", () => {
-      document.querySelector(".fade-overlay").classList.add("fade-out");
-    });
-
-    // Menu toggle
     function toggleMenu() {
-      document.getElementById("dropdownMenu").classList.toggle("show");
+      document.getElementById('menu').classList.toggle('active');
     }
   </script>
 
