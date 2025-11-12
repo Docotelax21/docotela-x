@@ -6,16 +6,17 @@
   <title>About - Docotela X</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
-    /* Fade-in animation */
+    /* Base Styling */
     body {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 1.5s ease, transform 1.5s ease;
+      margin: 0;
+      padding: 0;
       background-color: #000;
       color: #fff;
       font-family: "Poppins", sans-serif;
-      margin: 0;
-      padding: 0;
+      overflow-x: hidden;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1.5s ease, transform 1.5s ease;
     }
 
     body.fade-in {
@@ -23,13 +24,14 @@
       transform: translateY(0);
     }
 
-    /* Center navigation */
+    /* Navigation */
     .top-nav {
       text-align: center;
       padding: 20px 0;
       font-size: 1.1rem;
       letter-spacing: 2px;
       position: relative;
+      z-index: 10;
     }
 
     .top-nav a {
@@ -43,13 +45,12 @@
       color: gold;
     }
 
-    /* Hamburger menu */
     .menu-btn {
       position: absolute;
       top: 20px;
       right: 20px;
       cursor: pointer;
-      z-index: 1000;
+      z-index: 20;
       font-size: 1.6rem;
       color: white;
     }
@@ -63,6 +64,7 @@
       padding: 20px;
       border: 1px solid gold;
       text-align: right;
+      z-index: 19;
     }
 
     .menu a {
@@ -77,8 +79,10 @@
       color: gold;
     }
 
-    /* About section */
+    /* About Section */
     .about-section {
+      position: relative;
+      z-index: 5;
       max-width: 900px;
       margin: 120px auto 80px auto;
       text-align: center;
@@ -106,6 +110,46 @@
       font-size: 1rem;
     }
 
+    /* Floating X Background */
+    .floating-x {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .x {
+      position: absolute;
+      color: rgba(255, 215, 0, 0.05);
+      font-size: 4rem;
+      animation: floatX 20s linear infinite;
+      user-select: none;
+    }
+
+    @keyframes floatX {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.2;
+      }
+      50% {
+        opacity: 0.3;
+      }
+      90% {
+        opacity: 0.1;
+      }
+      100% {
+        transform: translateY(-10vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
     @media (max-width: 768px) {
       .about-section h1 {
         font-size: 2rem;
@@ -113,11 +157,15 @@
       .about-section p {
         font-size: 0.95rem;
       }
+      .x {
+        font-size: 2.5rem;
+      }
     }
   </style>
 </head>
 
 <body>
+  <!-- Navigation -->
   <div class="top-nav">
     <a href="index.html">Home</a>
     <a href="about.html" style="color: gold;">About</a>
@@ -133,12 +181,16 @@
     </div>
   </div>
 
+  <!-- Floating X Background -->
+  <div class="floating-x" id="floatingX"></div>
+
+  <!-- About Section -->
   <section class="about-section">
     <h1>DOCOTELA X</h1>
     <p>
-      Docotela X was born from a whisper — a quiet rebellion against the ordinary.
+      Docotela X was born from a whisper — a quiet rebellion against the ordinary.  
       Every piece we create carries the pulse of freedom, the touch of imperfection,
-      and the story of an artist unafraid to feel deeply.  
+      and the story of an artist unafraid to feel deeply.
     </p>
     <p>
       “The Feeling of Freedom” is not just our first collection — it’s our philosophy.
@@ -162,14 +214,33 @@
   </section>
 
   <script>
+    // Fade in
+    window.addEventListener("load", () => {
+      document.body.classList.add("fade-in");
+      generateFloatingX();
+    });
+
+    // Toggle mobile menu
     function toggleMenu() {
       const menu = document.getElementById("menu");
       menu.style.display = menu.style.display === "block" ? "none" : "block";
     }
 
-    window.addEventListener("load", () => {
-      document.body.classList.add("fade-in");
-    });
+    // Generate floating Xs
+    function generateFloatingX() {
+      const container = document.getElementById("floatingX");
+      const numX = 10; // number of Xs floating
+
+      for (let i = 0; i < numX; i++) {
+        const x = document.createElement("div");
+        x.classList.add("x");
+        x.textContent = "X";
+        x.style.left = Math.random() * 100 + "vw";
+        x.style.animationDuration = 15 + Math.random() * 15 + "s";
+        x.style.animationDelay = Math.random() * 10 + "s";
+        container.appendChild(x);
+      }
+    }
   </script>
 </body>
 </html>
