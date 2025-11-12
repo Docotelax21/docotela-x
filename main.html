@@ -5,13 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Docotela X | The Feeling of Freedom</title>
   <style>
+    /* Base Styling */
     body {
       margin: 0;
       padding: 0;
       background: radial-gradient(circle at center, #111 0%, #000 100%);
       color: white;
       font-family: 'Poppins', sans-serif;
-      overflow: hidden;
+      overflow-x: hidden;
       opacity: 0;
       transform: translateY(30px);
       animation: fadeUp 2s ease forwards;
@@ -34,24 +35,24 @@
       top: 0;
       left: 0;
       width: 100%;
-      padding: 20px 0;
+      padding: 15px 0;
       display: flex;
       justify-content: center;
       align-items: center;
-      background: rgba(0, 0, 0, 0.4);
+      background: rgba(0, 0, 0, 0.5);
       backdrop-filter: blur(8px);
       z-index: 1000;
     }
 
     .navbar-center {
       display: flex;
-      gap: 40px;
+      gap: 30px;
     }
 
     .navbar-center a {
       color: white;
       text-decoration: none;
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 400;
       transition: color 0.3s;
     }
@@ -60,14 +61,14 @@
       color: gold;
     }
 
-    /* Hamburger menu */
+    /* Hamburger */
     .hamburger {
       position: absolute;
-      top: 25px;
+      top: 18px;
       right: 25px;
       width: 25px;
       height: 20px;
-      display: flex;
+      display: none;
       flex-direction: column;
       justify-content: space-between;
       cursor: pointer;
@@ -85,7 +86,7 @@
     .menu {
       display: none;
       position: absolute;
-      top: 70px;
+      top: 65px;
       right: 20px;
       background: rgba(0, 0, 0, 0.95);
       border: 1px solid gold;
@@ -126,19 +127,21 @@
       justify-content: center;
       align-items: center;
       text-align: center;
+      padding: 0 20px;
     }
 
     .hero h1 {
-      font-size: 48px;
+      font-size: clamp(36px, 8vw, 72px);
       font-weight: 700;
       color: gold;
       letter-spacing: 4px;
       text-shadow: 0 0 25px gold;
       margin-bottom: 15px;
+      white-space: nowrap;
     }
 
     .hero p {
-      font-size: 18px;
+      font-size: clamp(14px, 2vw, 18px);
       font-weight: 300;
       margin-bottom: 30px;
       color: white;
@@ -175,13 +178,35 @@
       background: transparent;
     }
 
-    /* Responsive */
+    /* Responsive Design */
     @media (max-width: 768px) {
       .navbar-center {
         display: none;
       }
       .hamburger {
         display: flex;
+      }
+      .hero h1 {
+        font-size: 42px;
+        letter-spacing: 2px;
+        text-align: center;
+      }
+      .hero p {
+        font-size: 16px;
+      }
+      .enter-btn {
+        font-size: 14px;
+        padding: 10px 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 34px;
+      }
+      .enter-btn {
+        font-size: 13px;
+        padding: 9px 18px;
       }
     }
 
@@ -194,6 +219,7 @@
 </head>
 <body>
 
+  <!-- Navbar -->
   <nav class="navbar">
     <div class="navbar-center">
       <a href="main.html">Home</a>
@@ -217,12 +243,14 @@
     </div>
   </nav>
 
+  <!-- Hero Section -->
   <section class="hero">
     <h1>DOCOTELA X</h1>
     <p>The Feeling of Freedom</p>
-    <a href="collections.html" class="enter-btn">VIEW COLLECTIONS</a>
+    <a href="collections.html" class="enter-btn">ENTER THE GALLERY</a>
   </section>
 
+  <!-- Footer -->
   <footer>
     © 2025 Docotela X — All Rights Reserved
   </footer>
