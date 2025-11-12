@@ -6,7 +6,7 @@
   <title>Docotela X | The Feeling of Freedom</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
-    /* ========== BASE ========== */
+    /* Base layout */
     * {
       margin: 0;
       padding: 0;
@@ -27,7 +27,7 @@
       position: relative;
     }
 
-    /* ========== GLOWING BACKGROUND ANIMATION ========== */
+    /* Cinematic glow background */
     body::before {
       content: "";
       position: absolute;
@@ -35,7 +35,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at center, rgba(255, 215, 0, 0.08) 0%, rgba(0,0,0,1) 70%);
+      background: radial-gradient(circle at center, rgba(255, 215, 0, 0.1) 0%, rgba(0, 0, 0, 1) 70%);
       animation: pulse 6s ease-in-out infinite alternate;
       z-index: 0;
     }
@@ -45,77 +45,7 @@
       100% { opacity: 1; transform: scale(1.1); }
     }
 
-    /* ========== LOGO ========== */
-    .logo {
-      font-size: 4rem;
-      font-weight: 600;
-      letter-spacing: 3px;
-      color: #f5d67b;
-      text-shadow: 0 0 10px #f5d67b, 0 0 40px #f5d67b;
-      z-index: 2;
-      animation: glowMove 4s ease-in-out infinite alternate;
-    }
-
-    @keyframes glowMove {
-      0% { text-shadow: 0 0 10px #f5d67b, 0 0 30px #f5d67b; transform: translateY(0); }
-      100% { text-shadow: 0 0 25px #ffd700, 0 0 60px #ffd700; transform: translateY(-10px); }
-    }
-
-    /* ========== SUBTEXT ========== */
-    .tagline {
-      margin-top: 20px;
-      font-size: 1.3rem;
-      letter-spacing: 2px;
-      color: #ffffffd0;
-      z-index: 2;
-      opacity: 0;
-      animation: fadeIn 3s ease forwards 2s;
-    }
-
-    @keyframes fadeIn {
-      to { opacity: 1; transform: translateY(0); }
-      from { opacity: 0; transform: translateY(10px); }
-    }
-
-    /* ========== ENTER BUTTON ========== */
-    .enter-btn {
-      margin-top: 40px;
-      padding: 14px 34px;
-      border: 1.5px solid #f5d67b;
-      background: transparent;
-      color: #f5d67b;
-      font-size: 1rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: all 0.4s ease;
-      z-index: 2;
-      opacity: 0;
-      animation: fadeIn 3s ease forwards 3.5s;
-    }
-
-    .enter-btn:hover {
-      background-color: #f5d67b;
-      color: black;
-      box-shadow: 0 0 20px #f5d67b;
-      transform: scale(1.05);
-    }
-
-    /* ========== FOOTER ========== */
-    footer {
-      position: absolute;
-      bottom: 20px;
-      font-size: 0.9rem;
-      color: #888;
-      z-index: 2;
-      letter-spacing: 1px;
-    }
-
-    footer span {
-      color: #f5d67b;
-    }
-
-    /* ========== NAV BAR (fade-in later) ========== */
+    /* NAVIGATION */
     .navbar {
       position: absolute;
       top: 25px;
@@ -139,6 +69,92 @@
     .navbar a:hover {
       color: #f5d67b;
     }
+
+    /* LOGO */
+    .logo {
+      font-size: 5rem;
+      font-weight: 600;
+      letter-spacing: 4px;
+      color: #f5d67b;
+      text-shadow: 0 0 15px #f5d67b, 0 0 40px #f5d67b;
+      z-index: 2;
+      animation: glowMove 5s ease-in-out infinite alternate;
+    }
+
+    @keyframes glowMove {
+      0% {
+        text-shadow: 0 0 15px #f5d67b, 0 0 40px #f5d67b;
+        transform: translateY(0) scale(1);
+      }
+      100% {
+        text-shadow: 0 0 25px #ffd700, 0 0 80px #ffd700;
+        transform: translateY(-10px) scale(1.02);
+      }
+    }
+
+    /* TAGLINE */
+    .tagline {
+      margin-top: 20px;
+      font-size: 1.3rem;
+      letter-spacing: 2px;
+      color: #ffffffd0;
+      z-index: 2;
+      opacity: 0;
+      animation: fadeIn 3s ease forwards 2s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ENTER BUTTON */
+    .enter-btn {
+      margin-top: 40px;
+      padding: 14px 34px;
+      border: 1.5px solid #f5d67b;
+      background: transparent;
+      color: #f5d67b;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      z-index: 2;
+      opacity: 0;
+      animation: fadeIn 3s ease forwards 3.5s;
+    }
+
+    .enter-btn:hover {
+      background-color: #f5d67b;
+      color: black;
+      box-shadow: 0 0 25px #f5d67b;
+      transform: scale(1.05);
+    }
+
+    /* FOOTER */
+    footer {
+      position: absolute;
+      bottom: 20px;
+      font-size: 0.9rem;
+      color: #888;
+      z-index: 2;
+      letter-spacing: 1px;
+    }
+
+    footer span {
+      color: #f5d67b;
+    }
+
+    /* Smooth fade when clicking "Enter the Gallery" */
+    .fade-out {
+      animation: fadeOut 1s ease forwards;
+    }
+
+    @keyframes fadeOut {
+      to { opacity: 0; transform: scale(1.05); }
+    }
+
   </style>
 </head>
 
@@ -153,9 +169,18 @@
   <!-- CENTER CONTENT -->
   <h1 class="logo">Docotela X</h1>
   <p class="tagline">The Feeling of Freedom</p>
-  <button class="enter-btn" onclick="window.location.href='collections.html'">Enter the Gallery</button>
+  <button class="enter-btn" onclick="fadeAndGo()">Enter the Gallery</button>
 
   <!-- FOOTER -->
   <footer>© <span>2025</span> Docotela X — All Rights Reserved</footer>
+
+  <script>
+    function fadeAndGo() {
+      document.body.classList.add("fade-out");
+      setTimeout(() => {
+        window.location.href = "collections.html";
+      }, 1000);
+    }
+  </script>
 </body>
 </html>
