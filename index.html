@@ -1,229 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Docotela X | The Feeling of Freedom</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
   <style>
-    html, body {
+    /* ========== BASE ========== */
+    * {
       margin: 0;
       padding: 0;
-      height: 100%;
-      background-color: black;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      width: 100%;
+      background-color: #000;
       overflow: hidden;
-      font-family: 'Cinzel', serif;
-      color: gold;
-    }
-
-    /* --- Cinematic Glowing Logo --- */
-    .center-text {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 6em;
-      text-align: center;
-      letter-spacing: 8px;
-      background: linear-gradient(
-        90deg,
-        rgba(255, 215, 0, 0.3),
-        gold,
-        rgba(255, 215, 0, 0.3)
-      );
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation:
-        textWave 4s ease-in-out infinite,
-        fadeIn 2s ease forwards,
-        slightMove 8s ease-in-out infinite alternate;
-      text-shadow: 0 0 40px gold, 0 0 80px rgba(255, 215, 0, 0.8);
-      opacity: 0;
-    }
-
-    @keyframes textWave {
-      0% { background-position: -200px 0; }
-      50% { background-position: 200px 0; }
-      100% { background-position: -200px 0; }
-    }
-
-    @keyframes slightMove {
-      from { transform: translate(-50%, -50%) scale(1); }
-      to { transform: translate(-50%, -50%) scale(1.05); }
-    }
-
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; visibility: hidden; } }
-
-    /* --- Fade transition class --- */
-    .fade-out {
-      animation: fadeOut 2s ease forwards;
-    }
-
-    /* --- Main Page After Intro --- */
-    .main-content {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       color: white;
-      opacity: 0;
-      visibility: hidden;
-      animation: showMain 2s ease 4.5s forwards;
+      font-family: "Playfair Display", serif;
+      position: relative;
     }
 
-    @keyframes showMain {
-      to { opacity: 1; visibility: visible; }
+    /* ========== GLOWING BACKGROUND ANIMATION ========== */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, rgba(255, 215, 0, 0.08) 0%, rgba(0,0,0,1) 70%);
+      animation: pulse 6s ease-in-out infinite alternate;
+      z-index: 0;
     }
 
-    .main-content h1 {
-      font-family: 'Cinzel', serif;
-      font-weight: 400;
-      font-size: 2em;
-      color: white;
+    @keyframes pulse {
+      0% { opacity: 0.6; transform: scale(1); }
+      100% { opacity: 1; transform: scale(1.1); }
+    }
+
+    /* ========== LOGO ========== */
+    .logo {
+      font-size: 4rem;
+      font-weight: 600;
       letter-spacing: 3px;
-      margin-bottom: 20px;
+      color: #f5d67b;
+      text-shadow: 0 0 10px #f5d67b, 0 0 40px #f5d67b;
+      z-index: 2;
+      animation: glowMove 4s ease-in-out infinite alternate;
     }
 
+    @keyframes glowMove {
+      0% { text-shadow: 0 0 10px #f5d67b, 0 0 30px #f5d67b; transform: translateY(0); }
+      100% { text-shadow: 0 0 25px #ffd700, 0 0 60px #ffd700; transform: translateY(-10px); }
+    }
+
+    /* ========== SUBTEXT ========== */
+    .tagline {
+      margin-top: 20px;
+      font-size: 1.3rem;
+      letter-spacing: 2px;
+      color: #ffffffd0;
+      z-index: 2;
+      opacity: 0;
+      animation: fadeIn 3s ease forwards 2s;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(10px); }
+    }
+
+    /* ========== ENTER BUTTON ========== */
     .enter-btn {
-      padding: 12px 35px;
-      border: 1px solid gold;
-      color: gold;
-      text-decoration: none;
-      font-size: 1em;
+      margin-top: 40px;
+      padding: 14px 34px;
+      border: 1.5px solid #f5d67b;
+      background: transparent;
+      color: #f5d67b;
+      font-size: 1rem;
       letter-spacing: 1px;
-      transition: all 0.3s ease;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      z-index: 2;
+      opacity: 0;
+      animation: fadeIn 3s ease forwards 3.5s;
     }
 
     .enter-btn:hover {
-      background-color: gold;
+      background-color: #f5d67b;
       color: black;
+      box-shadow: 0 0 20px #f5d67b;
+      transform: scale(1.05);
     }
 
+    /* ========== FOOTER ========== */
     footer {
-      position: fixed;
+      position: absolute;
       bottom: 20px;
-      width: 100%;
-      text-align: center;
-      color: white;
-      font-size: 0.85em;
+      font-size: 0.9rem;
+      color: #888;
+      z-index: 2;
       letter-spacing: 1px;
     }
 
-    /* --- Navigation --- */
-    .top-nav {
-      position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 40px;
-      z-index: 10;
+    footer span {
+      color: #f5d67b;
     }
-    .top-nav a {
+
+    /* ========== NAV BAR (fade-in later) ========== */
+    .navbar {
+      position: absolute;
+      top: 25px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      z-index: 2;
+      opacity: 0;
+      animation: fadeIn 3s ease forwards 4.5s;
+    }
+
+    .navbar a {
       color: white;
       text-decoration: none;
-      font-size: 1.1em;
+      font-size: 1rem;
+      letter-spacing: 1px;
       transition: color 0.3s ease;
     }
-    .top-nav a:hover { color: gold; }
 
-    .hamburger {
-      position: fixed;
-      top: 20px;
-      right: 30px;
-      z-index: 1001;
-      cursor: pointer;
-      width: 25px;
-      height: 18px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .hamburger div {
-      height: 3px;
-      background: white;
-      border-radius: 2px;
-      transition: all 0.3s ease;
-    }
-
-    .menu {
-      display: none;
-      flex-direction: column;
-      position: fixed;
-      top: 60px;
-      right: 25px;
-      background-color: rgba(0, 0, 0, 0.95);
-      border: 1px solid gold;
-      padding: 15px 25px;
-      border-radius: 5px;
-      z-index: 1000;
-    }
-    .menu a {
-      color: white;
-      text-decoration: none;
-      margin: 10px 0;
-      transition: color 0.3s;
-    }
-    .menu a:hover { color: gold; }
-
-    @media (max-width: 768px) {
-      .center-text { font-size: 3em; letter-spacing: 5px; }
-      .top-nav { display: none; }
+    .navbar a:hover {
+      color: #f5d67b;
     }
   </style>
 </head>
+
 <body>
-
-  <!-- Cinematic Intro -->
-  <div class="center-text" id="intro">
-    Docotela X
-  </div>
-
-  <!-- Navigation -->
-  <div class="top-nav">
+  <!-- NAVIGATION -->
+  <div class="navbar">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
   </div>
 
-  <div class="hamburger" id="hamburger">
-    <div></div><div></div><div></div>
-  </div>
+  <!-- CENTER CONTENT -->
+  <h1 class="logo">Docotela X</h1>
+  <p class="tagline">The Feeling of Freedom</p>
+  <button class="enter-btn" onclick="window.location.href='collections.html'">Enter the Gallery</button>
 
-  <div class="menu" id="menu">
-    <a href="index.html">Home</a>
-    <a href="collections.html">Collections</a>
-    <a href="members.html">Members Only</a>
-    <a href="art-gallery.html">Art Gallery</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </div>
-
-  <!-- Main Content -->
-  <div class="main-content" id="main">
-    <h1>The Feeling of Freedom</h1>
-    <a href="collections.html" class="enter-btn">Enter the Gallery</a>
-  </div>
-
-  <footer>
-    © 2025 Docotela X — All Rights Reserved
-  </footer>
-
-  <script>
-    // Fade out intro after 4s
-    setTimeout(() => {
-      document.getElementById("intro").classList.add("fade-out");
-    }, 4000);
-
-    // Hamburger toggle
-    const hamburger = document.getElementById("hamburger");
-    const menu = document.getElementById("menu");
-    hamburger.addEventListener("click", () => {
-      menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
-    });
-  </script>
-
+  <!-- FOOTER -->
+  <footer>© <span>2025</span> Docotela X — All Rights Reserved</footer>
 </body>
 </html>
