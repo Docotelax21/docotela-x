@@ -16,7 +16,7 @@
       color: gold;
     }
 
-    /* --- Centered Cinematic Logo --- */
+    /* --- Cinematic Glowing Logo --- */
     .center-text {
       position: absolute;
       top: 50%;
@@ -25,15 +25,26 @@
       font-size: 6em;
       text-align: center;
       letter-spacing: 8px;
-      animation: glowPulse 3s ease-in-out infinite alternate, slightMove 6s ease-in-out infinite alternate;
-      text-shadow: 0 0 30px gold, 0 0 60px gold, 0 0 120px rgba(255, 215, 0, 0.8);
+      background: linear-gradient(
+        90deg,
+        rgba(255, 215, 0, 0.3),
+        gold,
+        rgba(255, 215, 0, 0.3)
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation:
+        textWave 4s ease-in-out infinite,
+        fadeIn 2s ease forwards,
+        slightMove 8s ease-in-out infinite alternate;
+      text-shadow: 0 0 40px gold, 0 0 80px rgba(255, 215, 0, 0.8);
       opacity: 0;
-      animation: fadeIn 2s ease forwards, glowPulse 3s ease-in-out infinite alternate, slightMove 6s ease-in-out infinite alternate;
     }
 
-    @keyframes glowPulse {
-      from { text-shadow: 0 0 20px gold, 0 0 40px gold, 0 0 80px rgba(255, 215, 0, 0.7); opacity: 0.8; }
-      to { text-shadow: 0 0 40px gold, 0 0 100px gold, 0 0 200px rgba(255, 215, 0, 1); opacity: 1; }
+    @keyframes textWave {
+      0% { background-position: -200px 0; }
+      50% { background-position: 200px 0; }
+      100% { background-position: -200px 0; }
     }
 
     @keyframes slightMove {
@@ -43,6 +54,11 @@
 
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; visibility: hidden; } }
+
+    /* --- Fade transition class --- */
+    .fade-out {
+      animation: fadeOut 2s ease forwards;
+    }
 
     /* --- Main Page After Intro --- */
     .main-content {
@@ -196,12 +212,12 @@
   </footer>
 
   <script>
-    // Fade transition from intro to main content
+    // Fade out intro after 4s
     setTimeout(() => {
       document.getElementById("intro").classList.add("fade-out");
     }, 4000);
 
-    // Hamburger menu toggle
+    // Hamburger toggle
     const hamburger = document.getElementById("hamburger");
     const menu = document.getElementById("menu");
     hamburger.addEventListener("click", () => {
