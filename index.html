@@ -6,81 +6,115 @@
   <title>Docotela X | The Feeling of Freedom</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* --- Cinematic Fullscreen Intro --- */
-    .intro-screen {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      background-color: black;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      overflow: hidden;
-      animation: fadeOut 2.5s ease 4s forwards; /* fade after animation */
-    }
-
-    .intro-text {
-      font-family: 'Cinzel', serif;
-      font-size: 5em;
-      color: gold;
-      letter-spacing: 8px;
-      text-transform: uppercase;
-      animation: textGlow 3s ease-in-out infinite alternate, moveSlight 6s ease-in-out infinite alternate;
-      text-align: center;
-    }
-
-    @keyframes textGlow {
-      from { text-shadow: 0 0 15px gold, 0 0 30px gold, 0 0 60px rgba(255, 215, 0, 0.7); opacity: 0.7; }
-      to { text-shadow: 0 0 25px gold, 0 0 80px gold, 0 0 120px rgba(255, 215, 0, 0.9); opacity: 1; }
-    }
-
-    @keyframes moveSlight {
-      from { transform: scale(1) translateY(0); }
-      to { transform: scale(1.05) translateY(-10px); }
-    }
-
-    @keyframes fadeOut {
-      to { opacity: 0; visibility: hidden; }
-    }
-
-    /* --- Main Page --- */
-    body {
+    /* --- Fullscreen Black Background --- */
+    html, body {
       margin: 0;
-      background-color: #0a0a0a;
-      color: white;
-      font-family: 'Helvetica Neue', sans-serif;
-      overflow-x: hidden;
+      padding: 0;
+      height: 100%;
+      background-color: black;
+      overflow: hidden;
+      font-family: 'Cinzel', serif;
+      color: gold;
+    }
+
+    /* --- Centered Cinematic Text --- */
+    .center-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 6em;
+      text-align: center;
+      letter-spacing: 8px;
+      animation: glowPulse 3s ease-in-out infinite alternate, slightMove 6s ease-in-out infinite alternate;
+      text-shadow: 0 0 30px gold, 0 0 60px gold, 0 0 120px rgba(255, 215, 0, 0.8);
+    }
+
+    @keyframes glowPulse {
+      from { text-shadow: 0 0 20px gold, 0 0 40px gold, 0 0 80px rgba(255, 215, 0, 0.7); opacity: 0.8; }
+      to { text-shadow: 0 0 40px gold, 0 0 100px gold, 0 0 200px rgba(255, 215, 0, 1); opacity: 1; }
+    }
+
+    @keyframes slightMove {
+      from { transform: translate(-50%, -50%) scale(1); }
+      to { transform: translate(-50%, -50%) scale(1.05); }
+    }
+
+    /* --- Fade in / Fade out transition --- */
+    .fade-in {
+      animation: fadeIn 2.5s ease forwards;
+    }
+    .fade-out {
+      animation: fadeOut 2s ease forwards;
+    }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; visibility: hidden; } }
+
+    /* --- After Intro --- */
+    .main-content {
       opacity: 0;
-      animation: fadeInBody 3s ease 4.5s forwards;
+      visibility: hidden;
+      animation: showMain 2s ease 4.5s forwards;
+      text-align: center;
+      color: white;
     }
 
-    @keyframes fadeInBody {
-      to { opacity: 1; }
+    @keyframes showMain {
+      to { opacity: 1; visibility: visible; }
     }
 
-    /* Nav Center */
+    .main-content h1 {
+      font-family: 'Helvetica Neue', sans-serif;
+      font-weight: 300;
+      color: white;
+      letter-spacing: 3px;
+      margin-bottom: 20px;
+    }
+
+    .enter-btn {
+      padding: 12px 35px;
+      border: 1px solid gold;
+      color: gold;
+      text-decoration: none;
+      font-size: 1em;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+    }
+
+    .enter-btn:hover {
+      background-color: gold;
+      color: black;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      color: white;
+      font-size: 0.85em;
+      letter-spacing: 1px;
+    }
+
+    /* Navigation */
     .top-nav {
       position: fixed;
       top: 20px;
       left: 50%;
       transform: translateX(-50%);
-      z-index: 1000;
       display: flex;
       gap: 40px;
+      z-index: 10;
     }
     .top-nav a {
       color: white;
       text-decoration: none;
       font-size: 1.1em;
-      letter-spacing: 1px;
       transition: color 0.3s ease;
     }
     .top-nav a:hover { color: gold; }
 
-    /* Hamburger */
     .hamburger {
       position: fixed;
       top: 20px;
@@ -100,7 +134,6 @@
       transition: all 0.3s ease;
     }
 
-    /* Dropdown Menu */
     .menu {
       display: none;
       flex-direction: column;
@@ -121,59 +154,17 @@
     }
     .menu a:hover { color: gold; }
 
-    /* Homepage content */
-    .center-content {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-    }
-    .center-content img {
-      width: 180px;
-      margin-bottom: 25px;
-    }
-    .center-content h1 {
-      font-weight: 300;
-      letter-spacing: 3px;
-      color: white;
-      margin-bottom: 20px;
-    }
-    .enter-btn {
-      padding: 12px 35px;
-      border: 1px solid gold;
-      color: gold;
-      text-decoration: none;
-      font-size: 1em;
-      letter-spacing: 1px;
-      transition: all 0.3s ease;
-    }
-    .enter-btn:hover {
-      background-color: gold;
-      color: black;
-    }
-
-    footer {
-      position: fixed;
-      bottom: 20px;
-      width: 100%;
-      text-align: center;
-      color: white;
-      font-size: 0.85em;
-      letter-spacing: 1px;
-    }
-
     @media (max-width: 768px) {
-      .intro-text { font-size: 3em; letter-spacing: 5px; }
+      .center-text { font-size: 3em; letter-spacing: 5px; }
       .top-nav { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Fullscreen Glowing Text Intro -->
-  <div class="intro-screen">
-    <div class="intro-text">Docotela X</div>
+  <!-- Fullscreen Centered Glowing Name -->
+  <div class="center-text fade-in" id="intro">
+    Docotela X
   </div>
 
   <!-- Navigation -->
@@ -196,9 +187,8 @@
     <a href="contact.html">Contact</a>
   </div>
 
-  <!-- Homepage -->
-  <div class="center-content">
-    <img src="docotelax-logo.png" alt="Docotela X Logo">
+  <!-- Main Content -->
+  <div class="main-content" id="main">
     <h1>The Feeling of Freedom</h1>
     <a href="collections.html" class="enter-btn">Enter the Gallery</a>
   </div>
@@ -208,7 +198,12 @@
   </footer>
 
   <script>
-    // Hamburger toggle
+    // Fade transition from intro to main content
+    setTimeout(() => {
+      document.getElementById("intro").classList.add("fade-out");
+    }, 4000);
+
+    // Hamburger menu toggle
     const hamburger = document.getElementById("hamburger");
     const menu = document.getElementById("menu");
     hamburger.addEventListener("click", () => {
