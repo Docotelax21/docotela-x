@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Docotela X — Intro</title>
+  <link rel="stylesheet" href="intro.css">
+</head>
+<body>
+  <div class="intro-container" id="intro">
+    <h1 class="brand-name">Docotela X</h1>
+    <p class="tagline">Limited Collections. Handcrafted Art.</p>
+    <div class="particles" aria-hidden="true"></div>
+  </div>
+
+  <script>
+    // After 4s, fade out and go to main homepage
+    setTimeout(() => {
+      document.body.classList.add('fade-out');
+      setTimeout(() => { window.location.href = "main.html"; }, 1500);
+    }, 4000);
+  </script>
+</body>
+</html>
