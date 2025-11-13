@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Vault — Docotela X</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <meta name="robots" content="noindex">
+</head>
+<body class="page vault">
+  <header class="topbar">
+    <nav class="center-nav">
+      <a href="main.html">Home</a>
+      <span class="dot">—</span>
+      <a href="about.html">About</a>
+      <span class="dot">—</span>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <button id="hamburgerVault" class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <div id="menuVault" class="menu-panel" aria-hidden="true">
+      <a href="main.html">Home</a>
+      <a href="collections.html">Collections</a>
+      <a href="members.html">Members Only</a>
+      <a href="art-gallery.html">Art Gallery</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </header>
+
+  <main class="content cinematic-bg">
+    <div class="vault-inner">
+      <h1 class="page-title gold">THE VAULT</h1>
+      <p class="lead centered">Unreleased drops, exclusive art, and private commissions — for members only.</p>
+
+      <div class="vault-grid">
+        <div class="vault-card"><h3>Exclusive Drop 1</h3><p>Preview — members only.</p></div>
+        <div class="vault-card"><h3>Exclusive Drop 2</h3><p>Preview — members only.</p></div>
+        <div class="vault-card"><h3>Exclusive Drop 3</h3><p>Preview — members only.</p></div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const hbV = document.getElementById('hamburgerVault');
+    const mpV = document.getElementById('menuVault');
+    hbV.addEventListener('click', ()=> {
+      const e = hbV.getAttribute('aria-expanded')==='true';
+      hbV.setAttribute('aria-expanded', !e); mpV.classList.toggle('open'); mpV.setAttribute('aria-hidden', e);
+    });
+    document.addEventListener('click', (ev)=> {
+      if (!mpV.contains(ev.target) && !hbV.contains(ev.target)) {
+        mpV.classList.remove('open'); hbV.setAttribute('aria-expanded','false'); mpV.setAttribute('aria-hidden','true');
+      }
+    });
+  </script>
+</body>
+</html>
