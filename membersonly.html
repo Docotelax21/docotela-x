@@ -16,6 +16,7 @@
       flex-direction: column;
       font-family: 'Cinzel', serif;
       overflow: hidden;
+      position: relative;
     }
 
     h1 {
@@ -23,6 +24,8 @@
       letter-spacing: 4px;
       text-transform: uppercase;
       margin-bottom: 20px;
+      z-index: 10;
+      text-shadow: 0 0 20px gold, 0 0 40px gold;
     }
 
     input {
@@ -34,6 +37,7 @@
       text-align: center;
       outline: none;
       transition: 0.3s;
+      z-index: 10;
     }
 
     input:focus {
@@ -49,6 +53,7 @@
       margin-top: 20px;
       cursor: pointer;
       transition: 0.3s;
+      z-index: 10;
     }
 
     button:hover {
@@ -57,26 +62,30 @@
       border: 1px solid gold;
     }
 
+    /* GATE DESIGN */
     .gate {
       position: absolute;
       width: 50%;
       height: 100%;
       top: 0;
-      background: linear-gradient(to right, #1a1a1a, #333);
-      z-index: 5;
+      background: linear-gradient(to right, #111, #222);
+      box-shadow: inset 0 0 30px gold;
       transition: transform 3s ease-in-out;
+      z-index: 5;
     }
 
     .left-gate {
       left: 0;
       border-right: 2px solid gold;
       transform-origin: left;
+      transform: translateX(0);
     }
 
     .right-gate {
       right: 0;
       border-left: 2px solid gold;
       transform-origin: right;
+      transform: translateX(0);
     }
 
     .open-left {
@@ -93,6 +102,7 @@
       margin-top: 10px;
       opacity: 0;
       transition: opacity 1s ease-in-out;
+      z-index: 10;
     }
 
     .access-denied.show {
@@ -105,14 +115,26 @@
       text-decoration: none;
       opacity: 0;
       transition: opacity 1s ease-in-out;
+      z-index: 10;
     }
 
     a.show {
       opacity: 1;
     }
 
-    .glow {
-      text-shadow: 0 0 20px gold, 0 0 40px gold;
+    /* BACKGROUND PARTICLES */
+    @keyframes shimmer {
+      0% { background-position: 0 0; }
+      100% { background-position: 1000px 0; }
+    }
+
+    .background {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, rgba(255,215,0,0.1) 0%, transparent 70%);
+      animation: shimmer 20s linear infinite;
+      z-index: 1;
     }
 
     .fade-out {
@@ -128,10 +150,11 @@
   </style>
 </head>
 <body>
+  <div class="background"></div>
   <div class="gate left-gate"></div>
   <div class="gate right-gate"></div>
 
-  <h1 class="glow">Members Only Access</h1>
+  <h1>Members Only Access</h1>
   <input type="password" id="password" placeholder="Enter Access Code">
   <button onclick="checkPassword()">Enter</button>
   <div class="access-denied" id="denied">Access Denied</div>
@@ -146,12 +169,10 @@
       const rightGate = document.querySelector('.right-gate');
 
       if (password === "memberson1y") {
-        // open gates animation
         leftGate.classList.add('open-left');
         rightGate.classList.add('open-right');
         document.body.classList.add('fade-out');
 
-        // redirect after animation
         setTimeout(() => {
           window.location.href = "exclusive.html";
         }, 3500);
