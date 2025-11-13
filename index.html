@@ -4,20 +4,93 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Docotela X</title>
-  <link rel="stylesheet" href="vault.css">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      margin: 0;
+      background-color: #0d0d0d;
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #d4af37;
+      font-family: 'Cinzel', serif;
+      animation: fadeIn 3s ease-in-out;
+    }
+
+    .vault {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 2px solid #d4af37;
+      box-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: vaultOpen 6s ease-in-out forwards;
+    }
+
+    .vault::before {
+      content: '';
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      border: 2px solid rgba(212, 175, 55, 0.2);
+      box-shadow: 0 0 60px rgba(212, 175, 55, 0.2);
+      animation: glowPulse 3s infinite alternate;
+    }
+
+    .vault-text {
+      font-size: 20px;
+      letter-spacing: 2px;
+      text-align: center;
+      opacity: 0;
+      animation: textFade 3s ease-in-out 2s forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes glowPulse {
+      from { transform: scale(1); opacity: 0.6; }
+      to { transform: scale(1.1); opacity: 1; }
+    }
+
+    @keyframes vaultOpen {
+      0% { transform: scale(1) rotate(0deg); box-shadow: 0 0 40px rgba(212, 175, 55, 0.3); }
+      50% { transform: scale(1.1) rotate(180deg); box-shadow: 0 0 80px rgba(212, 175, 55, 0.6); }
+      100% { transform: scale(8) rotate(360deg); opacity: 0; }
+    }
+
+    @keyframes textFade {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Fade out before redirect */
+    @keyframes fadeOut {
+      to { opacity: 0; }
+    }
+  </style>
 </head>
 <body>
-  <div class="vault-scene">
-    <div class="vault-door">
-      <div class="engraved-text">DOCOTELA X</div>
-    </div>
+  <div class="vault">
+    <div class="vault-text">DOCOTELA<br>X</div>
   </div>
 
   <script>
-    // Auto transition after animation ends
+    // Wait for the animation to complete, then fade and redirect
     setTimeout(() => {
-      window.location.href = "main.html";
-    }, 8000);
+      document.body.style.animation = "fadeOut 1.5s ease-in forwards";
+      setTimeout(() => {
+        window.location.href = "main.html";
+      }, 1500);
+    }, 6500);
   </script>
 </body>
 </html>
