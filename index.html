@@ -1,33 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Docotela X — Intro</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <meta name="robots" content="noindex">
-  <style>
-    /* tiny override for intro only */
-    .intro-wrap { height:100vh; display:flex; align-items:center; justify-content:center; background:#000; }
-    .intro-title { font-family:'Cinzel',serif; color:var(--gold); text-shadow:0 0 30px rgba(216,184,74,.95), 0 0 70px rgba(216,184,74,.25); font-size:clamp(36px,9vw,120px); letter-spacing:6px; animation:introPulse 2.8s ease-in-out infinite alternate; text-align:center; }
-    @keyframes introPulse { from { transform:translateY(0); filter:blur(0) } to { transform:translateY(-2px); filter:blur(.6px) } }
-    html.intro-fadeout { transition: opacity .7s ease; opacity:0; }
-  </style>
-  <script>
-    window.addEventListener('load', () => {
-      const redirectDelay = 4000;
-      const fadeDuration = 700;
-      setTimeout(() => {
-        document.documentElement.classList.add('intro-fadeout');
-        setTimeout(()=> { window.location.href = 'main.html'; }, fadeDuration);
-      }, redirectDelay);
-    });
-  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Docotela X | Intro</title>
+  <link rel="stylesheet" href="intro.css">
 </head>
 <body>
-  <div class="intro-wrap" role="presentation">
-    <div class="intro-title">DOCOTELA X</div>
+  <div class="vault-container">
+    <div class="vault-door"></div>
+    <img src="88A57F40-470A-4B65-A4E2-DE3DAFEA66CE.png" alt="Docotela Logo" class="logo">
   </div>
+
+  <script>
+    // Fade to main page after animation
+    setTimeout(() => {
+      window.location.href = "main.html";
+    }, 6000); // 6 seconds
+  </script>
 </body>
 </html>
