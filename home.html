@@ -3,88 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Docotela X</title>
+    <title>Docotela X – Home</title>
     <link rel="stylesheet" href="styles.css">
-
-    <style>
-        /* --- PAGE FADE IN --- */
-        body {
-            margin: 0;
-            padding: 0;
-            background: black;
-            overflow-x: hidden;
-            animation: fadeIn 2.5s ease-out forwards;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* --- CENTERED CONTENT --- */
-        .home-container {
-            position: relative;
-            height: 100vh;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            text-align: center;
-            z-index: 2;
-        }
-
-        .home-title {
-            font-family: 'Cinzel', serif;
-            font-size: 3.5rem;
-            letter-spacing: 8px;
-            font-weight: 700;
-            color: #d4af37;
-            text-transform: uppercase;
-            animation: titleFade 3s ease forwards;
-        }
-
-        @media (max-width: 600px) {
-            .home-title {
-                font-size: 2.2rem;
-                letter-spacing: 4px;
-            }
-        }
-
-        @keyframes titleFade {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        /* --- BACKGROUND LOGO GLOW --- */
-        .logo-bg {
-            position: absolute;
-            inset: 0;
-            background-image: url('logonew.png'); /* your logo file */
-            background-size: 65%;
-            background-position: center;
-            background-repeat: no-repeat;
-            opacity: 0.07;
-            filter: blur(1px) brightness(1.2);
-            animation: logoPulse 6s ease-in-out infinite alternate;
-        }
-
-        @keyframes logoPulse {
-            from { opacity: 0.05; transform: scale(0.97); }
-            to { opacity: 0.12; transform: scale(1.03); }
-        }
-    </style>
 </head>
 
 <body>
 
-    <!-- LUXURY LOGO BACKGROUND -->
-    <div class="logo-bg"></div>
-
-    <!-- MAIN CONTENT -->
-    <div class="home-container">
-        <div class="home-title">DOCOTELA X</div>
+    <!-- CINEMATIC INTRO -->
+    <div id="intro-container">
+        <video id="intro-video" autoplay muted playsinline>
+            <source src="vaultdoor.mp4" type="video/mp4">
+        </video>
     </div>
+
+    <!-- LOGO (appears after intro) -->
+    <div class="logo-container">
+        <img src="docotelax-logo.png" alt="Docotela X Logo" class="logo">
+    </div>
+
+    <!-- MAIN HOME CONTENT (hidden until intro ends) -->
+    <div id="home-content">
+
+        <!-- NAVIGATION BAR -->
+        <header>
+            <nav class="top-nav">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </header>
+
+        <div class="content-wrapper">
+            <h1 class="home-title">DOCOTELA X</h1>
+        </div>
+
+    </div>
+
+    <script>
+        // Fade out intro and reveal home screen
+        const introVideo = document.getElementById("intro-video");
+        const introContainer = document.getElementById("intro-container");
+        const homeContent = document.getElementById("home-content");
+
+        introVideo.onended = () => {
+            introContainer.style.opacity = "0";
+
+            setTimeout(() => {
+                introContainer.style.display = "none";
+                homeContent.style.opacity = "1";
+            }, 1200);
+        };
+    </script>
 
 </body>
 </html>
