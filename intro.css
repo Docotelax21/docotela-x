@@ -1,54 +1,185 @@
-body {
-  margin: 0;
-  padding: 0;
-  background: radial-gradient(circle at center, #000, #0a0a0a, #000);
-  overflow: hidden;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* intro.css - cinematic matte-steel vault intro (8s) */
+
+/* reset & base */
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;background:#000;overflow:hidden;font-family: 'Cinzel', serif; -webkit-font-smoothing:antialiased;}
+#intro-root{width:100vw;height:100vh;display:flex;align-items:center;justify-content:center;position:relative}
+
+/* ambient soft gold glow behind vault */
+.ambient{
+  position:absolute;inset:0;background:
+    radial-gradient(circle at 50% 45%, rgba(212,175,55,0.08) 0%, transparent 25%),
+    radial-gradient(circle at 50% 60%, rgba(0,0,0,0.6) 40%, transparent 70%);
+  pointer-events:none; z-index:0;
+  filter: blur(8px);
 }
 
-.vault-container {
-  position: relative;
-  width: 260px;
-  height: 260px;
+/* camera container - scale for zooming effect */
+.camera{
+  width:560px; height:560px;
+  display:flex;align-items:center;justify-content:center;
+  transform-origin:center center;
+  transition: transform 1.2s cubic-bezier(.2,.9,.3,1);
+  z-index:2;
 }
 
-.vault-door {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background: radial-gradient(circle at center, #202020, #000);
-  border: 4px solid #c8a951;
-  box-shadow: 0 0 70px rgba(200, 169, 81, 0.25);
-  animation: rotateVault 3s ease-in-out forwards, openVault 3s 3s ease forwards;
+/* vault door (matte steel circle) */
+.vault-door{
+  width:420px;height:420px;border-radius:50%;
+  position:relative;display:flex;align-items:center;justify-content:center;
+  background:
+    radial-gradient(circle at 30% 25%, #2b2b2b 0%, #161616 45%, #0d0d0d 75%),
+    repeating-radial-gradient(circle at 30% 25%, rgba(255,255,255,0.006) 0 2px, transparent 2px 6px);
+  box-shadow:
+    inset 0 6px 18px rgba(0,0,0,0.8),
+    inset 0 -6px 18px rgba(255,255,255,0.02),
+    0 40px 80px rgba(0,0,0,0.8);
+  border: 6px solid rgba(25,25,25,0.9);
+  transform-style: preserve-3d;
+  transition: transform 1.6s cubic-bezier(.2,.9,.3,1), opacity .8s ease;
+  z-index:3;
+  overflow:visible;
 }
 
-@keyframes rotateVault {
-  0% { transform: rotate(0deg); box-shadow: 0 0 25px rgba(200, 169, 81, 0.3); }
-  50% { transform: rotate(180deg); box-shadow: 0 0 60px rgba(200, 169, 81, 0.5); }
-  100% { transform: rotate(360deg); box-shadow: 0 0 90px rgba(200, 169, 81, 0.6); }
+/* engraved bolt decorations */
+.bolt{
+  --size:16px;
+  position:absolute;width:var(--size);height:var(--size);
+  background: linear-gradient(180deg,#191919,#0b0b0b);
+  border-radius:50%;
+  box-shadow: inset 0 1px 2px rgba(255,255,255,0.02), 0 3px 8px rgba(0,0,0,0.7);
+  border: 2px solid rgba(255,255,255,0.02);
 }
 
-@keyframes openVault {
-  0% { transform: scale(1) rotate(360deg); opacity: 1; }
-  100% { transform: scale(7) rotate(360deg); opacity: 0; }
+/* place bolts around ring */
+.b1{ top: 24px; left: calc(50% - 8px);}
+.b2{ top: calc(50% - 8px); right: 24px;}
+.b3{ bottom: 24px; left: calc(50% - 8px);}
+.b4{ top: calc(50% - 8px); left: 24px;}
+.b5{ top: 80px; right: 60px;}
+.b6{ bottom: 80px; left: 60px;}
+
+/* wheel in center (rotates) */
+.wheel{
+  width:120px;height:120px;border-radius:50%;
+  background: linear-gradient(180deg,#0f0f0f,#1a1a1a);
+  border:4px solid rgba(212,175,55,0.06);
+  box-shadow: inset 0 -6px 12px rgba(0,0,0,0.6), 0 10px 30px rgba(0,0,0,0.7);
+  display:flex;align-items:center;justify-content:center;position:relative;z-index:5;
+  transition: transform 1s ease;
 }
 
-.logo {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 180px;
-  transform: translate(-50%, -50%);
-  opacity: 0;
-  animation: fadeLogo 2.5s 3.2s ease forwards;
-  filter: drop-shadow(0 0 10px rgba(200, 169, 81, 0.3));
+/* simple spokes */
+.spoke{ position:absolute; width:60%; height:6px; background: linear-gradient(90deg, rgba(212,175,55,0.12), rgba(100,90,40,0.07)); border-radius:3px; }
+.s1{ transform: rotate(0deg); }
+.s2{ transform: rotate(60deg); }
+.s3{ transform: rotate(120deg); }
+
+/* wheel spin class */
+.wheel.spin{ animation: wheelSpin 1.6s cubic-bezier(.2,.9,.3,1) forwards; }
+
+/* subtle vibration for mechanical unlocking */
+.vibrate{ animation: subtleVibe 1.6s cubic-bezier(.2,.9,.3,1) infinite; }
+@keyframes subtleVibe{
+  0%{ transform: translateZ(0) rotateY(0) }
+  20%{ transform: translate3d(2px,0,0) rotateY(-0.6deg) }
+  40%{ transform: translate3d(-2px,0,0) rotateY(0.6deg) }
+  60%{ transform: translate3d(1px,0,0) rotateY(-0.3deg) }
+  80%{ transform: translate3d(-1px,0,0) rotateY(0.3deg) }
+  100%{ transform: translateZ(0) rotateY(0) }
 }
 
-@keyframes fadeLogo {
-  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.9); filter: blur(3px) brightness(0.8); }
-  60% { opacity: 1; transform: translate(-50%, -50%) scale(1.05); filter: brightness(1.1); }
-  100% { opacity: 1; transform: translate(-50%, -50%) scale(1); filter: brightness(1); }
+/* wheel spin keyframe */
+@keyframes wheelSpin {
+  0%{ transform: rotate(0deg); }
+  40%{ transform: rotate(360deg); }
+  100%{ transform: rotate(540deg); }
 }
+
+/* when door "opens" we scale/translate it away to simulate swing/open */
+.vault-door.open{
+  transform: translateX(-420px) scale(0.65) rotateY(-18deg);
+  opacity: 0.98;
+  transition: transform 1.2s cubic-bezier(.2,.9,.3,1), opacity .9s ease;
+}
+
+/* inner vault revealed area (behind door) */
+.vault-inside{
+  width:360px;height:360px;border-radius:50%;position:absolute;z-index:2;display:flex;align-items:center;justify-content:center;
+  clip-path: circle(0% at 50% 50%); /* we will expand it when door opens */
+  transition: clip-path 1.2s cubic-bezier(.2,.9,.3,1) .05s;
+  pointer-events:none;
+}
+
+/* when open, expand the inside area */
+.vault-door.open + .vault-inside, .camera.zoomIn .vault-inside {
+  clip-path: circle(60% at 50% 50%);
+}
+
+/* inner soft light */
+.inner-light{
+  position:absolute;inset:0;border-radius:50%;
+  background: radial-gradient(circle at 45% 40%, rgba(212,175,55,0.28), rgba(212,175,55,0.14) 18%, transparent 45%);
+  filter: blur(20px); opacity:0; transform: scale(.9);
+  transition: opacity .9s ease .6s, transform 1s ease .6s;
+}
+.camera.zoomIn .inner-light{ opacity:1; transform: scale(1.1); }
+
+/* carved text wrapper */
+.carved-wrap{ position:relative; z-index:6; opacity:0; transform: translateZ(0); transition: opacity .6s ease .2s; pointer-events:none;}
+
+/* carved engraved style - two layered texts for inset highlight */
+.carved-text{
+  font-family: 'Cinzel', serif;
+  font-size:34px;
+  letter-spacing:6px;
+  color: #0b0b0b; /* dark carved base */
+  -webkit-text-stroke: 1px rgba(0,0,0,0.7);
+  text-transform: uppercase;
+  transform: translateY(6px);
+  filter: drop-shadow(0 -6px 6px rgba(255,255,255,0.02));
+  mix-blend-mode: multiply;
+}
+
+/* top layer highlight - semi-transparent gold highlight clipped to top edge */
+.carved-text.carved-top{
+  position:absolute;left:0;top:0;
+  color: rgba(212,175,55,0.28);
+  mix-blend-mode: screen;
+  filter: blur(.6px) contrast(1.05);
+  transform: translateY(0);
+  opacity:0;
+}
+
+/* reveal class toggles carved text appear with light hit */
+.carved-wrap.reveal { opacity:1; transition: opacity .45s linear; }
+.carved-wrap.reveal .carved-text { transform: translateY(0); transition: transform .5s cubic-bezier(.2,.9,.3,1); }
+.carved-wrap.reveal .carved-text.carved-top { opacity:1; transition: opacity .6s ease .1s }
+
+/* camera zoom - scale the camera container to simulate moving into vault */
+.camera.zoomIn{ transform: scale(1.45); transition: transform 1.2s cubic-bezier(.2,.9,.3,1); }
+
+/* small finishing shimmer across the carved text to simulate light sweep */
+.carved-wrap.reveal::after{
+  content:"";
+  position:absolute;inset:-2px;
+  background: linear-gradient(120deg, rgba(255,255,255,0.00) 0%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0.00) 100%);
+  transform: translateX(-120%);
+  animation: sweep 1.1s ease 0.15s forwards;
+  pointer-events:none;
+}
+@keyframes sweep{ to{ transform: translateX(120%); } }
+
+/* initial state for camera content during scene */
+.carved-wrap, .vault-inside, .inner-light{ will-change: opacity, transform }
+
+/* responsive tweaks */
+@media (max-width:900px){
+  .camera{ width:380px;height:380px; }
+  .vault-door{ width:300px;height:300px; }
+  .vault-inside{ width:260px;height:260px; }
+  .carved-text{ font-size:22px; letter-spacing:4px; }
+}
+
+/* safety: hide overflow while transitioning out */
+body.removing{ overflow:hidden; }
