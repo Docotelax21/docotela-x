@@ -6,24 +6,23 @@
   <title>Members Only — Docotela X</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* small page-specific override for gate animation */
+    .member-box { display:flex; gap:12px; justify-content:center; align-items:center; margin-top:18px; }
+    .member-msg { margin-top:14px; color:var(--muted); min-height:20px; }
+    .member-msg.denied { color:#ff5b5b; font-weight:700; text-shadow:0 0 10px rgba(255,0,0,0.08); }
+    /* vault-open effect (temporary cinematic flash) */
+    body.vault-open { animation: vaultPulse 1.6s ease forwards; }
+    @keyframes vaultPulse { 0% { background:linear-gradient(180deg,#070708 0%, #0b0b0c 80%);} 60% { background: radial-gradient(circle at 50% 10%, rgba(255,215,0,0.12), transparent 25%);} 100% { background: radial-gradient(circle at 50% 10%, rgba(255,215,0,0.18), transparent 10%);} }
+    input.shake { animation:shake .7s; border-color:#ff5b5b; box-shadow:0 0 18px rgba(255,0,0,0.12); }
+  </style>
 </head>
 <body class="page">
   <header class="topbar">
-    <nav class="center-nav">
-      <a href="main.html">Home</a>
-      <span class="dot">—</span>
-      <a href="about.html">About</a>
-      <span class="dot">—</span>
-      <a href="contact.html">Contact</a>
-    </nav>
+    <nav class="center-nav"><a href="main.html">Home</a><span class="dot">—</span><a href="about.html">About</a><span class="dot">—</span><a href="contact.html">Contact</a></nav>
     <button id="hamburgerMembers" class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <div id="menuMembers" class="menu-panel" aria-hidden="true">
-      <a href="main.html">Home</a>
-      <a href="collections.html">Collections</a>
-      <a href="members.html">Members Only</a>
-      <a href="art-gallery.html">Art Gallery</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
+      <a href="main.html">Home</a><a href="collections.html">Collections</a><a href="membersonly.html">Members Only</a><a href="art-gallery.html">Art Gallery</a><a href="about.html">About</a><a href="contact.html">Contact</a>
     </div>
   </header>
 
@@ -41,38 +40,38 @@
   </main>
 
   <script>
-    // hamburger
-    const hbM = document.getElementById('hamburgerMembers');
-    const mpM = document.getElementById('menuMembers');
-    hbM.addEventListener('click', ()=> {
-      const e = hbM.getAttribute('aria-expanded') === 'true';
-      hbM.setAttribute('aria-expanded', !e); mpM.classList.toggle('open'); mpM.setAttribute('aria-hidden', e);
-    });
-    document.addEventListener('click', (ev)=> { if (!mpM.contains(ev.target) && !hbM.contains(ev.target)) { mpM.classList.remove('open'); hbM.setAttribute('aria-expanded','false'); mpM.setAttribute('aria-hidden','true'); } });
+    // hamburger members
+    (function(){
+      const hb = document.getElementById('hamburgerMembers');
+      const mp = document.getElementById('menuMembers');
+      hb.addEventListener('click', ()=>{ const e = hb.getAttribute('aria-expanded')==='true'; hb.setAttribute('aria-expanded',!e); mp.classList.toggle('open'); mp.setAttribute('aria-hidden', e); });
+      document.addEventListener('click',(ev)=>{ if(!mp.contains(ev.target) && !hb.contains(ev.target)){ mp.classList.remove('open'); hb.setAttribute('aria-expanded','false'); mp.setAttribute('aria-hidden','true'); }});
+    })();
 
     // password logic
-    document.getElementById('enterBtn').addEventListener('click', checkPassword);
-    document.getElementById('accessKey').addEventListener('keyup', (e)=> { if (e.key === 'Enter') checkPassword(); });
-
-    function checkPassword(){
-      const key = document.getElementById('accessKey').value.trim();
+    (function(){
+      const button = document.getElementById('enterBtn');
+      const input = document.getElementById('accessKey');
       const msg = document.getElementById('memberMsg');
-      const correct = 'memberson1y';
-      msg.className = 'member-msg';
-      if (key === correct){
-        document.body.classList.add('vault-open');
-        msg.textContent = 'Access granted — opening the vault...';
-        // cinematic timing then redirect
-        setTimeout(()=> { window.location.href = 'vault.html'; }, 2000);
-      } else {
+      const CORRECT = 'memberson1y';
+      function fail() {
         msg.textContent = 'Access denied';
-        msg.classList.add('denied');
-        // subtle visual cue (flash)
-        const input = document.getElementById('accessKey');
+        msg.className = 'member-msg denied';
         input.classList.add('shake');
         setTimeout(()=> input.classList.remove('shake'),700);
       }
-    }
+      function success() {
+        msg.textContent = 'Access granted — opening the vault...';
+        msg.className = 'member-msg';
+        document.body.classList.add('vault-open');
+        setTimeout(()=> { window.location.href = 'vault.html'; }, 1600);
+      }
+      button.addEventListener('click', ()=> {
+        const val = input.value.trim();
+        if (val === CORRECT) success(); else fail();
+      });
+      input.addEventListener('keyup', (e)=> { if (e.key === 'Enter') button.click(); });
+    })();
   </script>
 </body>
 </html>
