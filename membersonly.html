@@ -1,186 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Members Only | Docotela X</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Members Only — Docotela X</title>
+
+  <!-- ISOLATED STYLES: unique class names to avoid global conflicts -->
   <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      background-color: black;
-      color: gold;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      font-family: 'Cinzel', serif;
-      overflow: hidden;
-      position: relative;
+    :root{ --gold:#d8b84a; --bg:#000; --muted:#bdbdbd; --red:#ff5b5b; }
+    html,body{height:100%;margin:0;background:var(--bg);font-family:'Cinzel',serif;color:var(--gold);-webkit-font-smoothing:antialiased}
+    .doco-wrap{position:relative;height:100vh;display:flex;align-items:center;justify-content:center;flex-direction:column;overflow:hidden}
+    /* background depth */
+    .doco-bg{
+      position:absolute;inset:0;
+      background: radial-gradient(circle at 50% 20%, rgba(216,184,74,0.08), transparent 22%), radial-gradient(circle at 10% 80%, rgba(216,184,74,0.02), transparent 12%);
+      z-index:0;pointer-events:none;
     }
 
-    h1 {
-      font-size: 2.5em;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-      z-index: 10;
-      text-shadow: 0 0 20px gold, 0 0 40px gold;
+    /* Gates (unique IDs) */
+    #doco-left-gate, #doco-right-gate {
+      position:absolute;
+      top:0;
+      height:100%;
+      width:50%;
+      background: linear-gradient(90deg, rgba(30,30,30,1) 0%, rgba(24,24,24,1) 60%);
+      box-shadow: inset 0 0 40px rgba(216,184,74,0.08);
+      z-index:4;
+      transition: transform 2.6s cubic-bezier(.2,.9,.3,1);
+      will-change: transform;
     }
+    #doco-left-gate { left:0; border-right:2px solid var(--gold); transform: translateX(0); }
+    #doco-right-gate { right:0; border-left:2px solid var(--gold); transform: translateX(0); }
 
-    input {
-      background: none;
-      border: 1px solid gold;
-      color: gold;
-      padding: 10px 20px;
-      font-size: 1em;
-      text-align: center;
-      outline: none;
-      transition: 0.3s;
-      z-index: 10;
-    }
+    /* opened state */
+    .doco-open-left  { transform: translateX(-100%); }
+    .doco-open-right { transform: translateX(100%); }
 
-    input:focus {
-      box-shadow: 0 0 10px gold;
+    /* Foreground UI */
+    .doco-title { z-index:6; font-size:2.6rem; letter-spacing:6px; text-shadow:0 0 22px rgba(216,184,74,0.9); margin:0 0 18px; text-align:center }
+    .doco-controls { z-index:6; display:flex; gap:12px; align-items:center; justify-content:center; flex-direction:column; width:100%; max-width:420px; padding:0 20px }
+    .doco-controls input[type="password"]{
+      width:100%; padding:12px 14px; border-radius:8px; border:1px solid rgba(216,184,74,0.28); background:rgba(255,255,255,0.02); color:var(--gold);
+      text-align:center; font-size:1rem; outline:none; transition: box-shadow .25s;
     }
+    .doco-controls input[type="password"]:focus{ box-shadow:0 0 14px rgba(216,184,74,0.12) }
 
-    button {
-      background: gold;
-      border: none;
-      color: black;
-      font-weight: bold;
-      padding: 10px 25px;
-      margin-top: 20px;
-      cursor: pointer;
-      transition: 0.3s;
-      z-index: 10;
+    .doco-controls button{
+      padding:10px 22px; border-radius:8px; background:var(--gold); color:#080808; font-weight:700; border:0; cursor:pointer; transition: transform .18s;
     }
+    .doco-controls button:active{ transform:translateY(1px) }
 
-    button:hover {
-      background: black;
-      color: gold;
-      border: 1px solid gold;
-    }
+    .doco-msg{ z-index:6; margin-top:12px; min-height:20px; color:var(--muted); font-weight:600; }
 
-    /* GATE DESIGN */
-    .gate {
-      position: absolute;
-      width: 50%;
-      height: 100%;
-      top: 0;
-      background: linear-gradient(to right, #111, #222);
-      box-shadow: inset 0 0 30px gold;
-      transition: transform 3s ease-in-out;
-      z-index: 5;
-    }
+    .doco-msg.denied{ color:var(--red); text-shadow:0 0 10px rgba(255,90,90,0.08) }
 
-    .left-gate {
-      left: 0;
-      border-right: 2px solid gold;
-      transform-origin: left;
-      transform: translateX(0);
-    }
+    .doco-apply{ z-index:6; margin-top:10px; color:var(--gold); text-decoration:none; display:inline-block; opacity:0; transition:opacity .5s; }
+    .doco-apply.show{ opacity:1 }
 
-    .right-gate {
-      right: 0;
-      border-left: 2px solid gold;
-      transform-origin: right;
-      transform: translateX(0);
-    }
+    /* small screen */
+    @media (max-width:600px){ .doco-title{font-size:1.8rem} .doco-controls{max-width:320px} }
 
-    .open-left {
-      transform: translateX(-100%);
-    }
+    /* accessible focus */
+    input:focus, button:focus { outline:3px solid rgba(216,184,74,0.12); outline-offset:3px }
 
-    .open-right {
-      transform: translateX(100%);
-    }
-
-    .access-denied {
-      color: red;
-      font-size: 1.2em;
-      margin-top: 10px;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-      z-index: 10;
-    }
-
-    .access-denied.show {
-      opacity: 1;
-    }
-
-    a {
-      color: gold;
-      margin-top: 15px;
-      text-decoration: none;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-      z-index: 10;
-    }
-
-    a.show {
-      opacity: 1;
-    }
-
-    /* BACKGROUND PARTICLES */
-    @keyframes shimmer {
-      0% { background-position: 0 0; }
-      100% { background-position: 1000px 0; }
-    }
-
-    .background {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at center, rgba(255,215,0,0.1) 0%, transparent 70%);
-      animation: shimmer 20s linear infinite;
-      z-index: 1;
-    }
-
-    .fade-out {
-      animation: fadeOut 2s forwards;
-    }
-
-    @keyframes fadeOut {
-      to {
-        opacity: 0;
-        transform: scale(1.05);
-      }
-    }
+    /* debug visually if needed */
+    .doco-debug { position:fixed; left:8px; bottom:8px; font-size:12px; color:rgba(255,255,255,0.3); z-index:9999; font-family:monospace }
   </style>
 </head>
 <body>
-  <div class="background"></div>
-  <div class="gate left-gate"></div>
-  <div class="gate right-gate"></div>
+  <div class="doco-wrap" role="main" aria-labelledby="docoTitle">
+    <div class="doco-bg" aria-hidden="true"></div>
 
-  <h1>Members Only Access</h1>
-  <input type="password" id="password" placeholder="Enter Access Code">
-  <button onclick="checkPassword()">Enter</button>
-  <div class="access-denied" id="denied">Access Denied</div>
-  <a href="apply.html" id="apply-link">Apply for Membership</a>
+    <!-- GATES -->
+    <div id="doco-left-gate" aria-hidden="true"></div>
+    <div id="doco-right-gate" aria-hidden="true"></div>
+
+    <!-- Foreground -->
+    <h1 id="docoTitle" class="doco-title">Members Only</h1>
+
+    <div class="doco-controls" aria-live="polite">
+      <input id="docoInput" type="password" placeholder="Access Key" aria-label="Access Key"/>
+      <button id="docoBtn" type="button">Enter</button>
+      <div id="docoMsg" class="doco-msg" role="status"></div>
+      <a id="docoApply" class="doco-apply" href="apply.html">Apply for Membership</a>
+    </div>
+
+    <div id="docoDebug" class="doco-debug" aria-hidden="true"></div>
+  </div>
 
   <script>
-    function checkPassword() {
-      const password = document.getElementById('password').value;
-      const denied = document.getElementById('denied');
-      const apply = document.getElementById('apply-link');
-      const leftGate = document.querySelector('.left-gate');
-      const rightGate = document.querySelector('.right-gate');
+    (function(){
+      // references
+      const BTN = document.getElementById('docoBtn');
+      const INPUT = document.getElementById('docoInput');
+      const MSG = document.getElementById('docoMsg');
+      const APPLY = document.getElementById('docoApply');
+      const L = document.getElementById('doco-left-gate');
+      const R = document.getElementById('doco-right-gate');
+      const DBG = document.getElementById('docoDebug');
 
-      if (password === "memberson1y") {
-        leftGate.classList.add('open-left');
-        rightGate.classList.add('open-right');
-        document.body.classList.add('fade-out');
+      const PASSWORD = 'memberson1y';
+      const REDIRECT = 'exclusive.html'; // change if your hidden page is named differently
 
-        setTimeout(() => {
-          window.location.href = "exclusive.html";
-        }, 3500);
-      } else {
-        denied.classList.add('show');
-        apply.classList.add('show');
+      // helper for debug log (visible)
+      function logDebug(s){ try{ DBG.textContent = s } catch(e){} console.log('[DOCO-MEMBERS]', s) }
+
+      function showDenied(){
+        MSG.textContent = 'Access denied';
+        MSG.classList.add('denied');
+        APPLY.classList.add('show');
+        INPUT.classList.add('shake');
+        setTimeout(()=> INPUT.classList.remove('shake'), 700);
+        logDebug('Denied: wrong password');
       }
-    }
+
+      function openGatesThenRedirect(){
+        logDebug('Password OK — opening gates');
+        // ensure gates visible & animate
+        L.classList.add('doco-open-left');
+        R.classList.add('doco-open-right');
+
+        // subtle UI fade
+        document.body.style.transition = 'opacity 1.2s ease';
+        setTimeout(()=> { document.body.style.opacity = '0' }, 1200);
+
+        // redirect after animation completes
+        setTimeout(()=> {
+          window.location.href = REDIRECT;
+        }, 2600); // matches CSS transition 2.6s
+      }
+
+      function check(){
+        const val = INPUT.value.trim();
+        MSG.classList.remove('denied');
+        MSG.textContent = '';
+        APPLY.classList.remove('show');
+        if (!val){ MSG.textContent = ''; logDebug('Empty input'); return; }
+
+        if (val === PASSWORD){
+          MSG.textContent = 'Access granted — opening the vault...';
+          MSG.classList.remove('denied');
+          openGatesThenRedirect();
+        } else {
+          showDenied();
+        }
+      }
+
+      // events
+      BTN.addEventListener('click', check);
+      INPUT.addEventListener('keyup', (e) => { if (e.key === 'Enter') check(); });
+
+      // initial debug note
+      logDebug('Members page loaded. Ready.');
+    })();
   </script>
 </body>
 </html>
