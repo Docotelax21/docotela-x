@@ -1,145 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About | Docotela X</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    /* --- General Setup --- */
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: black;
-      color: white;
-      font-family: 'Cormorant Garamond', serif;
-      overflow-x: hidden;
-      min-height: 100vh;
-      position: relative;
-    }
-
-    /* --- Navbar --- */
-    nav {
-      width: 100%;
-      text-align: center;
-      position: fixed;
-      top: 0;
-      left: 0;
-      background: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(10px);
-      padding: 20px 0;
-      z-index: 10;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 25px;
-      font-size: 1.1em;
-      letter-spacing: 1.5px;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: gold;
-    }
-
-    /* --- Floating cinematic Xs --- */
-    .floating-x {
-      position: absolute;
-      color: rgba(255, 255, 255, 0.05);
-      font-weight: bold;
-      font-size: 12vw;
-      pointer-events: none;
-      z-index: 1;
-      animation: floatX 30s infinite ease-in-out alternate;
-    }
-
-    .x1 { top: 10%; left: 15%; animation-delay: 0s; }
-    .x2 { top: 40%; left: 70%; animation-delay: 5s; font-size: 10vw; }
-    .x3 { top: 70%; left: 30%; animation-delay: 2s; font-size: 14vw; }
-    .x4 { top: 85%; left: 80%; animation-delay: 8s; font-size: 9vw; }
-
-    @keyframes floatX {
-      0% { transform: translate(0, 0) rotate(0deg); opacity: 0.08; }
-      25% { transform: translate(50px, -40px) rotate(20deg); opacity: 0.12; }
-      50% { transform: translate(-60px, 40px) rotate(-10deg); opacity: 0.15; }
-      75% { transform: translate(40px, 60px) rotate(25deg); opacity: 0.1; }
-      100% { transform: translate(-30px, -50px) rotate(0deg); opacity: 0.08; }
-    }
-
-    /* --- About Section --- */
-    .about-content {
-      z-index: 2;
-      position: relative;
-      text-align: center;
-      padding: 18vh 10vw;
-      animation: fadeUp 2s ease forwards;
-      opacity: 0;
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    h1 {
-      font-size: 3em;
-      letter-spacing: 2px;
-      margin-bottom: 1rem;
-      color: white;
-    }
-
-    p {
-      font-size: 1.25em;
-      line-height: 1.8em;
-      color: rgba(255, 255, 255, 0.8);
-      max-width: 800px;
-      margin: 15px auto;
-    }
-
-    /* --- Responsive --- */
-    @media (max-width: 768px) {
-      h1 { font-size: 2em; }
-      p { font-size: 1.05em; }
-      .floating-x { font-size: 18vw; }
-    }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About — Docotela X</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="page">
+  <header class="topbar">
+    <nav class="center-nav">
+      <a href="main.html">Home</a>
+      <span class="dot">—</span>
+      <a href="about.html">About</a>
+      <span class="dot">—</span>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <button id="hamburgerAbout" class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <div id="menuAbout" class="menu-panel" aria-hidden="true">
+      <a href="main.html">Home</a>
+      <a href="collections.html">Collections</a>
+      <a href="members.html">Members Only</a>
+      <a href="art-gallery.html">Art Gallery</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </header>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="collections.html">Collections</a>
-    <a href="about.html" style="color:gold;">About</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+  <main class="content cinematic-bg">
+    <article class="about-article">
+      <h1 class="page-title">About Docotela X</h1>
+      <p class="lead">
+        Docotela X is the feeling of freedom translated into cloth and canvas — a careful tension between discipline and escape.
+        Each collection is a quiet rebellion: limited, handcrafted, honest.
+      </p>
 
-  <!-- Floating cinematic Xs -->
-  <div class="floating-x x1">X</div>
-  <div class="floating-x x2">X</div>
-  <div class="floating-x x3">X</div>
-  <div class="floating-x x4">X</div>
+      <section class="poetic">
+        <p>
+          We craft with patience. We edit by instinct. In a world of noise, Docotela X chooses silence; the silence that makes room
+          for a line, for a fold, for an echo of the life lived beneath the surface. Our garments are private ceremonies — designed to be
+          worn like a second skin of conviction.
+        </p>
 
-  <!-- About Content -->
-  <div class="about-content">
-    <h1>About Docotela X</h1>
-    <p>
-      Docotela X is a story — not told through words, but through creation.  
-      It was born from the quiet rebellion of the human spirit, from a desire  
-      to wear emotion, truth, and freedom in every piece that breathes.
-    </p>
-    <p>
-      Each collection is a universe — handcrafted, imperfect, and profoundly real.  
-      We are not inspired by perfection; we are inspired by what it means to feel.  
-      To build something honest, unfiltered, and alive.
-    </p>
-    <p>
-      The “X” stands for the unknown — the intersection of art and emotion.  
-      It reminds us that creation begins where limits end.  
-      This is Docotela X — where art becomes form, and form becomes freedom.
-    </p>
-  </div>
+        <p>
+          The work is small-batch, the details are deliberate. The art we make and the clothing we shape are not for everyone — they are for
+          the few who return to the same quiet place again and again.
+        </p>
+      </section>
+    </article>
+  </main>
 
+  <script>
+    // hamburger behavior copy
+    const hb = document.getElementById('hamburgerAbout');
+    const mp = document.getElementById('menuAbout');
+    hb.addEventListener('click', () => {
+      const e = hb.getAttribute('aria-expanded') === 'true';
+      hb.setAttribute('aria-expanded', !e);
+      mp.classList.toggle('open');
+      mp.setAttribute('aria-hidden', e);
+    });
+    document.addEventListener('click', (ev) => {
+      if (!mp.contains(ev.target) && !hb.contains(ev.target)) {
+        mp.classList.remove('open');
+        hb.setAttribute('aria-expanded','false');
+        mp.setAttribute('aria-hidden','true');
+      }
+    });
+  </script>
 </body>
 </html>
