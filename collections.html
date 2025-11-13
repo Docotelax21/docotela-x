@@ -9,64 +9,49 @@
 </head>
 <body class="page">
   <header class="topbar">
-    <nav class="center-nav">
-      <a href="main.html">Home</a>
-      <span class="dot">—</span>
-      <a href="about.html">About</a>
-      <span class="dot">—</span>
-      <a href="contact.html">Contact</a>
-    </nav>
+    <nav class="center-nav"><a href="main.html">Home</a><span class="dot">—</span><a href="about.html">About</a><span class="dot">—</span><a href="contact.html">Contact</a></nav>
     <button id="hamburgerColl" class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <div id="menuColl" class="menu-panel" aria-hidden="true">
-      <a href="main.html">Home</a>
-      <a href="collections.html">Collections</a>
-      <a href="members.html">Members Only</a>
-      <a href="art-gallery.html">Art Gallery</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
+      <a href="main.html">Home</a><a href="collections.html">Collections</a><a href="membersonly.html">Members Only</a><a href="art-gallery.html">Art Gallery</a><a href="about.html">About</a><a href="contact.html">Contact</a>
     </div>
   </header>
 
   <main class="content cinematic-bg">
     <h1 class="page-title">Limited Collections</h1>
-    <p class="lead centered">Each collection is exclusive — ten handcrafted pieces designed to be rare and meaningful.</p>
+    <p class="lead centered fade-in">Each collection is exclusive — handcrafted, limited, and made to be felt.</p>
 
     <div class="collection-grid">
-      <article class="card">
+      <article class="card fade-in">
         <div class="card-image" style="background-image:url('');"></div>
         <h3>1 — The Feeling of Freedom</h3>
-        <p>Inspired by movement, light, and escape.</p>
+        <p>Inspired by movement, light and escape.</p>
       </article>
 
-      <article class="card">
+      <article class="card fade-in">
         <div class="card-image" style="background-image:url('');"></div>
         <h3>2 — 4 Perspectives 1 Story</h3>
-        <p>Four artists, one shared idea: the same story told differently.</p>
+        <p>Four artists, one shared idea.</p>
       </article>
 
-      <article class="card">
+      <article class="card fade-in">
         <div class="card-image" style="background-image:url('');"></div>
         <h3>3 — The 8deity</h3>
-        <p>Eight pieces. Eight visions. One completed set.</p>
+        <p>Eight exclusive pieces — the limited set.</p>
       </article>
     </div>
-
-    <p class="centered">For inquiries about availability, please contact us.</p>
   </main>
 
   <script>
-    const hbC = document.getElementById('hamburgerColl');
-    const mpC = document.getElementById('menuColl');
-    hbC.addEventListener('click', ()=> {
-      const e = hbC.getAttribute('aria-expanded')==='true';
-      hbC.setAttribute('aria-expanded', !e);
-      mpC.classList.toggle('open'); mpC.setAttribute('aria-hidden', e);
-    });
-    document.addEventListener('click', (ev)=> {
-      if (!mpC.contains(ev.target) && !hbC.contains(ev.target)) {
-        mpC.classList.remove('open'); hbC.setAttribute('aria-expanded','false'); mpC.setAttribute('aria-hidden','true');
-      }
-    });
+    // hamburger collections
+    (function(){
+      const hb = document.getElementById('hamburgerColl');
+      const mp = document.getElementById('menuColl');
+      hb.addEventListener('click', ()=>{ const e = hb.getAttribute('aria-expanded')==='true'; hb.setAttribute('aria-expanded',!e); mp.classList.toggle('open'); mp.setAttribute('aria-hidden', e); });
+      document.addEventListener('click',(ev)=>{ if(!mp.contains(ev.target) && !hb.contains(ev.target)){ mp.classList.remove('open'); hb.setAttribute('aria-expanded','false'); mp.setAttribute('aria-hidden','true'); }});
+    })();
+
+    // scroll reveal
+    (function(){ const els=document.querySelectorAll('.fade-in'); const obs=new IntersectionObserver((entries)=>{entries.forEach(en=>{ if(en.isIntersecting) en.target.classList.add('visible'); });},{threshold:0.12}); els.forEach(e=>obs.observe(e)); })();
   </script>
 </body>
 </html>
