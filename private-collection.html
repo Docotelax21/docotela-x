@@ -20,21 +20,40 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Vault Door Animation */
+    /* Vault Door Container */
     .vault-door {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at center, #222 0%, #000 80%);
+      background: radial-gradient(circle at center, #111 0%, #000 85%);
       display: flex;
       justify-content: center;
       align-items: center;
       z-index: 10;
       animation: openVault 5s ease-in-out forwards;
+      overflow: hidden;
     }
 
+    /* Golden energy pulse behind door */
+    .energy {
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 215, 0, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
+      animation: pulseEnergy 3s ease-in-out infinite;
+      z-index: 1;
+      filter: blur(60px);
+    }
+
+    @keyframes pulseEnergy {
+      0% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.5; }
+    }
+
+    /* Vault doors */
     .vault-door::before, .vault-door::after {
       content: '';
       position: absolute;
@@ -45,6 +64,7 @@
       border: 2px solid gold;
       transition: transform 3s ease-in-out;
       z-index: 9;
+      box-shadow: inset 0 0 60px rgba(255, 215, 0, 0.2);
     }
 
     .vault-door::before { left: 0; transform-origin: left center; }
@@ -64,12 +84,14 @@
       transform: perspective(1000px) rotateY(110deg);
     }
 
-    /* Content inside */
+    /* Main Content */
     .content {
       opacity: 0;
       text-align: center;
       padding: 60px 20px;
       animation: fadeContent 2s ease-in-out 4.5s forwards;
+      position: relative;
+      z-index: 1;
     }
 
     @keyframes fadeContent {
@@ -141,29 +163,33 @@
 <body>
 
   <!-- Vault Door Animation -->
-  <div class="vault-door" id="vault"></div>
+  <div class="vault-door" id="vault">
+    <div class="energy"></div>
+  </div>
 
+  <!-- Private Collection Content -->
   <div class="content">
     <h1>Private Collection</h1>
-    <p>Welcome to the unseen world of <strong>Docotela X</strong> — a space reserved for those who move beyond the ordinary. Every piece you see here tells a story that was never meant for the public eye.</p>
+    <p>Welcome to the unseen world of <strong>Docotela X</strong> — a sanctuary of creation beyond the surface.  
+    Each piece here is a whisper from our archives, a reflection of silence, art, and freedom reserved for only a few.</p>
 
     <div class="exclusive-items">
       <div class="item">
         <img src="https://via.placeholder.com/300x400/000000/FFD700?text=Unreleased+01" alt="Unreleased Drop 01">
         <h3>The Hidden Flame</h3>
-        <p>From the Lost in the Art of Chasing Freedom archives.</p>
+        <p>From the <em>Lost in the Art of Chasing Freedom</em> archives.</p>
       </div>
 
       <div class="item">
         <img src="https://via.placeholder.com/300x400/000000/FFD700?text=Unreleased+02" alt="Unreleased Drop 02">
         <h3>Echoes of Emptiness</h3>
-        <p>An unreleased concept that defines the balance of chaos and calm.</p>
+        <p>An unreleased concept balancing chaos and calm in perfect stillness.</p>
       </div>
 
       <div class="item">
         <img src="https://via.placeholder.com/300x400/000000/FFD700?text=Unreleased+03" alt="Unreleased Drop 03">
         <h3>Gold in Silence</h3>
-        <p>Luxury meets introspection — a silent masterpiece handcrafted for collectors.</p>
+        <p>Luxury meets introspection — crafted for collectors who value stillness.</p>
       </div>
     </div>
 
@@ -177,9 +203,9 @@
     const vault = document.getElementById('vault');
     setTimeout(() => {
       vault.classList.add('open');
-    }, 1000);
+    }, 1200);
 
-    // Remove vault element after animation
+    // Remove vault after animation
     setTimeout(() => {
       vault.style.display = 'none';
     }, 5000);
