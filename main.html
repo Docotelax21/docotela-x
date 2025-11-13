@@ -8,13 +8,10 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body class="page">
-  <!-- Top center nav + hamburger top-right -->
   <header class="topbar">
-    <nav class="center-nav">
-      <a href="main.html">Home</a>
-      <span class="dot">—</span>
-      <a href="about.html">About</a>
-      <span class="dot">—</span>
+    <nav class="center-nav" aria-label="Primary">
+      <a href="main.html">Home</a><span class="dot">—</span>
+      <a href="about.html">About</a><span class="dot">—</span>
       <a href="contact.html">Contact</a>
     </nav>
 
@@ -25,7 +22,7 @@
     <div id="menuPanel" class="menu-panel" aria-hidden="true">
       <a href="main.html">Home</a>
       <a href="collections.html">Collections</a>
-      <a href="members.html">Members Only</a>
+      <a href="membersonly.html">Members Only</a>
       <a href="art-gallery.html">Art Gallery</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
@@ -43,24 +40,25 @@
   <footer class="site-footer">© 2025 Docotela X — All Rights Reserved</footer>
 
   <script>
-    // hamburger toggle
-    const ham = document.getElementById('hamburger');
-    const panel = document.getElementById('menuPanel');
-    ham.addEventListener('click', () => {
-      const expanded = ham.getAttribute('aria-expanded') === 'true';
-      ham.setAttribute('aria-expanded', !expanded);
-      panel.classList.toggle('open');
-      panel.setAttribute('aria-hidden', expanded);
-    });
-
-    // Close panel on outside click (mobile)
-    document.addEventListener('click', (e) => {
-      if (!panel.contains(e.target) && !ham.contains(e.target)) {
-        panel.classList.remove('open');
-        ham.setAttribute('aria-expanded', 'false');
-        panel.setAttribute('aria-hidden', 'true');
-      }
-    });
+    // hamburger toggle (main.html)
+    (function(){
+      const ham = document.getElementById('hamburger');
+      const panel = document.getElementById('menuPanel');
+      ham.addEventListener('click', (e) => {
+        const expanded = ham.getAttribute('aria-expanded') === 'true';
+        ham.setAttribute('aria-expanded', !expanded);
+        panel.classList.toggle('open');
+        panel.setAttribute('aria-hidden', expanded);
+        e.stopPropagation();
+      });
+      document.addEventListener('click', (e) => {
+        if (!panel.contains(e.target) && !ham.contains(e.target)) {
+          panel.classList.remove('open');
+          ham.setAttribute('aria-expanded','false');
+          panel.setAttribute('aria-hidden','true');
+        }
+      });
+    })();
   </script>
 </body>
 </html>
