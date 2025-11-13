@@ -1,263 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Docotela X | The Feeling of Freedom</title>
-  <style>
-    /* Base Styling */
-      margin: 0;
-      padding: 0;
-      background: radial-gradient(circle at center, #111 0%, #000 100%);
-      color: white;
-      font-family: 'Poppins', sans-serif;
-      overflow-x: hidden;
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeUp 2s ease forwards;
-    }
-
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Navbar */
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      padding: 15px 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(8px);
-      z-index: 1000;
-    }
-
-    .navbar-center {
-      display: flex;
-      gap: 30px;
-    }
-
-    .navbar-center a {
-      color: white;
-      text-decoration: none;
-      font-size: 16px;
-      font-weight: 400;
-      transition: color 0.3s;
-    }
-
-    .navbar-center a:hover {
-      color: gold;
-    }
-
-    /* Hamburger */
-    .hamburger {
-      position: absolute;
-      top: 18px;
-      right: 25px;
-      width: 25px;
-      height: 20px;
-      display: none;
-      flex-direction: column;
-      justify-content: space-between;
-      cursor: pointer;
-      z-index: 1100;
-    }
-
-    .hamburger div {
-      width: 100%;
-      height: 3px;
-      background: white;
-      transition: all 0.3s ease;
-    }
-
-    /* Dropdown Menu */
-    .menu {
-      display: none;
-      position: absolute;
-      top: 65px;
-      right: 20px;
-      background: rgba(0, 0, 0, 0.95);
-      border: 1px solid gold;
-      border-radius: 6px;
-      padding: 20px;
-      flex-direction: column;
-      gap: 15px;
-      text-align: right;
-      z-index: 999;
-    }
-
-    .menu.active {
-      display: flex;
-      animation: fadeIn 0.5s ease;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .menu a {
-      color: white;
-      text-decoration: none;
-      font-size: 16px;
-      transition: color 0.3s;
-    }
-
-    .menu a:hover {
-      color: gold;
-    }
-
-    /* Hero Section */
-    .hero {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 0 20px;
-    }
-
-    .hero h1 {
-      font-size: clamp(36px, 8vw, 72px);
-      font-weight: 700;
-      color: gold;
-      letter-spacing: 4px;
-      text-shadow: 0 0 25px gold;
-      margin-bottom: 15px;
-      white-space: nowrap;
-    }
-
-    .hero p {
-      font-size: clamp(14px, 2vw, 18px);
-      font-weight: 300;
-      margin-bottom: 30px;
-      color: white;
-    }
-
-    .enter-btn {
-      border: 1px solid gold;
-      padding: 12px 25px;
-      text-transform: uppercase;
-      color: white;
-      font-family: 'Poppins', sans-serif;
-      font-size: 15px;
-      letter-spacing: 1px;
-      text-decoration: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .enter-btn:hover {
-      background-color: gold;
-      color: black;
-      box-shadow: 0 0 20px gold;
-    }
-
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 13px;
-      color: #999;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      background: transparent;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .navbar-center {
-        display: none;
-      }
-      .hamburger {
-        display: flex;
-      }
-      .hero h1 {
-        font-size: 42px;
-        letter-spacing: 2px;
-        text-align: center;
-      }
-      .hero p {
-        font-size: 16px;
-      }
-      .enter-btn {
-        font-size: 14px;
-        padding: 10px 20px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .hero h1 {
-        font-size: 34px;
-      }
-      .enter-btn {
-        font-size: 13px;
-        padding: 9px 18px;
-      }
-    }
-
-    @media (min-width: 769px) {
-      .hamburger {
-        display: none;
-      }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-
-  <!-- Navbar -->
-  <nav class="navbar">
-    <div class="navbar-center">
+<body class="page">
+  <!-- Top center nav + hamburger top-right -->
+  <header class="topbar">
+    <nav class="center-nav">
       <a href="main.html">Home</a>
+      <span class="dot">—</span>
       <a href="about.html">About</a>
+      <span class="dot">—</span>
       <a href="contact.html">Contact</a>
-    </div>
+    </nav>
 
-    <div class="hamburger" onclick="toggleMenu()">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
+    <button id="hamburger" class="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
 
-    <div class="menu" id="menu">
+    <div id="menuPanel" class="menu-panel" aria-hidden="true">
       <a href="main.html">Home</a>
       <a href="collections.html">Collections</a>
       <a href="members.html">Members Only</a>
-      <a href="gallery.html">Art Gallery</a>
+      <a href="art-gallery.html">Art Gallery</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </div>
-  </nav>
+  </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <h1>DOCOTELA X</h1>
-    <p>The Feeling of Freedom</p>
-    <a href="collections.html" class="enter-btn">VIEW COLLECTIONS</a>
-  </section>
+  <main class="hero">
+    <div class="hero-inner">
+      <div class="logo-glow">DOCOTELA X</div>
+      <h2 class="hero-sub">Limited collections. Handcrafted art</h2>
+      <a href="collections.html" class="cta">Enter the Gallery</a>
+    </div>
+  </main>
 
-  <!-- Footer -->
-  <footer>
-    © 2025 Docotela X — All Rights Reserved
-  </footer>
+  <footer class="site-footer">© 2025 Docotela X — All Rights Reserved</footer>
 
   <script>
-    function toggleMenu() {
-      document.getElementById("menu").classList.toggle("active");
-    }
+    // hamburger toggle
+    const ham = document.getElementById('hamburger');
+    const panel = document.getElementById('menuPanel');
+    ham.addEventListener('click', () => {
+      const expanded = ham.getAttribute('aria-expanded') === 'true';
+      ham.setAttribute('aria-expanded', !expanded);
+      panel.classList.toggle('open');
+      panel.setAttribute('aria-hidden', expanded);
+    });
+
+    // Close panel on outside click (mobile)
+    document.addEventListener('click', (e) => {
+      if (!panel.contains(e.target) && !ham.contains(e.target)) {
+        panel.classList.remove('open');
+        ham.setAttribute('aria-expanded', 'false');
+        panel.setAttribute('aria-hidden', 'true');
+      }
+    });
   </script>
 </body>
 </html>
