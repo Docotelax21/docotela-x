@@ -3,37 +3,71 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Docotela X — Intro</title>
+    <title>Docotela X Intro</title>
 
     <style>
         body {
             margin: 0;
+            padding: 0;
             background: black;
             overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
 
+        /* VIDEO FILL */
         #introVideo {
-            width: 100vw;
-            height: 100vh;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
+            opacity: 1;
+            animation: fadeOutVideo 2s ease forwards;
+            animation-delay: 6s; /* Fade starts after 6 seconds */
+        }
+
+        @keyframes fadeOutVideo {
+            to { opacity: 0; }
+        }
+
+        /* LOGO FADE + GLOW */
+        #logo {
+            position: absolute;
+            width: 260px;
+            opacity: 0;
+            filter: drop-shadow(0 0 12px rgba(255,215,80,0.6));
+            animation: logoFade 3s ease forwards, logoPulse 4s ease infinite;
+            animation-delay: 5.5s;
+        }
+
+        @keyframes logoFade {
+            to { opacity: 1; }
+        }
+
+        @keyframes logoPulse {
+            0% { filter: drop-shadow(0 0 6px rgba(255,215,80,0.4)); }
+            50% { filter: drop-shadow(0 0 16px rgba(255,215,80,0.9)); }
+            100% { filter: drop-shadow(0 0 6px rgba(255,215,80,0.4)); }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- CINEMATIC INTRO VIDEO -->
-    <video id="introVideo" autoplay playsinline muted>
-        <source src="vaultdoor.mp4" type="video/mp4">
+    <!-- Your vault video -->
+    <video id="introVideo" autoplay muted playsinline>
+        <source src="vaultdoor.mp4" type="video/mp4" />
     </video>
 
-    <script>
-        const video = document.getElementById("introVideo");
+    <!-- Logo fade-in -->
+    <img id="logo" src="docotelax-logo.png" />
 
-        // After video finishes, auto-load homepage
-        video.addEventListener("ended", () => {
+    <script>
+        // After video + fade animations, load homepage
+        setTimeout(() => {
             window.location.href = "home.html";
-        });
+        }, 9000); // 9 seconds total
     </script>
 
 </body>
