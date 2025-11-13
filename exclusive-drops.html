@@ -12,16 +12,38 @@
       color: gold;
       font-family: 'Poppins', sans-serif;
       overflow-x: hidden;
+      position: relative;
+      animation: pageFade 1.5s ease-in-out;
     }
 
-    .fade-in {
-      opacity: 0;
-      animation: fadeIn 2s ease forwards;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
+    @keyframes pageFade {
+      from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Floating X Animation */
+    .floating-x {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .floating-x span {
+      position: absolute;
+      color: rgba(255, 215, 0, 0.08);
+      font-size: 10rem;
+      font-weight: 700;
+      animation: floatX 20s linear infinite;
+    }
+
+    @keyframes floatX {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0.4; }
+      50% { opacity: 0.8; }
+      100% { transform: translateY(-10vh) rotate(360deg); opacity: 0.4; }
     }
 
     header {
@@ -30,6 +52,8 @@
       font-size: 2.5em;
       letter-spacing: 3px;
       text-shadow: 0 0 25px gold;
+      z-index: 1;
+      position: relative;
     }
 
     .drops-container {
@@ -38,6 +62,8 @@
       justify-content: center;
       gap: 40px;
       padding: 20px;
+      z-index: 1;
+      position: relative;
     }
 
     .drop {
@@ -61,19 +87,57 @@
       transform: scale(1.05);
     }
 
+    .drop h2 {
+      margin-bottom: 10px;
+    }
+
+    a {
+      text-decoration: none;
+      color: gold;
+      transition: 0.3s;
+    }
+
+    a:hover {
+      color: white;
+    }
+
     footer {
       text-align: center;
       padding: 40px;
       color: #d4af37;
       font-size: 0.9em;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Fade transition links */
+    .fade-link {
+      cursor: pointer;
+    }
+
+    .fade-out {
+      animation: fadeOut 1s ease-in-out forwards;
+    }
+
+    @keyframes fadeOut {
+      from { opacity: 1; transform: translateY(0); }
+      to { opacity: 0; transform: translateY(20px); }
     }
   </style>
 </head>
 <body>
 
-  <header class="fade-in">Unreleased Drops</header>
+  <!-- Floating X Background -->
+  <div class="floating-x">
+    <span style="left:10%; animation-delay:0s;">X</span>
+    <span style="left:40%; animation-delay:5s;">X</span>
+    <span style="left:70%; animation-delay:10s;">X</span>
+    <span style="left:85%; animation-delay:15s;">X</span>
+  </div>
 
-  <div class="drops-container fade-in">
+  <header>Unreleased Drops</header>
+
+  <div class="drops-container">
     <div class="drop">
       <h2>Project Freedom</h2>
       <p>A handcrafted limited edition jacket — preview for insiders only.</p>
@@ -88,7 +152,22 @@
     </div>
   </div>
 
-  <footer>© 2025 Docotela X — Confidential Vault Access</footer>
+  <footer>
+    <a href="exclusive-art.html" class="fade-link">Next: Exclusive Art →</a>
+  </footer>
+
+  <script>
+    const fadeLinks = document.querySelectorAll('.fade-link');
+    fadeLinks.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        document.body.classList.add('fade-out');
+        setTimeout(() => {
+          window.location = link.getAttribute('href');
+        }, 1000);
+      });
+    });
+  </script>
 
 </body>
 </html>
