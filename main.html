@@ -1,64 +1,47 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Docotela X | The Feeling of Freedom</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <title>Docotela X — Home</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body class="page">
-  <header class="topbar">
-    <nav class="center-nav" aria-label="Primary">
-      <a href="main.html">Home</a><span class="dot">—</span>
-      <a href="about.html">About</a><span class="dot">—</span>
-      <a href="contact.html">Contact</a>
-    </nav>
-
-    <button id="hamburger" class="hamburger" aria-label="Open menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-
-    <div id="menuPanel" class="menu-panel" aria-hidden="true">
+<body>
+  <!-- top nav (centered) -->
+  <nav class="top-nav">
+    <div class="nav-center">
       <a href="main.html">Home</a>
-      <a href="collections.html">Collections</a>
-      <a href="membersonly.html">Members Only</a>
-      <a href="art-gallery.html">Art Gallery</a>
       <a href="about.html">About</a>
+      <a href="collections.html">Collections</a>
+      <a href="members.html">Members Only</a>
       <a href="contact.html">Contact</a>
     </div>
-  </header>
+    <button id="menuBtn" class="hamburger" aria-label="Open menu">☰</button>
+  </nav>
 
+  <!-- immersive hero with subtle logo watermark in background -->
   <main class="hero">
-    <div class="hero-inner">
-      <div class="logo-glow">DOCOTELA X</div>
-      <h2 class="hero-sub">Limited collections. Handcrafted art</h2>
-      <a href="collections.html" class="cta">Enter the Gallery</a>
+    <div class="hero-bg">
+      <!-- big faint logo as background watermark -->
+      <div class="bg-logo">D</div>
+    </div>
+
+    <div class="hero-content">
+      <h1>DOCOTELA X</h1>
+      <p>Limited Collections. Handcrafted Art.</p>
+      <button class="enter-btn" onclick="location.href='collections.html'">ENTER THE GALLERY</button>
     </div>
   </main>
 
-  <footer class="site-footer">© 2025 Docotela X — All Rights Reserved</footer>
+  <footer class="site-footer">
+    <p>© Docotela X — All rights reserved</p>
+  </footer>
 
   <script>
-    // hamburger toggle (main.html)
-    (function(){
-      const ham = document.getElementById('hamburger');
-      const panel = document.getElementById('menuPanel');
-      ham.addEventListener('click', (e) => {
-        const expanded = ham.getAttribute('aria-expanded') === 'true';
-        ham.setAttribute('aria-expanded', !expanded);
-        panel.classList.toggle('open');
-        panel.setAttribute('aria-hidden', expanded);
-        e.stopPropagation();
-      });
-      document.addEventListener('click', (e) => {
-        if (!panel.contains(e.target) && !ham.contains(e.target)) {
-          panel.classList.remove('open');
-          ham.setAttribute('aria-expanded','false');
-          panel.setAttribute('aria-hidden','true');
-        }
-      });
-    })();
+    // small accessibility / menu behavior (so menu button not broken)
+    document.getElementById('menuBtn').addEventListener('click', ()=> {
+      alert('Menu will open here — we can add full menu next.');
+    });
   </script>
 </body>
 </html>
