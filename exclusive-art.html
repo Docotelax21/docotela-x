@@ -7,72 +7,166 @@
   <style>
     body {
       margin: 0;
-      background: radial-gradient(circle at center, #000, #0a0a0a 70%);
+      padding: 0;
+      background: black;
       color: gold;
       font-family: 'Poppins', sans-serif;
-      text-align: center;
-      overflow: hidden;
+      overflow-x: hidden;
+      position: relative;
+      animation: pageFade 1.5s ease-in-out;
     }
 
-    h1 {
-      margin-top: 80px;
-      font-size: 2.8em;
-      text-shadow: 0 0 25px gold;
-      animation: fadeDown 2s ease forwards;
-    }
-
-    @keyframes fadeDown {
-      from { opacity: 0; transform: translateY(-30px); }
+    @keyframes pageFade {
+      from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
+    /* Floating X Animation */
+    .floating-x {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .floating-x span {
+      position: absolute;
+      color: rgba(255, 215, 0, 0.08);
+      font-size: 10rem;
+      font-weight: 700;
+      animation: floatX 20s linear infinite;
+    }
+
+    @keyframes floatX {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0.4; }
+      50% { opacity: 0.8; }
+      100% { transform: translateY(-10vh) rotate(360deg); opacity: 0.4; }
+    }
+
+    header {
+      text-align: center;
+      padding: 60px 20px 40px;
+      font-size: 2.5em;
+      letter-spacing: 3px;
+      text-shadow: 0 0 25px gold;
+      z-index: 1;
+      position: relative;
+    }
+
     .art-gallery {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 40px;
-      margin: 60px auto;
-      width: 80%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      padding: 20px 60px;
+      z-index: 1;
+      position: relative;
     }
 
     .art-piece {
-      width: 280px;
-      height: 360px;
-      border: 1px solid gold;
-      border-radius: 10px;
-      box-shadow: 0 0 30px rgba(255,215,0,0.15);
       background: linear-gradient(145deg, #000, #111);
-      transition: 0.4s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #d4af37;
-      font-size: 1.1em;
+      border: 1px solid gold;
+      border-radius: 8px;
+      box-shadow: 0 0 25px rgba(255,215,0,0.1);
+      transition: 0.5s;
+      padding: 20px;
+      text-align: center;
+      color: gold;
     }
 
     .art-piece:hover {
+      box-shadow: 0 0 35px gold;
       transform: scale(1.05);
-      box-shadow: 0 0 40px gold;
+    }
+
+    .art-piece img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 15px;
     }
 
     footer {
+      text-align: center;
       padding: 40px;
       color: #d4af37;
       font-size: 0.9em;
+      position: relative;
+      z-index: 1;
+    }
+
+    a {
+      text-decoration: none;
+      color: gold;
+      transition: 0.3s;
+    }
+
+    a:hover {
+      color: white;
+    }
+
+    /* Fade transition links */
+    .fade-link {
+      cursor: pointer;
+    }
+
+    .fade-out {
+      animation: fadeOut 1s ease-in-out forwards;
+    }
+
+    @keyframes fadeOut {
+      from { opacity: 1; transform: translateY(0); }
+      to { opacity: 0; transform: translateY(20px); }
     }
   </style>
 </head>
 <body>
 
-  <h1>Exclusive Art</h1>
-
-  <div class="art-gallery">
-    <div class="art-piece">“The Feeling of Freedom” Concept Sketch</div>
-    <div class="art-piece">“8Deity” Digital Collage</div>
-    <div class="art-piece">“Lost in the Art of Chasing Freedom” Canvas</div>
+  <!-- Floating X Background -->
+  <div class="floating-x">
+    <span style="left:10%; animation-delay:0s;">X</span>
+    <span style="left:40%; animation-delay:5s;">X</span>
+    <span style="left:70%; animation-delay:10s;">X</span>
+    <span style="left:85%; animation-delay:15s;">X</span>
   </div>
 
-  <footer>© 2025 Docotela X — Private Collection</footer>
+  <header>Exclusive Art</header>
+
+  <div class="art-gallery">
+    <div class="art-piece">
+      <img src="https://via.placeholder.com/300x400/000000/FFD700?text=Freedom+Sketch" alt="Freedom Sketch">
+      <h3>Freedom Sketch</h3>
+      <p>Original concept illustration for “The Feeling of Freedom”.</p>
+    </div>
+    <div class="art-piece">
+      <img src="https://via.placeholder.com/300x400/000000/FFD700?text=8deity+Blueprint" alt="8deity Blueprint">
+      <h3>8deity Blueprint</h3>
+      <p>The sacred visual origin behind the Deity 8 Collection.</p>
+    </div>
+    <div class="art-piece">
+      <img src="https://via.placeholder.com/300x400/000000/FFD700?text=Quiet+Space+Concept" alt="Quiet Space Concept">
+      <h3>Quiet Space Concept</h3>
+      <p>An unreleased piece exploring serenity through design form.</p>
+    </div>
+  </div>
+
+  <footer>
+    <a href="private-collection.html" class="fade-link">Next: Private Collection →</a>
+  </footer>
+
+  <script>
+    const fadeLinks = document.querySelectorAll('.fade-link');
+    fadeLinks.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        document.body.classList.add('fade-out');
+        setTimeout(() => {
+          window.location = link.getAttribute('href');
+        }, 1000);
+      });
+    });
+  </script>
 
 </body>
 </html>
