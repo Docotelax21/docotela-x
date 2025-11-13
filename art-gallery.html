@@ -1,87 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Art Gallery | Docotela X</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Art Gallery — Docotela X</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-
-  <!-- Cinematic Fade -->
-  <div class="fade-overlay"></div>
-
-  <!-- Navigation -->
-  <header>
-    <nav class="top-nav">
-      <div class="center-links">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-      </div>
-      <div class="menu-button" onclick="toggleMenu()">☰</div>
+<body class="page">
+  <header class="topbar">
+    <nav class="center-nav">
+      <a href="main.html">Home</a>
+      <span class="dot">—</span>
+      <a href="about.html">About</a>
+      <span class="dot">—</span>
+      <a href="contact.html">Contact</a>
     </nav>
-
-    <div id="dropdownMenu" class="dropdown-menu">
-      <a href="index.html">Home</a>
+    <button id="hamburgerGallery" class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <div id="menuGallery" class="menu-panel" aria-hidden="true">
+      <a href="main.html">Home</a>
       <a href="collections.html">Collections</a>
       <a href="members.html">Members Only</a>
-      <a href="art-gallery.html" class="active">Art Gallery</a>
+      <a href="art-gallery.html">Art Gallery</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </div>
   </header>
 
-  <!-- Gallery Section -->
-  <section class="gallery-section">
-    <div class="gallery-header">
-      <h1>The Art of Freedom</h1>
-      <p>
-        Exclusive works and handcrafted pieces from the Docotela X universe —  
-        each one a reflection of individuality, emotion, and the pursuit of artistic freedom.
-      </p>
-    </div>
+  <main class="content cinematic-bg">
+    <h1 class="page-title">Art Gallery</h1>
+    <p class="lead centered">Selected works and collaborations — a quieter view into the craft.</p>
 
     <div class="gallery-grid">
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1618005198919-9e5f8e84f0d6" alt="Art Piece 1">
-        <div class="overlay"><p>Untitled — 1 of 10</p></div>
-      </div>
-
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1611244800389-7a6b5e4b2f72" alt="Art Piece 2">
-        <div class="overlay"><p>Perspective II — Limited Piece</p></div>
-      </div>
-
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1625486512858-444ca7b4eefa" alt="Art Piece 3">
-        <div class="overlay"><p>The 8deity — Concept Work</p></div>
-      </div>
-
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1593642634315-48f5414c3ad9" alt="Art Piece 4">
-        <div class="overlay"><p>Quiet Space — 1 of 8</p></div>
-      </div>
+      <div class="gallery-item" role="img" aria-label="Artwork 1"></div>
+      <div class="gallery-item" role="img" aria-label="Artwork 2"></div>
+      <div class="gallery-item" role="img" aria-label="Artwork 3"></div>
     </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 Docotela X | The Feeling of Freedom</p>
-    <p>Instagram: <a href="https://instagram.com/docotelax" target="_blank">@docotelax</a></p>
-  </footer>
+  </main>
 
   <script>
-    // Fade animation
-    window.addEventListener("load", () => {
-      document.querySelector(".fade-overlay").classList.add("fade-out");
+    const hbG = document.getElementById('hamburgerGallery');
+    const mpG = document.getElementById('menuGallery');
+    hbG.addEventListener('click', ()=> {
+      const e = hbG.getAttribute('aria-expanded')==='true';
+      hbG.setAttribute('aria-expanded', !e); mpG.classList.toggle('open'); mpG.setAttribute('aria-hidden', e);
     });
-
-    // Menu toggle
-    function toggleMenu() {
-      document.getElementById("dropdownMenu").classList.toggle("show");
-    }
+    document.addEventListener('click', (ev)=> {
+      if (!mpG.contains(ev.target) && !hbG.contains(ev.target)) {
+        mpG.classList.remove('open'); hbG.setAttribute('aria-expanded','false'); mpG.setAttribute('aria-hidden','true');
+      }
+    });
   </script>
-
 </body>
 </html>
