@@ -1,77 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Members Only — Docotela X</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Members Only | Docotela X</title>
   <style>
-    /* small page-specific override for gate animation */
-    .member-box { display:flex; gap:12px; justify-content:center; align-items:center; margin-top:18px; }
-    .member-msg { margin-top:14px; color:var(--muted); min-height:20px; }
-    .member-msg.denied { color:#ff5b5b; font-weight:700; text-shadow:0 0 10px rgba(255,0,0,0.08); }
-    /* vault-open effect (temporary cinematic flash) */
-    body.vault-open { animation: vaultPulse 1.6s ease forwards; }
-    @keyframes vaultPulse { 0% { background:linear-gradient(180deg,#070708 0%, #0b0b0c 80%);} 60% { background: radial-gradient(circle at 50% 10%, rgba(255,215,0,0.12), transparent 25%);} 100% { background: radial-gradient(circle at 50% 10%, rgba(255,215,0,0.18), transparent 10%);} }
-    input.shake { animation:shake .7s; border-color:#ff5b5b; box-shadow:0 0 18px rgba(255,0,0,0.12); }
+    body {
+      margin: 0;
+      height: 100vh;
+      background-color: black;
+      color: gold;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-family: 'Cinzel', serif;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    input {
+      background: none;
+      border: 1px solid gold;
+      color: gold;
+      padding: 10px 20px;
+      font-size: 1em;
+      text-align: center;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    input:focus {
+      box-shadow: 0 0 10px gold;
+    }
+
+    button {
+      background: gold;
+      border: none;
+      color: black;
+      font-weight: bold;
+      padding: 10px 25px;
+      margin-top: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: black;
+      color: gold;
+      border: 1px solid gold;
+    }
+
+    .gate {
+      position: absolute;
+      width: 50%;
+      height: 100%;
+      top: 0;
+      background: linear-gradient(to right, #1a1a1a, #333);
+      z-index: 5;
+      transition: transform 3s ease-in-out;
+    }
+
+    .left-gate {
+      left: 0;
+      border-right: 2px solid gold;
+      transform-origin: left;
+    }
+
+    .right-gate {
+      right: 0;
+      border-left: 2px solid gold;
+      transform-origin: right;
+    }
+
+    .open-left {
+      transform: translateX(-100%);
+    }
+
+    .open-right {
+      transform: translateX(100%);
+    }
+
+    .access-denied {
+      color: red;
+      font-size: 1.2em;
+      margin-top: 10px;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .access-denied.show {
+      opacity: 1;
+    }
+
+    a {
+      color: gold;
+      margin-top: 15px;
+      text-decoration: none;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    a.show {
+      opacity: 1;
+    }
+
+    .glow {
+      text-shadow: 0 0 20px gold, 0 0 40px gold;
+    }
+
+    .fade-out {
+      animation: fadeOut 2s forwards;
+    }
+
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        transform: scale(1.05);
+      }
+    }
   </style>
 </head>
-<body class="page">
-  <header class="topbar">
-    <nav class="center-nav"><a href="main.html">Home</a><span class="dot">—</span><a href="about.html">About</a><span class="dot">—</span><a href="contact.html">Contact</a></nav>
-    <button id="hamburgerMembers" class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
-    <div id="menuMembers" class="menu-panel" aria-hidden="true">
-      <a href="main.html">Home</a><a href="collections.html">Collections</a><a href="membersonly.html">Members Only</a><a href="art-gallery.html">Art Gallery</a><a href="about.html">About</a><a href="contact.html">Contact</a>
-    </div>
-  </header>
+<body>
+  <div class="gate left-gate"></div>
+  <div class="gate right-gate"></div>
 
-  <main class="content cinematic-bg">
-    <h1 class="page-title">MEMBERS ONLY</h1>
-    <p class="lead centered">Welcome to the Vault.</p>
-
-    <div class="member-box">
-      <input id="accessKey" type="password" placeholder="Access Key" aria-label="Access Key">
-      <button id="enterBtn" class="cta small">Enter</button>
-    </div>
-
-    <p id="memberMsg" class="member-msg" aria-live="polite"></p>
-    <p class="centered"><a href="apply.html" class="muted-link">Apply for membership</a></p>
-  </main>
+  <h1 class="glow">Members Only Access</h1>
+  <input type="password" id="password" placeholder="Enter Access Code">
+  <button onclick="checkPassword()">Enter</button>
+  <div class="access-denied" id="denied">Access Denied</div>
+  <a href="apply.html" id="apply-link">Apply for Membership</a>
 
   <script>
-    // hamburger members
-    (function(){
-      const hb = document.getElementById('hamburgerMembers');
-      const mp = document.getElementById('menuMembers');
-      hb.addEventListener('click', ()=>{ const e = hb.getAttribute('aria-expanded')==='true'; hb.setAttribute('aria-expanded',!e); mp.classList.toggle('open'); mp.setAttribute('aria-hidden', e); });
-      document.addEventListener('click',(ev)=>{ if(!mp.contains(ev.target) && !hb.contains(ev.target)){ mp.classList.remove('open'); hb.setAttribute('aria-expanded','false'); mp.setAttribute('aria-hidden','true'); }});
-    })();
+    function checkPassword() {
+      const password = document.getElementById('password').value;
+      const denied = document.getElementById('denied');
+      const apply = document.getElementById('apply-link');
+      const leftGate = document.querySelector('.left-gate');
+      const rightGate = document.querySelector('.right-gate');
 
-    // password logic
-    (function(){
-      const button = document.getElementById('enterBtn');
-      const input = document.getElementById('accessKey');
-      const msg = document.getElementById('memberMsg');
-      const CORRECT = 'memberson1y';
-      function fail() {
-        msg.textContent = 'Access denied';
-        msg.className = 'member-msg denied';
-        input.classList.add('shake');
-        setTimeout(()=> input.classList.remove('shake'),700);
+      if (password === "memberson1y") {
+        // open gates animation
+        leftGate.classList.add('open-left');
+        rightGate.classList.add('open-right');
+        document.body.classList.add('fade-out');
+
+        // redirect after animation
+        setTimeout(() => {
+          window.location.href = "exclusive.html";
+        }, 3500);
+      } else {
+        denied.classList.add('show');
+        apply.classList.add('show');
       }
-      function success() {
-        msg.textContent = 'Access granted — opening the vault...';
-        msg.className = 'member-msg';
-        document.body.classList.add('vault-open');
-        setTimeout(()=> { window.location.href = 'vault.html'; }, 1600);
-      }
-      button.addEventListener('click', ()=> {
-        const val = input.value.trim();
-        if (val === CORRECT) success(); else fail();
-      });
-      input.addEventListener('keyup', (e)=> { if (e.key === 'Enter') button.click(); });
-    })();
+    }
   </script>
 </body>
 </html>
