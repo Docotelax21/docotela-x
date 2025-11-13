@@ -3,148 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Members Only | Docotela X</title>
+  <title>Members Only - Docotela X</title>
   <link rel="stylesheet" href="membersonly.css">
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      background: radial-gradient(black, #111);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      color: gold;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    .gate {
-      position: absolute;
-      top: 0;
-      width: 50%;
-      height: 100%;
-      background: linear-gradient(to bottom, #000, #111);
-      box-shadow: inset 0 0 60px gold;
-      transition: transform 3s ease-in-out;
-      z-index: 5;
-    }
-
-    .left-gate {
-      left: 0;
-      border-right: 2px solid gold;
-      transform: translateX(0);
-    }
-
-    .right-gate {
-      right: 0;
-      border-left: 2px solid gold;
-      transform: translateX(0);
-    }
-
-    .open .left-gate {
-      transform: translateX(-100%);
-    }
-
-    .open .right-gate {
-      transform: translateX(100%);
-    }
-
-    .content {
-      text-align: center;
-      opacity: 0;
-      transition: opacity 3s ease-in-out 2.5s;
-      z-index: 10;
-    }
-
-    .open .content {
-      opacity: 1;
-    }
-
-    h1 {
-      font-size: 2em;
-      text-shadow: 0 0 20px gold;
-      margin-bottom: 20px;
-    }
-
-    input {
-      padding: 10px;
-      background: #000;
-      border: 1px solid gold;
-      color: gold;
-      border-radius: 4px;
-      text-align: center;
-    }
-
-    button {
-      margin-top: 15px;
-      padding: 10px 20px;
-      background: gold;
-      color: black;
-      border: none;
-      border-radius: 4px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    button:hover {
-      background: #ffcc00;
-    }
-
-    .denied {
-      color: red;
-      margin-top: 15px;
-      opacity: 0;
-      transition: opacity 0.5s;
-    }
-
-    .denied.visible {
-      opacity: 1;
-    }
-
-    .apply-link {
-      margin-top: 10px;
-      display: block;
-      color: gold;
-      text-decoration: underline;
-    }
-
-  </style>
 </head>
 <body>
+  <div class="gate-container">
+    <div class="gate left-gate"></div>
+    <div class="gate right-gate"></div>
 
-  <div class="gate left-gate"></div>
-  <div class="gate right-gate"></div>
-
-  <div class="content">
-    <h1>MEMBERS ONLY ACCESS</h1>
-    <input type="password" id="password" placeholder="Access Key">
-    <br>
-    <button onclick="checkPassword()">Enter</button>
-    <div class="denied" id="deniedMsg">Access Denied</div>
-    <a href="apply.html" class="apply-link">Apply for Membership</a>
+    <div class="access-container">
+      <h1 class="title">Enter the Golden Gates</h1>
+      <input type="password" id="password" placeholder="Enter Access Code">
+      <button onclick="checkPassword()">Access</button>
+      <p id="message"></p>
+      <a id="apply-link" href="apply.html">Apply for Membership</a>
+    </div>
   </div>
 
   <script>
-    // gate opening animation
-    window.onload = () => {
-      document.body.classList.add('open');
-    };
-
     function checkPassword() {
-      const password = document.getElementById("password").value;
-      const deniedMsg = document.getElementById("deniedMsg");
+      const input = document.getElementById("password").value;
+      const message = document.getElementById("message");
+      const applyLink = document.getElementById("apply-link");
+      const leftGate = document.querySelector(".left-gate");
+      const rightGate = document.querySelector(".right-gate");
 
-      if (password === "memberson1y") {
-        window.location.href = "vault.html"; // your hidden members page
+      if (input === "memberson1y") {
+        message.style.color = "gold";
+        message.innerText = "Access Granted";
+        applyLink.style.display = "none";
+        setTimeout(() => {
+          leftGate.classList.add("open-left");
+          rightGate.classList.add("open-right");
+          setTimeout(() => {
+            window.location.href = "exclusive.html";
+          }, 3500);
+        }, 1000);
       } else {
-        deniedMsg.classList.add("visible");
-        document.querySelectorAll('.gate').forEach(g => {
-          g.style.boxShadow = "inset 0 0 80px red";
-        });
+        message.style.color = "#ff3b3b";
+        message.innerText = "Access Denied";
+        applyLink.style.display = "block";
       }
     }
   </script>
-
 </body>
 </html>
