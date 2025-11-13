@@ -1,47 +1,90 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Docotela X — Home</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docotela X</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* --- PAGE FADE IN --- */
+        body {
+            margin: 0;
+            padding: 0;
+            background: black;
+            overflow-x: hidden;
+            animation: fadeIn 2.5s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- CENTERED CONTENT --- */
+        .home-container {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .home-title {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            letter-spacing: 8px;
+            font-weight: 700;
+            color: #d4af37;
+            text-transform: uppercase;
+            animation: titleFade 3s ease forwards;
+        }
+
+        @media (max-width: 600px) {
+            .home-title {
+                font-size: 2.2rem;
+                letter-spacing: 4px;
+            }
+        }
+
+        @keyframes titleFade {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- BACKGROUND LOGO GLOW --- */
+        .logo-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('logonew.png'); /* your logo file */
+            background-size: 65%;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.07;
+            filter: blur(1px) brightness(1.2);
+            animation: logoPulse 6s ease-in-out infinite alternate;
+        }
+
+        @keyframes logoPulse {
+            from { opacity: 0.05; transform: scale(0.97); }
+            to { opacity: 0.12; transform: scale(1.03); }
+        }
+    </style>
 </head>
+
 <body>
-  <!-- top nav (centered) -->
-  <nav class="top-nav">
-    <div class="nav-center">
-      <a href="main.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="collections.html">Collections</a>
-      <a href="members.html">Members Only</a>
-      <a href="contact.html">Contact</a>
-    </div>
-    <button id="menuBtn" class="hamburger" aria-label="Open menu">☰</button>
-  </nav>
 
-  <!-- immersive hero with subtle logo watermark in background -->
-  <main class="hero">
-    <div class="hero-bg">
-      <!-- big faint logo as background watermark -->
-      <div class="bg-logo">D</div>
+    <!-- LUXURY LOGO BACKGROUND -->
+    <div class="logo-bg"></div>
+
+    <!-- MAIN CONTENT -->
+    <div class="home-container">
+        <div class="home-title">DOCOTELA X</div>
     </div>
 
-    <div class="hero-content">
-      <h1>DOCOTELA X</h1>
-      <p>Limited Collections. Handcrafted Art.</p>
-      <button class="enter-btn" onclick="location.href='collections.html'">ENTER THE GALLERY</button>
-    </div>
-  </main>
-
-  <footer class="site-footer">
-    <p>© Docotela X — All rights reserved</p>
-  </footer>
-
-  <script>
-    // small accessibility / menu behavior (so menu button not broken)
-    document.getElementById('menuBtn').addEventListener('click', ()=> {
-      alert('Menu will open here — we can add full menu next.');
-    });
-  </script>
 </body>
 </html>
