@@ -1,140 +1,124 @@
-/* Background */
 body {
   margin: 0;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: radial-gradient(circle at center, #0a0a0a, #000);
+  background-color: #000;
   overflow: hidden;
-  font-family: "Cinzel", serif;
-  color: white;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Cinematic glowing background */
-.background::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: radial-gradient(circle, rgba(255,215,0,0.05) 0%, transparent 70%);
-  animation: pulse 5s infinite;
-  z-index: 0;
-}
-@keyframes pulse {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.7; }
-}
-
-/* Access container */
-.access-container {
+.gate-container {
   position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.gate {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(145deg, #111 0%, #000 100%);
+  border: 1px solid gold;
+  transition: transform 3s ease-in-out;
   z-index: 2;
+}
+
+.left-gate {
+  left: 0;
+  border-right: 2px solid gold;
+}
+
+.right-gate {
+  right: 0;
+  border-left: 2px solid gold;
+}
+
+.open-left {
+  transform: translateX(-100%);
+}
+
+.open-right {
+  transform: translateX(100%);
+}
+
+.access-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
-  transition: opacity 1s ease;
+  color: gold;
+  z-index: 3;
+  animation: fadeIn 3s ease-in-out;
 }
 
 .title {
-  font-size: 2.5rem;
-  letter-spacing: 4px;
-  color: gold;
-  margin-bottom: 0;
-}
-
-.subtitle {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-  color: #aaa;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  animation: glow 2.5s infinite alternate;
 }
 
 input {
+  background: transparent;
+  border: 1px solid gold;
+  color: gold;
   padding: 10px 20px;
   font-size: 1rem;
-  border: 1px solid gold;
-  background: transparent;
-  color: white;
   outline: none;
-  margin-bottom: 15px;
+  text-align: center;
 }
 
 button {
-  display: block;
-  margin: 0 auto;
-  padding: 10px 25px;
   background: gold;
-  border: none;
   color: black;
-  font-weight: bold;
+  border: none;
+  padding: 10px 25px;
+  margin-left: 10px;
   cursor: pointer;
+  font-weight: bold;
   transition: all 0.3s ease;
 }
+
 button:hover {
-  background: #ffdf00;
-  transform: scale(1.05);
+  background: #d4af37;
 }
 
 #message {
   margin-top: 15px;
   font-size: 1rem;
-}
-.denied {
-  color: red;
-  text-shadow: 0 0 10px red;
-  animation: flicker 1s infinite alternate;
-}
-@keyframes flicker {
-  0% { opacity: 0.7; }
-  100% { opacity: 1; }
-}
-
-#applyLink {
-  display: none;
-  color: #999;
-  font-size: 0.9rem;
-  margin-top: 8px;
-  text-decoration: underline;
-  cursor: pointer;
   transition: color 0.3s ease;
 }
-#applyLink:hover {
-  color: gold;
+
+#apply-link {
+  display: none;
+  margin-top: 10px;
+  color: #ff3b3b;
+  text-decoration: none;
+  font-size: 0.9rem;
 }
 
-/* Gate Animation */
-.gates {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: space-between;
-  z-index: 1;
-  pointer-events: none;
+#apply-link:hover {
+  text-decoration: underline;
 }
 
-.gate {
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(to right, rgba(212,175,55,0.9), rgba(0,0,0,0.9));
-  transition: transform 3s ease;
-}
-.gate.right {
-  background: linear-gradient(to left, rgba(212,175,55,0.9), rgba(0,0,0,0.9));
+@keyframes fadeIn {
+  from { opacity: 0; transform: translate(-50%, -45%); }
+  to { opacity: 1; transform: translate(-50%, -50%); }
 }
 
-.gates.open .left {
-  transform: translateX(-100%);
-}
-.gates.open .right {
-  transform: translateX(100%);
+@keyframes glow {
+  from { text-shadow: 0 0 10px gold; }
+  to { text-shadow: 0 0 25px gold, 0 0 40px goldenrod; }
 }
 
-/* Responsive */
+/* Mobile Friendly */
 @media (max-width: 768px) {
-  .title {
-    font-size: 2rem;
-  }
-  input, button {
-    width: 80%;
-  }
+  .title { font-size: 1.5rem; }
+  input, button { width: 80%; margin: 5px auto; display: block; }
 }
