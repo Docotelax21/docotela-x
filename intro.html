@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Docotela X — Intro</title>
+  <link rel="stylesheet" href="intro.css">
+</head>
+<body>
+  <div id="intro-root">
+    <div class="scene-wrap">
+      <!-- soft ambient glow behind vault -->
+      <div class="ambient"></div>
+
+      <!-- camera / world container (we'll scale this to "zoom") -->
+      <div class="camera">
+        <!-- vault door (matte steel circle with bolts) -->
+        <div class="vault-door" id="vaultDoor" aria-hidden="true">
+          <div class="bolt b1"></div><div class="bolt b2"></div><div class="bolt b3"></div>
+          <div class="bolt b4"></div><div class="bolt b5"></div><div class="bolt b6"></div>
+          <div class="wheel" id="wheel">
+            <div class="spoke s1"></div><div class="spoke s2"></div><div class="spoke s3"></div>
+          </div>
+        </div>
+
+        <!-- inner vault cavity (revealed when door "opens") -->
+        <div class="vault-inside">
+          <div class="inner-light"></div>
+
+          <!-- carved logo on the back wall (engraved effect) -->
+          <div class="carved-wrap">
+            <div class="carved-text">DOCOTELA X</div>
+            <div class="carved-text carved-top">DOCOTELA X</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Sequence timing (all in ms)
+    const TOTAL = 8000;
+    const DOOR_START = 2000;   // start wheel rotate / vibration
+    const OPEN_START = 4000;   // start door open + camera push
+    const REVEAL_START = 6000; // show carved text lighting
+    const END = 8000;          // redirect
+
+    // Apply classes at the right times for smooth sequencing
+    window.addEventListener('load', () => {
+      // wheel spin + tiny vibration
+      setTimeout(()=> {
+        document.getElementById('wheel').classList.add('spin');
+        document.getElementById('vaultDoor').classList.add('vibrate');
+      }, DOOR_START);
+
+      // door open & camera push
+      setTimeout(()=> {
+        document.getElementById('vaultDoor').classList.add('open');
+        document.querySelector('.camera').classList.add('zoomIn');
+      }, OPEN_START);
+
+      // reveal carved text (light hits it)
+      setTimeout(()=> {
+        document.querySelector('.carved-wrap').classList.add('reveal');
+      }, REVEAL_START);
+
+      // final: redirect to main.html
+      setTimeout(()=> {
+        window.location.href = 'main.html';
+      }, END);
+    });
+  </script>
+</body>
+</html>
