@@ -4,148 +4,41 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Vault | Docotela X</title>
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      background: radial-gradient(circle at center, #000, #0a0a0a 70%);
-      color: gold;
-      font-family: 'Poppins', sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    /* Floating dust animation */
-    .dust {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      z-index: 1;
-    }
-
-    .particle {
-      position: absolute;
-      background: rgba(255, 215, 0, 0.3);
-      border-radius: 50%;
-      animation: float 8s linear infinite;
-    }
-
-    @keyframes float {
-      from { transform: translateY(0) rotate(0deg); opacity: 1; }
-      to { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
-    }
-
-    .content {
-      text-align: center;
-      z-index: 5;
-      opacity: 0;
-      animation: fadeIn 2.5s ease-in-out forwards;
-      animation-delay: 2s;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    h1 {
-      font-size: 3em;
-      text-shadow: 0 0 30px gold;
-      letter-spacing: 2px;
-      margin-bottom: 20px;
-    }
-
-    p {
-      color: #d4af37;
-      font-size: 1.1em;
-      margin-bottom: 40px;
-      letter-spacing: 1px;
-    }
-
-    .vault-links {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      flex-wrap: wrap;
-    }
-
-    .vault-links a {
-      text-decoration: none;
-      color: gold;
-      border: 1px solid gold;
-      padding: 15px 30px;
-      border-radius: 6px;
-      transition: 0.4s;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      box-shadow: 0 0 15px rgba(255,215,0,0.2);
-    }
-
-    .vault-links a:hover {
-      background: gold;
-      color: black;
-      box-shadow: 0 0 25px gold;
-    }
-
-    /* Soft vault light rays */
-    .light {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(ellipse at center, rgba(255,215,0,0.15), transparent 70%);
-      animation: pulse 6s infinite alternate ease-in-out;
-      z-index: 2;
-    }
-
-    @keyframes pulse {
-      0% { opacity: 0.5; }
-      100% { opacity: 1; }
-    }
-  </style>
+  <link rel="stylesheet" href="vault.css">
 </head>
 <body>
+  <div class="floating-bg">
+    <div class="floating-x" style="top: 10%; left: 20%;">X</div>
+    <div class="floating-x" style="top: 40%; left: 70%;">X</div>
+    <div class="floating-x" style="top: 70%; left: 30%;">X</div>
+    <div class="floating-x" style="top: 80%; left: 80%;">X</div>
+  </div>
 
-  <!-- Floating golden particles -->
-  <div class="dust" id="dust"></div>
+  <nav>
+    <div class="nav-center">
+      <a href="main.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
 
-  <!-- Soft lighting -->
-  <div class="light"></div>
+  <div class="vault-container">
+    <h1>THE VAULT</h1>
+    <p>Where freedom meets exclusivity.</p>
+    <div class="vault-intro">
+      <p>Welcome inside — this is where Docotela X reveals what the world isn’t meant to see.</p>
+      <p>Unreleased drops. Private collections. Unfiltered art — all inspired by the pursuit of freedom.</p>
+    </div>
 
-  <!-- Main Vault Content -->
-  <div class="content">
-    <h1>Welcome to The Vault</h1>
-    <p>Exclusive access to unreleased drops, handcrafted art & hidden collections.</p>
-
-    <div class="vault-links">
-      <a href="exclusive-drops.html">Unreleased Drops</a>
-      <a href="exclusive-art.html">Exclusive Art</a>
-      <a href="private-collection.html">Private Collection</a>
+    <div class="exclusive-links">
+      <a href="exclusive-drops.html" class="vault-btn">Exclusive Drops</a>
+      <a href="exclusive-art.html" class="vault-btn">Exclusive Art</a>
+      <a href="private-collection.html" class="vault-btn">Private Collection</a>
     </div>
   </div>
 
-  <script>
-    // Create floating dust particles
-    const dustContainer = document.getElementById('dust');
-    for (let i = 0; i < 40; i++) {
-      const particle = document.createElement('div');
-      const size = Math.random() * 4 + 1;
-      particle.classList.add('particle');
-      particle.style.width = `${size}px`;
-      particle.style.height = `${size}px`;
-      particle.style.left = `${Math.random() * 100}%`;
-      particle.style.top = `${Math.random() * 100}%`;
-      particle.style.animationDuration = `${Math.random() * 6 + 4}s`;
-      dustContainer.appendChild(particle);
-    }
-  </script>
-
+  <footer>
+    <p>© 2025 Docotela X — All Rights Reserved</p>
+  </footer>
 </body>
 </html>
