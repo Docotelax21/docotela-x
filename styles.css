@@ -1,42 +1,88 @@
-/* styles.css — global site styles for Docotela X */
-
-:root{
-  --black:#050505;
-  --gold:#d4af37;
-  --muted:#bfa46f;
-  --white:#f5f5f3;
-  --glass: rgba(255,255,255,0.03);
+/* GENERAL PAGE STYLE */
+body {
+    margin: 0;
+    padding: 0;
+    background: #0c0c0c;
+    font-family: "Cinzel", serif;
+    color: white;
+    overflow-x: hidden;
 }
 
-/* Reset */
-*{box-sizing:border-box}
-html,body{height:100%;margin:0;font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;color:var(--white);background:var(--black);-webkit-font-smoothing:antialiased}
-
-/* Top nav center */
-.top-nav{
-  position:fixed;top:18px;left:0;right:0;display:flex;align-items:center;justify-content:center;z-index:80;pointer-events:auto;
+/* INTRO VIDEO */
+#intro-container {
+    position: fixed;
+    inset: 0;
+    background: black;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 1.2s ease;
 }
-.nav-center{display:flex;gap:36px;font-weight:600;letter-spacing:1px}
-.nav-center a{color:var(--white);text-decoration:none;transition:color .18s}
-.nav-center a:hover{color:var(--gold)}
-.hamburger{position:fixed;right:22px;top:12px;background:transparent;color:var(--white);border:1px solid rgba(255,255,255,0.02);padding:10px;border-radius:8px;cursor:pointer}
 
-/* Hero */
-.hero{height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.hero-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0.06;z-index:0;pointer-events:none}
-.bg-logo{font-family:"Cinzel",serif;font-size:28vw;color:var(--gold);opacity:0.06;transform:translateY(4vh)}
-.hero-content{text-align:center;z-index:2;padding:40px}
-.hero h1{font-family:"Cinzel",serif;font-size:clamp(36px,6vw,84px);color:var(--gold);letter-spacing:6px;margin:0 0 10px}
-.hero p{margin:0;color:rgba(255,255,255,0.85);letter-spacing:2px}
-.enter-btn{margin-top:24px;padding:14px 30px;border-radius:8px;border:1px solid var(--gold);background:transparent;color:var(--gold);cursor:pointer;font-weight:700;letter-spacing:2px}
-.enter-btn:hover{background:var(--gold);color:#000;transform:translateY(-2px)}
+#intro-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
-/* Footer */
-.site-footer{position:fixed;left:0;right:0;bottom:12px;text-align:center;color:rgba(255,255,255,0.45);font-size:13px}
+/* HOME CONTENT – hidden until intro finishes */
+#home-content {
+    opacity: 0;
+    transition: opacity 1.4s ease;
+}
 
-/* Responsive */
-@media(max-width:768px){
-  .nav-center{display:none}
-  .bg-logo{font-size:48vw}
-  .hero h1{font-size:32px}
+/* LOGO CENTERED */
+.logo-container {
+    position: fixed;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2000;
+}
+
+.logo {
+    width: 160px;
+    height: auto;
+    opacity: 0;
+
+    /* slow fade + glow */
+    animation: logoFadeIn 3s ease forwards;
+    animation-delay: 3s;
+    filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.45));
+}
+
+@keyframes logoFadeIn {
+    from { opacity: 0; transform: translateX(-50%) scale(0.95); }
+    to { opacity: 1; transform: translateX(-50%) scale(1); }
+}
+
+/* TOP NAV */
+.top-nav {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding-top: 120px;
+    font-size: 20px;
+}
+
+.top-nav a {
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+}
+
+.top-nav a:hover {
+    color: gold;
+}
+
+/* TITLE */
+.content-wrapper {
+    text-align: center;
+    margin-top: 180px;
+}
+
+.home-title {
+    font-size: 55px;
+    letter-spacing: 8px;
 }
