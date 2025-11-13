@@ -1,225 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DOCOTELA X Members | Docotela X</title>
-  <link rel="stylesheet" href="membersonly.css">
-  <style>
-    /* === Basic Reset and Style === */
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Poppins', sans-serif;
-      background: radial-gradient(ellipse at center, #000000 0%, #0a0a0a 100%);
-      color: #fff;
-      overflow: hidden;
-      height: 100vh;
-    }
-
-    /* === Navbar === */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(6px);
-      z-index: 10;
-      height: 70px;
-    }
-
-    nav .nav-center {
-      font-size: 1rem;
-      letter-spacing: 3px;
-      color: white;
-    }
-
-    /* Hamburger menu */
-    .menu-icon {
-      position: fixed;
-      top: 22px;
-      right: 25px;
-      cursor: pointer;
-      z-index: 11;
-    }
-
-    .menu-icon div {
-      width: 25px;
-      height: 3px;
-      background-color: white;
-      margin: 5px 0;
-      transition: 0.4s;
-    }
-
-    .menu {
-      position: fixed;
-      top: 0;
-      right: -100%;
-      width: 220px;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.9);
-      transition: 0.5s ease;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      z-index: 9;
-    }
-
-    .menu.active {
-      right: 0;
-    }
-
-    .menu a {
-      color: white;
-      text-decoration: none;
-      font-size: 1.2rem;
-      margin: 10px 0;
-      transition: color 0.3s;
-    }
-
-    .menu a:hover {
-      color: gold;
-    }
-
-    /* === Main Content === */
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
-      position: relative;
-      z-index: 1;
-    }
-
-    h1 {
-      font-size: 3rem;
-      letter-spacing: 5px;
-      color: gold;
-      margin-bottom: 20px;
-      animation: fadeUp 1.5s ease-out;
-    }
-
-    p {
-      font-size: 1.1rem;
-      color: #ccc;
-      margin-bottom: 30px;
-      animation: fadeUp 2s ease-out;
-    }
-
-    input[type="password"] {
-      padding: 10px;
-      font-size: 1rem;
-      border: none;
-      outline: none;
-      border-radius: 5px;
-      text-align: center;
-      background: #111;
-      color: white;
-      letter-spacing: 2px;
-    }
-
-    button {
-      margin-top: 20px;
-      background: gold;
-      color: black;
-      border: none;
-      padding: 10px 25px;
-      border-radius: 5px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    button:hover {
-      background: #ffcc33;
-    }
-
-    .access-denied {
-      color: red;
-      margin-top: 20px;
-      opacity: 0;
-      transition: opacity 0.5s;
-      font-size: 1rem;
-    }
-
-    .access-denied.show {
-      opacity: 1;
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* === Responsive === */
-    @media (max-width: 768px) {
-      h1 { font-size: 2.2rem; }
-      p { font-size: 1rem; }
-    }
-  </style>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Members Only — Docotela X</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-
-  <!-- Navbar -->
-  <nav>
-    <div class="nav-center">HOME — ABOUT — CONTACT</div>
-    <div class="menu-icon" onclick="toggleMenu()">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-    <div class="menu" id="menu">
-      <a href="index.html">Home</a>
+<body class="page">
+  <header class="topbar">
+    <nav class="center-nav">
+      <a href="main.html">Home</a>
+      <span class="dot">—</span>
+      <a href="about.html">About</a>
+      <span class="dot">—</span>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <button id="hamburgerMembers" class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <div id="menuMembers" class="menu-panel" aria-hidden="true">
+      <a href="main.html">Home</a>
       <a href="collections.html">Collections</a>
-      <a href="membersonly.html">Members Only</a>
+      <a href="members.html">Members Only</a>
+      <a href="art-gallery.html">Art Gallery</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </div>
-  </nav>
+  </header>
 
-  <!-- Members Only Access -->
-  <div class="container">
-    <h1>MEMBERS ONLY</h1>
-    <p>Welcome To The Vault.</p>
+  <main class="content cinematic-bg">
+    <h1 class="page-title">MEMBERS ONLY</h1>
+    <p class="lead centered">Welcome to the Vault.</p>
 
-    <input type="password" id="passwordInput" placeholder="Access Key">
-    <button onclick="checkPassword()">Enter</button>
+    <div class="member-box">
+      <input id="accessKey" type="password" placeholder="Access Key" aria-label="Access Key">
+      <button id="enterBtn" class="cta small">Enter</button>
+    </div>
 
-    <div class="access-denied" id="accessDenied">ACCESS DENIED<br><a href="apply.html" style="color: gold; text-decoration: none;">Apply for Membership</a></div>
-  </div>
+    <p id="memberMsg" class="member-msg" aria-live="polite"></p>
+    <p class="centered"><a href="apply.html" class="muted-link">Apply for membership</a></p>
+  </main>
 
   <script>
-    function toggleMenu() {
-      document.getElementById('menu').classList.toggle('active');
-    }
+    // hamburger
+    const hbM = document.getElementById('hamburgerMembers');
+    const mpM = document.getElementById('menuMembers');
+    hbM.addEventListener('click', ()=> {
+      const e = hbM.getAttribute('aria-expanded') === 'true';
+      hbM.setAttribute('aria-expanded', !e); mpM.classList.toggle('open'); mpM.setAttribute('aria-hidden', e);
+    });
+    document.addEventListener('click', (ev)=> { if (!mpM.contains(ev.target) && !hbM.contains(ev.target)) { mpM.classList.remove('open'); hbM.setAttribute('aria-expanded','false'); mpM.setAttribute('aria-hidden','true'); } });
 
-    function checkPassword() {
-      const input = document.getElementById('passwordInput').value;
-      const denied = document.getElementById('accessDenied');
+    // password logic
+    document.getElementById('enterBtn').addEventListener('click', checkPassword);
+    document.getElementById('accessKey').addEventListener('keyup', (e)=> { if (e.key === 'Enter') checkPassword(); });
 
-      if (input === 'memberson1y') {
-        document.body.style.transition = 'opacity 2s ease';
-        document.body.style.opacity = 0;
-        setTimeout(() => {
-          window.location.href = 'exclusive.html';
-        }, 2000);
+    function checkPassword(){
+      const key = document.getElementById('accessKey').value.trim();
+      const msg = document.getElementById('memberMsg');
+      const correct = 'memberson1y';
+      msg.className = 'member-msg';
+      if (key === correct){
+        document.body.classList.add('vault-open');
+        msg.textContent = 'Access granted — opening the vault...';
+        // cinematic timing then redirect
+        setTimeout(()=> { window.location.href = 'vault.html'; }, 2000);
       } else {
-        denied.classList.add('show');
-        document.querySelector('h1').style.color = 'red';
-        setTimeout(() => {
-          document.querySelector('h1').style.color = 'gold';
-          denied.classList.remove('show');
-        }, 3000);
+        msg.textContent = 'Access denied';
+        msg.classList.add('denied');
+        // subtle visual cue (flash)
+        const input = document.getElementById('accessKey');
+        input.classList.add('shake');
+        setTimeout(()=> input.classList.remove('shake'),700);
       }
     }
   </script>
-
 </body>
 </html>
