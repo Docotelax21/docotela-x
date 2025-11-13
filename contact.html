@@ -9,59 +9,34 @@
 </head>
 <body class="page">
   <header class="topbar">
-    <nav class="center-nav">
-      <a href="main.html">Home</a>
-      <span class="dot">—</span>
-      <a href="about.html">About</a>
-      <span class="dot">—</span>
-      <a href="contact.html">Contact</a>
-    </nav>
+    <nav class="center-nav"><a href="main.html">Home</a><span class="dot">—</span><a href="about.html">About</a><span class="dot">—</span><a href="contact.html">Contact</a></nav>
     <button id="hamburgerContact" class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <div id="menuContact" class="menu-panel" aria-hidden="true">
-      <a href="main.html">Home</a>
-      <a href="collections.html">Collections</a>
-      <a href="members.html">Members Only</a>
-      <a href="art-gallery.html">Art Gallery</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
+      <a href="main.html">Home</a><a href="collections.html">Collections</a><a href="membersonly.html">Members Only</a><a href="art-gallery.html">Art Gallery</a><a href="about.html">About</a><a href="contact.html">Contact</a>
     </div>
   </header>
 
   <main class="content cinematic-bg">
     <h1 class="page-title">Let's Connect</h1>
     <div class="contact-grid">
-      <form class="contact-form" action="#" method="post" onsubmit="alert('Form placeholder — paste your form handler here.'); return false;">
-        <label>
-          <span>Name</span>
-          <input type="text" name="name" required>
-        </label>
-        <label>
-          <span>Email</span>
-          <input type="email" name="email" required>
-        </label>
-        <label>
-          <span>Message</span>
-          <textarea name="message" rows="4" required></textarea>
-        </label>
+      <form class="contact-form" action="#" method="post" onsubmit="alert('Form placeholder — add your handler'); return false;">
+        <label><span>Name</span><input type="text" name="name" required></label>
+        <label><span>Email</span><input type="email" name="email" required></label>
+        <label><span>Message</span><textarea name="message" rows="4" required></textarea></label>
         <button class="cta">Send</button>
       </form>
-      <div class="contact-art">
-        <!-- place image or art here -->
-      </div>
+      <div class="contact-art" aria-hidden="true" style="background-image:url('');"></div>
     </div>
-    <p class="centered muted">Instagram · @docotelax (link in footer)</p>
+    <p class="centered muted">Instagram · @docotelax</p>
   </main>
 
   <script>
-    const hbC = document.getElementById('hamburgerContact');
-    const mpC = document.getElementById('menuContact');
-    hbC.addEventListener('click', ()=> {
-      const e = hbC.getAttribute('aria-expanded')==='true';
-      hbC.setAttribute('aria-expanded', !e); mpC.classList.toggle('open'); mpC.setAttribute('aria-hidden', e);
-    });
-    document.addEventListener('click', (ev)=> {
-      if (!mpC.contains(ev.target) && !hbC.contains(ev.target)) { mpC.classList.remove('open'); hbC.setAttribute('aria-expanded','false'); mpC.setAttribute('aria-hidden','true'); }
-    });
+    (function(){
+      const hb = document.getElementById('hamburgerContact');
+      const mp = document.getElementById('menuContact');
+      hb.addEventListener('click', ()=>{ const e = hb.getAttribute('aria-expanded')==='true'; hb.setAttribute('aria-expanded',!e); mp.classList.toggle('open'); mp.setAttribute('aria-hidden', e); });
+      document.addEventListener('click',(ev)=>{ if(!mp.contains(ev.target) && !hb.contains(ev.target)){ mp.classList.remove('open'); hb.setAttribute('aria-expanded','false'); mp.setAttribute('aria-hidden','true'); }});
+    })();
   </script>
 </body>
 </html>
