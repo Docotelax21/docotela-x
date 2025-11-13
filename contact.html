@@ -1,29 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact | Docotela X</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Contact — Docotela X</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-
-  <!-- Cinematic Fade Overlay -->
-  <div class="fade-overlay"></div>
-
-  <!-- Navigation -->
-  <header>
-    <nav class="top-nav">
-      <div class="center-links">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="contact.html" class="active">Contact</a>
-      </div>
-      <div class="menu-button" onclick="toggleMenu()">☰</div>
+<body class="page">
+  <header class="topbar">
+    <nav class="center-nav">
+      <a href="main.html">Home</a>
+      <span class="dot">—</span>
+      <a href="about.html">About</a>
+      <span class="dot">—</span>
+      <a href="contact.html">Contact</a>
     </nav>
-
-    <div id="dropdownMenu" class="dropdown-menu">
-      <a href="index.html">Home</a>
+    <button id="hamburgerContact" class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <div id="menuContact" class="menu-panel" aria-hidden="true">
+      <a href="main.html">Home</a>
       <a href="collections.html">Collections</a>
       <a href="members.html">Members Only</a>
       <a href="art-gallery.html">Art Gallery</a>
@@ -32,46 +27,41 @@
     </div>
   </header>
 
-  <!-- Contact Section -->
-  <section class="contact-section">
-    <div class="contact-container">
-      <h1>Contact Docotela X</h1>
-      <p>
-        We'd love to connect with you — whether it’s for collaborations, inquiries, or sharing your story through art.
-      </p>
-      <div class="contact-info">
-        <p><strong>Email:</strong> <a href="mailto:contact@docotelax.com">contact@docotelax.com</a></p>
-        <p><strong>Instagram:</strong> <a href="https://instagram.com/docotelax" target="_blank">@docotelax</a></p>
-        <p><strong>Location:</strong> Johannesburg, South Africa</p>
-      </div>
-
-      <!-- Contact Form -->
-      <form class="contact-form" action="#" method="post">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
+  <main class="content cinematic-bg">
+    <h1 class="page-title">Let's Connect</h1>
+    <div class="contact-grid">
+      <form class="contact-form" action="#" method="post" onsubmit="alert('Form placeholder — paste your form handler here.'); return false;">
+        <label>
+          <span>Name</span>
+          <input type="text" name="name" required>
+        </label>
+        <label>
+          <span>Email</span>
+          <input type="email" name="email" required>
+        </label>
+        <label>
+          <span>Message</span>
+          <textarea name="message" rows="4" required></textarea>
+        </label>
+        <button class="cta">Send</button>
       </form>
+      <div class="contact-art">
+        <!-- place image or art here -->
+      </div>
     </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 Docotela X | The Feeling of Freedom</p>
-    <p>Instagram: <a href="https://instagram.com/docotelax" target="_blank">@docotelax</a></p>
-  </footer>
+    <p class="centered muted">Instagram · @docotelax (link in footer)</p>
+  </main>
 
   <script>
-    // Fade animation
-    window.addEventListener("load", () => {
-      document.querySelector(".fade-overlay").classList.add("fade-out");
+    const hbC = document.getElementById('hamburgerContact');
+    const mpC = document.getElementById('menuContact');
+    hbC.addEventListener('click', ()=> {
+      const e = hbC.getAttribute('aria-expanded')==='true';
+      hbC.setAttribute('aria-expanded', !e); mpC.classList.toggle('open'); mpC.setAttribute('aria-hidden', e);
     });
-
-    // Menu toggle
-    function toggleMenu() {
-      document.getElementById("dropdownMenu").classList.toggle("show");
-    }
+    document.addEventListener('click', (ev)=> {
+      if (!mpC.contains(ev.target) && !hbC.contains(ev.target)) { mpC.classList.remove('open'); hbC.setAttribute('aria-expanded','false'); mpC.setAttribute('aria-hidden','true'); }
+    });
   </script>
-
 </body>
 </html>
