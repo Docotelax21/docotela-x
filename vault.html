@@ -1,58 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Vault — Docotela X</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <meta name="robots" content="noindex">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Vault | Docotela X</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: radial-gradient(circle at center, #000, #0a0a0a 70%);
+      color: gold;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Floating dust animation */
+    .dust {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .particle {
+      position: absolute;
+      background: rgba(255, 215, 0, 0.3);
+      border-radius: 50%;
+      animation: float 8s linear infinite;
+    }
+
+    @keyframes float {
+      from { transform: translateY(0) rotate(0deg); opacity: 1; }
+      to { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+    }
+
+    .content {
+      text-align: center;
+      z-index: 5;
+      opacity: 0;
+      animation: fadeIn 2.5s ease-in-out forwards;
+      animation-delay: 2s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-size: 3em;
+      text-shadow: 0 0 30px gold;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      color: #d4af37;
+      font-size: 1.1em;
+      margin-bottom: 40px;
+      letter-spacing: 1px;
+    }
+
+    .vault-links {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .vault-links a {
+      text-decoration: none;
+      color: gold;
+      border: 1px solid gold;
+      padding: 15px 30px;
+      border-radius: 6px;
+      transition: 0.4s;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 0 15px rgba(255,215,0,0.2);
+    }
+
+    .vault-links a:hover {
+      background: gold;
+      color: black;
+      box-shadow: 0 0 25px gold;
+    }
+
+    /* Soft vault light rays */
+    .light {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at center, rgba(255,215,0,0.15), transparent 70%);
+      animation: pulse 6s infinite alternate ease-in-out;
+      z-index: 2;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
+  </style>
 </head>
-<body class="page vault">
-  <header class="topbar">
-    <nav class="center-nav">
-      <a href="main.html">Home</a>
-      <span class="dot">—</span>
-      <a href="about.html">About</a>
-      <span class="dot">—</span>
-      <a href="contact.html">Contact</a>
-    </nav>
-    <button id="hamburgerVault" class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
-    <div id="menuVault" class="menu-panel" aria-hidden="true">
-      <a href="main.html">Home</a>
-      <a href="collections.html">Collections</a>
-      <a href="members.html">Members Only</a>
-      <a href="art-gallery.html">Art Gallery</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </div>
-  </header>
+<body>
 
-  <main class="content cinematic-bg">
-    <div class="vault-inner">
-      <h1 class="page-title gold">THE VAULT</h1>
-      <p class="lead centered">Unreleased drops, exclusive art, and private commissions — for members only.</p>
+  <!-- Floating golden particles -->
+  <div class="dust" id="dust"></div>
 
-      <div class="vault-grid">
-        <div class="vault-card"><h3>Exclusive Drop 1</h3><p>Preview — members only.</p></div>
-        <div class="vault-card"><h3>Exclusive Drop 2</h3><p>Preview — members only.</p></div>
-        <div class="vault-card"><h3>Exclusive Drop 3</h3><p>Preview — members only.</p></div>
-      </div>
+  <!-- Soft lighting -->
+  <div class="light"></div>
+
+  <!-- Main Vault Content -->
+  <div class="content">
+    <h1>Welcome to The Vault</h1>
+    <p>Exclusive access to unreleased drops, handcrafted art & hidden collections.</p>
+
+    <div class="vault-links">
+      <a href="exclusive-drops.html">Unreleased Drops</a>
+      <a href="exclusive-art.html">Exclusive Art</a>
+      <a href="private-collection.html">Private Collection</a>
     </div>
-  </main>
+  </div>
 
   <script>
-    const hbV = document.getElementById('hamburgerVault');
-    const mpV = document.getElementById('menuVault');
-    hbV.addEventListener('click', ()=> {
-      const e = hbV.getAttribute('aria-expanded')==='true';
-      hbV.setAttribute('aria-expanded', !e); mpV.classList.toggle('open'); mpV.setAttribute('aria-hidden', e);
-    });
-    document.addEventListener('click', (ev)=> {
-      if (!mpV.contains(ev.target) && !hbV.contains(ev.target)) {
-        mpV.classList.remove('open'); hbV.setAttribute('aria-expanded','false'); mpV.setAttribute('aria-hidden','true');
-      }
-    });
+    // Create floating dust particles
+    const dustContainer = document.getElementById('dust');
+    for (let i = 0; i < 40; i++) {
+      const particle = document.createElement('div');
+      const size = Math.random() * 4 + 1;
+      particle.classList.add('particle');
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+      particle.style.left = `${Math.random() * 100}%`;
+      particle.style.top = `${Math.random() * 100}%`;
+      particle.style.animationDuration = `${Math.random() * 6 + 4}s`;
+      dustContainer.appendChild(particle);
+    }
   </script>
+
 </body>
 </html>
