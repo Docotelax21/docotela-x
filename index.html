@@ -6,43 +6,48 @@
     <title>Docotela X</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
 
-<div class="fade"></div>
+<body class="fade">
 
-<!-- NAVBAR -->
+<!-- HAMBURGER -->
+<div class="hamburger" onclick="toggleMenu()">☰</div>
+
+<!-- MENU PANEL -->
+<div id="menuPanel" class="menu-panel">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="collections.html">Collections</a>
+    <a href="members.html">Members Only</a>
+    <a href="gallery.html">Art Gallery</a>
+    <a href="contact.html">Contact</a>
+</div>
+
+<!-- TOP NAV -->
 <header>
     <nav class="center-nav">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
     </nav>
-
-    <div class="hamburger" onclick="toggleMenu()">☰</div>
-
-    <div id="menu" class="menu-panel">
-        <a href="index.html">Home</a>
-        <a href="collections.html">Collections</a>
-        <a href="art-gallery.html">Art Gallery</a>
-        <a href="membersonly.html">Members Only</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-    </div>
 </header>
 
-<!-- MAIN CONTENT -->
+<!-- HERO SECTION -->
 <section class="hero">
+
+    <!-- LOGO BACKGROUND -->
     <div class="logo-bg"></div>
 
+    <!-- MAIN CONTENT -->
     <div class="hero-content">
-        <h1 class="brand-title">Docotela X</h1>
-        <a class="enter-btn" href="home.html">Enter the Gallery</a>
+        <h1 class="brand-title">DOCOTELA X</h1>
+        <a class="enter-btn" href="collections.html">Enter the Gallery</a>
     </div>
+
 </section>
 
 <script>
 function toggleMenu() {
-    document.getElementById("menu").classList.toggle("open");
+    document.getElementById("menuPanel").classList.toggle("open");
 }
 </script>
 
