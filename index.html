@@ -8,40 +8,41 @@
 </head>
 <body>
 
-    <!-- Background Logo -->
-    <div class="background-logo"></div>
+<div class="fade"></div>
 
-    <!-- TOP NAVIGATION -->
-    <header>
-        <nav class="top-center-nav">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-        </nav>
+<!-- NAVBAR -->
+<header>
+    <nav class="center-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
 
-        <!-- HAMBURGER MENU -->
-        <div class="hamburger" onclick="toggleMenu()">
-            ☰
-        </div>
-        <div id="sideMenu" class="side-menu">
-            <a href="index.html">Home</a>
-            <a href="collections.html">Collections</a>
-            <a href="membersonly.html">Members Only</a>
-            <a href="art-gallery.html">Art Gallery</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-        </div>
-    </header>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
 
-    <!-- MAIN CONTENT -->
-    <div class="center-content">
-        <h1 class="brand-name">Docotela X</h1>
-        <a href="collections.html" class="enter-btn">Enter Gallery</a>
+    <div id="menu" class="menu-panel">
+        <a href="index.html">Home</a>
+        <a href="collections.html">Collections</a>
+        <a href="art-gallery.html">Art Gallery</a>
+        <a href="membersonly.html">Members Only</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
     </div>
+</header>
+
+<!-- MAIN CONTENT -->
+<section class="hero">
+    <div class="logo-bg"></div>
+
+    <div class="hero-content">
+        <h1 class="brand-title">Docotela X</h1>
+        <a class="enter-btn" href="home.html">Enter the Gallery</a>
+    </div>
+</section>
 
 <script>
 function toggleMenu() {
-    document.getElementById("sideMenu").classList.toggle("open");
+    document.getElementById("menu").classList.toggle("open");
 }
 </script>
 
