@@ -9,17 +9,17 @@
         body {
             margin: 0;
             padding: 0;
-            background: #0a0a0a;
+            background: #000;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            animation: slowFade 2s ease forwards;
+            opacity: 0;
+            animation: fadeIn 2s ease forwards;
         }
 
-        @keyframes slowFade {
-            from { opacity: 0; }
+        @keyframes fadeIn {
             to { opacity: 1; }
         }
 
@@ -27,32 +27,23 @@
             padding: 25px 40px;
             border: 2px solid gold;
             border-radius: 12px;
-            font-size: 32px;
+            font-size: 34px;
             font-family: 'Times New Roman', serif;
             color: gold;
             text-align: center;
-            opacity: 0;
-            animation: glowIn 2.5s ease forwards;
-            animation-delay: 1s;
+            text-shadow: 0 0 18px gold;
+            animation: glow 3s ease infinite alternate;
         }
 
-        @keyframes glowIn {
-            0% {
-                opacity: 0;
-                text-shadow: 0 0 0px gold;
-            }
-            100% {
-                opacity: 1;
-                text-shadow: 0 0 18px gold;
-            }
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px gold; }
+            100% { text-shadow: 0 0 25px gold; }
         }
     </style>
 </head>
 <body>
 
-    <div class="logo-box">
-        Docotela X
-    </div>
+    <div class="logo-box">Docotela X</div>
 
 </body>
 </html>
