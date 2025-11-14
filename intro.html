@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intro - Docotela X</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: black;
+            overflow: hidden;
+        }
+
+        #intro-video {
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+        }
+
+        /* Fade-out effect */
+        .fade-out {
+            animation: fadeOut 2s ease forwards;
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Your vault door video -->
+    <video id="intro-video" autoplay playsinline>
+        <source src="vaultdoor.mp4" type="video/mp4">
+    </video>
+
+    <script>
+        const video = document.getElementById("intro-video");
+
+        // At 7 seconds, begin fade out
+        setTimeout(() => {
+            video.classList.add("fade-out");
+        }, 7000); 
+
+        // At 8 seconds (full video length), go to homepage
+        setTimeout(() => {
+            window.location.href = "home.html";
+        }, 8000);
+    </script>
+
+</body>
+</html>
