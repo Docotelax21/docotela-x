@@ -3,57 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Docotela X – Home</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
+    <title>Docotela X</title>
 
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #0a0a0a;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            animation: slowFade 2s ease forwards;
+        }
+
+        @keyframes slowFade {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .logo-box {
+            padding: 25px 40px;
+            border: 2px solid gold;
+            border-radius: 12px;
+            font-size: 32px;
+            font-family: 'Times New Roman', serif;
+            color: gold;
+            text-align: center;
+            opacity: 0;
+            animation: glowIn 2.5s ease forwards;
+            animation-delay: 1s;
+        }
+
+        @keyframes glowIn {
+            0% {
+                opacity: 0;
+                text-shadow: 0 0 0px gold;
+            }
+            100% {
+                opacity: 1;
+                text-shadow: 0 0 18px gold;
+            }
+        }
+    </style>
+</head>
 <body>
 
-    <!-- CINEMATIC INTRO -->
-    <div id="intro-container">
-        <video id="intro-video" autoplay muted playsinline>
-            <source src="vaultdoor.mp4" type="video/mp4">
-        </video>
+    <div class="logo-box">
+        Docotela X
     </div>
-
-    <!-- LOGO (appears after intro) -->
-    <div class="logo-container">
-        <img src="docotelax-logo.png" alt="Docotela X Logo" class="logo">
-    </div>
-
-    <!-- MAIN HOME CONTENT (hidden until intro ends) -->
-    <div id="home-content">
-
-        <!-- NAVIGATION BAR -->
-        <header>
-            <nav class="top-nav">
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="contact.html">Contact</a>
-            </nav>
-        </header>
-
-        <div class="content-wrapper">
-            <h1 class="home-title">DOCOTELA X</h1>
-        </div>
-
-    </div>
-
-    <script>
-        // Fade out intro and reveal home screen
-        const introVideo = document.getElementById("intro-video");
-        const introContainer = document.getElementById("intro-container");
-        const homeContent = document.getElementById("home-content");
-
-        introVideo.onended = () => {
-            introContainer.style.opacity = "0";
-
-            setTimeout(() => {
-                introContainer.style.display = "none";
-                homeContent.style.opacity = "1";
-            }, 1200);
-        };
-    </script>
 
 </body>
 </html>
