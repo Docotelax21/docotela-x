@@ -3,45 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Docotela X</title>
-
+    <title>Docotela X — Home</title>
     <style>
         body {
             margin: 0;
             padding: 0;
-            height: 100vh;
-            background: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            animation: fadeIn 3s ease forwards;
+            background: black;
+            color: white;
+            overflow-x: hidden;
+            animation: fadeIn 2s ease-in-out;
         }
 
         @keyframes fadeIn {
+            from { opacity: 0; }
             to { opacity: 1; }
         }
 
-        .logo {
-            padding: 25px 45px;
-            font-size: 38px;
-            font-family: 'Times New Roman', serif;
-            color: gold;
-            border: 2px solid gold;
-            border-radius: 12px;
-            text-shadow: 0 0 15px gold;
-            animation: glow 3s ease-in-out infinite alternate;
+        /* CENTERED LOGO */
+        .logo-container {
+            text-align: center;
+            margin-top: 60px;
         }
 
-        @keyframes glow {
-            0% { text-shadow: 0 0 12px gold; }
-            100% { text-shadow: 0 0 28px gold; }
+        .logo {
+            width: 160px;
+            opacity: 0;
+            animation: logoFade 3s ease-in-out forwards;
+            filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.35));
+        }
+
+        @keyframes logoFade {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* FULL BACKGROUND IMAGE */
+        .bg-image {
+            width: 100%;
+            height: 90vh;
+            background-image: url('cover.jpeg');
+            background-size: cover;
+            background-position: center;
+            margin-top: 40px;
+            opacity: 0;
+            animation: fadeIn 3s ease-in-out 0.5s forwards;
         }
     </style>
 </head>
+
 <body>
 
-    <div class="logo">Docotela X</div>
+    <!-- LOGO -->
+    <div class="logo-container">
+        <img src="logo.png" alt="Docotela X" class="logo">
+    </div>
+
+    <!-- MAIN BACKGROUND IMAGE -->
+    <div class="bg-image"></div>
 
 </body>
 </html>
