@@ -1,88 +1,61 @@
-/* GENERAL PAGE STYLE */
+/* Global */
 body {
     margin: 0;
     padding: 0;
-    background: #0c0c0c;
-    font-family: "Cinzel", serif;
-    color: white;
-    overflow-x: hidden;
+    background: #000;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
 }
 
-/* INTRO VIDEO */
-#intro-container {
-    position: fixed;
-    inset: 0;
-    background: black;
-    z-index: 9999;
+/* Fade-In Animation */
+.fade-in {
+    animation: fadeIn 1.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Intro Container */
+.intro-container {
+    height: 100vh;
+    width: 100vw;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: opacity 1.2s ease;
+    text-align: center;
 }
 
-#intro-video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* HOME CONTENT – hidden until intro finishes */
-#home-content {
-    opacity: 0;
-    transition: opacity 1.4s ease;
-}
-
-/* LOGO CENTERED */
-.logo-container {
-    position: fixed;
-    top: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 2000;
-}
-
+/* Logo */
 .logo {
-    width: 160px;
-    height: auto;
-    opacity: 0;
-
-    /* slow fade + glow */
-    animation: logoFadeIn 3s ease forwards;
-    animation-delay: 3s;
-    filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.45));
+    width: 180px;
+    margin-bottom: 20px;
 }
 
-@keyframes logoFadeIn {
-    from { opacity: 0; transform: translateX(-50%) scale(0.95); }
-    to { opacity: 1; transform: translateX(-50%) scale(1); }
+/* Title */
+.brand-title {
+    font-size: 28px;
+    letter-spacing: 6px;
+    margin-bottom: 40px;
+    font-weight: 300;
 }
 
-/* TOP NAV */
-.top-nav {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    padding-top: 120px;
-    font-size: 20px;
-}
-
-.top-nav a {
+/* Button */
+.enter-btn {
+    display: inline-block;
+    padding: 14px 30px;
+    border: 1px solid #fff;
+    color: #fff;
     text-decoration: none;
-    color: white;
+    font-size: 16px;
+    letter-spacing: 2px;
     transition: 0.3s;
 }
 
-.top-nav a:hover {
+.enter-btn:hover {
     color: gold;
-}
-
-/* TITLE */
-.content-wrapper {
-    text-align: center;
-    margin-top: 180px;
-}
-
-.home-title {
-    font-size: 55px;
-    letter-spacing: 8px;
+    border-color: gold;
 }
