@@ -9,41 +9,39 @@
         body {
             margin: 0;
             padding: 0;
-            background: #000;
             height: 100vh;
+            background: #000;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
             opacity: 0;
-            animation: fadeIn 2s ease forwards;
+            animation: fadeIn 3s ease forwards;
         }
 
         @keyframes fadeIn {
             to { opacity: 1; }
         }
 
-        .logo-box {
-            padding: 25px 40px;
-            border: 2px solid gold;
-            border-radius: 12px;
-            font-size: 34px;
+        .logo {
+            padding: 25px 45px;
+            font-size: 38px;
             font-family: 'Times New Roman', serif;
             color: gold;
-            text-align: center;
-            text-shadow: 0 0 18px gold;
-            animation: glow 3s ease infinite alternate;
+            border: 2px solid gold;
+            border-radius: 12px;
+            text-shadow: 0 0 15px gold;
+            animation: glow 3s ease-in-out infinite alternate;
         }
 
         @keyframes glow {
-            0% { text-shadow: 0 0 10px gold; }
-            100% { text-shadow: 0 0 25px gold; }
+            0% { text-shadow: 0 0 12px gold; }
+            100% { text-shadow: 0 0 28px gold; }
         }
     </style>
 </head>
 <body>
 
-    <div class="logo-box">Docotela X</div>
+    <div class="logo">Docotela X</div>
 
 </body>
 </html>
