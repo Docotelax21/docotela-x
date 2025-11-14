@@ -1,56 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Intro - Docotela X</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Docotela X Intro</title>
 
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: black;
-            overflow: hidden;
-        }
+<style>
 
-        #intro-video {
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover;
-        }
+/* --- General Page Setup --- */
+body {
+    margin: 0;
+    padding: 0;
+    background: black;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 
-        /* Fade-out effect */
-        .fade-out {
-            animation: fadeOut 2s ease forwards;
-        }
+/* --- Video Styling --- */
+#vaultVideo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+    height: auto;
+    opacity: 1;
+    animation: fadeOut 2s ease-in-out forwards;
+    animation-delay: 8s; /* fade video after it finishes */
+}
 
-        @keyframes fadeOut {
-            from { opacity: 1; }
-            to { opacity: 0; }
-        }
-    </style>
+/* --- Logo Fade In --- */
+#logoReveal {
+    position: absolute;
+    width: 260px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: logoFade 3s ease-in-out forwards;
+    animation-delay: 8.2s;
+}
+
+/* --- Animations --- */
+@keyframes fadeOut {
+    to { opacity: 0; }
+}
+
+@keyframes logoFade {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+</style>
+
 </head>
-
 <body>
 
-    <!-- Your vault door video -->
-    <video id="intro-video" autoplay playsinline>
-        <source src="vaultdoor.mp4" type="video/mp4">
-    </video>
+<!-- Vault Video -->
+<video id="vaultVideo" autoplay muted playsinline>
+    <source src="vaultdoor.mp4" type="video/mp4" />
+</video>
 
-    <script>
-        const video = document.getElementById("intro-video");
+<!-- Logo Image -->
+<img id="logoReveal" src="docotelax-logo.png" alt="Docotela X Logo">
 
-        // At 7 seconds, begin fade out
-        setTimeout(() => {
-            video.classList.add("fade-out");
-        }, 7000); 
-
-        // At 8 seconds (full video length), go to homepage
-        setTimeout(() => {
-            window.location.href = "home.html";
-        }, 8000);
-    </script>
+<script>
+// After animation finishes, redirect to home.html
+setTimeout(() => {
+    window.location.href = "home.html";
+}, 11500); // 11.5 seconds total
+</script>
 
 </body>
 </html>
