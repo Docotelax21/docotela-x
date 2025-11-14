@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Docotela X</title>
+    <title>Docotela X Intro</title>
 
     <style>
         body {
@@ -19,7 +19,7 @@
             object-fit: cover;
             opacity: 1;
             animation: fadeOut 2s ease forwards;
-            animation-delay: 3.5s; /* Wait for video to finish before fade */
+            animation-delay: 3.5s;
         }
 
         @keyframes fadeOut {
@@ -32,10 +32,9 @@
     <video src="vaultdoor.mp4" autoplay muted playsinline></video>
 
     <script>
-        // Redirect AFTER fade-out finishes
         setTimeout(() => {
             window.location.href = "home.html";
-        }, 5500); 
+        }, 5500);
     </script>
 
 </body>
