@@ -1,58 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="0; URL=intro.html">
     <title>Docotela X</title>
-    <style>
-        body {
-            margin: 0;
-            background: black;
-            overflow: hidden;
-        }
-
-        #introVideo {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        #fadeOverlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: black;
-            opacity: 0;
-            transition: opacity 2s ease-in-out;
-            pointer-events: none;
-        }
-    </style>
 </head>
-
 <body>
-
-    <!-- INTRO VIDEO -->
-    <video id="introVideo" autoplay muted playsinline onended="transitionToHome()">
-        <source src="vaultdoor.mp4" type="video/mp4">
-    </video>
-
-    <!-- FADE TO BLACK -->
-    <div id="fadeOverlay"></div>
-
-    <script>
-        function transitionToHome() {
-            document.getElementById("fadeOverlay").style.opacity = "1";
-
-            setTimeout(() => {
-                window.location.href = "home.html";
-            }, 2000);
-        }
-    </script>
-
 </body>
 </html>
