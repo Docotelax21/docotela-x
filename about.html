@@ -1,65 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>About — Docotela X</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <style>
-    /* page-specific small additions: floating Xs */
-    .floating-x { position:fixed; pointer-events:none; z-index:0; color:rgba(216,184,74,0.03); font-weight:700; font-family:'Cinzel',serif; }
-    .x1{left:8%; top:12%; font-size:22vw; animation:fx1 28s infinite ease-in-out;}
-    .x2{left:72%; top:40%; font-size:18vw; animation:fx2 34s infinite ease-in-out;}
-    .x3{left:28%; top:70%; font-size:14vw; animation:fx3 40s infinite ease-in-out;}
-    @keyframes fx1 { 0%{transform:translate(0,0)rotate(0)}25%{transform:translate(30px,-40px)rotate(15deg)}50%{transform:translate(-20px,30px)rotate(-10deg)}75%{transform:translate(40px,20px)rotate(20deg)}100%{transform:translate(0,0)rotate(0)}}
-    @keyframes fx2 { 0%{transform:translate(0,0)}50%{transform:translate(-60px,40px)rotate(30deg)}100%{transform:translate(0,0)}}
-    @keyframes fx3 { 0%{transform:translate(0,0)}50%{transform:translate(20px,-30px)rotate(20deg)}100%{transform:translate(0,0)}}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About — Docotela X</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- FLOATING X DECOR -->
+    <style>
+        .floating-x {
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+            color: rgba(216,184,74,0.04);
+            font-weight: 700;
+            font-family: "Cinzel", serif;
+        }
+        .x1 { left: 8%; top: 12%; font-size: 22vw; animation: fx1 28s infinite ease-in-out; }
+        .x2 { left: 72%; top: 40%; font-size: 18vw; animation: fx2 34s infinite ease-in-out; }
+        .x3 { left: 28%; top: 70%; font-size: 14vw; animation: fx3 40s infinite ease-in-out; }
+
+        @keyframes fx1 {
+            0% { transform: translate(0,0) rotate(0deg); }
+            25% { transform: translate(30px,-40px) rotate(15deg); }
+            50% { transform: translate(-20px,30px) rotate(-10deg); }
+            75% { transform: translate(40px,20px) rotate(20deg); }
+            100% { transform: translate(0,0) rotate(0deg); }
+        }
+        @keyframes fx2 {
+            0% { transform: translate(0,0); }
+            50% { transform: translate(-60px,40px) rotate(30deg); }
+            100% { transform: translate(0,0); }
+        }
+        @keyframes fx3 {
+            0% { transform: translate(0,0); }
+            50% { transform: translate(20px,-30px) rotate(20deg); }
+            100% { transform: translate(0,0); }
+        }
+    </style>
 </head>
-<body class="page">
-  <header class="topbar">
-    <nav class="center-nav"><a href="main.html">Home</a><span class="dot">—</span><a href="about.html">About</a><span class="dot">—</span><a href="contact.html">Contact</a></nav>
-    <button id="hamburgerAbout" class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
-    <div id="menuAbout" class="menu-panel" aria-hidden="true">
-      <a href="main.html">Home</a><a href="collections.html">Collections</a><a href="membersonly.html">Members Only</a><a href="art-gallery.html">Art Gallery</a><a href="about.html">About</a><a href="contact.html">Contact</a>
-    </div>
-  </header>
 
-  <!-- floating cinematic Xs -->
-  <div class="floating-x x1">X</div>
-  <div class="floating-x x2">X</div>
-  <div class="floating-x x3">X</div>
+<body class="fade">
 
-  <main class="content cinematic-bg">
-    <article class="about-article">
-      <h1 class="page-title">About Docotela X</h1>
+<!-- HAMBURGER -->
+<div class="hamburger" onclick="toggleMenu()">☰</div>
 
-      <p class="lead fade-in">Docotela X is the feeling of freedom translated into cloth and canvas — a careful tension between discipline and escape. Each collection is a quiet rebellion: limited, handcrafted, honest.</p>
+<!-- MENU PANEL -->
+<div id="menuPanel" class="menu-panel">
+    <a href="index.html">Home</a>
+    <a href="collections.html">Collections</a>
+    <a href="members.html">Members Only</a>
+    <a href="gallery.html">Art Gallery</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+</div>
 
-      <section class="poetic">
-        <p class="fade-in">We craft with patience. We edit by instinct. In a world of noise, Docotela X chooses silence — the silence that makes room for a line, for a fold, for an echo of the life lived beneath the surface. Our garments are private ceremonies — designed to be worn like a second skin of conviction.</p>
+<!-- TOP NAV -->
+<header>
+    <nav class="center-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
 
-        <p class="fade-in">The work is small-batch, the details deliberate. The art we make and the clothing we shape are not for everyone — they are for the few who return to the same quiet place again and again.</p>
-      </section>
-    </article>
-  </main>
+<!-- FLOATING BACKGROUND Xs -->
+<div class="floating-x x1">X</div>
+<div class="floating-x x2">X</div>
+<div class="floating-x x3">X</div>
 
-  <script>
-    // hamburger About
-    (function(){
-      const hb = document.getElementById('hamburgerAbout');
-      const mp = document.getElementById('menuAbout');
-      hb.addEventListener('click', ()=>{ const e = hb.getAttribute('aria-expanded')==='true'; hb.setAttribute('aria-expanded',!e); mp.classList.toggle('open'); mp.setAttribute('aria-hidden', e); });
-      document.addEventListener('click',(ev)=>{ if (!mp.contains(ev.target) && !hb.contains(ev.target)){ mp.classList.remove('open'); hb.setAttribute('aria-expanded','false'); mp.setAttribute('aria-hidden','true'); }});
-    })();
+<!-- PAGE CONTENT -->
+<main style="padding:120px 10% 80px; position:relative; z-index:10;">
+    <h1 class="brand-title">ABOUT DOCOTELA X</h1>
 
-    // scroll reveal
-    (function(){
-      const els = document.querySelectorAll('.fade-in');
-      const obs = new IntersectionObserver((entries)=>{ entries.forEach(en=>{ if(en.isIntersecting) en.target.classList.add('visible'); }); }, {threshold:0.12});
-      els.forEach(e=>obs.observe(e));
-    })();
-  </script>
+    <p class="fade-in" style="max-width:800px; margin:auto; font-size:18px; line-height:1.7;">
+        Docotela X is the feeling of freedom translated into cloth and canvas — a careful tension
+        between discipline and escape. Each collection is a quiet rebellion: limited, handcrafted, honest.
+    </p>
+
+    <br><br>
+
+    <p class="fade-in" style="max-width:800px; margin:auto; font-size:18px; line-height:1.7;">
+        We craft with patience. We edit by instinct.  
+        In a world of noise, Docotela X chooses silence — the silence that makes room for a line, for a fold,
+        for an echo of the life lived beneath the surface.  
+        Our garments are private ceremonies — designed to be worn like a second skin of conviction.
+    </p>
+
+    <br><br>
+
+    <p class="fade-in" style="max-width:800px; margin:auto; font-size:18px; line-height:1.7;">
+        The work is small-batch, the details deliberate.  
+        The art we make and the clothing we shape are not for everyone —  
+        they are for the few who return to the same quiet place again and again.
+    </p>
+</main>
+
+<script>
+function toggleMenu() {
+    document.getElementById("menuPanel").classList.toggle("open");
+}
+
+// fade-in on scroll
+const items = document.querySelectorAll('.fade-in');
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+});
+items.forEach(el => observer.observe(el));
+</script>
+
 </body>
 </html>
