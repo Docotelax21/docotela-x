@@ -1,61 +1,132 @@
-/* Global */
-body {
+/* GLOBAL RESET */
+* {
     margin: 0;
     padding: 0;
-    background: #000;
-    color: #fff;
-    font-family: 'Montserrat', sans-serif;
-    overflow: hidden;
+    box-sizing: border-box;
+    font-family: "Didot", serif;
 }
 
-/* Fade-In Animation */
-.fade-in {
-    animation: fadeIn 1.5s ease forwards;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-/* Intro Container */
-.intro-container {
+body {
+    background: #0d0d0d;
+    color: white;
     height: 100vh;
-    width: 100vw;
+    overflow: hidden;
+    position: relative;
+}
+
+/* BACKGROUND LOGO */
+.background-logo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('88A57F40-470A-4B65-A4E2-DE3DFAE66CE.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.08;         /* subtle faded look */
+    filter: blur(2px);     /* cinematic soft blur */
+    z-index: -1;
+}
+
+/* TOP CENTER NAV */
+.top-center-nav {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 40px;
+}
+
+.top-center-nav a {
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    transition: 0.3s ease;
+}
+
+.top-center-nav a:hover {
+    color: gold;
+}
+
+/* HAMBURGER */
+.hamburger {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 34px;
+    cursor: pointer;
+    color: white;
+    z-index: 1000;
+}
+
+/* SIDE MENU */
+.side-menu {
+    position: fixed;
+    top: 0;
+    right: -250px;
+    width: 250px;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.92);
+    padding-top: 80px;
+    transition: 0.4s ease;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    gap: 20px;
+    padding-left: 25px;
 }
 
-/* Logo */
-.logo {
-    width: 180px;
-    margin-bottom: 20px;
+.side-menu.open {
+    right: 0;
 }
 
-/* Title */
-.brand-title {
-    font-size: 28px;
-    letter-spacing: 6px;
-    margin-bottom: 40px;
-    font-weight: 300;
-}
-
-/* Button */
-.enter-btn {
-    display: inline-block;
-    padding: 14px 30px;
-    border: 1px solid #fff;
-    color: #fff;
+.side-menu a {
+    color: white;
+    font-size: 20px;
     text-decoration: none;
-    font-size: 16px;
-    letter-spacing: 2px;
     transition: 0.3s;
 }
 
-.enter-btn:hover {
+.side-menu a:hover {
     color: gold;
-    border-color: gold;
+}
+
+/* CENTER BRAND + BUTTON */
+.center-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.brand-name {
+    font-size: 55px;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+    color: white;
+    animation: fadeIn 2s ease;
+}
+
+/* ENTER BUTTON */
+.enter-btn {
+    padding: 12px 35px;
+    border: 2px solid gold;
+    font-size: 20px;
+    color: gold;
+    text-decoration: none;
+    transition: 0.3s ease;
+    border-radius: 8px;
+}
+
+.enter-btn:hover {
+    color: black;
+    background: gold;
+}
+
+/* FADE ANIMATION */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
