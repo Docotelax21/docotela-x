@@ -6,17 +6,44 @@
     <title>Docotela X</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+<body>
 
-<body class="fade-in">
+    <!-- Background Logo -->
+    <div class="background-logo"></div>
 
-    <!-- Centered Content -->
-    <div class="intro-container">
-        <img src="docotelax-logo.png" alt="Docotela X Logo" class="logo">
+    <!-- TOP NAVIGATION -->
+    <header>
+        <nav class="top-center-nav">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
 
-        <h1 class="brand-title">DOCOTELA X</h1>
+        <!-- HAMBURGER MENU -->
+        <div class="hamburger" onclick="toggleMenu()">
+            ☰
+        </div>
+        <div id="sideMenu" class="side-menu">
+            <a href="index.html">Home</a>
+            <a href="collections.html">Collections</a>
+            <a href="membersonly.html">Members Only</a>
+            <a href="art-gallery.html">Art Gallery</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </header>
 
-        <a href="home.html" class="enter-btn">VIEW COLLECTIONS</a>
+    <!-- MAIN CONTENT -->
+    <div class="center-content">
+        <h1 class="brand-name">Docotela X</h1>
+        <a href="collections.html" class="enter-btn">Enter Gallery</a>
     </div>
+
+<script>
+function toggleMenu() {
+    document.getElementById("sideMenu").classList.toggle("open");
+}
+</script>
 
 </body>
 </html>
