@@ -1,132 +1,138 @@
-/* GLOBAL RESET */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Didot", serif;
-}
-
+/* GLOBAL */
 body {
-    background: #0d0d0d;
+    margin: 0;
+    background: #000;
     color: white;
-    height: 100vh;
-    overflow: hidden;
-    position: relative;
+    font-family: "Cinzel", serif;
+    overflow-x: hidden;
 }
 
-/* BACKGROUND LOGO */
-.background-logo {
+/* FADE-IN */
+.fade {
+    animation: fadeIn 2s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* NAVBAR */
+header {
     position: fixed;
     top: 0;
-    left: 0;
     width: 100%;
-    height: 100%;
-    background-image: url('88A57F40-470A-4B65-A4E2-DE3DFAE66CE.png');
-    background-size: cover;
-    background-position: center;
-    opacity: 0.08;         /* subtle faded look */
-    filter: blur(2px);     /* cinematic soft blur */
-    z-index: -1;
-}
-
-/* TOP CENTER NAV */
-.top-center-nav {
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
     display: flex;
-    gap: 40px;
+    justify-content: center;
+    z-index: 100;
+    padding: 20px;
 }
 
-.top-center-nav a {
-    text-decoration: none;
+.center-nav a {
+    margin: 0 20px;
     font-size: 18px;
+    text-decoration: none;
     color: white;
-    transition: 0.3s ease;
+    transition: 0.3s;
 }
 
-.top-center-nav a:hover {
+.center-nav a:hover {
     color: gold;
 }
 
 /* HAMBURGER */
 .hamburger {
-    position: absolute;
+    position: fixed;
+    right: 20px;
     top: 20px;
-    right: 25px;
-    font-size: 34px;
+    font-size: 28px;
     cursor: pointer;
     color: white;
-    z-index: 1000;
+    z-index: 200;
 }
 
-/* SIDE MENU */
-.side-menu {
+.menu-panel {
     position: fixed;
-    top: 0;
     right: -250px;
+    top: 0;
     width: 250px;
     height: 100%;
-    background: rgba(0, 0, 0, 0.92);
+    background: rgba(15, 15, 15, 0.95);
     padding-top: 80px;
-    transition: 0.4s ease;
+    transition: 0.4s;
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    padding-left: 25px;
 }
 
-.side-menu.open {
+.menu-panel a {
+    padding: 15px 25px;
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.menu-panel a:hover {
+    color: gold;
+}
+
+.menu-panel.open {
     right: 0;
 }
 
-.side-menu a {
-    color: white;
+/* HERO SECTION */
+.hero {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* BACKGROUND LOGO */
+.logo-bg {
+    background-image: url('88A57F40-470A-4B65-A4E2-DE3DAFEA66CE.png');
+    background-size: 90%;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.08;
+    filter: blur(2px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* CONTENT */
+.hero-content {
+    position: relative;
+    z-index: 20;
+    text-align: center;
+    animation: fadeIn 2.5s ease-out;
+}
+
+.brand-title {
+    font-size: 42px;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+    text-shadow: 0 0 12px rgba(255, 215, 0, 0.4);
+}
+
+.enter-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border: 2px solid gold;
+    border-radius: 8px;
     font-size: 20px;
+    color: gold;
     text-decoration: none;
     transition: 0.3s;
 }
 
-.side-menu a:hover {
-    color: gold;
-}
-
-/* CENTER BRAND + BUTTON */
-.center-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-}
-
-.brand-name {
-    font-size: 55px;
-    letter-spacing: 2px;
-    margin-bottom: 40px;
-    color: white;
-    animation: fadeIn 2s ease;
-}
-
-/* ENTER BUTTON */
-.enter-btn {
-    padding: 12px 35px;
-    border: 2px solid gold;
-    font-size: 20px;
-    color: gold;
-    text-decoration: none;
-    transition: 0.3s ease;
-    border-radius: 8px;
-}
-
 .enter-btn:hover {
-    color: black;
     background: gold;
-}
-
-/* FADE ANIMATION */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    color: black;
+    box-shadow: 0 0 20px gold;
 }
