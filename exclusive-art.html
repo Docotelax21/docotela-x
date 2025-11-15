@@ -1,35 +1,44 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Exclusive Art — Docotela X</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
   <header>
-    <nav class="center-nav"><a href="home.html">Home</a><span class="dot">—</span><a href="about.html">About</a><span class="dot">—</span><a href="contact.html">Contact</a></nav>
-    <button id="hb4" class="hamburger">☰</button>
-    <div id="menu4" class="menu-panel">
-      <a href="home.html">Home</a><a href="collections.html">Collections</a><a href="membersonly.html">Members Only</a><a href="art-gallery.html">Art Gallery</a><a href="contact.html">Contact</a>
+    <nav class="center-nav"><a href="home.html">Home</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav>
+    <button id="hamburgerEA" class="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    <div id="menuEA" class="menu-panel" aria-hidden="true">
+      <a href="home.html">Home</a><a href="collections.html">Collections</a><a href="art-gallery.html">Art Gallery</a><a href="exclusive-drops.html">Exclusive Drops</a><a href="membersonly.html">Members Only</a><a href="contact.html">Contact</a>
     </div>
   </header>
 
   <main class="content">
-    <h2 class="section-title">Exclusive Art</h2>
-    <p class="muted">Handcrafted pieces and collaborations. Each item is unique, limited-run, and signed by the artist.</p>
-    <div class="cards">
+    <div class="logo-bg"></div>
+    <h1 class="page-title">Exclusive Art — Handcrafted</h1>
+    <p class="lead">One-off pieces made in collaboration with young artists — always 10 or fewer.</p>
+
+    <div class="grid">
       <article class="card">
-        <div class="card-media" style="background-image:url('product-watch.jpg')"></div>
-        <h3>Aurum Chronos — Single piece</h3>
-        <p class="muted">R150,000</p>
-        <a class="cta" href="checkout.html">Buy</a>
+        <img src="product-watch.jpg" alt="" class="card-img">
+        <h3>Limited Piece</h3>
+        <a class="card-btn" href="exclusive-drops.html">View Drops</a>
       </article>
     </div>
   </main>
 
-<script>
-  document.getElementById('hb4').addEventListener('click', ()=> document.getElementById('menu4').classList.toggle('open'));
-</script>
+  <script>
+    const hb = document.getElementById('hamburgerEA');
+    const mp = document.getElementById('menuEA');
+    hb.addEventListener('click', ()=> {
+      const open = hb.getAttribute('aria-expanded') === 'true';
+      hb.setAttribute('aria-expanded', !open);
+      mp.classList.toggle('open');
+      mp.setAttribute('aria-hidden', open);
+    });
+  </script>
 </body>
 </html>
