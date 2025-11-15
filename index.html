@@ -1,51 +1,43 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Docotela X — The Sovereign Verde</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Docotela X — Home</title>
+  <link href="styles.css" rel="stylesheet">
 </head>
+<body class="home">
 
-<body>
+  <!-- TOP CENTER NAV (HIDDEN ON HOME via CSS) -->
+  <nav class="center-nav">
+    <a href="index.html">Home</a><span>—</span><a href="about.html">About</a><span>—</span><a href="contact.html">Contact</a>
+  </nav>
 
-    <!-- WATERMARK BACKGROUND -->
-    <div class="watermark-bg"></div>
+  <!-- HAMBURGER (VISIBLE ON HOME) -->
+  <button class="hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button>
 
-    <!-- TOP NAVIGATION (visible on all pages except index) -->
-    <div class="top-nav">
-        <a href="home.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-    </div>
+  <!-- SLIDE MENU -->
+  <aside id="mobileMenu" class="mobile-menu glass" aria-hidden="true">
+    <a href="index.html">Home</a>
+    <a href="collections.html">Collections</a>
+    <a href="gallery.html">Art Gallery</a>
+    <a href="exclusive-drops.html">Exclusive Drops</a>
+    <a href="membersonly.html">Members Only</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </aside>
 
-    <!-- HAMBURGER -->
-    <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+  <!-- WATERMARK LOGO BACKGROUND -->
+  <div class="logo-bg" aria-hidden="true"></div>
 
-    <!-- GLASS MOBILE MENU -->
-    <div id="mobileMenu" class="mobile-menu glass">
-        <a href="home.html">Home</a>
-        <a href="collections.html">Collections</a>
-        <a href="gallery.html">Art Gallery</a>
-        <a href="exclusive-drops.html">Exclusive Drops</a>
-        <a href="membersonly.html">Members Only</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-    </div>
+  <!-- HERO -->
+  <main class="hero">
+    <img src="docotelax-logo.png" alt="Docotela X" class="hero-logo" />
+    <h1 class="brand-title">DOCOTELA X</h1>
+    <p class="lead">Limited collections. Handcrafted art.</p>
+    <a class="enter-btn" href="gallery.html">Enter the Gallery</a>
+  </main>
 
-    <!-- MAIN CONTENT -->
-    <section class="hero">
-        <img src="docotelax-logo.png" class="hero-logo" alt="Docotela X Logo">
-
-        <h1 class="hero-title">DOCOTELA X</h1>
-        <p class="hero-subtitle">
-            Limited pieces. Handcrafted by artists.  
-            Each collection is a scene — enter if you belong to the feeling.
-        </p>
-
-        <a class="enter-btn" href="gallery.html">Enter the Gallery</a>
-    </section>
-
-    <script src="menu.js"></script>
+  <script src="menu.js"></script>
 </body>
 </html>
