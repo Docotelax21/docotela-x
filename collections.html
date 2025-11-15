@@ -6,24 +6,14 @@
 <title>Collections — Docotela X</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
-<style>
-.container{max-width:1100px;margin:120px auto;padding:0 20px;color:#e9e6e1;}
-.page-title{font-family:'Cinzel',serif;font-size:36px;color:#f3dfb3;margin-bottom:8px;}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px;margin-top:36px;}
-.card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:28px;border-radius:8px;border:1px solid rgba(212,173,62,0.06);box-shadow:0 8px 30px rgba(0,0,0,0.4);transition:transform .28s ease}
-.card:hover{transform:translateY(-6px);box-shadow:0 18px 50px rgba(0,0,0,0.5)}
-.card h3{font-family:'Cinzel',serif;color:#f7e9b6;margin-bottom:8px}
-.card p{font-family:'Poppins',sans-serif;color:#d7d1c8;opacity:.9;font-size:15px}
-.cta{margin-top:14px;display:inline-block;padding:8px 14px;border:2px solid rgba(212,173,62,0.95);color:rgba(212,173,62,0.95);text-decoration:none;border-radius:6px}
-@media (max-width:520px){ .container{margin-top:90px} .page-title{font-size:28px} }
-</style>
 </head>
 <body>
+  <div class="bg-watermark" aria-hidden="true"></div>
   <header>
-    <nav class="center-nav"><a href="home.html">Home</a><span class="dot"> • </span><a href="about.html">About</a><span class="dot"> • </span><a href="contact.html">Contact</a></nav>
-    <button id="hamburgerCollections" class="hamburger" aria-label="Open menu" aria-expanded="false">☰</button>
-    <div id="menuCollections" class="menu-panel" aria-hidden="true">
-      <a href="home.html">Home</a>
+    <nav class="center-nav"><a href="index.html">Home</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav>
+    <button class="hamburger" onclick="toggleMenu()">☰</button>
+    <div id="panel" class="menu-panel" aria-hidden="true">
+      <a href="index.html">Home</a>
       <a href="collections.html">Collections</a>
       <a href="membersonly.html">Members Only</a>
       <a href="art-gallery.html">Art Gallery</a>
@@ -32,45 +22,33 @@
     </div>
   </header>
 
-  <main>
-    <section class="container">
-      <h1 class="page-title">Collections</h1>
-      <p style="color:#cfc7bd">Limited drops. Handcrafted. Each collection tells a single story.</p>
+  <main class="section">
+    <div class="container">
+      <h2 class="kicker">Collections</h2>
+      <h1 style="color:#f3e6c2">Limited Collections</h1>
+      <p style="color:var(--muted)">Handcrafted and numbered pieces — small runs only.</p>
 
-      <div class="grid">
-        <div class="card">
-          <h3>The Feeling of Freedom</h3>
-          <p>Signature launch — soft fabrics, experimental cuts. Small batch pieces built for effortless motion.</p>
-          <a class="cta" href="exclusive-drops.html">View Drop</a>
-        </div>
+      <div class="hr"></div>
 
-        <div class="card">
-          <h3>The 8deity</h3>
-          <p>Only 8 unique, handcrafted pieces. Reserved for collectors and long-time supporters.</p>
-          <a class="cta" href="exclusive-art.html">Discover</a>
-        </div>
+      <div class="grid" style="margin-top:22px">
+        <article class="card">
+          <div class="media" style="background-image:url('88A57F40-470A-4B65-A4E2-DE3DAFEA66CE.png')"></div>
+          <div class="meta"><h3>The Feeling of Freedom</h3><p>Signature collection — limited.</p><a class="cta" href="exclusive-drops.html">View</a></div>
+        </article>
 
-        <div class="card">
-          <h3>Quiet Space</h3>
-          <p>Minimal silhouettes — quiet luxury for those who prefer to speak softly through clothes.</p>
-          <a class="cta" href="collections.html">Explore</a>
-        </div>
+        <article class="card">
+          <div class="media" style="background-image:url('docotelax-logo.png')"></div>
+          <div class="meta"><h3>The 8deity</h3><p>8 unique pieces. Hand-signed.</p><a class="cta" href="exclusive-art.html">Discover</a></div>
+        </article>
 
-        <div class="card">
-          <h3>Lost in the Art of Chasing Freedom</h3>
-          <p>Experimental materials and layered textures. A narrative collection about movement and memory.</p>
-          <a class="cta" href="collections.html">Explore</a>
-        </div>
+        <article class="card">
+          <div class="media" style="background-image:url('88A57F40-470A-4B65-A4E2-DE3DAFEA66CE.png')"></div>
+          <div class="meta"><h3>Quiet Space</h3><p>Minimal, classic silhouettes.</p><a class="cta" href="collections.html">Explore</a></div>
+        </article>
       </div>
-    </section>
+    </div>
   </main>
 
-<script>
-(function(){
-  const hb=document.getElementById('hamburgerCollections'), menu=document.getElementById('menuCollections');
-  hb.addEventListener('click', ()=>{ const ex = hb.getAttribute('aria-expanded') === 'true'; hb.setAttribute('aria-expanded', !ex); menu.classList.toggle('open'); menu.setAttribute('aria-hidden', ex); });
-  document.addEventListener('click',(e)=>{ if(!menu.contains(e.target) && !hb.contains(e.target)){ menu.classList.remove('open'); hb.setAttribute('aria-expanded','false'); menu.setAttribute('aria-hidden','true'); }});
-})();
-</script>
+<script>function toggleMenu(){const p=document.getElementById('panel');p.classList.toggle('open');p.setAttribute('aria-hidden',!p.classList.contains('open'))}</script>
 </body>
 </html>
