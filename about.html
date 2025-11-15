@@ -1,61 +1,49 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>About — Docotela X</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About — Docotela X</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header class="topbar" role="banner">
-  <!-- TOP-CENTER NAV (unchanged visual) -->
-  <nav class="center-nav" role="navigation" aria-label="Main">
-    <a href="home.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-
-  <!-- CINEMATIC HAMBURGER (B1) -->
-  <button id="docoHamburger" class="hamburger" aria-label="Open menu" aria-controls="docoSideMenu" aria-expanded="false" type="button">
-    <span class="hbar"></span>
-    <span class="hbar"></span>
-    <span class="hbar"></span>
-  </button>
-
-  <!-- SIDE MENU: black glass slide-in -->
-  <aside id="docoSideMenu" class="doco-side-menu" role="menu" aria-hidden="true">
-    <nav class="doco-menu-inner" role="navigation" aria-label="Site menu">
-      <!-- Primary site links -->
-      <a role="menuitem" href="home.html">Home</a>
-      <a role="menuitem" href="collections.html">Collections</a>
-      <a role="menuitem" href="gallery.html">Art Gallery</a>
-      <a role="menuitem" href="exclusive-drops.html">Exclusive Drops</a>
-      <a role="menuitem" href="members-only.html">Members Only</a>
-      <a role="menuitem" href="about.html">About</a>
-      <a role="menuitem" href="contact.html">Contact</a>
-
-      <hr class="doco-sep" />
-
-      <!-- Collections quick links -->
-      <div class="doco-subtitle">Collections</div>
-      <a role="menuitem" href="collection-8deity.html">8 Deity Collection</a>
-      <a role="menuitem" href="collection-freedom.html">The Feeling of Freedom</a>
-      <a role="menuitem" href="collection-originals.html">Docotela X Originals</a>
-      <a role="menuitem" href="collection-accessories.html">Docotela X Accessories</a>
-      <a role="menuitem" href="collection-kids.html">Docotela X Kids</a>
-      <a role="menuitem" href="collection-limited.html">Docotela X Limited</a>
-      <a role="menuitem" href="collection-emptiness.html">Found in Emptiness</a>
-      <a role="menuitem" href="collection-quietspace.html">Quiet Space</a>
-      <a role="menuitem" href="collection-chaos.html">Art of Chaos</a>
-      <a role="menuitem" href="collection-simplicity.html">Simplicity in Motion</a>
-
-      <div class="doco-footer-note">Docotela X — Limited collections. Handcrafted art.</div>
+  <header class="topbar" role="banner">
+    <nav class="center-nav" role="navigation" aria-label="Main">
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
     </nav>
-  </aside>
-</header>
+    <button id="docoHamburger" class="hamburger" aria-label="Open menu" aria-controls="docoSideMenu" aria-expanded="false" type="button">
+      <span class="hbar"></span><span class="hbar"></span><span class="hbar"></span>
+    </button>
 
-  <!-- cinematic floating X's -->
+    <aside id="docoSideMenu" class="doco-side-menu" role="menu" aria-hidden="true">
+      <nav class="doco-menu-inner" role="navigation" aria-label="Site menu">
+        <a role="menuitem" href="home.html">Home</a>
+        <a role="menuitem" href="collections.html">Collections</a>
+        <a role="menuitem" href="gallery.html">Art Gallery</a>
+        <a role="menuitem" href="exclusive-drops.html">Exclusive Drops</a>
+        <a role="menuitem" href="members-only.html">Members Only</a>
+        <a role="menuitem" href="about.html">About</a>
+        <a role="menuitem" href="contact.html">Contact</a>
+        <hr class="doco-sep" />
+        <div class="doco-subtitle">Collections</div>
+        <a role="menuitem" href="collection-8deity.html">8 Deity Collection</a>
+        <a role="menuitem" href="collection-feeling-of-freedom.html">The Feeling of Freedom</a>
+        <a role="menuitem" href="collection-docotela-x-originals.html">Docotela X Originals</a>
+        <a role="menuitem" href="collection-docotela-x-accessories.html">Docotela X Accessories</a>
+        <a role="menuitem" href="collection-docotela-x-kids.html">Docotela X Kids</a>
+        <a role="menuitem" href="collection-docotela-x-limited.html">Docotela X Limited</a>
+        <a role="menuitem" href="collection-found-in-emptiness.html">Found in Emptiness</a>
+        <a role="menuitem" href="collection-quiet-space.html">Quiet Space</a>
+        <a role="menuitem" href="collection-art-of-chaos.html">Art of Chaos</a>
+        <a role="menuitem" href="collection-simplicity-in-motion.html">Simplicity in Motion</a>
+        <div class="doco-footer-note">Docotela X — Limited collections. Handcrafted art.</div>
+      </nav>
+    </aside>
+  </header>
+
   <div class="floating-x x1">X</div>
   <div class="floating-x x2">X</div>
   <div class="floating-x x3">X</div>
@@ -77,8 +65,6 @@
 
   <footer class="center"><div class="container">© Docotela X</div></footer>
 
-<script>
-(function(){ const hb=document.getElementById('hamburgerAbout'), menu=document.getElementById('sideMenuAbout'); hb.addEventListener('click', ()=> menu.classList.toggle('menu-open')); document.addEventListener('click',(e)=>{ if(!menu.contains(e.target) && e.target!==hb) menu.classList.remove('menu-open'); }); })();
-</script>
+  <script src="menu.js"></script>
 </body>
 </html>
