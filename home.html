@@ -1,11 +1,11 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Docotela X — Home</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Docotela X — Home</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="topbar">
@@ -14,13 +14,19 @@
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
-    <button class="hamburger" id="hamburger">☰</button>
-    <div class="menu-panel" id="menuPanel" aria-hidden="true">
+
+    <!-- Luxury Hamburger (drop-in) -->
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <div id="sideMenu" class="side-menu" aria-hidden="true">
       <a href="home.html">Home</a>
       <a href="collections.html">Collections</a>
+      <a href="gallery.html">Art Gallery</a>
       <a href="exclusive-drops.html">Exclusive Drops</a>
-      <a href="art-gallery.html">Art Gallery</a>
       <a href="members-only.html">Members Only</a>
+      <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </div>
   </header>
@@ -31,11 +37,10 @@
       <h1 class="brand-title">DOCOTELA X</h1>
       <p class="brand-sub">Limited pieces, handcrafted by artists. Each collection is a scene — enter if you belong to the feeling.</p>
       <div class="cta-row">
-        <a class="btn" href="art-gallery.html">Enter the Gallery</a>
-        <!-- NOTE: The Sovereign Verde button removed as requested -->
+        <a class="btn" href="gallery.html">Enter the Gallery</a>
       </div>
     </div>
-    <!-- subtle page bg logo intentionally not included on Home per your request -->
+    <!-- Home intentionally has no background logo image per your request -->
   </main>
 
   <footer class="center">
@@ -43,11 +48,20 @@
   </footer>
 
 <script>
-// hamburger toggle
-const hb = document.getElementById('hamburger');
-const mp = document.getElementById('menuPanel');
-hb.addEventListener('click', ()=>{ mp.classList.toggle('open'); mp.setAttribute('aria-hidden', !mp.classList.contains('open'));});
-document.addEventListener('click', (e)=>{ if(!mp.contains(e.target) && e.target!==hb){ mp.classList.remove('open'); }});
+/* hamburger behaviour (same across pages) */
+(function(){
+  const hb = document.getElementById('hamburger');
+  const menu = document.getElementById('sideMenu');
+  function toggle(){
+    menu.classList.toggle('menu-open');
+    const open = menu.classList.contains('menu-open');
+    menu.setAttribute('aria-hidden', !open);
+  }
+  hb.addEventListener('click', toggle);
+  document.addEventListener('click', (e)=>{
+    if(!menu.contains(e.target) && e.target !== hb) menu.classList.remove('menu-open');
+  });
+})();
 </script>
 </body>
 </html>
