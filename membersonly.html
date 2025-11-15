@@ -1,7 +1,6 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Members Only — Docotela X</title><link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"></head>
-<body>
-<header class="topbar"><nav class="center-nav"><a href="home.html">Home</a><a href="collections.html">Collections</a><a href="contact.html">Contact</a></nav></header>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Members Only — Docotela X</title><link rel="stylesheet" href="styles.css"></head><body>
+<header class="topbar"><nav class="center-nav"><a href="home.html">Home</a><a href="collections.html">Collections</a><a href="contact.html">Contact</a></nav><button id="docoHamburger" class="hamburger" aria-label="Open menu"><span class="hbar"></span><span class="hbar"></span><span class="hbar"></span></button></header>
 
 <main class="container" style="padding-top:120px;">
   <h2 style="font-family:'Cinzel',serif;color:var(--gold)">Members Only</h2>
@@ -10,7 +9,7 @@
   <div class="vault-wrap" style="margin-top:24px;">
     <div class="vault-lock">
       <div style="color:var(--muted); margin-bottom:8px">Welcome to the Vault</div>
-      <input class="pw" id="pwInput" placeholder="Access Key" />
+      <input class="pw" id="pwInput" placeholder="Access Key">
       <div style="display:flex; gap:10px; margin-top:12px">
         <button class="btn" id="pwBtn">Enter</button>
         <a class="btn" href="contact.html">Apply for membership</a>
@@ -28,11 +27,12 @@
 
 <footer class="center">© Docotela X</footer>
 
+<script src="menu.js"></script>
 <script>
 const pwBtn=document.getElementById('pwBtn'), pwInput=document.getElementById('pwInput'), accessOk=document.getElementById('accessOk'),
       gateL=document.getElementById('gateL'), gateR=document.getElementById('gateR');
+// client-side password (change if desired)
 const MEMBER_PASS = 'memberson1y';
-
 pwBtn.addEventListener('click', ()=> {
   const val = (pwInput.value||'').trim();
   if(!val){ alert('Enter access key'); return; }
