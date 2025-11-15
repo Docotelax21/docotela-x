@@ -1,11 +1,11 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>About — Docotela X</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>About — Docotela X</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="topbar">
@@ -14,23 +14,24 @@
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
-    <button class="hamburger" id="hamburgerAbout">☰</button>
-    <div class="menu-panel" id="menuAbout" aria-hidden="true">
+    <button class="hamburger" id="hamburgerAbout" aria-label="Open menu"><span></span><span></span><span></span></button>
+    <div id="sideMenuAbout" class="side-menu" aria-hidden="true">
       <a href="home.html">Home</a>
       <a href="collections.html">Collections</a>
+      <a href="gallery.html">Art Gallery</a>
       <a href="exclusive-drops.html">Exclusive Drops</a>
-      <a href="art-gallery.html">Art Gallery</a>
       <a href="members-only.html">Members Only</a>
+      <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </div>
   </header>
 
-  <!-- floating cinematic Xs -->
+  <!-- cinematic floating X's -->
   <div class="floating-x x1">X</div>
   <div class="floating-x x2">X</div>
   <div class="floating-x x3">X</div>
 
-  <div class="page-bg-logo"></div>
+  <div class="page-bg-logo" aria-hidden="true"></div>
 
   <main class="container" style="padding-top:120px;">
     <article class="about-article">
@@ -45,15 +46,10 @@
     </article>
   </main>
 
-  <footer class="center">
-    <div class="container">© Docotela X</div>
-  </footer>
+  <footer class="center"><div class="container">© Docotela X</div></footer>
 
 <script>
-const hb = document.getElementById('hamburgerAbout');
-const mp = document.getElementById('menuAbout');
-hb.addEventListener('click', ()=> mp.classList.toggle('open'));
-document.addEventListener('click',(e)=>{ if(!mp.contains(e.target)&&e.target!==hb) mp.classList.remove('open')});
+(function(){ const hb=document.getElementById('hamburgerAbout'), menu=document.getElementById('sideMenuAbout'); hb.addEventListener('click', ()=> menu.classList.toggle('menu-open')); document.addEventListener('click',(e)=>{ if(!menu.contains(e.target) && e.target!==hb) menu.classList.remove('menu-open'); }); })();
 </script>
 </body>
 </html>
