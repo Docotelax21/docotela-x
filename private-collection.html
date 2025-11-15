@@ -1,215 +1,26 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Private Collection | Docotela X</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: black;
-      color: gold;
-      font-family: 'Poppins', sans-serif;
-      overflow: hidden;
-      animation: fadeIn 2s ease-in-out forwards;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Vault Door Container */
-    .vault-door {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at center, #111 0%, #000 85%);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 10;
-      animation: openVault 5s ease-in-out forwards;
-      overflow: hidden;
-    }
-
-    /* Golden energy pulse behind door */
-    .energy {
-      position: absolute;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255, 215, 0, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
-      animation: pulseEnergy 3s ease-in-out infinite;
-      z-index: 1;
-      filter: blur(60px);
-    }
-
-    @keyframes pulseEnergy {
-      0% { transform: scale(1); opacity: 0.5; }
-      50% { transform: scale(1.2); opacity: 1; }
-      100% { transform: scale(1); opacity: 0.5; }
-    }
-
-    /* Vault doors */
-    .vault-door::before, .vault-door::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      width: 50%;
-      height: 100%;
-      background: linear-gradient(145deg, #111, #000);
-      border: 2px solid gold;
-      transition: transform 3s ease-in-out;
-      z-index: 9;
-      box-shadow: inset 0 0 60px rgba(255, 215, 0, 0.2);
-    }
-
-    .vault-door::before { left: 0; transform-origin: left center; }
-    .vault-door::after { right: 0; transform-origin: right center; }
-
-    @keyframes openVault {
-      0% { opacity: 1; }
-      30% { opacity: 1; }
-      100% { opacity: 0; pointer-events: none; }
-    }
-
-    .vault-door.open::before {
-      transform: perspective(1000px) rotateY(-110deg);
-    }
-
-    .vault-door.open::after {
-      transform: perspective(1000px) rotateY(110deg);
-    }
-
-    /* Main Content */
-    .content {
-      opacity: 0;
-      text-align: center;
-      padding: 60px 20px;
-      animation: fadeContent 2s ease-in-out 4.5s forwards;
-      position: relative;
-      z-index: 1;
-    }
-
-    @keyframes fadeContent {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    h1 {
-      font-size: 3em;
-      letter-spacing: 4px;
-      text-shadow: 0 0 20px gold;
-      margin-bottom: 20px;
-    }
-
-    p {
-      font-size: 1.2em;
-      color: #d4af37;
-      max-width: 700px;
-      margin: 0 auto 50px;
-      line-height: 1.8;
-    }
-
-    .exclusive-items {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-      padding: 20px 60px;
-    }
-
-    .item {
-      background: linear-gradient(145deg, #000, #111);
-      border: 1px solid gold;
-      padding: 20px;
-      border-radius: 8px;
-      transition: 0.4s;
-      box-shadow: 0 0 25px rgba(255, 215, 0, 0.08);
-    }
-
-    .item:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 40px gold;
-    }
-
-    .item img {
-      width: 100%;
-      border-radius: 8px;
-      margin-bottom: 15px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 40px;
-      color: #d4af37;
-      font-size: 0.9em;
-    }
-
-    a {
-      text-decoration: none;
-      color: gold;
-      transition: 0.3s;
-    }
-
-    a:hover {
-      color: white;
-    }
-
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Private Collection — Docotela X</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div class="bg-watermark" aria-hidden="true"></div>
+  <header> ... </header> <!-- header identical to other pages — you can reuse same header block -->
+  <main class="section">
+    <div class="container">
+      <h2 class="kicker">Private Vault</h2>
+      <h1 style="color:#f3e6c2">Exclusive Access</h1>
+      <p style="color:var(--muted)">Unreleased drops, artist editions and private commissions are displayed here for members.</p>
 
-  <!-- Vault Door Animation -->
-  <div class="vault-door" id="vault">
-    <div class="energy"></div>
-  </div>
-
-  <!-- Private Collection Content -->
-  <div class="content">
-    <h1>Private Collection</h1>
-    <p>Welcome to the unseen world of <strong>Docotela X</strong> — a sanctuary of creation beyond the surface.  
-    Each piece here is a whisper from our archives, a reflection of silence, art, and freedom reserved for only a few.</p>
-
-    <div class="exclusive-items">
-      <div class="item">
-        <img src="https://via.placeholder.com/300x400/000000/FFD700?text=Unreleased+01" alt="Unreleased Drop 01">
-        <h3>The Hidden Flame</h3>
-        <p>From the <em>Lost in the Art of Chasing Freedom</em> archives.</p>
-      </div>
-
-      <div class="item">
-        <img src="https://via.placeholder.com/300x400/000000/FFD700?text=Unreleased+02" alt="Unreleased Drop 02">
-        <h3>Echoes of Emptiness</h3>
-        <p>An unreleased concept balancing chaos and calm in perfect stillness.</p>
-      </div>
-
-      <div class="item">
-        <img src="https://via.placeholder.com/300x400/000000/FFD700?text=Unreleased+03" alt="Unreleased Drop 03">
-        <h3>Gold in Silence</h3>
-        <p>Luxury meets introspection — crafted for collectors who value stillness.</p>
+      <div class="hr"></div>
+      <div class="grid">
+        <article class="card"><div class="media" style="background-image:url('88A57F40-470A-4B65-A4E2-DE3DAFEA66CE.png')"></div><div class="meta"><h3>Vault Piece 1</h3><p>Members only.</p></div></article>
+        <article class="card"><div class="media" style="background-image:url('docotelax-logo.png')"></div><div class="meta"><h3>Vault Piece 2</h3><p>Members only.</p></div></article>
       </div>
     </div>
-
-    <footer>
-      <a href="index.html">← Return Home</a>
-    </footer>
-  </div>
-
-  <script>
-    // Trigger vault door opening animation
-    const vault = document.getElementById('vault');
-    setTimeout(() => {
-      vault.classList.add('open');
-    }, 1200);
-
-    // Remove vault after animation
-    setTimeout(() => {
-      vault.style.display = 'none';
-    }, 5000);
-  </script>
-
+  </main>
 </body>
 </html>
