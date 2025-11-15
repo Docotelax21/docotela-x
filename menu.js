@@ -1,37 +1,35 @@
-// simple menu toggle + close on link click
+// menu.js - minimal and reliable
 (function(){
-  const hb = document.querySelectorAll('.hamburger');
-  const menus = document.querySelectorAll('#mobileMenu');
-
-  function toggle(){
-    menus.forEach(m=>{
-      m.classList.toggle('open');
-      m.setAttribute('aria-hidden', m.classList.contains('open') ? 'false' : 'true');
-    });
-    hb.forEach(b=>{
-      const expanded = b.getAttribute('aria-expanded') === 'true';
-      b.setAttribute('aria-expanded', (!expanded).toString());
-    });
+  function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    if (!menu) return;
+    menu.classList.toggle('open');
+    // aria
+    const expanded = menu.classList.contains('open');
+    document.querySelectorAll('.hamburger').forEach(h => h.setAttribute('aria-expanded', expanded ? 'true' : 'false'));
+    menu.setAttribute('aria-hidden', expanded ? 'false' : 'true');
   }
 
-  hb.forEach(b=>b.addEventListener('click', toggle));
+  // attach click handlers for any hamburger
+  document.addEventListener('DOMContentLoaded', function(){
+    document.querySelectorAll('.hamburger').forEach(btn=>{
+      btn.addEventListener('click', toggleMenu);
+    });
 
-  // close if clicking a menu link (so page navigates and menu closes)
-  document.addEventListener('click', (ev)=>{
-    if(ev.target.tagName === 'A' && ev.target.closest('.mobile-menu')){
-      menus.forEach(m=>m.classList.remove('open'));
-      hb.forEach(b=>b.setAttribute('aria-expanded','false'));
-    }
-  });
+    // close menu if clicking outside
+    document.addEventListener('click', function(e){
+      const menu = document.getElementById('mobileMenu');
+      if (!menu || !menu.classList.contains('open')) return;
+      const isInside = menu.contains(e.target) || Array.from(document.querySelectorAll('.hamburger')).some(b => b.contains(e.target));
+      if (!isInside) menu.classList.remove('open');
+    });
 
-  // close menu if clicking outside when open
-  document.addEventListener('click', (ev)=>{
-    const open = Array.from(menus).some(m => m.classList.contains('open'));
-    if(!open) return;
-    // if click is inside hamburger or menu, do nothing
-    if (ev.target.closest('.hamburger') || ev.target.closest('.mobile-menu')) return;
-    // otherwise close
-    menus.forEach(m=>m.classList.remove('open'));
-    hb.forEach(b=>b.setAttribute('aria-expanded','false'));
+    // close menu when menu link clicked (so it navigates cleanly)
+    document.addEventListener('click', function(e){
+      if (e.target.tagName === 'A' && e.target.closest('#mobileMenu')) {
+        const menu = document.getElementById('mobileMenu');
+        if (menu) menu.classList.remove('open');
+      }
+    });
   });
 })();
