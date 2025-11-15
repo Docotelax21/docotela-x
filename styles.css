@@ -140,3 +140,67 @@ body.home .center-nav{display:none}
 /* misc */
 a.mail{color:#fff;text-decoration:underline;color:#f6dfb6}
 .muted{color:rgba(255,255,255,.45);margin-top:12px}
+/* FULLSCREEN GATES */
+.gates-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.gate {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    transition: transform 1.5s ease;
+}
+
+.left-gate {
+    left: 0;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.right-gate {
+    right: 0;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.open-left {
+    transform: translateX(-100%);
+}
+
+.open-right {
+    transform: translateX(100%);
+}
+
+/* PASSWORD BOX CENTERED */
+.password-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.4);
+    padding: 25px 35px;
+    border-radius: 12px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+.password-box input {
+    padding: 10px;
+    width: 200px;
+    margin-top: 10px;
+    border-radius: 6px;
+    border: none;
+}
+
+.password-box button {
+    padding: 10px 18px;
+    margin-left: 10px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+}
