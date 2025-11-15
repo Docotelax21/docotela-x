@@ -1,43 +1,38 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Art Gallery — Docotela X</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8">
+  <title>Art Gallery — Docotela X</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="bg-watermark" aria-hidden="true"></div>
-  <header>
-    <nav class="center-nav"><a href="index.html">Home</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav>
-    <button class="hamburger" onclick="toggleMenu()">☰</button>
-    <div id="panel" class="menu-panel" aria-hidden="true">
-      <a href="index.html">Home</a>
-      <a href="collections.html">Collections</a>
-      <a href="membersonly.html">Members Only</a>
-      <a href="art-gallery.html">Art Gallery</a>
+  <header class="header">
+    <nav class="center-nav container">
+      <a href="home.html">Home</a>
       <a href="about.html">About</a>
+      <a href="collections.html">Collections</a>
+      <a href="art-gallery.html">Art Gallery</a>
       <a href="contact.html">Contact</a>
-    </div>
+    </nav>
   </header>
 
-  <main class="section">
-    <div class="container">
-      <h2 class="kicker">Gallery</h2>
-      <h1 style="color:#f3e6c2">Selected Works</h1>
-      <p style="color:var(--muted)">A curated selection highlighting collaborations and limited prints.</p>
+  <main class="page-article container">
+    <h2 style="font-family:'Cinzel', serif; color:var(--accent); font-size:36px;">Art Gallery</h2>
+    <div class="hr-gold" aria-hidden="true"></div>
+    <p style="color:rgba(255,255,255,0.75); max-width:920px;">Showcased work from collaborators and artists who handcraft each piece. This gallery displays sketches, mood boards and limited artworks tied to each collection.</p>
 
-      <div class="hr"></div>
+    <div style="height:26px"></div>
 
-      <div class="grid" style="margin-top:22px">
-        <article class="card"><div class="media" style="background-image:url('88A57F40-470A-4B65-A4E2-DE3DAFEA66CE.png')"></div><div class="meta"><h3>Study I</h3><p>Mixed media study.</p></div></article>
-        <article class="card"><div class="media" style="background-image:url('docotelax-logo.png')"></div><div class="meta"><h3>Letter</h3><p>Signature print.</p></div></article>
-        <article class="card"><div class="media" style="background-image:url('88A57F40-470A-4B65-A4E2-DE3DAFEA66CE.png')"></div><div class="meta"><h3>Quiet Canvas</h3><p>Large format work.</p></div></article>
-      </div>
-    </div>
+    <section class="gallery-grid">
+      <div class="gallery-item card">Artist — Sketch 01</div>
+      <div class="gallery-item card">Artist — Sketch 02</div>
+      <div class="gallery-item card">Artist — Textile Study</div>
+      <div class="gallery-item card">Backstage — Photo</div>
+    </section>
+
+    <div style="height:60px"></div>
   </main>
-
-<script>function toggleMenu(){const p=document.getElementById('panel');p.classList.toggle('open');p.setAttribute('aria-hidden',!p.classList.contains('open'))}</script>
 </body>
 </html>
