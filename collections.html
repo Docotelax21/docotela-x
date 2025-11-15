@@ -1,43 +1,63 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Collections — Docotela X</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Collections — Docotela X</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header class="topbar">
-  <nav class="center-nav"><a href="home.html">Home</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav>
-  <button class="hamburger" id="hamburgerColl"><span></span><span></span><span></span></button>
-  <div id="sideMenuColl" class="side-menu" aria-hidden="true">
-    <a href="home.html">Home</a><a href="collections.html">Collections</a><a href="gallery.html">Art Gallery</a><a href="exclusive-drops.html">Exclusive Drops</a><a href="members-only.html">Members Only</a><a href="about.html">About</a><a href="contact.html">Contact</a>
-  </div>
-</header>
+  <header class="topbar">
+    <nav class="center-nav"><a href="home.html">Home</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav>
+    <button id="docoHamburger" class="hamburger" aria-label="Open menu"><span class="hbar"></span><span class="hbar"></span><span class="hbar"></span></button>
 
-<div class="page-bg-logo" aria-hidden="true"></div>
+    <aside id="docoSideMenu" class="doco-side-menu" role="menu" aria-hidden="true">
+      <nav class="doco-menu-inner" role="navigation" aria-label="Site menu">
+        <a role="menuitem" href="home.html">Home</a>
+        <a role="menuitem" href="collections.html">Collections</a>
+        <a role="menuitem" href="gallery.html">Art Gallery</a>
+        <a role="menuitem" href="exclusive-drops.html">Exclusive Drops</a>
+        <a role="menuitem" href="members-only.html">Members Only</a>
+        <a role="menuitem" href="about.html">About</a>
+        <a role="menuitem" href="contact.html">Contact</a>
+        <hr class="doco-sep" />
+        <div class="doco-subtitle">Collections</div>
+        <a role="menuitem" href="collection-8deity.html">8 Deity Collection</a>
+        <a role="menuitem" href="collection-feeling-of-freedom.html">The Feeling of Freedom</a>
+        <a role="menuitem" href="collection-docotela-x-originals.html">Docotela X Originals</a>
+        <a role="menuitem" href="collection-docotela-x-accessories.html">Docotela X Accessories</a>
+        <a role="menuitem" href="collection-docotela-x-kids.html">Docotela X Kids</a>
+        <a role="menuitem" href="collection-docotela-x-limited.html">Docotela X Limited</a>
+        <a role="menuitem" href="collection-found-in-emptiness.html">Found in Emptiness</a>
+        <a role="menuitem" href="collection-quiet-space.html">Quiet Space</a>
+        <a role="menuitem" href="collection-art-of-chaos.html">Art of Chaos</a>
+        <a role="menuitem" href="collection-simplicity-in-motion.html">Simplicity in Motion</a>
+        <div class="doco-footer-note">Docotela X — Limited collections. Handcrafted art.</div>
+      </nav>
+    </aside>
+  </header>
 
-<main class="container" style="padding-top:120px;">
-  <h2 style="font-family:'Cinzel',serif;color:var(--gold)">Collections</h2>
-  <p style="color:rgba(255,255,255,0.85)">Select a collection to view its pieces and story.</p>
+  <div class="page-bg-logo" aria-hidden="true"></div>
 
-  <div class="gallery-grid">
-    <a class="frame" href="collection-8deity.html">8 Deity Collection<div class="label">8 exclusive pieces</div></a>
-    <a class="frame" href="collection-feeling-of-freedom.html">The Feeling of Freedom<div class="label">Origins & story</div></a>
-    <a class="frame" href="collection-docotela-x-originals.html">Docotela X Originals<div class="label">Core pieces</div></a>
-    <a class="frame" href="collection-docotela-x-accessories.html">Docotela X Accessories<div class="label">Wearable art</div></a>
-    <a class="frame" href="collection-docotela-x-kids.html">Docotela X Kids<div class="label">Small editions</div></a>
-    <a class="frame" href="collection-docotela-x-limited.html">Docotela X Limited<div class="label">Ultra limited</div></a>
-    <a class="frame" href="collection-found-in-emptiness.html">Found in Emptiness<div class="label">Concept pieces</div></a>
-    <a class="frame" href="collection-quiet-space.html">Quiet Space<div class="label">Minimal pieces</div></a>
-    <a class="frame" href="collection-art-of-chaos.html">Art of Chaos<div class="label">Experimental</div></a>
-    <a class="frame" href="collection-simplicity-in-motion.html">Simplicity in Motion<div class="label">Motion-inspired</div></a>
-  </div>
-</main>
+  <main class="container" style="padding-top:120px;">
+    <h2 style="font-family:'Cinzel',serif;color:var(--gold)">Collections</h2>
+    <p style="color:rgba(255,255,255,0.85)">Select a collection to view its pieces and story.</p>
 
-<footer class="center">© Docotela X</footer>
+    <div class="gallery-grid" style="margin-top:28px;">
+      <a class="frame" href="collection-8deity.html">8 Deity Collection<div class="label">8 exclusive pieces</div></a>
+      <a class="frame" href="collection-feeling-of-freedom.html">The Feeling of Freedom<div class="label">Origins & story</div></a>
+      <a class="frame" href="collection-docotela-x-originals.html">Docotela X Originals<div class="label">Core pieces</div></a>
+      <a class="frame" href="collection-docotela-x-accessories.html">Docotela X Accessories<div class="label">Wearable art</div></a>
+      <a class="frame" href="collection-docotela-x-kids.html">Docotela X Kids<div class="label">Small editions</div></a>
+      <a class="frame" href="collection-docotela-x-limited.html">Docotela X Limited<div class="label">Ultra limited</div></a>
+      <a class="frame" href="collection-found-in-emptiness.html">Found in Emptiness<div class="label">Concept pieces</div></a>
+      <a class="frame" href="collection-quiet-space.html">Quiet Space<div class="label">Minimal pieces</div></a>
+      <a class="frame" href="collection-art-of-chaos.html">Art of Chaos<div class="label">Experimental</div></a>
+      <a class="frame" href="collection-simplicity-in-motion.html">Simplicity in Motion<div class="label">Motion-inspired</div></a>
+    </div>
+  </main>
 
-<script>
-(function(){ const hb=document.getElementById('hamburgerColl'), menu=document.getElementById('sideMenuColl'); hb.addEventListener('click', ()=> menu.classList.toggle('menu-open')); document.addEventListener('click',(e)=>{ if(!menu.contains(e.target)&&e.target!==hb) menu.classList.remove('menu-open'); }); })();
-</script>
+  <footer class="center">© Docotela X</footer>
+
+  <script src="menu.js"></script>
 </body>
 </html>
