@@ -1,12 +1,26 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Members Only — Docotela X</title><link href="styles.css" rel="stylesheet"></head>
-<body class="page members">
-  <header class="topbar">
-    <nav class="center-nav"><a href="home.html">Home</a><span>—</span><a href="about.html">About</a><span>—</span><a href="contact.html">Contact</a></nav>
-    <button id="docoHamburger" class="hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button>
-    <aside id="docoSideMenu" class="doco-side-menu" aria-hidden="true">
-      <nav class="doco-menu-inner">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Members Only | Docotela X</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- TOP NAV (center) -->
+    <div class="top-nav">
+        <a href="home.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
+    <!-- HAMBURGER BUTTON -->
+    <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+
+    <!-- MOBILE MENU -->
+    <div id="mobileMenu" class="mobile-menu glass">
         <a href="home.html">Home</a>
         <a href="collections.html">Collections</a>
         <a href="gallery.html">Art Gallery</a>
@@ -14,40 +28,45 @@
         <a href="membersonly.html">Members Only</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
-      </nav>
-    </aside>
-  </header>
-
-  <main class="content members-content">
-    <div class="gates">
-      <h1>Members Only</h1>
-      <p>This area is password protected.</p>
-
-      <form id="membersForm" class="members-form">
-        <label>Password <input id="membersPass" type="password" placeholder="Enter password"></label>
-        <button type="submit" class="enter-btn">Open Gates</button>
-      </form>
-
-      <div id="membersLockedMessage" class="muted"></div>
     </div>
-  </main>
 
-  <script>
-    // password: memberson1y
-    document.getElementById('membersForm').addEventListener('submit', function(e){
-      e.preventDefault();
-      const val = document.getElementById('membersPass').value.trim();
-      if (val === 'memberson1y') {
-        // reveal deeper members area
-        window.location.href = 'private-collection.html';
-      } else {
-        const m = document.getElementById('membersLockedMessage');
-        m.innerText = 'Incorrect password.';
-        m.style.color = '#e0b24a';
-      }
-    });
-  </script>
+    <!-- FULLSCREEN GATES + PASSWORD -->
+    <div class="gates-container">
+        <div class="gate left-gate"></div>
+        <div class="gate right-gate"></div>
 
-  <script src="menu.js"></script>
+        <div class="password-box">
+            <h2>Members Only</h2>
+            <p>This area is password protected.</p>
+
+            <input type="password" id="memberPass" placeholder="Password">
+            <button onclick="openGates()">Open Gates</button>
+
+            <p id="errorMsg" style="color: red; margin-top: 10px; display:none;">
+                Incorrect password.
+            </p>
+        </div>
+    </div>
+
+    <script src="menu.js"></script>
+
+    <script>
+        function openGates() {
+            let pass = document.getElementById("memberPass").value;
+
+            if (pass === "memberson1y") {
+                document.querySelector(".left-gate").classList.add("open-left");
+                document.querySelector(".right-gate").classList.add("open-right");
+
+                setTimeout(() => {
+                    window.location.href = "private-collection.html";
+                }, 1500);
+
+            } else {
+                document.getElementById("errorMsg").style.display = "block";
+            }
+        }
+    </script>
+
 </body>
 </html>
