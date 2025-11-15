@@ -8,69 +8,46 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
+  <header class="topbar">
     <nav class="center-nav">
       <a href="home.html">Home</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
-
-    <button id="hamburger" class="hamburger" aria-label="Open menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-
-    <div id="menu" class="menu-panel" aria-hidden="true">
+    <button class="hamburger" id="hamburger">☰</button>
+    <div class="menu-panel" id="menuPanel" aria-hidden="true">
       <a href="home.html">Home</a>
       <a href="collections.html">Collections</a>
-      <a href="art-gallery.html">Art Gallery</a>
       <a href="exclusive-drops.html">Exclusive Drops</a>
-      <a href="membersonly.html">Members Only</a>
+      <a href="art-gallery.html">Art Gallery</a>
+      <a href="members-only.html">Members Only</a>
       <a href="contact.html">Contact</a>
     </div>
   </header>
 
   <main class="hero">
-    <div class="logo-bg" aria-hidden="true"></div>
-
-    <div class="hero-content">
-      <div class="brand-mark">
-        <img src="docotelax-logo.png" alt="Docotela X logo" class="logo-centered">
-      </div>
-
+    <div class="brand">
+      <span class="brand-mini">Docotela X</span>
       <h1 class="brand-title">DOCOTELA X</h1>
-      <p class="sub">Limited pieces, handcrafted by artists. Each collection is a scene — enter if you belong to the feeling.</p>
-
-      <div class="hero-cta">
-        <a class="enter-btn" href="collections.html">Enter the Gallery</a>
-        <a class="ghost-btn" href="product-watch.html">The Sovereign Verde</a>
+      <p class="brand-sub">Limited pieces, handcrafted by artists. Each collection is a scene — enter if you belong to the feeling.</p>
+      <div class="cta-row">
+        <a class="btn" href="art-gallery.html">Enter the Gallery</a>
+        <!-- NOTE: The Sovereign Verde button removed as requested -->
       </div>
     </div>
+    <!-- subtle page bg logo intentionally not included on Home per your request -->
   </main>
 
-  <footer class="footer">
-    <small>© Docotela X — All rights reserved</small>
+  <footer class="center">
+    <div class="container">© Docotela X</div>
   </footer>
 
-  <script>
-    // Hamburger menu
-    (function(){
-      const hb = document.getElementById('hamburger');
-      const mp = document.getElementById('menu');
-      hb.addEventListener('click', ()=> {
-        const open = hb.getAttribute('aria-expanded') === 'true';
-        hb.setAttribute('aria-expanded', !open);
-        mp.classList.toggle('open');
-        mp.setAttribute('aria-hidden', open);
-      });
-      document.addEventListener('click', (e)=>{
-        if(!mp.contains(e.target) && !hb.contains(e.target)){
-          mp.classList.remove('open');
-          hb.setAttribute('aria-expanded','false');
-          mp.setAttribute('aria-hidden','true');
-        }
-      });
-    })();
-  </script>
-
+<script>
+// hamburger toggle
+const hb = document.getElementById('hamburger');
+const mp = document.getElementById('menuPanel');
+hb.addEventListener('click', ()=>{ mp.classList.toggle('open'); mp.setAttribute('aria-hidden', !mp.classList.contains('open'));});
+document.addEventListener('click', (e)=>{ if(!mp.contains(e.target) && e.target!==hb){ mp.classList.remove('open'); }});
+</script>
 </body>
 </html>
