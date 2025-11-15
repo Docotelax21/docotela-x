@@ -1,62 +1,35 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Exclusive Drops — Docotela X</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
-<style>
-.wrapper{max-width:1100px;margin:110px auto;padding:0 20px;color:#efeade}
-.title{font-family:'Cinzel',serif;font-size:34px;color:#f3dfb3;margin-bottom:8px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;margin-top:20px}
-.item{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:18px;border-radius:8px;border:1px solid rgba(212,173,62,.05)}
-.item h3{font-family:'Cinzel',serif;color:#f7e9b6;margin-bottom:8px}
-.item p{color:#d6d0c6}
-.link{display:inline-block;padding:8px 14px;border-radius:6px;border:2px solid rgba(212,173,62,.95);color:rgba(212,173,62,.95);text-decoration:none;margin-top:10px}
-</style>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Exclusive Drops — Docotela X</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header>
-    <nav class="center-nav"><a href="home.html">Home</a><span class="dot"> • </span><a href="about.html">About</a><span class="dot"> • </span><a href="contact.html">Contact</a></nav>
-    <button id="hamburgerDrops" class="hamburger" aria-label="Open menu" aria-expanded="false">☰</button>
-    <div id="menuDrops" class="menu-panel" aria-hidden="true">
-      <a href="home.html">Home</a>
-      <a href="collections.html">Collections</a>
-      <a href="membersonly.html">Members Only</a>
-      <a href="art-gallery.html">Art Gallery</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
+    <nav class="center-nav"><a href="home.html">Home</a><span class="dot">—</span><a href="about.html">About</a><span class="dot">—</span><a href="contact.html">Contact</a></nav>
+    <button id="hb5" class="hamburger">☰</button>
+    <div id="menu5" class="menu-panel">
+      <a href="home.html">Home</a><a href="collections.html">Collections</a><a href="membersonly.html">Members Only</a><a href="art-gallery.html">Art Gallery</a><a href="contact.html">Contact</a>
     </div>
   </header>
 
-  <main>
-    <section class="wrapper">
-      <h1 class="title">Exclusive Drops</h1>
-      <p style="color:#cfc7bd">Seasonal and limited — shown here with details and release windows.</p>
+  <main class="content">
+    <h2 class="section-title">Exclusive Drops</h2>
+    <p class="muted">Time-sensitive drops and previews — join the vault for exclusive access.</p>
 
-      <div class="grid">
-        <div class="item">
-          <h3>Drop 01 — The Feeling of Freedom</h3>
-          <p>Key pieces from our debut collection. Limited run, limited sizes.</p>
-          <a class="link" href="exclusive-drops.html">Details</a>
-        </div>
-
-        <div class="item">
-          <h3>Drop 02 — Quiet Space</h3>
-          <p>Minimalist outerwear and elevated basics for the quiet season.</p>
-          <a class="link" href="exclusive-drops.html">Details</a>
-        </div>
+    <div class="drop-list">
+      <div class="drop">
+        <h3>Next: The Aurum Drop</h3>
+        <p class="muted">One time edition — watch release.</p>
+        <a class="cta" href="membersonly.html">Apply for early access</a>
       </div>
-    </section>
+    </div>
   </main>
 
 <script>
-(function(){
-  const hb=document.getElementById('hamburgerDrops'), menu=document.getElementById('menuDrops');
-  hb.addEventListener('click', ()=>{ const ex = hb.getAttribute('aria-expanded') === 'true'; hb.setAttribute('aria-expanded', !ex); menu.classList.toggle('open'); menu.setAttribute('aria-hidden', ex); });
-  document.addEventListener('click',(e)=>{ if(!menu.contains(e.target) && !hb.contains(e.target)){ menu.classList.remove('open'); hb.setAttribute('aria-expanded','false'); menu.setAttribute('aria-hidden','true'); }});
-})();
+  document.getElementById('hb5').addEventListener('click', ()=> document.getElementById('menu5').classList.toggle('open'));
 </script>
 </body>
 </html>
