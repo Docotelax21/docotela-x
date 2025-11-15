@@ -6,22 +6,14 @@
 <title>Art Gallery — Docotela X</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
-<style>
-.wrapper{max-width:1100px;margin:110px auto;padding:0 20px;color:#efeade}
-.page-title{font-family:'Cinzel',serif;font-size:36px;color:#f3dfb3;margin-bottom:14px}
-.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
-.card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:14px;border-radius:6px;border:1px solid rgba(212,173,62,0.05);text-align:center}
-.card img{width:100%;height:200px;object-fit:cover;border-radius:4px;display:block}
-.caption{margin-top:10px;font-size:14px;color:#d9d3c8}
-@media (max-width:520px){ .wrapper{margin-top:90px} .page-title{font-size:28px} }
-</style>
 </head>
 <body>
+  <div class="bg-watermark" aria-hidden="true"></div>
   <header>
-    <nav class="center-nav"><a href="home.html">Home</a><span class="dot"> • </span><a href="about.html">About</a><span class="dot"> • </span><a href="contact.html">Contact</a></nav>
-    <button id="hamburgerGallery" class="hamburger" aria-label="Open menu" aria-expanded="false">☰</button>
-    <div id="menuGallery" class="menu-panel" aria-hidden="true">
-      <a href="home.html">Home</a>
+    <nav class="center-nav"><a href="index.html">Home</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav>
+    <button class="hamburger" onclick="toggleMenu()">☰</button>
+    <div id="panel" class="menu-panel" aria-hidden="true">
+      <a href="index.html">Home</a>
       <a href="collections.html">Collections</a>
       <a href="membersonly.html">Members Only</a>
       <a href="art-gallery.html">Art Gallery</a>
@@ -30,34 +22,22 @@
     </div>
   </header>
 
-  <main>
-    <section class="wrapper">
-      <h1 class="page-title">Art Gallery</h1>
-      <p style="color:#cfc7bd">A curated collection of pieces and collaborations — art meets craft.</p>
+  <main class="section">
+    <div class="container">
+      <h2 class="kicker">Gallery</h2>
+      <h1 style="color:#f3e6c2">Selected Works</h1>
+      <p style="color:var(--muted)">A curated selection highlighting collaborations and limited prints.</p>
 
-      <div class="gallery">
-        <div class="card">
-          <img src="88A57F40-470A-4B65-A4E2-DE3DAFEA66CE.png" alt="Art 1">
-          <div class="caption">Docotela Study — mixed media print</div>
-        </div>
-        <div class="card">
-          <img src="docotelax-logo.png" alt="Art 2">
-          <div class="caption">Signature Letter — limited print</div>
-        </div>
-        <div class="card">
-          <img src="88A57F40-470A-4B65-A4E2-DE3DAFEA66CE.png" alt="Art 3">
-          <div class="caption">Quiet Space — canvas</div>
-        </div>
+      <div class="hr"></div>
+
+      <div class="grid" style="margin-top:22px">
+        <article class="card"><div class="media" style="background-image:url('88A57F40-470A-4B65-A4E2-DE3DAFEA66CE.png')"></div><div class="meta"><h3>Study I</h3><p>Mixed media study.</p></div></article>
+        <article class="card"><div class="media" style="background-image:url('docotelax-logo.png')"></div><div class="meta"><h3>Letter</h3><p>Signature print.</p></div></article>
+        <article class="card"><div class="media" style="background-image:url('88A57F40-470A-4B65-A4E2-DE3DAFEA66CE.png')"></div><div class="meta"><h3>Quiet Canvas</h3><p>Large format work.</p></div></article>
       </div>
-    </section>
+    </div>
   </main>
 
-<script>
-(function(){
-  const hb=document.getElementById('hamburgerGallery'), menu=document.getElementById('menuGallery');
-  hb.addEventListener('click', ()=>{ const ex = hb.getAttribute('aria-expanded') === 'true'; hb.setAttribute('aria-expanded', !ex); menu.classList.toggle('open'); menu.setAttribute('aria-hidden', ex); });
-  document.addEventListener('click',(e)=>{ if(!menu.contains(e.target) && !hb.contains(e.target)){ menu.classList.remove('open'); hb.setAttribute('aria-expanded','false'); menu.setAttribute('aria-hidden','true'); }});
-})();
-</script>
+<script>function toggleMenu(){const p=document.getElementById('panel');p.classList.toggle('open');p.setAttribute('aria-hidden',!p.classList.contains('open'))}</script>
 </body>
 </html>
