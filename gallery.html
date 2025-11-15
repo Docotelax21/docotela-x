@@ -1,26 +1,35 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Art Gallery — Docotela X</title><link href="styles.css" rel="stylesheet"></head>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Art Gallery — Docotela X</title>
+  <link href="styles.css" rel="stylesheet">
+</head>
 <body class="page gallery">
-  <header class="topbar">
-    <nav class="center-nav"><a href="home.html">Home</a><span>—</span><a href="about.html">About</a><span>—</span><a href="contact.html">Contact</a></nav>
-    <button id="docoHamburger" class="hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button>
-    <aside id="docoSideMenu" class="doco-side-menu" aria-hidden="true">
-      <nav class="doco-menu-inner">
-        <a href="home.html">Home</a>
-        <a href="collections.html">Collections</a>
-        <a href="gallery.html">Art Gallery</a>
-        <a href="exclusive-drops.html">Exclusive Drops</a>
-        <a href="membersonly.html">Members Only</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </aside>
-  </header>
+
+  <!-- CENTER NAV -->
+  <nav class="center-nav">
+    <a href="index.html">Home</a><span>—</span><a href="about.html">About</a><span>—</span><a href="contact.html">Contact</a>
+  </nav>
+
+  <!-- HAMBURGER -->
+  <button class="hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+
+  <!-- SLIDE MENU -->
+  <aside id="mobileMenu" class="mobile-menu glass" aria-hidden="true">
+    <a href="index.html">Home</a>
+    <a href="collections.html">Collections</a>
+    <a href="gallery.html">Art Gallery</a>
+    <a href="exclusive-drops.html">Exclusive Drops</a>
+    <a href="membersonly.html">Members Only</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </aside>
 
   <main class="content">
-    <h1>Art Gallery</h1>
-    <p>Curated works, rotating shows. This gallery is for viewing and inquiry only. For interest, click "Inquire" on any artwork — purchase is handled separately via direct communication.</p>
+    <h1 class="page-title">Art Gallery</h1>
+    <p class="lead">Curated works. This gallery is for viewing and inquiries only.</p>
 
     <div class="gallery-grid">
       <div class="art-placeholder">
@@ -28,8 +37,7 @@
         <div class="art-meta">Medium • Year</div>
         <a class="enter-btn" href="contact.html">Inquire</a>
       </div>
-
-      <!-- add more placeholders as you upload artworks -->
+      <!-- add more placeholders as you upload works -->
     </div>
   </main>
 
