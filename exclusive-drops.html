@@ -1,173 +1,62 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Unreleased Drops | Docotela X</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: black;
-      color: gold;
-      font-family: 'Poppins', sans-serif;
-      overflow-x: hidden;
-      position: relative;
-      animation: pageFade 1.5s ease-in-out;
-    }
-
-    @keyframes pageFade {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Floating X Animation */
-    .floating-x {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      overflow: hidden;
-    }
-
-    .floating-x span {
-      position: absolute;
-      color: rgba(255, 215, 0, 0.08);
-      font-size: 10rem;
-      font-weight: 700;
-      animation: floatX 20s linear infinite;
-    }
-
-    @keyframes floatX {
-      0% { transform: translateY(100vh) rotate(0deg); opacity: 0.4; }
-      50% { opacity: 0.8; }
-      100% { transform: translateY(-10vh) rotate(360deg); opacity: 0.4; }
-    }
-
-    header {
-      text-align: center;
-      padding: 60px 20px 40px;
-      font-size: 2.5em;
-      letter-spacing: 3px;
-      text-shadow: 0 0 25px gold;
-      z-index: 1;
-      position: relative;
-    }
-
-    .drops-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 40px;
-      padding: 20px;
-      z-index: 1;
-      position: relative;
-    }
-
-    .drop {
-      width: 280px;
-      height: 360px;
-      border: 1px solid gold;
-      border-radius: 8px;
-      background: linear-gradient(145deg, #000, #111);
-      box-shadow: 0 0 25px rgba(255,215,0,0.1);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      transition: 0.5s;
-      text-align: center;
-      padding: 20px;
-    }
-
-    .drop:hover {
-      box-shadow: 0 0 35px gold;
-      transform: scale(1.05);
-    }
-
-    .drop h2 {
-      margin-bottom: 10px;
-    }
-
-    a {
-      text-decoration: none;
-      color: gold;
-      transition: 0.3s;
-    }
-
-    a:hover {
-      color: white;
-    }
-
-    footer {
-      text-align: center;
-      padding: 40px;
-      color: #d4af37;
-      font-size: 0.9em;
-      position: relative;
-      z-index: 1;
-    }
-
-    /* Fade transition links */
-    .fade-link {
-      cursor: pointer;
-    }
-
-    .fade-out {
-      animation: fadeOut 1s ease-in-out forwards;
-    }
-
-    @keyframes fadeOut {
-      from { opacity: 1; transform: translateY(0); }
-      to { opacity: 0; transform: translateY(20px); }
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Exclusive Drops — Docotela X</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.wrapper{max-width:1100px;margin:110px auto;padding:0 20px;color:#efeade}
+.title{font-family:'Cinzel',serif;font-size:34px;color:#f3dfb3;margin-bottom:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;margin-top:20px}
+.item{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:18px;border-radius:8px;border:1px solid rgba(212,173,62,.05)}
+.item h3{font-family:'Cinzel',serif;color:#f7e9b6;margin-bottom:8px}
+.item p{color:#d6d0c6}
+.link{display:inline-block;padding:8px 14px;border-radius:6px;border:2px solid rgba(212,173,62,.95);color:rgba(212,173,62,.95);text-decoration:none;margin-top:10px}
+</style>
 </head>
 <body>
-
-  <!-- Floating X Background -->
-  <div class="floating-x">
-    <span style="left:10%; animation-delay:0s;">X</span>
-    <span style="left:40%; animation-delay:5s;">X</span>
-    <span style="left:70%; animation-delay:10s;">X</span>
-    <span style="left:85%; animation-delay:15s;">X</span>
-  </div>
-
-  <header>Unreleased Drops</header>
-
-  <div class="drops-container">
-    <div class="drop">
-      <h2>Project Freedom</h2>
-      <p>A handcrafted limited edition jacket — preview for insiders only.</p>
+  <header>
+    <nav class="center-nav"><a href="home.html">Home</a><span class="dot"> • </span><a href="about.html">About</a><span class="dot"> • </span><a href="contact.html">Contact</a></nav>
+    <button id="hamburgerDrops" class="hamburger" aria-label="Open menu" aria-expanded="false">☰</button>
+    <div id="menuDrops" class="menu-panel" aria-hidden="true">
+      <a href="home.html">Home</a>
+      <a href="collections.html">Collections</a>
+      <a href="membersonly.html">Members Only</a>
+      <a href="art-gallery.html">Art Gallery</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
     </div>
-    <div class="drop">
-      <h2>Deity 8 Prototype</h2>
-      <p>The divine silhouette reimagined — unseen by the public eye.</p>
-    </div>
-    <div class="drop">
-      <h2>Quiet Space Capsule</h2>
-      <p>Exclusive pre-release from Docotela’s “Quiet Space” collection.</p>
-    </div>
-  </div>
+  </header>
 
-  <footer>
-    <a href="exclusive-art.html" class="fade-link">Next: Exclusive Art →</a>
-  </footer>
+  <main>
+    <section class="wrapper">
+      <h1 class="title">Exclusive Drops</h1>
+      <p style="color:#cfc7bd">Seasonal and limited — shown here with details and release windows.</p>
 
-  <script>
-    const fadeLinks = document.querySelectorAll('.fade-link');
-    fadeLinks.forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        document.body.classList.add('fade-out');
-        setTimeout(() => {
-          window.location = link.getAttribute('href');
-        }, 1000);
-      });
-    });
-  </script>
+      <div class="grid">
+        <div class="item">
+          <h3>Drop 01 — The Feeling of Freedom</h3>
+          <p>Key pieces from our debut collection. Limited run, limited sizes.</p>
+          <a class="link" href="exclusive-drops.html">Details</a>
+        </div>
 
+        <div class="item">
+          <h3>Drop 02 — Quiet Space</h3>
+          <p>Minimalist outerwear and elevated basics for the quiet season.</p>
+          <a class="link" href="exclusive-drops.html">Details</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+<script>
+(function(){
+  const hb=document.getElementById('hamburgerDrops'), menu=document.getElementById('menuDrops');
+  hb.addEventListener('click', ()=>{ const ex = hb.getAttribute('aria-expanded') === 'true'; hb.setAttribute('aria-expanded', !ex); menu.classList.toggle('open'); menu.setAttribute('aria-hidden', ex); });
+  document.addEventListener('click',(e)=>{ if(!menu.contains(e.target) && !hb.contains(e.target)){ menu.classList.remove('open'); hb.setAttribute('aria-expanded','false'); menu.setAttribute('aria-hidden','true'); }});
+})();
+</script>
 </body>
 </html>
