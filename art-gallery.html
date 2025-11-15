@@ -1,38 +1,44 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Art Gallery — Docotela X</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="header">
-    <nav class="center-nav container">
+  <header>
+    <nav class="center-nav"><a href="home.html">Home</a><span class="dot">—</span><a href="about.html">About</a><span class="dot">—</span><a href="contact.html">Contact</a></nav>
+    <button id="hamburger3" class="hamburger">☰</button>
+    <div id="menu3" class="menu-panel">
       <a href="home.html">Home</a>
-      <a href="about.html">About</a>
       <a href="collections.html">Collections</a>
+      <a href="membersonly.html">Members Only</a>
       <a href="art-gallery.html">Art Gallery</a>
+      <a href="private-collection.html">Private Collection</a>
       <a href="contact.html">Contact</a>
-    </nav>
+    </div>
   </header>
 
-  <main class="page-article container">
-    <h2 style="font-family:'Cinzel', serif; color:var(--accent); font-size:36px;">Art Gallery</h2>
-    <div class="hr-gold" aria-hidden="true"></div>
-    <p style="color:rgba(255,255,255,0.75); max-width:920px;">Showcased work from collaborators and artists who handcraft each piece. This gallery displays sketches, mood boards and limited artworks tied to each collection.</p>
+  <main class="content page">
+    <h2 class="section-title">Art Gallery</h2>
+    <p class="muted">A curated view of the artwork and unique pieces behind Docotela X.</p>
 
-    <div style="height:26px"></div>
+    <div class="gallery-grid">
+      <figure class="gallery-item">
+        <img src="product-watch.jpg" alt="Aurum Chronos">
+        <figcaption>Docotela X — Aurum Chronos (watch) — Limited edition</figcaption>
+      </figure>
 
-    <section class="gallery-grid">
-      <div class="gallery-item card">Artist — Sketch 01</div>
-      <div class="gallery-item card">Artist — Sketch 02</div>
-      <div class="gallery-item card">Artist — Textile Study</div>
-      <div class="gallery-item card">Backstage — Photo</div>
-    </section>
-
-    <div style="height:60px"></div>
+      <!-- More gallery items would go here -->
+    </div>
   </main>
+
+<script>
+  const hb3 = document.getElementById('hamburger3');
+  const mp3 = document.getElementById('menu3');
+  hb3.addEventListener('click', ()=> mp3.classList.toggle('open'));
+  document.addEventListener('click', (e)=>{ if(!mp3.contains(e.target) && !hb3.contains(e.target)) mp3.classList.remove('open'); });
+</script>
 </body>
 </html>
