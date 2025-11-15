@@ -51,28 +51,3 @@
   <script src="menu.js"></script>
 </body>
 </html>
-</main>
-
-<footer class="center">© Docotela X</footer>
-
-<script src="menu.js"></script>
-<script>
-const pwBtn=document.getElementById('pwBtn'), pwInput=document.getElementById('pwInput'), accessOk=document.getElementById('accessOk'),
-      gateL=document.getElementById('gateL'), gateR=document.getElementById('gateR');
-// client-side password (change if desired)
-const MEMBER_PASS = 'memberson1y';
-pwBtn.addEventListener('click', ()=> {
-  const val = (pwInput.value||'').trim();
-  if(!val){ alert('Enter access key'); return; }
-  if(val === MEMBER_PASS){
-    gateL.classList.add('open','left'); gateR.classList.add('open','right'); accessOk.style.display='block';
-    setTimeout(()=> window.location.href = 'private-collection.html', 900);
-  } else {
-    alert('ACCESS DENIED'); 
-    pwInput.animate([{transform:'translateX(-8px)'},{transform:'translateX(8px)'},{transform:'translateX(0)'}], {duration:360});
-  }
-});
-pwInput.addEventListener('keydown',(e)=>{ if(e.key==='Enter') pwBtn.click(); });
-</script>
-</body>
-</html>
