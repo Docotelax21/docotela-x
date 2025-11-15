@@ -1,17 +1,13 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Checkout — Docotela X</title><link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"></head>
-<body>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Checkout — Docotela X</title><link rel="stylesheet" href="styles.css"></head><body>
 <header class="topbar"><nav class="center-nav"><a href="home.html">Home</a><a href="collections.html">Collections</a><a href="contact.html">Contact</a></nav></header>
-
 <main class="container" style="padding-top:120px;">
   <h2 style="font-family:'Cinzel',serif;color:var(--gold)">Checkout</h2>
   <p style="color:rgba(255,255,255,0.85)">You will be redirected to Paystack for a secure purchase of <strong>The Sovereign Verde</strong>.</p>
-
   <p style="margin-top:22px;"><a class="btn" href="https://paystack.shop/pay/fdy-nwp5q0" target="_blank" rel="noopener">Proceed to Paystack</a></p>
-
-  <p style="color:rgba(255,255,255,0.68); margin-top:18px;">After payment, set Paystack redirect URLs to your success & fail pages (optional). For server-side confirmation and automated order processing we can add webhooks later.</p>
+  <p style="color:rgba(255,255,255,0.68); margin-top:18px;">After payment, set Paystack redirect URLs to your success & fail pages (<code>payment-success.html</code> / <code>payment-failed.html</code>).</p>
 </main>
-
 <footer class="center">© Docotela X</footer>
+<script src="menu.js"></script>
 </body>
 </html>
