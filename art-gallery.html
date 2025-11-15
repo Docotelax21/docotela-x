@@ -1,33 +1,42 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Art Gallery — Docotela X</title><link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"></head>
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Art Gallery — Docotela X</title><link rel="stylesheet" href="styles.css"></head>
 <body>
 <header class="topbar">
   <nav class="center-nav"><a href="home.html">Home</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav>
-  <button class="hamburger" id="hbG"> <span></span><span></span><span></span></button>
-  <div id="sideMenuG" class="side-menu" aria-hidden="true"><a href="home.html">Home</a><a href="collections.html">Collections</a><a href="gallery.html">Art Gallery</a><a href="exclusive-drops.html">Exclusive Drops</a><a href="members-only.html">Members Only</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
+  <button id="docoHamburger" class="hamburger" aria-label="Open menu"><span class="hbar"></span><span class="hbar"></span><span class="hbar"></span></button>
+  <aside id="docoSideMenu" class="doco-side-menu" aria-hidden="true">
+    <nav class="doco-menu-inner">
+      <a href="home.html">Home</a><a href="collections.html">Collections</a><a href="gallery.html">Art Gallery</a><a href="exclusive-drops.html">Exclusive Drops</a><a href="members-only.html">Members Only</a><a href="about.html">About</a><a href="contact.html">Contact</a>
+      <hr class="doco-sep" /><div class="doco-subtitle">Collections</div>
+      <a href="collection-8deity.html">8 Deity Collection</a><a href="collection-feeling-of-freedom.html">The Feeling of Freedom</a>
+      <a href="collection-docotela-x-originals.html">Docotela X Originals</a><a href="collection-docotela-x-accessories.html">Docotela X Accessories</a>
+      <a href="collection-docotela-x-kids.html">Docotela X Kids</a><a href="collection-docotela-x-limited.html">Docotela X Limited</a>
+      <a href="collection-found-in-emptiness.html">Found in Emptiness</a><a href="collection-quiet-space.html">Quiet Space</a>
+      <a href="collection-art-of-chaos.html">Art of Chaos</a><a href="collection-simplicity-in-motion.html">Simplicity in Motion</a>
+    </nav>
+  </aside>
 </header>
 
 <div class="page-bg-logo" aria-hidden="true"></div>
 
 <main class="container" style="padding-top:120px;">
   <h2 style="font-family:'Cinzel',serif;color:var(--gold)">Art Gallery</h2>
-  <p style="color:rgba(255,255,255,0.85)">A curated space. These frames are reserved for selected artworks. Art in the gallery is not automatically for sale — please inquire.</p>
+  <p style="color:rgba(255,255,255,0.85)">A curated space. Art in the gallery is not for sale by default — please inquire via the contact form.</p>
 
-  <div class="gallery-grid">
-    <div class="frame">Reserved Frame<div class="label">DOC / Size</div></div>
-    <div class="frame">Reserved Frame<div class="label">DOC / Size</div></div>
-    <div class="frame">Reserved Frame<div class="label">DOC / Size</div></div>
-    <div class="frame">Reserved Frame<div class="label">DOC / Size</div></div>
-    <div class="frame">Reserved Frame<div class="label">DOC / Size</div></div>
-    <div class="frame">Reserved Frame<div class="label">DOC / Size</div></div>
+  <div class="gallery-grid" style="margin-top:24px">
+    <div class="frame">Reserved Frame<div class="label">Artist / Size</div></div>
+    <div class="frame">Reserved Frame<div class="label">Artist / Size</div></div>
+    <div class="frame">Reserved Frame<div class="label">Artist / Size</div></div>
+    <div class="frame">Reserved Frame<div class="label">Artist / Size</div></div>
+    <div class="frame">Reserved Frame<div class="label">Artist / Size</div></div>
+    <div class="frame">Reserved Frame<div class="label">Artist / Size</div></div>
   </div>
 
-  <p style="color:rgba(255,255,255,0.85)">To inquire, reference the frame label and use the contact form.</p>
+  <p style="color:rgba(255,255,255,0.85)">To inquire about any work, reference the frame and use the contact page.</p>
 </main>
 
 <footer class="center">© Docotela X</footer>
-
-<script>(function(){ const hb=document.getElementById('hbG'), menu=document.getElementById('sideMenuG'); hb.addEventListener('click', ()=> menu.classList.toggle('menu-open')); document.addEventListener('click',(e)=>{ if(!menu.contains(e.target)&&e.target!==hb) menu.classList.remove('menu-open'); }); })();</script>
+<script src="menu.js"></script>
 </body>
 </html>
