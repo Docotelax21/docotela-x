@@ -1,55 +1,56 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Members Only — Docotela X</title><link rel="stylesheet" href="styles.css"></head><body><!-- TOP NAVIGATION (CENTERED) -->
-<div class="top-nav">
-    <a href="home.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-</div>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Members Only — Docotela X</title><link href="styles.css" rel="stylesheet"></head>
+<body class="page members">
+  <header class="topbar">
+    <nav class="center-nav"><a href="home.html">Home</a><span>—</span><a href="about.html">About</a><span>—</span><a href="contact.html">Contact</a></nav>
+    <button id="docoHamburger" class="hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+    <aside id="docoSideMenu" class="doco-side-menu" aria-hidden="true">
+      <nav class="doco-menu-inner">
+        <a href="home.html">Home</a>
+        <a href="collections.html">Collections</a>
+        <a href="gallery.html">Art Gallery</a>
+        <a href="exclusive-drops.html">Exclusive Drops</a>
+        <a href="membersonly.html">Members Only</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </aside>
+  </header>
 
-<!-- HAMBURGER BUTTON -->
-<div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+  <main class="content members-content">
+    <div class="gates">
+      <h1>Members Only</h1>
+      <p>This area is password protected.</p>
 
-<!-- MOBILE SLIDE MENU -->
-<div id="mobileMenu" class="mobile-menu glass">
-    <a href="home.html">Home</a>
-    <a href="collections.html">Collections</a>
-    <a href="gallery.html">Art Gallery</a>
-    <a href="exclusive-drops.html">Exclusive Drops</a>
-    <a href="membersonly.html">Members Only</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-</div>
-<header class="topbar"><nav class="center-nav"><a href="index.html">Home</a><a href="collections.html">Collections</a><a href="contact.html">Contact</a></nav>
-<button id="docoHamburger" class="hamburger"><span class="hbar"></span><span class="hbar"></span><span class="hbar"></span></button>
-<aside id="docoSideMenu" class="doco-side-menu" aria-hidden="true">
-  <nav class="doco-menu-inner">
-    <a href="index.html">Home</a><a href="collections.html">Collections</a><a href="gallery.html">Art Gallery</a><a href="exclusive-drops.html">Exclusive Drops</a><a href="membersonly.html">Members Only</a><a href="about.html">About</a><a href="contact.html">Contact</a>
-  </nav>
-</aside>
-</header>
+      <form id="membersForm" class="members-form">
+        <label>Password <input id="membersPass" type="password" placeholder="Enter password"></label>
+        <button type="submit" class="enter-btn">Open Gates</button>
+      </form>
 
-<main class="container" style="padding-top:120px;">
-  <h2 style="font-family:'Cinzel',serif;color:var(--gold)">Members Only</h2>
-  <p style="color:rgba(255,255,255,0.85)">Enter your access key to open the vault.</p>
-
-  <div class="vault-wrap" style="margin-top:18px;">
-    <div class="vault-lock">
-      <div style="color:var(--muted-2); margin-bottom:8px">Welcome to the Vault</div>
-      <input class="pw" id="pwInput" placeholder="Access Key">
-      <div style="display:flex; gap:10px; margin-top:12px">
-        <button class="btn" id="pwBtn">Enter</button>
-        <a class="btn" href="contact.html">Apply for membership</a>
-      </div>
-      <div class="access-ok" id="accessOk">Access granted — Welcome.</div>
-
-      <div class="gates" aria-hidden="true">
-        <div class="gate left" id="gateL"></div>
-        <div class="gate right" id="gateR"></div>
-      </div>
+      <div id="membersLockedMessage" class="muted"></div>
     </div>
+  </main>
 
-    <p style="color:rgba(255,255,255,0.75); margin-top:12px;">If you are denied, apply for membership via contact.</p>
-  </div>
+  <script>
+    // password: memberson1y
+    document.getElementById('membersForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const val = document.getElementById('membersPass').value.trim();
+      if (val === 'memberson1y') {
+        // reveal deeper members area
+        window.location.href = 'private-collection.html';
+      } else {
+        const m = document.getElementById('membersLockedMessage');
+        m.innerText = 'Incorrect password.';
+        m.style.color = '#e0b24a';
+      }
+    });
+  </script>
+
+  <script src="menu.js"></script>
+</body>
+</html>
 </main>
 
 <footer class="center">© Docotela X</footer>
