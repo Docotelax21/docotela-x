@@ -6,17 +6,15 @@
   <title>Art Gallery — Docotela X</title>
   <link href="styles.css" rel="stylesheet">
 </head>
-<body class="page gallery">
+<body>
 
-  <!-- CENTER NAV -->
-  <nav class="center-nav">
-    <a href="index.html">Home</a><span>—</span><a href="about.html">About</a><span>—</span><a href="contact.html">Contact</a>
+  <nav class="top-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
   </nav>
 
-  <!-- HAMBURGER -->
-  <button class="hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button>
-
-  <!-- SLIDE MENU -->
+  <div class="hamburger" id="hamburger" aria-label="Open menu">&#9776;</div>
   <aside id="mobileMenu" class="mobile-menu glass" aria-hidden="true">
     <a href="index.html">Home</a>
     <a href="collections.html">Collections</a>
@@ -29,15 +27,24 @@
 
   <main class="content">
     <h1 class="page-title">Art Gallery</h1>
-    <p class="lead">Curated works. This gallery is for viewing and inquiries only.</p>
+    <p class="lead">Curated pieces for viewing and inquiry only. Use the inquire button to contact us about any work.</p>
 
     <div class="gallery-grid">
-      <div class="art-placeholder">
-        <div class="art-title">Artwork title</div>
-        <div class="art-meta">Medium • Year</div>
+      <!-- placeholders — add images and details later -->
+      <div class="art-card">
+        <div class="art-image placeholder">Artwork placeholder</div>
+        <h3 class="art-title">Artwork Title</h3>
+        <p class="art-meta">Medium • Year</p>
         <a class="enter-btn" href="contact.html">Inquire</a>
       </div>
-      <!-- add more placeholders as you upload works -->
+
+      <div class="art-card">
+        <div class="art-image placeholder">Artwork placeholder</div>
+        <h3 class="art-title">Artwork Title</h3>
+        <p class="art-meta">Medium • Year</p>
+        <a class="enter-btn" href="contact.html">Inquire</a>
+      </div>
+
     </div>
   </main>
 
