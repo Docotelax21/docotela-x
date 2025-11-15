@@ -3,69 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Members Only | Docotela X</title>
+    <title>Docotela X | Members Only</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
 
-    <!-- TOP NAV (center) -->
-    <div class="top-nav">
-        <a href="home.html">Home</a>
+    <!-- TOP NAV (Home - About - Contact) -->
+    <div class="top-center-nav">
+        <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
     </div>
 
-    <!-- HAMBURGER BUTTON -->
+    <!-- HAMBURGER MENU (Top Right) -->
     <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
-
-    <!-- MOBILE MENU -->
-    <div id="mobileMenu" class="mobile-menu glass">
-        <a href="home.html">Home</a>
+    <div id="mobileMenu" class="mobile-menu">
+        <a href="index.html">Home</a>
         <a href="collections.html">Collections</a>
-        <a href="gallery.html">Art Gallery</a>
-        <a href="exclusive-drops.html">Exclusive Drops</a>
         <a href="membersonly.html">Members Only</a>
+        <a href="gallery.html">Art Gallery</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
     </div>
-
-    <!-- FULLSCREEN GATES + PASSWORD -->
-    <div class="gates-container">
-        <div class="gate left-gate"></div>
-        <div class="gate right-gate"></div>
-
-        <div class="password-box">
-            <h2>Members Only</h2>
-            <p>This area is password protected.</p>
-
-            <input type="password" id="memberPass" placeholder="Password">
-            <button onclick="openGates()">Open Gates</button>
-
-            <p id="errorMsg" style="color: red; margin-top: 10px; display:none;">
-                Incorrect password.
-            </p>
-        </div>
-    </div>
-
-    <script src="menu.js"></script>
 
     <script>
-        function openGates() {
-            let pass = document.getElementById("memberPass").value;
-
-            if (pass === "memberson1y") {
-                document.querySelector(".left-gate").classList.add("open-left");
-                document.querySelector(".right-gate").classList.add("open-right");
-
-                setTimeout(() => {
-                    window.location.href = "private-collection.html";
-                }, 1500);
-
-            } else {
-                document.getElementById("errorMsg").style.display = "block";
-            }
+        function toggleMenu() {
+            const menu = document.getElementById("mobileMenu");
+            menu.classList.toggle("open");
         }
+    </script>
+
+
+    <!-- PAGE CONTENT (VERY MINIMAL) -->
+    <div class="page-container" style="margin-top: 140px; text-align:center;">
+        <h1 class="page-title">Members Only</h1>
+
+        <p style="margin-top:20px; color:#ccc; font-size:1rem;">
+            Enter your password to access exclusive Docotela X content.
+        </p>
+
+        <form id="loginForm" style="margin-top:30px;">
+            <input 
+                type="password" 
+                id="password" 
+                placeholder="Enter password"
+                style="padding:12px; width:260px; background:#111; border:1px solid #444; color:white; text-align:center;"
+            >
+            <button 
+                type="submit" 
+                style="padding:12px 22px; background:black; border:1px solid #444; color:white; cursor:pointer; margin-left:10px;">
+                Enter
+            </button>
+        </form>
+
+        <p id="error" style="color: rgb(179, 0, 0); margin-top: 15px; display:none;">
+            Incorrect password.
+        </p>
+    </div>
+
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            const password = document.getElementById("password").value;
+
+            if (password === "memberson1y") {
+                window.location.href = "exclusive.html";
+            } else {
+                document.getElementById("error").style.display = "block";
+            }
+        });
     </script>
 
 </body>
