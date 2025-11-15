@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>DOCOTELA X — The Sovereign Verde</title>
+  <meta name="description" content="DOCOTELA X — The Sovereign Verde. Handfinished matte black case, emerald dial, diamond indices. Limited to 10.">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header>
+    <nav class="center-nav"><a href="home.html">Home</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav>
+    <button id="hamburgerPW" class="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    <div id="menuPW" class="menu-panel" aria-hidden="true">
+      <a href="home.html">Home</a><a href="collections.html">Collections</a><a href="art-gallery.html">Art Gallery</a><a href="exclusive-drops.html">Exclusive Drops</a><a href="membersonly.html">Members Only</a><a href="contact.html">Contact</a>
+    </div>
+  </header>
+
+  <main class="product-page">
+    <div class="logo-bg"></div>
+
+    <section class="product-row">
+      <figure class="product-gallery">
+        <img src="product-watch.jpg" alt="DOCOTELA X — The Sovereign Verde" class="product-main">
+      </figure>
+
+      <div class="product-details">
+        <h1>DOCOTELA X — The Sovereign Verde</h1>
+        <p class="price">R150,000</p>
+
+        <p class="desc">
+          A sovereign timepiece: matte-finished steel case, emerald-sunburst dial, hand-set diamond indices and a signature engraved centre X.
+          Limited production. Each watch is individually signed and numbered.
+        </p>
+
+        <ul class="specs">
+          <li>Case: 40mm brushed steel</li>
+          <li>Dial: Deep emerald sunburst</li>
+          <li>Indices: Genuine diamond markers</li>
+          <li>Strap: Black oyster bracelet</li>
+          <li>Limited edition: 1 of 10</li>
+        </ul>
+
+        <div class="product-actions">
+          <a class="buy-btn" href="checkout.html">Buy Now — R150,000</a>
+          <a class="ghost-btn" href="collections.html">Back to Collections</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const hb = document.getElementById('hamburgerPW');
+    const mp = document.getElementById('menuPW');
+    hb.addEventListener('click', ()=> {
+      const open = hb.getAttribute('aria-expanded') === 'true';
+      hb.setAttribute('aria-expanded', !open);
+      mp.classList.toggle('open');
+      mp.setAttribute('aria-hidden', open);
+    });
+  </script>
+</body>
+</html>
