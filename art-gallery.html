@@ -1,54 +1,33 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Art Gallery — Docotela X</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-</head>
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Art Gallery — Docotela X</title><link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"></head>
 <body>
-  <header class="topbar">
-    <nav class="center-nav">
-      <a href="home.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-    <button class="hamburger" id="hbGallery">☰</button>
-    <div class="menu-panel" id="mpGallery" aria-hidden="true">
-      <a href="home.html">Home</a>
-      <a href="collections.html">Collections</a>
-      <a href="exclusive-drops.html">Exclusive Drops</a>
-      <a href="art-gallery.html">Art Gallery</a>
-      <a href="members-only.html">Members Only</a>
-      <a href="contact.html">Contact</a>
-    </div>
-  </header>
+<header class="topbar">
+  <nav class="center-nav"><a href="home.html">Home</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav>
+  <button class="hamburger" id="hbG"> <span></span><span></span><span></span></button>
+  <div id="sideMenuG" class="side-menu" aria-hidden="true"><a href="home.html">Home</a><a href="collections.html">Collections</a><a href="gallery.html">Art Gallery</a><a href="exclusive-drops.html">Exclusive Drops</a><a href="members-only.html">Members Only</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
+</header>
 
-  <div class="page-bg-logo"></div>
-  <main class="container" style="padding-top:120px;">
-    <h2 style="font-family:'Cinzel',serif;color:var(--gold);">Art Gallery</h2>
-    <p style="color:rgba(255,255,255,0.8)">A curated space. Art is not for sale here — please inquire if you would like more details about any piece.</p>
+<div class="page-bg-logo" aria-hidden="true"></div>
 
-    <div class="gallery-grid">
-      <div class="frame">Selected Piece — Placeholder <div class="label">Artist / Size</div></div>
-      <div class="frame">Selected Piece — Placeholder <div class="label">Artist / Size</div></div>
-      <div class="frame">Selected Piece — Placeholder <div class="label">Artist / Size</div></div>
-      <div class="frame">Selected Piece — Placeholder <div class="label">Artist / Size</div></div>
-      <div class="frame">Selected Piece — Placeholder <div class="label">Artist / Size</div></div>
-      <div class="frame">Selected Piece — Placeholder <div class="label">Artist / Size</div></div>
-    </div>
+<main class="container" style="padding-top:120px;">
+  <h2 style="font-family:'Cinzel',serif;color:var(--gold)">Art Gallery</h2>
+  <p style="color:rgba(255,255,255,0.85)">A curated space. These frames are reserved for selected artworks. Art in the gallery is not automatically for sale — please inquire.</p>
 
-    <p style="color:rgba(255,255,255,0.8)">To inquire about any work, use the contact page and reference the piece.</p>
-  </main>
+  <div class="gallery-grid">
+    <div class="frame">Reserved Frame<div class="label">DOC / Size</div></div>
+    <div class="frame">Reserved Frame<div class="label">DOC / Size</div></div>
+    <div class="frame">Reserved Frame<div class="label">DOC / Size</div></div>
+    <div class="frame">Reserved Frame<div class="label">DOC / Size</div></div>
+    <div class="frame">Reserved Frame<div class="label">DOC / Size</div></div>
+    <div class="frame">Reserved Frame<div class="label">DOC / Size</div></div>
+  </div>
 
-  <footer class="center">© Docotela X</footer>
+  <p style="color:rgba(255,255,255,0.85)">To inquire, reference the frame label and use the contact form.</p>
+</main>
 
-<script>
-const hb = document.getElementById('hbGallery');
-const mp = document.getElementById('mpGallery');
-hb.addEventListener('click', ()=> mp.classList.toggle('open'));
-document.addEventListener('click',(e)=>{ if(!mp.contains(e.target)&&e.target!==hb) mp.classList.remove('open')});
-</script>
+<footer class="center">© Docotela X</footer>
+
+<script>(function(){ const hb=document.getElementById('hbG'), menu=document.getElementById('sideMenuG'); hb.addEventListener('click', ()=> menu.classList.toggle('menu-open')); document.addEventListener('click',(e)=>{ if(!menu.contains(e.target)&&e.target!==hb) menu.classList.remove('menu-open'); }); })();</script>
 </body>
 </html>
