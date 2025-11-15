@@ -1,13 +1,42 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Product Watch — Docotela X</title><link rel="stylesheet" href="styles.css"></head><body>
-<header class="topbar"><nav class="center-nav"><a href="index.html">Home</a><a href="collections.html">Collections</a><a href="contact.html">Contact</a></nav></header>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DOCOTELA X — The Sovereign Verde</title><link href="styles.css" rel="stylesheet"></head>
+<body class="page product">
+  <header class="topbar">
+    <nav class="center-nav"><a href="home.html">Home</a><span>—</span><a href="about.html">About</a><span>—</span><a href="contact.html">Contact</a></nav>
+    <button id="docoHamburger" class="hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+    <aside id="docoSideMenu" class="doco-side-menu" aria-hidden="true">
+      <nav class="doco-menu-inner">
+        <a href="home.html">Home</a>
+        <a href="collections.html">Collections</a>
+        <a href="gallery.html">Art Gallery</a>
+        <a href="exclusive-drops.html">Exclusive Drops</a>
+        <a href="membersonly.html">Members Only</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </aside>
+  </header>
 
-<main class="container" style="padding-top:120px;">
-  <h2 style="font-family:'Cinzel',serif;color:var(--gold)">Product</h2>
-  <p style="color:rgba(255,255,255,0.85)">Product placeholder. Use <a href="Sovereign-verde.html">Sovereign-verde</a> for the watch product page.</p>
-</main>
+  <main class="content product-page">
+    <div class="product-grid">
+      <div class="product-media">
+        <img src="product-watch.jpg" alt="DOCOTELA X — The Sovereign Verde" />
+      </div>
+      <div class="product-info">
+        <h1>DOCOTELA X — The Sovereign Verde</h1>
+        <p class="price">R150,000</p>
+        <p class="desc">A refined timepiece with a deep green dial, gold hands and a blackened brushed case. Diamonds mark the hours, a discreet DOCOTELA X insignia at 3 o'clock and finishing touches that read as both restraint and ceremony. Each watch is hand-assembled and finished to the highest standards, limited production.</p>
 
-<footer class="center">© Docotela X</footer>
-<script src="menu.js"></script>
+        <div class="product-actions">
+          <!-- Paystack quick link (you provided) - opens Paystack checkout -->
+          <a class="enter-btn" href="https://paystack.shop/pay/fdy-nwp5q0" target="_blank" rel="noopener">Buy with Paystack</a>
+          <a class="enter-btn ghost" href="contact.html">Enquire</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="menu.js"></script>
 </body>
 </html>
