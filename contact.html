@@ -1,44 +1,62 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Contact — Docotela X</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
   <header>
-    <nav class="center-nav"><a href="home.html">Home</a><span class="dot">—</span><a href="about.html">About</a><span class="dot">—</span><a href="contact.html">Contact</a></nav>
-    <button id="hb8" class="hamburger">☰</button>
-    <div id="menu8" class="menu-panel">
-      <a href="home.html">Home</a><a href="collections.html">Collections</a><a href="membersonly.html">Members Only</a><a href="art-gallery.html">Art Gallery</a><a href="private-collection.html">Private Collection</a>
+    <nav class="center-nav"><a href="home.html">Home</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav>
+    <button id="hamburgerContact" class="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    <div id="menuContact" class="menu-panel" aria-hidden="true">
+      <a href="home.html">Home</a><a href="collections.html">Collections</a><a href="art-gallery.html">Art Gallery</a><a href="exclusive-drops.html">Exclusive Drops</a><a href="membersonly.html">Members Only</a><a href="contact.html">Contact</a>
     </div>
   </header>
 
-  <main class="content page">
-    <h2 class="section-title">Contact</h2>
-    <p class="muted">For customer inquiries or membership applications email <a href="mailto:docotelax@gmail.com">docotelax@gmail.com</a> or use the secure form below.</p>
+  <main class="content contact-page">
+    <div class="logo-bg"></div>
 
-    <form class="contact-form" action="https://formspree.io/f/xanajjbr" method="POST">
-      <label>Name
-        <input name="name" type="text" required placeholder="Your name">
-      </label>
-      <label>Email
-        <input name="email" type="email" required placeholder="you@email.com">
-      </label>
-      <label>Message
-        <textarea name="message" rows="6" required placeholder="What can we help you with?"></textarea>
-      </label>
+    <section class="contact-card">
+      <h1>Contact</h1>
+      <p class="lead">For purchases, press enquiries or membership — message us.</p>
 
-      <div class="form-actions">
-        <button type="submit" class="btn">Send Message</button>
-      </div>
-    </form>
+      <form action="https://formspree.io/f/xanajjbr" method="POST" class="contact-form">
+        <label>
+          <span>Name</span>
+          <input type="text" name="name" required>
+        </label>
 
-    <p class="muted">Alternatively: <a href="mailto:docotelax@gmail.com">docotelax@gmail.com</a></p>
+        <label>
+          <span>Email</span>
+          <input type="email" name="email" required>
+        </label>
+
+        <label>
+          <span>Message</span>
+          <textarea name="message" rows="6" required></textarea>
+        </label>
+
+        <div class="actions">
+          <button type="submit" class="buy-btn">Send Message</button>
+        </div>
+      </form>
+
+      <p class="muted">Or email us directly: <a href="mailto:docotelax@gmail.com">docotelax@gmail.com</a></p>
+    </section>
   </main>
 
-<script>
-  document.getElementById('hb8').addEventListener('click', ()=> document.getElementById('menu8').classList.toggle('open'));
-</script>
+  <script>
+    const hb = document.getElementById('hamburgerContact');
+    const mp = document.getElementById('menuContact');
+    hb.addEventListener('click', ()=> {
+      const open = hb.getAttribute('aria-expanded') === 'true';
+      hb.setAttribute('aria-expanded', !open);
+      mp.classList.toggle('open');
+      mp.setAttribute('aria-hidden', open);
+    });
+  </script>
 </body>
 </html>
