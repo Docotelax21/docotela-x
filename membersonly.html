@@ -1,27 +1,50 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Members Only — Docotela X</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
-  <header>
-    <nav class="center-nav"><a href="home.html">Home</a><span class="dot">—</span><a href="about.html">About</a><span class="dot">—</span><a href="contact.html">Contact</a></nav>
-    <button id="hb7" class="hamburger">☰</button>
-    <div id="menu7" class="menu-panel">
-      <a href="home.html">Home</a><a href="collections.html">Collections</a><a href="membersonly.html">Members Only</a><a href="art-gallery.html">Art Gallery</a><a href="contact.html">Contact</a>
-    </div>
-  </header>
+  <main class="members-only">
+    <div class="logo-bg"></div>
+    <h1>Members Only Access</h1>
+    <p>Enter your access key to continue.</p>
 
-  <main class="content">
-    <h2 class="section-title">Members Only</h2>
-    <p class="muted">This area is for approved members. To apply, email: <a href="mailto:docotelax@gmail.com">docotelax@gmail.com</a> or use the contact form.</p>
-    <p class="muted">Wrong passwords should display a red denied state — the JS that handles this is included in earlier files. (We can extend server-side later.)</p>
+    <div class="vault">
+      <input id="accessKey" type="password" placeholder="Access key" aria-label="Access key">
+      <button id="enterKey" class="buy-btn">Enter</button>
+      <p id="msg" class="error" aria-live="polite"></p>
+      <p class="apply"><a href="contact.html">Apply for membership</a></p>
+    </div>
   </main>
 
-<script>
-  document.getElementById('hb7').addEventListener('click', ()=> document.getElementById('menu7').classList.toggle('open'));
-</script>
+  <script>
+    (function(){
+      const password = 'memberson1y';
+      const btn = document.getElementById('enterKey');
+      const input = document.getElementById('accessKey');
+      const msg = document.getElementById('msg');
+
+      btn.addEventListener('click', () => {
+        const val = input.value.trim();
+        if(val === password){
+          // animate and go
+          msg.style.color = '#cfc';
+          msg.textContent = 'Access granted — opening vault…';
+          setTimeout(()=> { window.location.href = 'private-collection.html'; }, 900);
+        } else {
+          // deny animation
+          msg.style.color = '#ff6b6b';
+          msg.textContent = 'ACCESS DENIED';
+          input.classList.add('shake');
+          setTimeout(()=>{ input.classList.remove('shake'); }, 500);
+        }
+      });
+
+      input.addEventListener('keydown', (e) => { if(e.key === 'Enter') btn.click(); });
+    })();
+  </script>
 </body>
 </html>
