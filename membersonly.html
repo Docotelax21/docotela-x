@@ -1,80 +1,69 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Docotela X | Members Only</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Members Only — Docotela X</title>
+  <link href="styles.css" rel="stylesheet">
 </head>
-<body>
+<body class="page members">
 
-    <!-- TOP NAV (Home - About - Contact) -->
-    <div class="top-center-nav">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+  <!-- CENTER NAV -->
+  <nav class="center-nav">
+    <a href="index.html">Home</a><span>—</span><a href="about.html">About</a><span>—</span><a href="contact.html">Contact</a>
+  </nav>
+
+  <!-- HAMBURGER -->
+  <button class="hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+
+  <!-- SLIDE MENU -->
+  <aside id="mobileMenu" class="mobile-menu glass" aria-hidden="true">
+    <a href="index.html">Home</a>
+    <a href="collections.html">Collections</a>
+    <a href="gallery.html">Art Gallery</a>
+    <a href="exclusive-drops.html">Exclusive Drops</a>
+    <a href="membersonly.html">Members Only</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </aside>
+
+  <!-- Fullscreen gates -->
+  <div class="gates-container">
+    <div class="gate left-gate" aria-hidden="true"></div>
+    <div class="gate right-gate" aria-hidden="true"></div>
+
+    <div class="password-box" role="dialog" aria-modal="true">
+      <h2>Members Only</h2>
+      <p class="muted">Enter the password to open the gates.</p>
+
+      <div class="pw-row">
+        <input id="memberPass" type="password" placeholder="Password" autocomplete="off">
+        <button id="openBtn" class="enter-btn">Open Gates</button>
+      </div>
+
+      <p id="err" class="muted" style="color:#ff6b6b;display:none;margin-top:12px;">Incorrect password</p>
+      <p style="margin-top:14px;"><a href="contact.html" class="ghost-link">Apply for membership</a></p>
     </div>
+  </div>
 
-    <!-- HAMBURGER MENU (Top Right) -->
-    <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
-    <div id="mobileMenu" class="mobile-menu">
-        <a href="index.html">Home</a>
-        <a href="collections.html">Collections</a>
-        <a href="membersonly.html">Members Only</a>
-        <a href="gallery.html">Art Gallery</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-    </div>
+  <script>
+    document.getElementById('openBtn').addEventListener('click', function(){
+      const val = document.getElementById('memberPass').value.trim();
+      const err = document.getElementById('err');
 
-    <script>
-        function toggleMenu() {
-            const menu = document.getElementById("mobileMenu");
-            menu.classList.toggle("open");
-        }
-    </script>
+      if (val === 'memberson1y') {
+        err.style.display = 'none';
+        document.querySelector('.left-gate').classList.add('open-left');
+        document.querySelector('.right-gate').classList.add('open-right');
 
+        // after gate animation, redirect to private collection
+        setTimeout(()=>{ window.location.href = 'private-collection.html'; }, 1600);
+      } else {
+        err.style.display = 'block';
+      }
+    });
+  </script>
 
-    <!-- PAGE CONTENT (VERY MINIMAL) -->
-    <div class="page-container" style="margin-top: 140px; text-align:center;">
-        <h1 class="page-title">Members Only</h1>
-
-        <p style="margin-top:20px; color:#ccc; font-size:1rem;">
-            Enter your password to access exclusive Docotela X content.
-        </p>
-
-        <form id="loginForm" style="margin-top:30px;">
-            <input 
-                type="password" 
-                id="password" 
-                placeholder="Enter password"
-                style="padding:12px; width:260px; background:#111; border:1px solid #444; color:white; text-align:center;"
-            >
-            <button 
-                type="submit" 
-                style="padding:12px 22px; background:black; border:1px solid #444; color:white; cursor:pointer; margin-left:10px;">
-                Enter
-            </button>
-        </form>
-
-        <p id="error" style="color: rgb(179, 0, 0); margin-top: 15px; display:none;">
-            Incorrect password.
-        </p>
-    </div>
-
-
-    <script>
-        document.getElementById("loginForm").addEventListener("submit", function(e) {
-            e.preventDefault();
-
-            const password = document.getElementById("password").value;
-
-            if (password === "memberson1y") {
-                window.location.href = "exclusive.html";
-            } else {
-                document.getElementById("error").style.display = "block";
-            }
-        });
-    </script>
-
+  <script src="menu.js"></script>
 </body>
 </html>
