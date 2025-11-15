@@ -3,7 +3,7 @@
   const hb = document.querySelectorAll('.hamburger');
   const menus = document.querySelectorAll('#mobileMenu');
 
-  function toggle(){
+  function toggle(){m
     menus.forEach(m=>{
       m.classList.toggle('open');
       m.setAttribute('aria-hidden', m.classList.contains('open') ? 'false' : 'true');
