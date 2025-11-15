@@ -1,51 +1,41 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Collections — Docotela X</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
+  <header class="topbar">
     <nav class="center-nav"><a href="home.html">Home</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav>
-    <button id="hamburgerCollections" class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
-    <div id="menuCollections" class="menu-panel" aria-hidden="true">
-      <a href="home.html">Home</a><a href="collections.html">Collections</a><a href="art-gallery.html">Art Gallery</a><a href="exclusive-drops.html">Exclusive Drops</a><a href="membersonly.html">Members Only</a><a href="contact.html">Contact</a>
+    <button class="hamburger" id="hbColl">☰</button>
+    <div class="menu-panel" id="mpColl">
+      <a href="home.html">Home</a><a href="collections.html">Collections</a><a href="exclusive-drops.html">Exclusive Drops</a><a href="art-gallery.html">Art Gallery</a><a href="members-only.html">Members Only</a><a href="contact.html">Contact</a>
     </div>
   </header>
 
-  <main class="content">
-    <div class="logo-bg"></div>
-    <section class="grid">
-      <article class="card">
-        <img src="product-watch.jpg" alt="The Sovereign Verde" class="card-img">
-        <h3>DOCOTELA X — The Sovereign Verde</h3>
-        <p class="price">R150,000</p>
-        <a href="product-watch.html" class="card-btn">View Product</a>
-      </article>
+  <div class="page-bg-logo"></div>
 
-      <!-- Add other product cards similarly when ready -->
-    </section>
+  <main class="container" style="padding-top:120px;">
+    <h2 style="font-family:'Cinzel',serif;color:var(--gold)">Collections</h2>
+    <p style="color:rgba(255,255,255,0.8)">Select a collection to view details and pieces.</p>
+
+    <div class="gallery-grid">
+      <a class="frame" href="collection-8deity.html">8 Deity Collection<div class="label">8 exclusive pieces</div></a>
+      <a class="frame" href="collection-feeling.html">Feeling of Freedom<div class="label">Docs origin collection</div></a>
+      <a class="frame" href="collection-legacy.html">Legacy Series<div class="label">Limited runs</div></a>
+      <a class="frame" href="collection-others.html">Other Collections<div class="label">View more</div></a>
+    </div>
   </main>
 
-  <script>
-    const hb = document.getElementById('hamburgerCollections');
-    const mp = document.getElementById('menuCollections');
-    hb.addEventListener('click', ()=> {
-      const open = hb.getAttribute('aria-expanded') === 'true';
-      hb.setAttribute('aria-expanded', !open);
-      mp.classList.toggle('open');
-      mp.setAttribute('aria-hidden', open);
-    });
-    document.addEventListener('click', (e)=>{
-      if(!mp.contains(e.target) && !hb.contains(e.target)){
-        mp.classList.remove('open');
-        hb.setAttribute('aria-expanded','false');
-        mp.setAttribute('aria-hidden','true');
-      }
-    });
-  </script>
+  <footer class="center">© Docotela X</footer>
+
+<script>
+const hb=document.getElementById('hbColl'), mp=document.getElementById('mpColl');
+hb.addEventListener('click',()=>mp.classList.toggle('open'));
+document.addEventListener('click', (e)=>{ if(!mp.contains(e.target) && e.target!==hb) mp.classList.remove('open')});
+</script>
 </body>
 </html>
