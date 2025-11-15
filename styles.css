@@ -1,141 +1,80 @@
-/* styles.css — Docotela X master CSS (replace existing styles.css) */
+/* styles.css - Docotela X master stylesheet (drop-in) */
 
-/* Reset & base */
-*{box-sizing:border-box}
+/* reset */
+*{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
-body{
-  margin:0;
-  background:#040404;
-  color:#e8e6e1;
-  font-family: "Poppins", system-ui, -apple-system, "Cinzel", serif;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
+body{background:#050505;color:#e6e6e6;font-family:"Poppins",system-ui,-apple-system,"Cinzel",serif;-webkit-font-smoothing:antialiased}
+
+/* --- Top nav centered --- */
+.top-nav{
+  position:fixed;left:50%;top:20px;transform:translateX(-50%);z-index:1200;display:flex;gap:30px;
+  pointer-events:auto;
 }
+.top-nav a{color:#fff;text-decoration:none;font-weight:600;font-size:18px;letter-spacing:0.8px}
+.top-nav a:hover{color:#e0b24a}
 
-/* CENTER NAV (top center links) */
-.center-nav{
-  position:fixed;
-  left:50%;
-  top:20px;
-  transform:translateX(-50%);
-  display:flex;
-  gap:18px;
-  align-items:center;
-  z-index:1200;
-  font-weight:600;
-}
-.center-nav a{color:#fff;text-decoration:none;font-size:18px}
-.center-nav span{color:rgba(255,255,255,0.06)}
-.center-nav a:hover{color:#e0b24a}
+/* hide top-nav on .home */
+body.home .top-nav{display:none}
 
-/* Hide center nav on homepage */
-body.home .center-nav{display:none}
-
-/* HAMBURGER (top-right) */
+/* --- Hamburger --- */
 .hamburger{
-  position:fixed;
-  top:14px;
-  right:18px;
-  z-index:1400;
-  background:rgba(255,255,255,0.02);
-  border:1px solid rgba(255,255,255,0.04);
-  padding:10px 12px;
-  border-radius:10px;
-  color:#fff;
-  font-size:20px;
-  cursor:pointer;
-  backdrop-filter: blur(6px);
+  position:fixed;right:20px;top:16px;z-index:1300;font-size:26px;color:#fff;cursor:pointer;padding:10px;border-radius:8px;
+  background:rgba(255,255,255,0.02);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.03)
 }
 
-/* MOBILE SLIDE MENU (glass) */
+/* --- Mobile slide-out menu --- */
 .mobile-menu{
-  position:fixed;
-  top:0;
-  right:-320px;
-  width:320px;
-  height:100vh;
-  padding-top:96px;
-  display:flex;
-  flex-direction:column;
-  gap:18px;
-  transition:right .36s cubic-bezier(.22,.9,.3,1);
-  z-index:1300;
+  position:fixed;top:0;right:-320px;width:320px;height:100vh;padding-top:100px;background:linear-gradient(180deg, rgba(10,10,10,0.98), rgba(6,6,6,0.99));transition:right .36s cubic-bezier(.22,.9,.3,1);z-index:1250;display:flex;flex-direction:column;gap:18px;padding-left:28px
 }
 .mobile-menu.open{right:0}
-.mobile-menu a{color:#fff;text-decoration:none;padding:12px 24px;font-size:20px}
+.mobile-menu a{color:#fff;text-decoration:none;font-size:18px;padding:10px 0;display:block;font-weight:600}
 .mobile-menu a:hover{color:#e0b24a}
-.glass{background:rgba(255,255,255,0.04);backdrop-filter:blur(10px);border-left:1px solid rgba(255,255,255,0.06)}
 
-/* WATERMARK LOGO */
-.logo-bg{
-  position:fixed;
-  inset:0;
-  background-image:url('88A57F40-470A-4B65-A4E2-DE3DAFEA66CE.png');
-  background-position:center;
-  background-size:70%;
-  background-repeat:no-repeat;
-  opacity:0.04;
-  filter:blur(3px) saturate(.9);
-  pointer-events:none;
-  z-index:1;
-}
+/* glass util */
+.glass{background:rgba(255,255,255,0.03);backdrop-filter:blur(10px);border-left:1px solid rgba(255,255,255,0.03)}
 
-/* HERO - HOME */
-.hero{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  gap:18px;
-  text-align:center;
-  padding:40px 20px;
-  z-index:10;
-  position:relative;
-}
-.hero-logo{width:360px;max-width:70%;opacity:0.95;mix-blend-mode:normal}
-.brand-title{font-family:"Cinzel",serif;font-size:56px;letter-spacing:6px;margin:8px 0 0;color:#f6e9c1;text-shadow:0 12px 30px rgba(0,0,0,.6)}
-.lead{max-width:720px;color:rgba(255,255,255,0.85);margin:8px 0 18px}
+/* --- Hero / Home --- */
+.hero{height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;position:relative;overflow:hidden}
+.logo-bg{position:absolute;inset:0;background-image:url('88A57F40-470A-4B65-A4E2-DE3DAFEA66CE.png');background-position:center;background-repeat:no-repeat;background-size:80%;opacity:0.04;filter:blur(4px);z-index:1}
+.hero-logo{z-index:6;width:260px;opacity:0.95;filter:drop-shadow(0 12px 48px rgba(0,0,0,.6))}
+.hero-title{z-index:6;font-family:"Cinzel",serif;font-size:64px;color:#f6e8b8;margin-top:18px;letter-spacing:6px}
+.hero-sub{z-index:6;color:rgba(255,255,255,0.8);margin-top:12px;max-width:700px}
+.enter-btn{display:inline-block;margin-top:26px;padding:12px 26px;border:2px solid #e0b24a;border-radius:8px;color:#e0b24a;text-decoration:none;font-weight:700;transition:all .2s}
+.enter-btn:hover{background:#e0b24a;color:#070707;box-shadow:0 12px 40px rgba(224,178,74,0.12)}
 
-/* CTA */
-.enter-btn{display:inline-block;padding:12px 28px;border-radius:8px;border:2px solid #e0b24a;color:#e0b24a;text-decoration:none;font-weight:700;transition:all .2s}
-.enter-btn:hover{background:#e0b24a;color:#040404;box-shadow:0 14px 40px rgba(224,178,74,.12)}
-
-/* Content wrapper for pages */
+/* --- Content area --- */
 .content{padding:120px 28px 80px;max-width:1200px;margin:0 auto}
+.page-title{font-size:28px;margin-bottom:14px;color:#fff}
+.lead{color:rgba(255,255,255,0.78);margin-bottom:18px}
 
-/* Page titles & grids */
-.page-title{font-size:28px;margin-bottom:8px;color:#fff}
-.collections-grid,.gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:18px}
-.collection-card,.art-placeholder,.placeholder{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);text-align:center;color:#ddd}
+/* --- Collections grid --- */
+.collections-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;margin-top:18px}
+.collection-card{display:block;padding:22px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03);text-align:center;color:#fff;font-weight:600}
 
-/* Members gates */
-.gates-container{position:relative;height:100vh;width:100vw;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#020202,#070707)}
-.gate{position:absolute;top:0;height:100%;width:50%;background:linear-gradient(90deg,#0b0b0b,#111);transition:transform 1.2s cubic-bezier(.2,.9,.2,1);z-index:20;box-shadow:inset 0 0 80px rgba(0,0,0,.6)}
-.left-gate{left:0;border-right:1px solid rgba(255,255,255,0.04)}
-.right-gate{right:0;border-left:1px solid rgba(255,255,255,0.04)}
+/* --- Gallery grid --- */
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;margin-top:22px}
+.art-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.012));padding:18px;border-radius:10px;border:1px solid rgba(255,255,255,0.03)}
+.art-image.placeholder{height:220px;border-radius:8px;background:linear-gradient(180deg, #111,#0b0b0b);display:flex;align-items:center;justify-content:center;color:#777}
+
+/* --- Members gates --- */
+.gates-wrap{position:relative;height:100vh;width:100vw;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#070707,#050505)}
+.gate-left,.gate-right{position:absolute;top:0;height:100%;width:50%;background:linear-gradient(180deg,#0f0f0f,#070707);transition:transform 1.3s cubic-bezier(.2,.9,.3,1);z-index:30}
+.gate-left{left:0;border-right:1px solid rgba(255,255,255,0.03)}
+.gate-right{right:0;border-left:1px solid rgba(255,255,255,0.03)}
 .open-left{transform:translateX(-100%)}
 .open-right{transform:translateX(100%)}
 
-/* Password box */
-.password-box{
-  position:relative;z-index:30;background:rgba(0,0,0,0.45);padding:28px;border-radius:12px;backdrop-filter:blur(8px);text-align:center;color:#fff;width:92%;max-width:520px;margin:auto
-}
-.password-box h2{font-family:"Cinzel",serif;margin:0 0 6px}
-.password-box .muted{color:rgba(255,255,255,0.6);margin-bottom:12px}
-.pw-row{display:flex;gap:10px;justify-content:center;align-items:center}
-.pw-row input{padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);color:#fff;width:220px}
-.pw-row button.enter-btn{padding:10px 16px}
+.gate-pass{position:relative;z-index:40;text-align:center;padding:22px;background:rgba(0,0,0,0.45);border-radius:12px;backdrop-filter:blur(6px)}
+.gate-pass input{padding:10px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);color:#fff;margin-right:10px}
+.gate-pass .enter-btn{margin-top:12px}
 
 /* small screens */
 @media (max-width:900px){
-  .brand-title{font-size:36px}
-  .center-nav{top:14px}
-  .logo-bg{background-size:90%}
-  .pw-row{flex-direction:column}
-  .pw-row input{width:100%}
+  .hero-title{font-size:36px}
+  .hero-logo{width:190px}
+  .top-nav{gap:18px}
+  .mobile-menu{width:100%;right:-100%}
+  .mobile-menu.open{right:0}
+  .top-nav{top:14px}
+  .hamburger{top:12px;right:12px}
 }
-
-/* utility */
-.muted{color:rgba(255,255,255,0.6)}
-.ghost-link{color:rgba(255,255,255,0.85);text-decoration:underline}
