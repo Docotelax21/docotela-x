@@ -1,89 +1,56 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About | DOCOTELA X</title>
-    <link rel="stylesheet" href="styles.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About — Docotela X</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
+<body class="page">
+  <header>
+    <nav class="center-nav">
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
 
-<body class="fade-in">
+    <button id="hamburgerAbout" class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
 
-    <!-- Top Navigation -->
-    <header class="top-nav">
-        <div class="center-links">
-            <a href="index.html">Home</a>
-            <span class="divider">–</span>
-            <a href="about.html" class="active">About</a>
-            <span class="divider">–</span>
-            <a href="contact.html">Contact</a>
-        </div>
+    <div id="menuAbout" class="menu-panel" aria-hidden="true">
+      <a href="home.html">Home</a>
+      <a href="collections.html">Collections</a>
+      <a href="art-gallery.html">Art Gallery</a>
+      <a href="exclusive-drops.html">Exclusive Drops</a>
+      <a href="membersonly.html">Members Only</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </header>
 
-        <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+  <main class="content">
+    <div class="logo-bg"></div>
 
-        <!-- Dropdown Menu -->
-        <nav id="menu" class="menu">
-            <a href="index.html">Home</a>
-            <a href="collections.html">Collections</a>
-            <a href="members.html">Members Only</a>
-            <a href="gallery.html">Art Gallery</a>
-            <a href="about.html" class="active">About</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    </header>
+    <article class="about-article">
+      <h1 class="page-title">About Docotela X</h1>
 
-    <!-- Page Content -->
-    <main class="about-container">
-        
-        <img src="logo.png" alt="Docotela X Logo" class="about-logo">
+      <p class="lead">Docotela X is the feeling of freedom translated into cloth and canvas — a careful tension between discipline and escape. Each collection is a quiet rebellion: limited, handcrafted, honest.</p>
 
-        <h1 class="about-title">The Story of Docotela X</h1>
+      <section class="poetic">
+        <p>We craft with patience. We edit by instinct. In a world of noise, Docotela X chooses silence — the silence that makes room for a line, for a fold, for an echo of the life lived beneath the surface. Our garments are private ceremonies — designed to be worn like a second skin of conviction.</p>
 
-        <p class="about-text">
-            Docotela X was born from the pursuit of one feeling — <span class="highlight">freedom</span>. 
-            A feeling shaped by struggle, failures, rebuilding, and the courage to choose a path that 
-            few believed in.
-        </p>
+        <p>The work is small-batch, the details deliberate. The art we make and the clothing we shape are not for everyone — they are for the few who return to the same quiet place again and again.</p>
+      </section>
+    </article>
+  </main>
 
-        <p class="about-text">
-            Before the brand existed, there were countless attempts, ideas that crashed, products 
-            designed and thrown away, and moments where nothing seemed to work. Investors said no, 
-            people suggested taking the “safe” path, and the pressure to give up was loud. But the 
-            vision stayed alive.
-        </p>
-
-        <p class="about-text">
-            Docotela X became a reflection of life itself — the fight to stay true to your art, to 
-            your identity, and to the freedom you dream of. Every collection is limited, handcrafted, 
-            and created with intention. Ten artists, eight artists, sometimes only one — but always 
-            authentic. Every piece carries energy, story, mistakes, triumphs, and pure creativity. 
-        </p>
-
-        <p class="about-text">
-            The philosophy behind the brand was shaped by personal journeys: losing opportunities, 
-            finding new ones, rebuilding, and proving consistency through projects like restoring a 
-            1978 VW Beetle from a bare shell — a six-year testament to vision, patience, and 
-            craftsmanship.
-        </p>
-
-        <p class="about-text">
-            Docotela X is more than clothing. It's wearable art — a feeling you step into. 
-            When a customer wears a piece, they wear the journey, the late nights, the silent growth, 
-            the fight for greatness. They wear freedom.
-        </p>
-
-        <p class="about-text end">
-            This is Docotela X.<br>
-            A gallery of expression, scarcity, emotion, and art — built for those who feel deeply.
-        </p>
-
-    </main>
-
-    <script>
-        function toggleMenu() {
-            document.getElementById("menu").classList.toggle("open");
-        }
-    </script>
-
+  <script>
+    // hamburger About
+    (function(){
+      const hb = document.getElementById('hamburgerAbout');
+      const mp = document.getElementById('menuAbout');
+      hb.addEventListener('click', ()=>{ const e = hb.getAttribute('aria-expanded')==='true'; hb.setAttribute('aria-expanded',!e); mp.classList.toggle('open'); mp.setAttribute('aria-hidden', e); });
+      document.addEventListener('click',(ev)=>{ if (!mp.contains(ev.target) && !hb.contains(ev.target)){ mp.classList.remove('open'); hb.setAttribute('aria-expanded','false'); mp.setAttribute('aria-hidden','true'); }});
+    })();
+  </script>
 </body>
 </html>
