@@ -1,33 +1,44 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Contact — DOCOTELA X</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+<head><meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact — Docotela X</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="header">
-    <nav class="center-nav container">
-      <a href="home.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="collections.html">Collections</a>
-      <a href="art-gallery.html">Art Gallery</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+  <header>
+    <nav class="center-nav"><a href="home.html">Home</a><span class="dot">—</span><a href="about.html">About</a><span class="dot">—</span><a href="contact.html">Contact</a></nav>
+    <button id="hb8" class="hamburger">☰</button>
+    <div id="menu8" class="menu-panel">
+      <a href="home.html">Home</a><a href="collections.html">Collections</a><a href="membersonly.html">Members Only</a><a href="art-gallery.html">Art Gallery</a><a href="private-collection.html">Private Collection</a>
+    </div>
   </header>
 
-  <main class="page-article container">
-    <h2 style="font-family:'Cinzel', serif; color:var(--accent); font-size:36px;">Contact</h2>
-    <div class="hr-gold" aria-hidden="true"></div>
+  <main class="content page">
+    <h2 class="section-title">Contact</h2>
+    <p class="muted">For customer inquiries or membership applications email <a href="mailto:docotelax@gmail.com">docotelax@gmail.com</a> or use the secure form below.</p>
 
-    <div style="max-width:760px; margin:20px auto;" class="card">
-      <p style="color:rgba(255,255,255,0.85)">For collaborations, press or membership enquiries, email us:</p>
-      <p style="color:var(--accent); font-weight:700; margin-top:8px;">docotelax@gmail..com</p>
-      <div style="height:18px"></div>
-      <p style="color:rgba(255,255,255,0.6); font-size:13px;">(This is a placeholder address — replace with your real contact if you want email links to work.)</p>
-    </div>
+    <form class="contact-form" action="https://formspree.io/f/xanajjbr" method="POST">
+      <label>Name
+        <input name="name" type="text" required placeholder="Your name">
+      </label>
+      <label>Email
+        <input name="email" type="email" required placeholder="you@email.com">
+      </label>
+      <label>Message
+        <textarea name="message" rows="6" required placeholder="What can we help you with?"></textarea>
+      </label>
+
+      <div class="form-actions">
+        <button type="submit" class="btn">Send Message</button>
+      </div>
+    </form>
+
+    <p class="muted">Alternatively: <a href="mailto:docotelax@gmail.com">docotelax@gmail.com</a></p>
   </main>
+
+<script>
+  document.getElementById('hb8').addEventListener('click', ()=> document.getElementById('menu8').classList.toggle('open'));
+</script>
 </body>
 </html>
