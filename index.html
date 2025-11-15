@@ -8,15 +8,15 @@
 </head>
 <body class="home">
 
-  <!-- TOP CENTER NAV (HIDDEN ON HOME via CSS) -->
-  <nav class="center-nav">
-    <a href="index.html">Home</a><span>—</span><a href="about.html">About</a><span>—</span><a href="contact.html">Contact</a>
+  <!-- TOP NAV (center) - hidden on homepage via CSS -->
+  <nav class="top-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
   </nav>
 
-  <!-- HAMBURGER (VISIBLE ON HOME) -->
-  <button class="hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button>
-
-  <!-- SLIDE MENU -->
+  <!-- HAMBURGER & SLIDE MENU (present on homepage) -->
+  <div class="hamburger" id="hamburger" aria-label="Open menu">&#9776;</div>
   <aside id="mobileMenu" class="mobile-menu glass" aria-hidden="true">
     <a href="index.html">Home</a>
     <a href="collections.html">Collections</a>
@@ -27,14 +27,12 @@
     <a href="contact.html">Contact</a>
   </aside>
 
-  <!-- WATERMARK LOGO BACKGROUND -->
-  <div class="logo-bg" aria-hidden="true"></div>
-
   <!-- HERO -->
   <main class="hero">
-    <img src="docotelax-logo.png" alt="Docotela X" class="hero-logo" />
-    <h1 class="brand-title">DOCOTELA X</h1>
-    <p class="lead">Limited collections. Handcrafted art.</p>
+    <div class="logo-bg" aria-hidden="true"></div>
+    <img src="docotelax-logo.png" class="hero-logo" alt="Docotela X">
+    <h1 class="hero-title">DOCOTELA X</h1>
+    <p class="hero-sub">Limited collections. Handcrafted art.</p>
     <a class="enter-btn" href="gallery.html">Enter the Gallery</a>
   </main>
 
