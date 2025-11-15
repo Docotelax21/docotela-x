@@ -1,50 +1,38 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>The Sovereign Verde — Docotela X</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-</head>
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>The Sovereign Verde — Docotela X</title><meta name="description" content="DOCOTELA X — The Sovereign Verde. Handfinished matte black case, emerald dial, diamond indices. Limited to 10."><link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"></head>
 <body>
-  <header class="topbar">
-    <nav class="center-nav"><a href="home.html">Home</a><a href="collections.html">Collections</a><a href="contact.html">Contact</a></nav>
-    <button class="hamburger" id="hbP">☰</button>
-    <div class="menu-panel" id="mpP"><a href="home.html">Home</a><a href="collections.html">Collections</a><a href="exclusive-drops.html">Exclusive Drops</a><a href="members-only.html">Members Only</a><a href="contact.html">Contact</a></div>
-  </header>
+<header class="topbar">
+  <nav class="center-nav"><a href="home.html">Home</a><a href="collections.html">Collections</a><a href="contact.html">Contact</a></nav>
+  <button class="hamburger" id="hbPW"><span></span><span></span><span></span></button>
+  <div id="sideMenuPW" class="side-menu" aria-hidden="true"><a href="home.html">Home</a><a href="collections.html">Collections</a><a href="gallery.html">Art Gallery</a><a href="exclusive-drops.html">Exclusive Drops</a><a href="members-only.html">Members Only</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
+</header>
 
-  <main class="container" style="padding-top:120px;">
-    <div class="product">
-      <img src="product-watch.jpg" alt="DOCOTELA X — The Sovereign Verde">
-      <div class="product-info">
-        <h2>DOCOTELA X — The Sovereign Verde</h2>
-        <p class="price">R150,000</p>
-        <p style="color:rgba(255,255,255,0.9)">An object of restrained authority — a matte black case, deep green sunburst dial, gold applied indices and diamond stud markers. Engineered in small-batch with precision and a sculptural approach to luxury watchmaking.</p>
+<main class="container" style="padding-top:120px;">
+  <div class="product">
+    <img src="product-watch.jpg" alt="DOCOTELA X — The Sovereign Verde">
+    <div class="product-info">
+      <h2>DOCOTELA X — The Sovereign Verde</h2>
+      <p class="price">R150,000</p>
+      <p style="color:rgba(255,255,255,0.9)">An object of restrained authority — matte case, green sunburst dial, diamond indices. Limited to 10. Each piece is serialized and signed.</p>
+      <ul style="color:rgba(255,255,255,0.85); margin-top:12px">
+        <li>40mm matte case</li>
+        <li>Emerald sunburst dial, diamond indices</li>
+        <li>Sapphire crystal</li>
+        <li>Limited edition — certificate included</li>
+      </ul>
 
-        <ul style="color:rgba(255,255,255,0.85); margin-top:12px">
-          <li>Black matte 40mm case</li>
-          <li>Emerald sunburst dial with diamond indices</li>
-          <li>Limited edition (numbered)</li>
-          <li>Comes with certificate of authenticity & leather travel pouch</li>
-        </ul>
-
-        <div style="margin-top:18px">
-          <!-- Paystack hosted link — user provided -->
-          <a class="buy" href="https://paystack.shop/pay/fdy-nwp5q0" target="_blank" rel="noopener">Buy — Checkout</a>
-        </div>
+      <div style="margin-top:18px">
+        <a class="buy" href="checkout.html">Buy — Checkout</a>
       </div>
     </div>
+  </div>
 
-    <p style="color:rgba(255,255,255,0.8)">Questions? Contact us with reference <strong>SOV-VERDE</strong> via the contact page.</p>
-  </main>
+  <p style="color:rgba(255,255,255,0.8)">Questions? Contact us and reference <strong>SOV-VERDE</strong>.</p>
+</main>
 
-  <footer class="center">© Docotela X</footer>
+<footer class="center">© Docotela X</footer>
 
-<script>
-const hb=document.getElementById('hbP'), mp=document.getElementById('mpP');
-hb.addEventListener('click',()=>mp.classList.toggle('open'));
-document.addEventListener('click',(e)=>{ if(!mp.contains(e.target) && e.target!==hb) mp.classList.remove('open')});
-</script>
+<script>(function(){ const hb=document.getElementById('hbPW'), menu=document.getElementById('sideMenuPW'); hb.addEventListener('click', ()=> menu.classList.toggle('menu-open')); document.addEventListener('click',(e)=>{ if(!menu.contains(e.target) && e.target!==hb) menu.classList.remove('menu-open'); }); })();</script>
 </body>
 </html>
