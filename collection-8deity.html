@@ -1,41 +1,48 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>8 Deity Collection — Docotela X</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>8 Deity Collection — Docotela X</title>
+<link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <header class="topbar">
-    <nav class="center-nav"><a href="home.html">Home</a><a href="collections.html">Collections</a><a href="contact.html">Contact</a></nav>
-    <button class="hamburger" id="hb1">☰</button>
-    <div class="menu-panel" id="mp1"><a href="home.html">Home</a><a href="collections.html">Collections</a><a href="exclusive-drops.html">Exclusive Drops</a><a href="members-only.html">Members Only</a><a href="contact.html">Contact</a></div>
-  </header>
 
-  <div class="page-bg-logo"></div>
+<body class="page">
 
-  <main class="container" style="padding-top:120px;">
-    <h2 style="font-family:'Cinzel',serif;color:var(--gold)">8 Deity Collection</h2>
-    <p style="color:rgba(255,255,255,0.85)">A strictly limited run of 8 handcrafted pieces combining sculpture and clothing. Each piece is one-of-one.</p>
+<header class="topbar">
+  <nav class="center-nav">
+    <a href="index.html">Home</a> — 
+    <a href="about.html">About</a> — 
+    <a href="contact.html">Contact</a>
+  </nav>
 
-    <div class="gallery-grid">
-      <div class="frame">Piece 01<div class="label">Artist — Details</div></div>
-      <div class="frame">Piece 02<div class="label">Artist — Details</div></div>
-      <div class="frame">Piece 03<div class="label">Artist — Details</div></div>
-      <div class="frame">Piece 04<div class="label">Artist — Details</div></div>
-    </div>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
 
-    <p style="color:rgba(255,255,255,0.85)">For purchase enquiries, use the contact page and reference collection ‘8 Deity’. Members will get priority access to a private drop.</p>
-  </main>
+  <div id="menuPanel" class="menu-panel">
+    <a href="index.html">Home</a>
+    <a href="collections.html">Collections</a>
+    <a href="membersonly.html">Members Only</a>
+    <a href="art-gallery.html">Art Gallery</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</header>
 
-  <footer class="center">© Docotela X</footer>
+<div class="floating-x x1">X</div>
+<div class="floating-x x2">X</div>
+<div class="floating-x x3">X</div>
 
-<script>
-const hb=document.getElementById('hb1'), mp=document.getElementById('mp1');
-hb.addEventListener('click',()=>mp.classList.toggle('open'));
-document.addEventListener('click',(e)=>{ if(!mp.contains(e.target)&&e.target!==hb) mp.classList.remove('open')});
-</script>
+<main class="content">
+  <h1 class="page-title">8 Deity Collection</h1>
+  <p class="lead">Eight pieces. Eight energies. Eight whispers of something divine.  
+  This is the collection that shaped Docotela X — rare, deliberate, spiritual.</p>
+
+  <section class="gallery-placeholder">
+    <p>Collection images coming soon…</p>
+  </section>
+</main>
+
+<script src="menu.js"></script>
+
 </body>
 </html>
