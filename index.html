@@ -1,20 +1,51 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Docotela X</title>
-  <meta name="description" content="Docotela X — The Feeling of Freedom">
-  <link href="styles.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docotela X — The Sovereign Verde</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-  <!-- index just redirects visitors to home.html for the cinematic entry -->
-  <script>
-    // Prefer /home.html as main landing to keep index simple and consistent across GitHub Pages
-    window.location.replace('home.html');
-  </script>
-  <noscript>
-    <a href="home.html">Enter Docotela X</a>
-  </noscript>
+
+    <!-- WATERMARK BACKGROUND -->
+    <div class="watermark-bg"></div>
+
+    <!-- TOP NAVIGATION (visible on all pages except index) -->
+    <div class="top-nav">
+        <a href="home.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
+    <!-- HAMBURGER -->
+    <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+
+    <!-- GLASS MOBILE MENU -->
+    <div id="mobileMenu" class="mobile-menu glass">
+        <a href="home.html">Home</a>
+        <a href="collections.html">Collections</a>
+        <a href="gallery.html">Art Gallery</a>
+        <a href="exclusive-drops.html">Exclusive Drops</a>
+        <a href="membersonly.html">Members Only</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <section class="hero">
+        <img src="docotelax-logo.png" class="hero-logo" alt="Docotela X Logo">
+
+        <h1 class="hero-title">DOCOTELA X</h1>
+        <p class="hero-subtitle">
+            Limited pieces. Handcrafted by artists.  
+            Each collection is a scene — enter if you belong to the feeling.
+        </p>
+
+        <a class="enter-btn" href="gallery.html">Enter the Gallery</a>
+    </section>
+
+    <script src="menu.js"></script>
 </body>
 </html>
