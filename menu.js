@@ -1,61 +1,48 @@
-/* menu.js — Docotela X cinematic B1 menu behaviour (shared) */
+/* menu.js — Docotela X Option 3 glass blur menu behaviour (shared) */
 (() => {
-  const hb = document.getElementById('docoHamburger') || document.querySelector('.hamburger');
+  const hb = document.getElementById('docoHamburger');
   const menu = document.getElementById('docoSideMenu');
   if(!hb || !menu) return;
 
-  // toggle open/close
-  function toggleMenu(){
-    const open = menu.classList.toggle('menu-open');
-    menu.setAttribute('aria-hidden', !open);
-    hb.setAttribute('aria-expanded', String(open));
-    // lock scroll when open
-    document.documentElement.style.overflow = open ? 'hidden' : '';
-    // set focus to first link when opened
+  function setOpen(open){
     if(open){
+      menu.classList.add('menu-open');
+      menu.setAttribute('aria-hidden','false');
+      hb.setAttribute('aria-expanded','true');
+      document.documentElement.style.overflow = 'hidden';
+      // focus first link
       const f = menu.querySelector('a[role="menuitem"]') || menu.querySelector('a');
       if(f) f.focus();
     } else {
+      menu.classList.remove('menu-open');
+      menu.setAttribute('aria-hidden','true');
+      hb.setAttribute('aria-expanded','false');
+      document.documentElement.style.overflow = '';
       hb.focus();
     }
   }
 
-  // click hamburger
   hb.addEventListener('click', (e) => {
     e.stopPropagation();
-    toggleMenu();
+    setOpen(!menu.classList.contains('menu-open'));
   });
 
-  // close when clicking outside menu
+  // close clicking outside
   document.addEventListener('click', (e) => {
-    if(!menu.classList.contains('menu-open')) return;
-    if(!menu.contains(e.target) && e.target !== hb) {
-      menu.classList.remove('menu-open');
-      menu.setAttribute('aria-hidden', 'true');
-      hb.setAttribute('aria-expanded', 'false');
-      document.documentElement.style.overflow = '';
+    if(menu.classList.contains('menu-open') && !menu.contains(e.target) && e.target !== hb){
+      setOpen(false);
     }
   });
 
-  // allow ESC to close
+  // ESC to close
   document.addEventListener('keydown', (e) => {
-    if(e.key === 'Escape' && menu.classList.contains('menu-open')) {
-      menu.classList.remove('menu-open');
-      menu.setAttribute('aria-hidden', 'true');
-      hb.setAttribute('aria-expanded', 'false');
-      document.documentElement.style.overflow = '';
-      hb.focus();
-    }
+    if(e.key === 'Escape' && menu.classList.contains('menu-open')) setOpen(false);
   });
 
-  // Close menu when a link is clicked (so navigation happens cleanly on mobile)
+  // close when a link is clicked
   menu.addEventListener('click', (e) => {
     const a = e.target.closest('a');
     if(!a) return;
-    menu.classList.remove('menu-open');
-    menu.setAttribute('aria-hidden', 'true');
-    hb.setAttribute('aria-expanded', 'false');
-    document.documentElement.style.overflow = '';
+    setOpen(false);
   });
-
 })();
