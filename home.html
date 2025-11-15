@@ -1,114 +1,58 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Docotela X — Home</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- header -->
-  <header class="header">
-    <nav class="center-nav container">
-      <a href="home.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="collections.html">Collections</a>
-      <a href="art-gallery.html">Art Gallery</a>
+  <header>
+    <nav class="center-nav">
+      <a href="home.html">Home</a><span class="dot">—</span>
+      <a href="about.html">About</a><span class="dot">—</span>
       <a href="contact.html">Contact</a>
     </nav>
+
+    <button id="hamburger" class="hamburger" aria-label="Open menu">☰</button>
+    <div id="menu" class="menu-panel" aria-hidden="true">
+      <a href="home.html">Home</a>
+      <a href="collections.html">Collections</a>
+      <a href="membersonly.html">Members Only</a>
+      <a href="art-gallery.html">Art Gallery</a>
+      <a href="private-collection.html">Private Collection</a>
+      <a href="contact.html">Contact</a>
+    </div>
   </header>
 
-  <!-- hamburger (right) -->
-  <button id="hamb" class="hamburger" aria-label="Open menu">
-    <span class="bars"></span>
-  </button>
-  <aside id="menu" class="menu-panel" aria-hidden="true">
-    <a href="home.html">Home</a>
-    <a href="collections.html">Collections</a>
-    <a href="art-gallery.html">Art Gallery</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="membersonly.html">Members Only</a>
-  </aside>
+  <main class="hero">
+    <div class="logo-bg"></div>
 
-  <!-- hero -->
-  <section class="hero">
-    <div class="logo-bg" aria-hidden="true"></div>
-    <canvas id="particles" class="particles" width="1600" height="900"></canvas>
-    <div class="spot" aria-hidden="true"></div>
-    <div class="vignette" aria-hidden="true"></div>
+    <div class="hero-content">
+      <img src="docotelax-logo.png" alt="Docotela X" class="small-logo">
+      <h1 class="brand-big">DOCOTELA X</h1>
+      <p class="subtitle">Limited pieces, handcrafted by artists. Each collection is a scene — enter if you belong to the feeling.</p>
 
-    <div class="hero-content container">
-      <div class="brand-title" style="font-family: 'Cinzel', serif;">DOCOTELA X</div>
-      <p class="tag">Limited pieces, handcrafted by artists. Each collection is a scene — enter if you belong to the feeling.</p>
-
-      <a class="enter-btn" href="collections.html" id="enterBtn">Browse Collections</a>
-      <div class="hr-gold" aria-hidden="true"></div>
-      <p style="color:rgba(255,255,255,0.45); font-size:13px; margin-top:18px;">© 2025 Docotela X — All Rights Reserved</p>
+      <div class="hero-actions">
+        <a class="enter-btn" href="collections.html">Browse Collections</a>
+        <a class="enter-btn ghost" href="art-gallery.html">Enter Gallery</a>
+      </div>
     </div>
-  </section>
 
-  <div class="footer-copy">Made with care • Docotela X</div>
+    <div class="floating-x x-center">X</div>
+  </main>
 
-  <script>
-  /* hamburger toggle */
-  const hamb = document.getElementById('hamb'), menu = document.getElementById('menu');
-  hamb.addEventListener('click', ()=>{
-    menu.classList.toggle('open');
-    menu.setAttribute('aria-hidden', !menu.classList.contains('open'));
-  });
-  document.addEventListener('click', (e)=>{
-    if(!menu.contains(e.target) && !hamb.contains(e.target)) menu.classList.remove('open');
-  });
+  <footer class="site-footer">
+    <p>© 2025 Docotela X — All Rights Reserved</p>
+  </footer>
 
-  /* lightweight particle field (canvas) */
-  (function(){
-    const canvas = document.getElementById('particles');
-    const ctx = canvas.getContext('2d');
-    let w = canvas.width = window.innerWidth;
-    let h = canvas.height = window.innerHeight;
-    const particles = [];
-    const amt = Math.max(24, Math.floor(w*h/90000));
-
-    function rand(min,max){return Math.random()*(max-min)+min}
-    function make(){
-      for(let i=0;i<amt;i++){
-        particles.push({
-          x: rand(0,w),
-          y: rand(0,h),
-          r: rand(0.4,1.8),
-          s: rand(0.01,0.06),
-          vx: rand(-0.05,0.05),
-          vy: rand(-0.02,0.06),
-          alpha: rand(0.05,0.18)
-        });
-      }
-    }
-    function resize(){
-      w = canvas.width = window.innerWidth;
-      h = canvas.height = window.innerHeight;
-    }
-    function draw(){
-      ctx.clearRect(0,0,w,h);
-      for(let p of particles){
-        p.x += p.vx;
-        p.y += p.vy + Math.sin(Date.now()*0.0005+p.x*0.001)*0.15;
-        if(p.x< -20) p.x = w+20;
-        if(p.x> w+20) p.x = -20;
-        if(p.y> h+40) p.y = -40;
-        ctx.beginPath();
-        ctx.fillStyle = 'rgba(224,180,64,'+p.alpha+')';
-        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-        ctx.fill();
-        ctx.closePath();
-      }
-      requestAnimationFrame(draw);
-    }
-    make();
-    draw();
-    window.addEventListener('resize', resize);
-  })();
-  </script>
+<script>
+  // Hamburger
+  const hb = document.getElementById('hamburger');
+  const mp = document.getElementById('menu');
+  hb.addEventListener('click', ()=>{ mp.classList.toggle('open'); });
+  document.addEventListener('click', (e)=>{ if(!mp.contains(e.target) && !hb.contains(e.target)) mp.classList.remove('open'); });
+</script>
 </body>
 </html>
