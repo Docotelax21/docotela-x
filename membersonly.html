@@ -6,17 +6,15 @@
   <title>Members Only — Docotela X</title>
   <link href="styles.css" rel="stylesheet">
 </head>
-<body class="page members">
+<body class="members-page">
 
-  <!-- CENTER NAV -->
-  <nav class="center-nav">
-    <a href="index.html">Home</a><span>—</span><a href="about.html">About</a><span>—</span><a href="contact.html">Contact</a>
+  <nav class="top-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
   </nav>
 
-  <!-- HAMBURGER -->
-  <button class="hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button>
-
-  <!-- SLIDE MENU -->
+  <div class="hamburger" id="hamburger" aria-label="Open menu">&#9776;</div>
   <aside id="mobileMenu" class="mobile-menu glass" aria-hidden="true">
     <a href="index.html">Home</a>
     <a href="collections.html">Collections</a>
@@ -28,42 +26,47 @@
   </aside>
 
   <!-- Fullscreen gates -->
-  <div class="gates-container">
-    <div class="gate left-gate" aria-hidden="true"></div>
-    <div class="gate right-gate" aria-hidden="true"></div>
+  <div class="gates-wrap">
+    <div class="gate-left"></div>
+    <div class="gate-right"></div>
 
-    <div class="password-box" role="dialog" aria-modal="true">
+    <div class="gate-pass">
       <h2>Members Only</h2>
       <p class="muted">Enter the password to open the gates.</p>
 
-      <div class="pw-row">
-        <input id="memberPass" type="password" placeholder="Password" autocomplete="off">
-        <button id="openBtn" class="enter-btn">Open Gates</button>
-      </div>
+      <form id="gateForm">
+        <input id="gatePass" type="password" placeholder="Password" autocomplete="off" />
+        <button type="submit" class="enter-btn">Open Gates</button>
+      </form>
 
-      <p id="err" class="muted" style="color:#ff6b6b;display:none;margin-top:12px;">Incorrect password</p>
-      <p style="margin-top:14px;"><a href="contact.html" class="ghost-link">Apply for membership</a></p>
+      <p id="gateError" class="muted" style="display:none;color:#f56;">Incorrect password</p>
     </div>
   </div>
 
-  <script>
-    document.getElementById('openBtn').addEventListener('click', function(){
-      const val = document.getElementById('memberPass').value.trim();
-      const err = document.getElementById('err');
-
-      if (val === 'memberson1y') {
-        err.style.display = 'none';
-        document.querySelector('.left-gate').classList.add('open-left');
-        document.querySelector('.right-gate').classList.add('open-right');
-
-        // after gate animation, redirect to private collection
-        setTimeout(()=>{ window.location.href = 'private-collection.html'; }, 1600);
-      } else {
-        err.style.display = 'block';
-      }
-    });
-  </script>
-
   <script src="menu.js"></script>
+
+  <script>
+    (function(){
+      const form = document.getElementById('gateForm');
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        const v = document.getElementById('gatePass').value.trim();
+        const err = document.getElementById('gateError');
+
+        if (v === 'memberson1y') {
+          // animate gates opening
+          document.querySelector('.gate-left').classList.add('open-left');
+          document.querySelector('.gate-right').classList.add('open-right');
+
+          setTimeout(()=> {
+            window.location.href = 'private-collection.html';
+          }, 1400);
+
+        } else {
+          err.style.display = 'block';
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
