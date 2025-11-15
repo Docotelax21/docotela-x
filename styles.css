@@ -204,3 +204,6 @@ a.mail{color:#fff;text-decoration:underline;color:#f6dfb6}
     border: none;
     cursor: pointer;
 }
+.mobile-menu.open {
+    right: 0;
+}
