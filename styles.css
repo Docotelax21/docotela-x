@@ -130,7 +130,7 @@ body.home .center-nav{display:none}
 /* small screens */
 @media (max-width:900px){
   .brand-title{font-size:36px}
-  .center-nav{top:14px}m
+  .center-nav{top:14px}
   .logo-bg{background-size:90%}
   .pw-row{flex-direction:column}
   .pw-row input{width:100%}
