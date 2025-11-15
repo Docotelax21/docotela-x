@@ -1,42 +1,51 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Collections — Docotela X</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="header">
-    <nav class="center-nav container">
+  <header>
+    <nav class="center-nav"><a href="home.html">Home</a><span class="dot">—</span><a href="about.html">About</a><span class="dot">—</span><a href="contact.html">Contact</a></nav>
+    <button id="hamburger2" class="hamburger">☰</button>
+    <div id="menu2" class="menu-panel">
       <a href="home.html">Home</a>
-      <a href="about.html">About</a>
       <a href="collections.html">Collections</a>
+      <a href="membersonly.html">Members Only</a>
       <a href="art-gallery.html">Art Gallery</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
-
-  <main class="page-article container">
-    <section class="center">
-      <h1 style="font-family:'Cinzel',serif; font-size:44px; color:var(--accent); margin-bottom:6px;">Collections</h1>
-      <div class="hr-gold" aria-hidden="true"></div>
-      <p style="color:rgba(255,255,255,0.75); max-width:820px; margin: 6px auto 30px;">Each collection is extremely limited — handcrafted pieces created with quiet care. Click a collection to explore the pieces and artist notes.</p>
-    </section>
-
-    <section class="gallery-grid">
-      <a class="gallery-item card" href="exclusive-drops.html">The Feeling of Freedom</a>
-      <a class="gallery-item card" href="exclusive-art.html">8deity Collection</a>
-      <a class="gallery-item card" href="private-collection.html">Private Vault</a>
-      <div class="gallery-item card">Coming Soon</div>
-    </section>
-
-    <div class="bottom-nav">
-      <a href="home.html">Back to Home</a>
-      <a href="about.html">About</a>
+      <a href="private-collection.html">Private Collection</a>
       <a href="contact.html">Contact</a>
     </div>
+  </header>
+
+  <main class="page content">
+    <h2 class="section-title">Collections</h2>
+
+    <section class="grid collections-grid">
+      <article class="card">
+        <div class="card-media" style="background-image:url('product-watch.jpg')"></div>
+        <h3>Aurum Chronos (Watch)</h3>
+        <p class="muted">Precision timepiece — R150,000</p>
+        <a class="cta" href="checkout.html">View / Buy</a>
+      </article>
+
+      <!-- placeholder cards for other collections -->
+      <article class="card empty">
+        <div class="card-media placeholder"></div>
+        <h3>8Deity — capsule</h3>
+        <p class="muted">Limited to 8 pieces</p>
+        <a class="cta" href="exclusive-drops.html">Explore</a>
+      </article>
+    </section>
   </main>
+
+<script>
+  const hb2 = document.getElementById('hamburger2');
+  const mp2 = document.getElementById('menu2');
+  hb2.addEventListener('click', ()=> mp2.classList.toggle('open'));
+  document.addEventListener('click', (e)=>{ if(!mp2.contains(e.target) && !hb2.contains(e.target)) mp2.classList.remove('open'); });
+</script>
 </body>
 </html>
