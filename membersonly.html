@@ -6,23 +6,14 @@
 <title>Members Only — Docotela X</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
-<style>
-.wrap{max-width:760px;margin:110px auto;padding:0 20px;color:#efeade;text-align:center}
-.title{font-family:'Cinzel',serif;font-size:34px;color:#f3dfb3;margin-bottom:12px}
-.input{width:320px;max-width:90%;padding:12px;border-radius:6px;border:1px solid rgba(255,255,255,0.04);background:rgba(255,255,255,0.02);color:#efeade;margin:8px auto;display:block}
-.btn{padding:10px 14px;border:2px solid rgba(212,173,62,.95);background:transparent;color:rgba(212,173,62,.95);border-radius:6px;cursor:pointer}
-.status{margin-top:12px;color:#d6d0c6}
-.lockbox{margin-top:26px;padding:20px;border-radius:10px;border:1px solid rgba(212,173,62,.06);background:linear-gradient(180deg,rgba(255,255,255,.01),rgba(255,255,255,0))}
-.red{color:#f04a4a}
-.green{color:#b6d8a8}
-</style>
 </head>
 <body>
+  <div class="bg-watermark" aria-hidden="true"></div>
   <header>
-    <nav class="center-nav"><a href="home.html">Home</a><span class="dot"> • </span><a href="about.html">About</a><span class="dot"> • </span><a href="contact.html">Contact</a></nav>
-    <button id="hamburgerMembers" class="hamburger" aria-label="Open menu" aria-expanded="false">☰</button>
-    <div id="menuMembers" class="menu-panel" aria-hidden="true">
-      <a href="home.html">Home</a>
+    <nav class="center-nav"><a href="index.html">Home</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav>
+    <button class="hamburger" onclick="toggleMenu()">☰</button>
+    <div id="panel" class="menu-panel" aria-hidden="true">
+      <a href="index.html">Home</a>
       <a href="collections.html">Collections</a>
       <a href="membersonly.html">Members Only</a>
       <a href="art-gallery.html">Art Gallery</a>
@@ -31,53 +22,29 @@
     </div>
   </header>
 
-  <main>
-    <section class="wrap">
-      <h1 class="title">Members Only Access</h1>
-      <p style="color:#cfc7bd">MEMBERS ONLY ENTER ACCESS CODE.</p>
+  <main class="section">
+    <div class="container" style="text-align:center;">
+      <h2 class="kicker">Members Only</h2>
+      <h1 style="color:#f3e6c2">Private Access</h1>
+      <p style="color:var(--muted)">Enter your access key to proceed to exclusive drops and unreleased art.</p>
 
-      <div class="lockbox">
-        <input id="keyInput" class="input" placeholder="Access Key" autocomplete="off">
-        <button id="submitKey" class="btn">Enter</button>
-        <div id="status" class="status"></div>
+      <div style="margin-top:28px;display:flex;justify-content:center">
+        <input id="key" placeholder="Access key" style="padding:12px 14px;border-radius:6px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:#fff;width:320px;max-width:85%">
+        <button id="go" class="cta" style="margin-left:14px">Enter</button>
       </div>
 
-      <p style="margin-top:18px;color:#cfc7bd">Don't have access? <a style="color:rgba(212,173,62,.95)" href="contact.html">Apply for membership</a></p>
-    </section>
+      <div id="status" style="margin-top:14px;color:var(--muted)"></div>
+    </div>
   </main>
 
 <script>
-/* members only check */
-(function(){
-  const PASSWORD = 'memberson1y'; // if you want different, change here
-  const input = document.getElementById('keyInput');
-  const btn = document.getElementById('submitKey');
-  const status = document.getElementById('status');
-
-  btn.addEventListener('click', check);
-  input.addEventListener('keydown', (e)=>{ if(e.key === 'Enter') check(); });
-
-  function check(){
-    const val = (input.value || '').trim();
-    if(!val){ status.innerHTML = '<span class="red">Enter your access key</span>'; return; }
-    if(val === PASSWORD){
-      status.innerHTML = '<span class="green">Access granted — redirecting…</span>';
-      // brief animation/fade
-      setTimeout(()=>{ window.location.href = 'private-collection.html'; }, 900);
-    } else {
-      status.innerHTML = '<span class="red">Access denied</span>';
-      // subtle red flash on the X element if present
-      setTimeout(()=>{ status.innerHTML = '<span class="red">Access denied — <a href="contact.html" style="color:#dcae59">Apply for membership</a></span>'; }, 700);
-    }
-  }
-})();
-
-/* hamburger behavior */
-(function(){
-  const hb=document.getElementById('hamburgerMembers'), menu=document.getElementById('menuMembers');
-  hb.addEventListener('click', ()=>{ const ex = hb.getAttribute('aria-expanded') === 'true'; hb.setAttribute('aria-expanded', !ex); menu.classList.toggle('open'); menu.setAttribute('aria-hidden', ex); });
-  document.addEventListener('click',(e)=>{ if(!menu.contains(e.target) && !hb.contains(e.target)){ menu.classList.remove('open'); hb.setAttribute('aria-expanded','false'); menu.setAttribute('aria-hidden','true'); }});
-})();
+function toggleMenu(){const p=document.getElementById('panel');p.classList.toggle('open');p.setAttribute('aria-hidden',!p.classList.contains('open'))}
+document.getElementById('go').addEventListener('click', ()=> {
+  const val = (document.getElementById('key').value||'').trim();
+  if(!val){document.getElementById('status').textContent='Enter your access key'; return;}
+  if(val==='memberson1y'){ document.getElementById('status').textContent='Access granted — redirecting…'; setTimeout(()=> location.href='private-collection.html',900); }
+  else { document.getElementById('status').textContent='Access denied — apply for membership'; document.getElementById('status').style.color='#f04a4a'; }
+});
 </script>
 </body>
 </html>
