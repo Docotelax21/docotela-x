@@ -1,34 +1,14 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Checkout — Docotela X</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css"/>
-</head>
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Checkout — Docotela X</title><link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"></head>
 <body>
-  <header>
-    <nav class="center-nav"><a href="home.html">Home</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav>
-  </header>
-
-  <main class="checkout">
-    <div class="logo-bg"></div>
-    <div class="checkout-card">
-      <h2>Checkout — The Sovereign Verde</h2>
-      <p class="price">R150,000</p>
-      <p class="lead">You're purchasing <strong>DOCOTELA X — The Sovereign Verde</strong>. This is a limited edition product (1 of 10).</p>
-
-      <div class="checkout-actions">
-        <!-- direct Paystack link opens merchant-hosted page -->
-        <a target="_blank" rel="noopener" href="https://paystack.shop/pay/fdy-nwp5q0" class="buy-btn">Pay with Paystack</a>
-        <a class="ghost-btn" href="product-watch.html">Return to product</a>
-      </div>
-
-      <p class="note">After payment, please keep your confirmation. If your payment provider supports redirects, follow instructions there. For assistance: <a href="contact.html">Contact us</a>.</p>
-
-      <small class="muted">Note: this checkout uses Paystack external link (merchant page). For a full integrated hosted checkout requiring webhooks, we can add server-side setup later.</small>
-    </div>
+  <header class="topbar"><nav class="center-nav"><a href="home.html">Home</a><a href="collections.html">Collections</a><a href="contact.html">Contact</a></nav></header>
+  <main class="container" style="padding-top:120px;">
+    <h2 style="font-family:'Cinzel',serif;color:var(--gold)">Checkout</h2>
+    <p style="color:rgba(255,255,255,0.85)">You will be redirected to Paystack for a secure checkout.</p>
+    <p><a class="btn" href="https://paystack.shop/pay/fdy-nwp5q0" target="_blank" rel="noopener">Proceed to Paystack</a></p>
+    <p style="color:rgba(255,255,255,0.68)">After payment, adjust your Paystack redirect URLs to point to <code>payment-success.html</code> or <code>payment-failed.html</code>.</p>
   </main>
+  <footer class="center">© Docotela X</footer>
 </body>
 </html>
