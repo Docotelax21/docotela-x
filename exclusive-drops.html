@@ -1,42 +1,31 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Exclusive Drops — Docotela X</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-</head>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Exclusive Drops — Docotela X</title><link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"></head>
 <body>
-  <header class="topbar">
-    <nav class="center-nav"><a href="home.html">Home</a><a href="collections.html">Collections</a><a href="contact.html">Contact</a></nav>
-    <button class="hamburger" id="hbEx">☰</button>
-    <div class="menu-panel" id="mpEx"><a href="home.html">Home</a><a href="collections.html">Collections</a><a href="art-gallery.html">Art Gallery</a><a href="members-only.html">Members Only</a><a href="contact.html">Contact</a></div>
-  </header>
+<header class="topbar"><nav class="center-nav"><a href="home.html">Home</a><a href="collections.html">Collections</a><a href="contact.html">Contact</a></nav>
+<button class="hamburger" id="hbEx"> <span></span><span></span><span></span></button>
+<div id="sideMenuEx" class="side-menu" aria-hidden="true"><a href="home.html">Home</a><a href="collections.html">Collections</a><a href="gallery.html">Art Gallery</a><a href="exclusive-drops.html">Exclusive Drops</a><a href="members-only.html">Members Only</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
+</header>
 
-  <div class="page-bg-logo"></div>
-  <main class="container" style="padding-top:120px;">
-    <h2 style="font-family:'Cinzel',serif;color:var(--gold)">Exclusive Drops</h2>
-    <p style="color:rgba(255,255,255,0.8)">Exclusives are limited pieces available for purchase. Contact us or use the product page to begin the checkout.</p>
+<div class="page-bg-logo" aria-hidden="true"></div>
 
-    <!-- Product preview: watch -->
-    <div class="product">
-      <img src="product-watch.jpg" alt="Docotela X — The Sovereign Verde" />
-      <div class="product-info">
-        <h2>DOCOTELA X — The Sovereign Verde</h2>
-        <p class="price">R150,000</p>
-        <p style="color:rgba(255,255,255,0.85)">A luxurious limited-edition watch — green sunburst dial, gold accents, black matte case. One-of-a-kind numbered piece.</p>
-        <p style="margin-top:18px"><a class="buy" href="product-watch.html">View Product</a></p>
-      </div>
+<main class="container" style="padding-top:120px;">
+  <h2 style="font-family:'Cinzel',serif;color:var(--gold)">Exclusive Drops</h2>
+  <p style="color:rgba(255,255,255,0.85)">Exclusives are limited pieces available for purchase. Use the product page to begin checkout or contact us to reserve.</p>
+
+  <!-- product preview -->
+  <div class="product" style="margin-top:22px;">
+    <img src="product-watch.jpg" alt="The Sovereign Verde">
+    <div class="product-info">
+      <h2>DOCOTELA X — The Sovereign Verde</h2>
+      <p class="price">R150,000</p>
+      <p style="color:rgba(255,255,255,0.85)">Limited edition — handcrafted timepiece. Purchase via product page.</p>
+      <p style="margin-top:12px;"><a class="buy" href="product-watch.html">View Product</a></p>
     </div>
-  </main>
+  </div>
+</main>
 
-  <footer class="center">© Docotela X</footer>
+<footer class="center">© Docotela X</footer>
 
-<script>
-const hb=document.getElementById('hbEx'), mp=document.getElementById('mpEx');
-hb.addEventListener('click',()=>mp.classList.toggle('open'));
-document.addEventListener('click',(e)=>{ if(!mp.contains(e.target)&& e.target!==hb) mp.classList.remove('open')});
-</script>
+<script>(function(){ const hb=document.getElementById('hbEx'), menu=document.getElementById('sideMenuEx'); hb.addEventListener('click', ()=> menu.classList.toggle('menu-open')); document.addEventListener('click',(e)=>{ if(!menu.contains(e.target)&& e.target!==hb) menu.classList.remove('menu-open'); }); })();</script>
 </body>
 </html>
