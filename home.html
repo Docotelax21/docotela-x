@@ -10,49 +10,67 @@
 <body>
   <header>
     <nav class="center-nav">
-      <a href="home.html">Home</a><span class="dot">—</span>
-      <a href="about.html">About</a><span class="dot">—</span>
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
 
-    <button id="hamburger" class="hamburger" aria-label="Open menu">☰</button>
+    <button id="hamburger" class="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
     <div id="menu" class="menu-panel" aria-hidden="true">
       <a href="home.html">Home</a>
       <a href="collections.html">Collections</a>
-      <a href="membersonly.html">Members Only</a>
       <a href="art-gallery.html">Art Gallery</a>
-      <a href="private-collection.html">Private Collection</a>
+      <a href="exclusive-drops.html">Exclusive Drops</a>
+      <a href="membersonly.html">Members Only</a>
       <a href="contact.html">Contact</a>
     </div>
   </header>
 
   <main class="hero">
-    <div class="logo-bg"></div>
+    <div class="logo-bg" aria-hidden="true"></div>
 
     <div class="hero-content">
-      <img src="docotelax-logo.png" alt="Docotela X" class="small-logo">
-      <h1 class="brand-big">DOCOTELA X</h1>
-      <p class="subtitle">Limited pieces, handcrafted by artists. Each collection is a scene — enter if you belong to the feeling.</p>
+      <div class="brand-mark">
+        <img src="docotelax-logo.png" alt="Docotela X logo" class="logo-centered">
+      </div>
 
-      <div class="hero-actions">
-        <a class="enter-btn" href="collections.html">Browse Collections</a>
-        <a class="enter-btn ghost" href="art-gallery.html">Enter Gallery</a>
+      <h1 class="brand-title">DOCOTELA X</h1>
+      <p class="sub">Limited pieces, handcrafted by artists. Each collection is a scene — enter if you belong to the feeling.</p>
+
+      <div class="hero-cta">
+        <a class="enter-btn" href="collections.html">Enter the Gallery</a>
+        <a class="ghost-btn" href="product-watch.html">The Sovereign Verde</a>
       </div>
     </div>
-
-    <div class="floating-x x-center">X</div>
   </main>
 
-  <footer class="site-footer">
-    <p>© 2025 Docotela X — All Rights Reserved</p>
+  <footer class="footer">
+    <small>© Docotela X — All rights reserved</small>
   </footer>
 
-<script>
-  // Hamburger
-  const hb = document.getElementById('hamburger');
-  const mp = document.getElementById('menu');
-  hb.addEventListener('click', ()=>{ mp.classList.toggle('open'); });
-  document.addEventListener('click', (e)=>{ if(!mp.contains(e.target) && !hb.contains(e.target)) mp.classList.remove('open'); });
-</script>
+  <script>
+    // Hamburger menu
+    (function(){
+      const hb = document.getElementById('hamburger');
+      const mp = document.getElementById('menu');
+      hb.addEventListener('click', ()=> {
+        const open = hb.getAttribute('aria-expanded') === 'true';
+        hb.setAttribute('aria-expanded', !open);
+        mp.classList.toggle('open');
+        mp.setAttribute('aria-hidden', open);
+      });
+      document.addEventListener('click', (e)=>{
+        if(!mp.contains(e.target) && !hb.contains(e.target)){
+          mp.classList.remove('open');
+          hb.setAttribute('aria-expanded','false');
+          mp.setAttribute('aria-hidden','true');
+        }
+      });
+    })();
+  </script>
+
 </body>
 </html>
