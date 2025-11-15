@@ -7,35 +7,37 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body class="page">
-  <header>
+<body>
+  <header class="topbar">
     <nav class="center-nav">
       <a href="home.html">Home</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
-
-    <button id="hamburgerAbout" class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
-
-    <div id="menuAbout" class="menu-panel" aria-hidden="true">
+    <button class="hamburger" id="hamburgerAbout">☰</button>
+    <div class="menu-panel" id="menuAbout" aria-hidden="true">
       <a href="home.html">Home</a>
       <a href="collections.html">Collections</a>
-      <a href="art-gallery.html">Art Gallery</a>
       <a href="exclusive-drops.html">Exclusive Drops</a>
-      <a href="membersonly.html">Members Only</a>
+      <a href="art-gallery.html">Art Gallery</a>
+      <a href="members-only.html">Members Only</a>
       <a href="contact.html">Contact</a>
     </div>
   </header>
 
-  <main class="content">
-    <div class="logo-bg"></div>
+  <!-- floating cinematic Xs -->
+  <div class="floating-x x1">X</div>
+  <div class="floating-x x2">X</div>
+  <div class="floating-x x3">X</div>
 
+  <div class="page-bg-logo"></div>
+
+  <main class="container" style="padding-top:120px;">
     <article class="about-article">
       <h1 class="page-title">About Docotela X</h1>
-
       <p class="lead">Docotela X is the feeling of freedom translated into cloth and canvas — a careful tension between discipline and escape. Each collection is a quiet rebellion: limited, handcrafted, honest.</p>
 
-      <section class="poetic">
+      <section>
         <p>We craft with patience. We edit by instinct. In a world of noise, Docotela X chooses silence — the silence that makes room for a line, for a fold, for an echo of the life lived beneath the surface. Our garments are private ceremonies — designed to be worn like a second skin of conviction.</p>
 
         <p>The work is small-batch, the details deliberate. The art we make and the clothing we shape are not for everyone — they are for the few who return to the same quiet place again and again.</p>
@@ -43,14 +45,15 @@
     </article>
   </main>
 
-  <script>
-    // hamburger About
-    (function(){
-      const hb = document.getElementById('hamburgerAbout');
-      const mp = document.getElementById('menuAbout');
-      hb.addEventListener('click', ()=>{ const e = hb.getAttribute('aria-expanded')==='true'; hb.setAttribute('aria-expanded',!e); mp.classList.toggle('open'); mp.setAttribute('aria-hidden', e); });
-      document.addEventListener('click',(ev)=>{ if (!mp.contains(ev.target) && !hb.contains(ev.target)){ mp.classList.remove('open'); hb.setAttribute('aria-expanded','false'); mp.setAttribute('aria-hidden','true'); }});
-    })();
-  </script>
+  <footer class="center">
+    <div class="container">© Docotela X</div>
+  </footer>
+
+<script>
+const hb = document.getElementById('hamburgerAbout');
+const mp = document.getElementById('menuAbout');
+hb.addEventListener('click', ()=> mp.classList.toggle('open'));
+document.addEventListener('click',(e)=>{ if(!mp.contains(e.target)&&e.target!==hb) mp.classList.remove('open')});
+</script>
 </body>
 </html>
