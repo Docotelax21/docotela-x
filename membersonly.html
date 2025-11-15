@@ -1,14 +1,21 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Members Only — Docotela X</title><link rel="stylesheet" href="styles.css"></head><body>
-<header class="topbar"><nav class="center-nav"><a href="home.html">Home</a><a href="collections.html">Collections</a><a href="contact.html">Contact</a></nav><button id="docoHamburger" class="hamburger" aria-label="Open menu"><span class="hbar"></span><span class="hbar"></span><span class="hbar"></span></button></header>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Members Only — Docotela X</title><link rel="stylesheet" href="Styles.css"></head><body>
+<header class="topbar"><nav class="center-nav"><a href="index.html">Home</a><a href="collections.html">Collections</a><a href="contact.html">Contact</a></nav>
+<button id="docoHamburger" class="hamburger"><span class="hbar"></span><span class="hbar"></span><span class="hbar"></span></button>
+<aside id="docoSideMenu" class="doco-side-menu" aria-hidden="true">
+  <nav class="doco-menu-inner">
+    <a href="index.html">Home</a><a href="collections.html">Collections</a><a href="gallery.html">Art Gallery</a><a href="exclusive-drops.html">Exclusive Drops</a><a href="membersonly.html">Members Only</a><a href="about.html">About</a><a href="contact.html">Contact</a>
+  </nav>
+</aside>
+</header>
 
 <main class="container" style="padding-top:120px;">
   <h2 style="font-family:'Cinzel',serif;color:var(--gold)">Members Only</h2>
   <p style="color:rgba(255,255,255,0.85)">Enter your access key to open the vault.</p>
 
-  <div class="vault-wrap" style="margin-top:24px;">
+  <div class="vault-wrap" style="margin-top:18px;">
     <div class="vault-lock">
-      <div style="color:var(--muted); margin-bottom:8px">Welcome to the Vault</div>
+      <div style="color:var(--muted-2); margin-bottom:8px">Welcome to the Vault</div>
       <input class="pw" id="pwInput" placeholder="Access Key">
       <div style="display:flex; gap:10px; margin-top:12px">
         <button class="btn" id="pwBtn">Enter</button>
@@ -21,6 +28,7 @@
         <div class="gate right" id="gateR"></div>
       </div>
     </div>
+
     <p style="color:rgba(255,255,255,0.75); margin-top:12px;">If you are denied, apply for membership via contact.</p>
   </div>
 </main>
@@ -40,8 +48,8 @@ pwBtn.addEventListener('click', ()=> {
     gateL.classList.add('open','left'); gateR.classList.add('open','right'); accessOk.style.display='block';
     setTimeout(()=> window.location.href = 'private-collection.html', 900);
   } else {
-    alert('ACCESS DENIED');
-    pwInput.animate([{transform:'translateX(-6px)'},{transform:'translateX(6px)'},{transform:'translateX(0)'}], {duration:360});
+    alert('ACCESS DENIED'); 
+    pwInput.animate([{transform:'translateX(-8px)'},{transform:'translateX(8px)'},{transform:'translateX(0)'}], {duration:360});
   }
 });
 pwInput.addEventListener('keydown',(e)=>{ if(e.key==='Enter') pwBtn.click(); });
