@@ -1,44 +1,15 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Exclusive Art — Docotela X</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css"/>
-</head>
-<body>
-  <header>
-    <nav class="center-nav"><a href="home.html">Home</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav>
-    <button id="hamburgerEA" class="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
-    <div id="menuEA" class="menu-panel" aria-hidden="true">
-      <a href="home.html">Home</a><a href="collections.html">Collections</a><a href="art-gallery.html">Art Gallery</a><a href="exclusive-drops.html">Exclusive Drops</a><a href="membersonly.html">Members Only</a><a href="contact.html">Contact</a>
-    </div>
-  </header>
-
-  <main class="content">
-    <div class="logo-bg"></div>
-    <h1 class="page-title">Exclusive Art — Handcrafted</h1>
-    <p class="lead">One-off pieces made in collaboration with young artists — always 10 or fewer.</p>
-
-    <div class="grid">
-      <article class="card">
-        <img src="product-watch.jpg" alt="" class="card-img">
-        <h3>Limited Piece</h3>
-        <a class="card-btn" href="exclusive-drops.html">View Drops</a>
-      </article>
-    </div>
-  </main>
-
-  <script>
-    const hb = document.getElementById('hamburgerEA');
-    const mp = document.getElementById('menuEA');
-    hb.addEventListener('click', ()=> {
-      const open = hb.getAttribute('aria-expanded') === 'true';
-      hb.setAttribute('aria-expanded', !open);
-      mp.classList.toggle('open');
-      mp.setAttribute('aria-hidden', open);
-    });
-  </script>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Exclusive Art — Docotela X</title><link rel="stylesheet" href="Styles.css"></head><body>
+<header class="topbar"><nav class="center-nav"><a href="index.html">Home</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav></header>
+<main class="container" style="padding-top:120px;">
+  <h2 style="font-family:'Cinzel',serif;color:var(--gold)">Exclusive Art</h2>
+  <p style="color:rgba(255,255,255,0.85)">This page is reserved for select works. Contact to inquire.</p>
+  <div class="gallery-grid" style="margin-top:24px;">
+    <div class="frame">Reserved<div class="label">Details</div></div>
+    <div class="frame">Reserved<div class="label">Details</div></div>
+  </div>
+</main>
+<footer class="center">© Docotela X</footer>
+<script src="menu.js"></script>
 </body>
 </html>
