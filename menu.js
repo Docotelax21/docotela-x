@@ -1,48 +1,13 @@
-/* menu.js — Docotela X Option 3 glass blur menu behaviour (shared) */
-(() => {
-  const hb = document.getElementById('docoHamburger');
-  const menu = document.getElementById('docoSideMenu');
-  if(!hb || !menu) return;
+function toggleMenu() {
+    const menu = document.getElementById("mobileMenu");
 
-  function setOpen(open){
-    if(open){
-      menu.classList.add('menu-open');
-      menu.setAttribute('aria-hidden','false');
-      hb.setAttribute('aria-expanded','true');
-      document.documentElement.style.overflow = 'hidden';
-      // focus first link
-      const f = menu.querySelector('a[role="menuitem"]') || menu.querySelector('a');
-      if(f) f.focus();
+    // Toggle
+    menu.classList.toggle("open");
+
+    // Prevent background from blocking clicks
+    if (menu.classList.contains("open")) {
+        menu.style.pointerEvents = "auto";
     } else {
-      menu.classList.remove('menu-open');
-      menu.setAttribute('aria-hidden','true');
-      hb.setAttribute('aria-expanded','false');
-      document.documentElement.style.overflow = '';
-      hb.focus();
+        menu.style.pointerEvents = "none";
     }
-  }
-
-  hb.addEventListener('click', (e) => {
-    e.stopPropagation();
-    setOpen(!menu.classList.contains('menu-open'));
-  });
-
-  // close clicking outside
-  document.addEventListener('click', (e) => {
-    if(menu.classList.contains('menu-open') && !menu.contains(e.target) && e.target !== hb){
-      setOpen(false);
-    }
-  });
-
-  // ESC to close
-  document.addEventListener('keydown', (e) => {
-    if(e.key === 'Escape' && menu.classList.contains('menu-open')) setOpen(false);
-  });
-
-  // close when a link is clicked
-  menu.addEventListener('click', (e) => {
-    const a = e.target.closest('a');
-    if(!a) return;
-    setOpen(false);
-  });
-})();
+}
