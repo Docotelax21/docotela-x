@@ -1,75 +1,50 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Members Only — Docotela X</title><link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css">
-<style>
-/* small members-only specific style */
-.vault-wrap{ min-height:70vh; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:18px; padding-top:28px }
-.vault-lock{ width:420px; height:260px; border-radius:10px; background:linear-gradient(180deg, rgba(0,0,0,0.6), rgba(255,255,255,0.02)); display:flex;align-items:center;justify-content:center; flex-direction:column; border:1px solid rgba(216,184,74,0.12) }
-.pw{ padding:10px 14px; border-radius:6px; border:1px solid rgba(255,255,255,0.07); background:transparent; color:var(--muted); width:220px; text-align:center }
-.access-ok{ color:var(--gold); font-weight:700; display:none; margin-top:8px; }
-.gates{ position:relative; width:100%; height:220px; margin-top:14px; overflow:hidden }
-.gate{ position:absolute; top:0; bottom:0; width:50%; background:linear-gradient(90deg, rgba(10,10,10,0.95), rgba(20,20,20,0.95)); transition:transform .9s cubic-bezier(.2,.9,.3,1); border:1px solid rgba(216,184,74,0.06)}
-.gate.left{ left:0; transform:translateX(0) }
-.gate.right{ right:0; transform:translateX(0) }
-.gate.open.left{ transform:translateX(-110%) }
-.gate.open.right{ transform:translateX(110%) }
-</style>
-</head>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Members Only — Docotela X</title><link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"></head>
 <body>
-  <header class="topbar"><nav class="center-nav"><a href="home.html">Home</a><a href="collections.html">Collections</a><a href="contact.html">Contact</a></nav></header>
+<header class="topbar"><nav class="center-nav"><a href="home.html">Home</a><a href="collections.html">Collections</a><a href="contact.html">Contact</a></nav></header>
 
-  <main class="container" style="padding-top:120px;">
-    <h2 style="font-family:'Cinzel',serif;color:var(--gold)">Members Only</h2>
-    <p style="color:rgba(255,255,255,0.85)">Enter your access key to reveal the vault.</p>
+<main class="container" style="padding-top:120px;">
+  <h2 style="font-family:'Cinzel',serif;color:var(--gold)">Members Only</h2>
+  <p style="color:rgba(255,255,255,0.85)">Enter your access key to open the vault.</p>
 
-    <div class="vault-wrap">
-      <div class="vault-lock">
-        <div style="color:var(--muted); margin-bottom:8px">Welcome to the Vault</div>
-        <input class="pw" id="pwInput" placeholder="Access Key" />
-        <div style="display:flex; gap:10px; margin-top:12px">
-          <button class="btn" id="pwBtn">Enter</button>
-          <a class="btn" href="private-collection.html" id="privateLink" style="display:none">Private Collection</a>
-        </div>
-        <div class="access-ok" id="accessOk">Access granted — Welcome.</div>
-
-        <div class="gates" aria-hidden="true">
-          <div class="gate left" id="gateL"></div>
-          <div class="gate right" id="gateR"></div>
-        </div>
+  <div class="vault-wrap" style="margin-top:24px;">
+    <div class="vault-lock">
+      <div style="color:var(--muted); margin-bottom:8px">Welcome to the Vault</div>
+      <input class="pw" id="pwInput" placeholder="Access Key" />
+      <div style="display:flex; gap:10px; margin-top:12px">
+        <button class="btn" id="pwBtn">Enter</button>
+        <a class="btn" href="contact.html">Apply for membership</a>
       </div>
+      <div class="access-ok" id="accessOk">Access granted — Welcome.</div>
 
-      <p style="color:rgba(255,255,255,0.75)">Wrong passwords will display an error. Or <a class="brand-link" href="contact.html">apply for membership</a>.</p>
+      <div class="gates" aria-hidden="true">
+        <div class="gate left" id="gateL"></div>
+        <div class="gate right" id="gateR"></div>
+      </div>
     </div>
-  </main>
+    <p style="color:rgba(255,255,255,0.75); margin-top:12px;">If you are denied, apply for membership via contact.</p>
+  </div>
+</main>
 
-  <footer class="center">© Docotela X</footer>
+<footer class="center">© Docotela X</footer>
 
 <script>
-// password logic
 const pwBtn=document.getElementById('pwBtn'), pwInput=document.getElementById('pwInput'), accessOk=document.getElementById('accessOk'),
-      gateL=document.getElementById('gateL'), gateR=document.getElementById('gateR'), privateLink=document.getElementById('privateLink');
-
-// Set your member password here (client-side only). Change if needed.
+      gateL=document.getElementById('gateL'), gateR=document.getElementById('gateR');
 const MEMBER_PASS = 'memberson1y';
 
 pwBtn.addEventListener('click', ()=> {
-  const val = pwInput.value.trim();
-  if(!val) { alert('Enter access key'); return; }
+  const val = (pwInput.value||'').trim();
+  if(!val){ alert('Enter access key'); return; }
   if(val === MEMBER_PASS){
-    // animate open gates
-    gateL.classList.add('open','left');
-    gateR.classList.add('open','right');
-    accessOk.style.display='block';
-    privateLink.style.display='inline-block';
-    setTimeout(()=> { privateLink.focus(); }, 900);
+    gateL.classList.add('open','left'); gateR.classList.add('open','right'); accessOk.style.display='block';
+    setTimeout(()=> window.location.href = 'private-collection.html', 900);
   } else {
-    accessOk.style.display='none';
-    alert('Access denied');
-    // subtle shake
-    pwInput.animate([{transform:'translateX(-6px)'},{transform:'translateX(6px)'},{transform:'translateX(0)'}], {duration:380});
+    alert('ACCESS DENIED');
+    pwInput.animate([{transform:'translateX(-6px)'},{transform:'translateX(6px)'},{transform:'translateX(0)'}], {duration:360});
   }
 });
+pwInput.addEventListener('keydown',(e)=>{ if(e.key==='Enter') pwBtn.click(); });
 </script>
 </body>
 </html>
