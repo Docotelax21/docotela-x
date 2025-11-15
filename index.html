@@ -1,55 +1,61 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Docotela X</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Docotela X</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
+<body>
 
-<body class="fade">
+  <!-- watermark and floating art -->
+  <div class="bg-watermark" aria-hidden="true"></div>
+  <div class="floating-x fx-large">X</div>
+  <div class="floating-x fx-mid">X</div>
 
-<!-- HAMBURGER -->
-<div class="hamburger" onclick="toggleMenu()">☰</div>
-
-<!-- MENU PANEL -->
-<div id="menuPanel" class="menu-panel">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="collections.html">Collections</a>
-    <a href="members.html">Members Only</a>
-    <a href="gallery.html">Art Gallery</a>
-    <a href="contact.html">Contact</a>
-</div>
-
-<!-- TOP NAV -->
-<header>
+  <!-- top nav -->
+  <header>
     <nav class="center-nav">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
     </nav>
-</header>
 
-<!-- HERO SECTION -->
-<section class="hero">
-
-    <!-- LOGO BACKGROUND -->
-    <div class="logo-bg"></div>
-
-    <!-- MAIN CONTENT -->
-    <div class="hero-content">
-        <h1 class="brand-title">DOCOTELA X</h1>
-        <a class="enter-btn" href="collections.html">Enter the Gallery</a>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+    <div id="panel" class="menu-panel" aria-hidden="true">
+      <a href="index.html">Home</a>
+      <a href="collections.html">Collections</a>
+      <a href="membersonly.html">Members Only</a>
+      <a href="art-gallery.html">Art Gallery</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
     </div>
+  </header>
 
-</section>
+  <!-- HERO cinematic top -->
+  <section class="hero">
+    <div class="panel container">
+      <img src="docotelax-logo.png" class="brand-mark" alt="Docotela X logo">
+      <h1>DOCOTELA X</h1>
+      <p>Where art becomes clothing and clothing becomes an act of freedom. Limited collections, handcrafted with care.</p>
+      <a href="home.html" class="cta">ENTER THE GALLERY</a>
+    </div>
+  </section>
 
-<script>
-function toggleMenu() {
-    document.getElementById("menuPanel").classList.toggle("open");
-}
-</script>
+  <script>
+    function toggleMenu(){
+      const p = document.getElementById('panel');
+      p.classList.toggle('open');
+      p.setAttribute('aria-hidden', !p.classList.contains('open'));
+    }
 
+    // reveal animations on load
+    window.addEventListener('load', ()=> {
+      document.querySelectorAll('.panel, .hero h1, .hero p, .cta').forEach((el,i)=>{
+        setTimeout(()=> el.classList.add('show'), 120 + i*120);
+      });
+    });
+  </script>
 </body>
 </html>
